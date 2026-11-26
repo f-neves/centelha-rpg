@@ -39,11 +39,11 @@ Detalhe em `Proezas_revisao.md`.
   `lance.ts`, `grid.astro`, `motor.mjs`, `lib-bestiario.mjs` e os capítulos `centelha.md`,
   `combate.md`, `defesas.md` foram alinhados nessa rodada (commit `adfbb5d7` e o commit desta Fase
   2). Ver **D12** para a jogada só-de-Atributo, que ainda usa a regra antiga.
-- [ ] **D8 · [DECIDIR] Mãos Hábeis: +3 ou +2 em Ofícios?** Levantado em 24/09/2026.
+- [x] **D8 · [FECHADA em 25/11/2026, decidida pelo coordenador por delegação do autor: +3] Mãos Hábeis: +3 ou +2 em Ofícios?** `tecnicas.json` já dizia "+3 em Ofícios" (a régua de nível 1 da trilha Bônus); nada mudou no dado. O "+2" era do `Proezas_revisao.md`, na régua velha. Levantado em 24/09/2026.
   `tecnicas.json:6076` dá "+3 em Ofícios" (a régua de nível 1 da trilha Bônus); `Proezas_revisao.md:606`
   dá "+2". O caso é o mesmo do D2 (o doc ficou na régua velha), mas a Técnica pesa direto no
   ganho por ofício e pede confirmação antes de mexer.
-- [ ] **D9 · [ADIADO] [FAZER] Esquiva Impossível: marcar `pendente: true`.** Decisão do autor
+- [x] **D9 · [FECHADA em 25/11/2026: a régua fechou na Etapa 3 e a Técnica foi marcada `pendente: true`] Esquiva Impossível: marcar `pendente: true`.** Decisão do autor
   (26/09/2026, análise externa via ChatGPT desktop, `docs/calibracao/discussao/
   decisoes-entendimento.md`, item 3a): `esquiva-impossivel` (`tecnicas.json`) fica sem efeito
   determinável (não inventar a partir do nome, nível ou custo), e a Técnica deve virar
@@ -99,8 +99,8 @@ Detalhe em `Proezas_revisao.md`.
   despacho dos achados de duas leituras (item 17): sem botão de jogada de Atributo puro na ficha nem
   no Grid por enquanto. O Mestre faz a conta à mão (a Centelha inteira, pela D12).
   `centelhaSoAtributo` (`src/lib/calc.ts`) segue sem chamador.
-- [ ] **D16 · [DECIDIR] O que sobrou do Fôlego: as nove Técnicas da Coração Incansável e o campo
-  `folego` das armas.** Registrado em 03/10/2026 (D-016, rodada de pendências, Bloco C). O Fôlego saiu
+- [x] **D16 · [FECHADA em 25/11/2026, decidida pelo coordenador por delegação do autor (consulta 014)] O que sobrou do Fôlego: as nove Técnicas da Coração Incansável e o campo
+  `folego` das armas, removidos dos dados, do código e dos testes.** Prova antes de remover (`test-ficha-item-inteiro.mjs`, navegador): a ficha salva com `folego-profundo`, `incansavel` e `coracao-eterno` em `proezas` e uma arma com `folego: 15` abria sem erro e sem NaN; as três ids ocultas ainda cobravam 65 XP (Restam 851 XP sem elas, 786 com elas). Depois de remover: abre igual, as ids continuam na ficha (nada é apagado calado), o `folego` da arma some ao regravar (`semFolego`, `equip.ts`) e o XP volta a 851 (quem ainda guardava uma das ids recebe o XP de volta). Achado da Revisora (conhecido e ACEITO): o card "Ver a ficha por dentro" da mesa (`ficha-card.ts`, o laço de `R.tecnicas`) mostra o chip cru "Folego profundo", sem nível, para uma ficha salva antes de 03/10/2026 com uma das nove ids; só ficha pré-outubro e só visual (conserto na N32, para a passada única da mesa). O Caminho `coracao-incansavel` ficou SEM nenhuma Técnica e segue em `caminhos.json` (já não aparecia em lugar nenhum: a ficha e as páginas só mostram Caminho com Técnica); não foi criada Técnica nova. Saíram também `src/lib/modulos.ts` (`tecnicaDisponivel`, agora sem uso), o campo `modulo` das Técnicas e dos esquemas, o `folego` dos esquemas das armas (`content.config.ts`, `validate-data.mjs`), o `scripts/add-folego.mjs` e a coluna Fôlego da lista de equipamentos gerada. Registrado em 03/10/2026 (D-016, rodada de pendências, Bloco C). O Fôlego saiu
   do sistema (capítulo, reserva, ficha, mesa, condição "Sem fôlego"), mas, por decisão do autor, ficam
   nos dados, ocultos e inertes:
   - as nove Técnicas com `modulo: "folego"` da Proeza `coracao-incansavel` (`folego-profundo`,
@@ -150,14 +150,14 @@ Detalhe em `Proezas_revisao.md`.
     de Arte Centelha + 2 como TOLERÂNCIA ("ainda não é definitivo", LEVANTA QUANDO o autor fechar o
     teto do mortal), e o comentário de `:177` diz "provisório". O teto foi fechado pela D-006 e saiu do
     livro como "provisório" na rodada 8. O código não foi tocado (rodada 12, ordem do Arquiteto).
-- [ ] **D18 · [DECIDIR] O efeito novo da Técnica Ambidestria.** Registrado em 10/10/2026, vindo da K18
+- [x] **D18 · [FECHADA em 25/11/2026, decidida pelo coordenador por delegação do autor (consulta 008)] O efeito novo da Técnica Ambidestria: "Golpeando com as duas armas, a Defesa no Tick do Golpe fica em −2, e não em −4."** O mesmo alívio que o livro já dá a quem golpeia com uma só (`combate.md`, a régua das fases). Livro e dado (`tecnicas.json`); a ficha não mostra a Defesa por fase, então só o texto; o Grid não muda (D-054, N29). Registrado em 10/10/2026, vindo da K18
   (`K-combate-linha-do-tempo.md`), fechada pela D-091: a mão inábil não tem penalidade extra, então o que a
   Ambidestria fazia (tirar o −2d6 da inábil) sumiu. Na rodada 9 do plano das armas a Técnica fica na lista, com
   a descrição e "efeito em recalibração" (para não quebrar ficha salva), e a ficha deixa de lê-la.
   - **Candidata já levantada:** o "alívio de defesa", golpear com as duas e ficar a −2 em vez de −4 no Tick do
     Golpe (`Combate_Tempo.md` l.1234-1236). A outra candidata de lá, tratar par com média como par leve, foi
     medida (67,7%) e descartada.
-  - Decidir junto com a recalibração das Proezas.
+  - Decidir junto com a recalibração das Proezas (decidido: a candidata do alívio de defesa, em 25/11/2026).
 
 - [ ] **D19 · [ADIADO] Orçamento de XP da criação (R54).** Registrado em 05/11/2026. O autor adiou: o orçamento vai ser
   recalculado depois. Nada muda no livro agora; os exemplos que não fecham (Lia: 630 gastos) ficam como estão até o recálculo.
@@ -167,5 +167,18 @@ Detalhe em `Proezas_revisao.md`.
   duas; se substitui, vale a de nível maior), e que "o custo das Técnicas que substituem entra na recalibração das Proezas". O
   levantamento de `src/data/tecnicas.json` achou **89 pares em 46 Caminhos, com 64 Técnicas de nível maior a decidir**, e mais 23
   casos duvidosos: `docs/calibracao/proezas-t2-aumenta-ou-substitui.md` (critério, método, cada par com os dois textos). Quem decide
-  cada uma é a recalibração, não a revisão de textos: o texto das Técnicas não muda antes dela. A D18 (Ambidestria) e o cansaço do
-  poder inato, que a D-358 já pôs na mesma recalibração, seguem nos itens deles.
+  cada uma é a recalibração, não a revisão de textos: o texto das Técnicas não muda antes dela. A D18 (Ambidestria, fechada em 25/11/2026) e o cansaço do
+  poder inato (fechado em 25/11/2026: frase para o Mestre em `poderes-das-criaturas.md`, consulta 009, com exemplo, D-087), que a D-358 já pôs na mesma recalibração, seguem nos itens deles.
+
+- [ ] **D21 · [FAZER] A ficha não calcula a Rajada nem a Investida com Técnica: o Frenesi (C20) e a Investida Devastadora (C21) valem só como texto (25/11/2026).** Decididos pelo coordenador por delegação do autor (consultas 010 e 011); texto no livro e em `tecnicas.json`.
+  - O livro diz: Frenesi, "por 6 Ticks, suas Rajadas saem sem o −1d6 acumulado por golpe; o teto de golpes é o da arma".
+  - A ficha faz: a Rajada da ficha (`ficha-pgr.ts`, `ficha-engine.ts`) não lê Técnica nenhuma; quem usa o Frenesi aplica o texto à mão. Se o autor quiser a conta na ficha, é uma passada própria (código; consulta).
+  - Investida Devastadora: "+1 de dano a cada 2 m percorridos na investida, até +7"; a Investida da ficha soma a Força mais uma vez e nada mais.
+  - **Andamento da D20 (25/11/2026):** RT-132 fechada (consulta 012, adendo 064): Reflexos Premonitórios, "+6 na Iniciativa; 1×/cena, obrigue o atacante a refazer o acerto contra você", e soma com a Proeza do Destino (a de nível 3 é passiva, grátis e só contra o acerto do atacante; a Proeza do Destino é ativa, custa 5 de Energia e 1 de Força de Vontade e vale para qualquer rolagem; substituir tiraria de quem chega ao nível 5 o refazer grátis; o critério 3B compara números de trilha, e a trilha `estado` não tem número).
+  - **RT-066 fechada (25/11/2026, consulta 013):** revogado o "paga só a diferença" da versão maior de um Efeito; cada Efeito custa 4 × o nível dele, cheio (como a D-374 fez com as Técnicas). Saíram a linha "Em revisão" de `arcano.efeitos.upgrade` (`regras.json`) e o item do quadro "Em revisão" da página das Artes. O campo `escalonavel` de `efeitos.json` fica como está: nada o lê além do esquema (`content.config.ts`), e nenhum código decide custo por ele.
+  - **D20, o 3B aplicado (25/11/2026):** 42 textos de Técnicas de nível maior ganharam a frase "substitui a ..." (os 31 pares SUBSTITUI do levantamento, os de texto duplicado, P27/P31/P32 e, dos casos duvidosos, o D1 do Quebra-Muralhas, cuja regra já estava na nota do Caminho), em 31 commits, um por Caminho, em 5 lotes (a conta por par em `tmp/arquiteto/recalibracao/lote-01.md` a `lote-05.md`). Ficaram FORA, por regra do próprio 3B: os 29 pares de estado (sem número), 5 pares de trilhas diferentes, os 22 casos duvidosos restantes e a unidade da Penetração: vão à consulta (`tmp/arquiteto/recalibracao/consultas/09-d20-fora-da-conta.md`, com a minha proposta em cada um). Os 63 achados de equilíbrio: nenhum número fora da trilha (`achados63-veredito.md`).
+  - **D20, o que ficou fora da conta, decidido (25/11/2026, respostas 072 e 074):** P45 SUBSTITUI na Defesa dos aliados; P65, P67, P80 e P88 SOMAM; a Penetração é Absorção ignorada e ganhou "(Absorção ignorada)" na primeira menção de cada Técnica; os duvidosos D3 a D8, D10 a D21 e D23 foram escritos como o coordenador aprovou (D3 depois de conferir o teto de +6 de `combate.md`: ele cobre só bônus de Defesa, e o −9 do Borrão é do atacante); D13: o "cura o dobro" vale para a cura recebida de outra fonte, não para a própria Regeneração; D22: o Coração Aberto dá a jogada do Farejar a Mentira em toda mentira ou disfarce social; D23: SOMA, e "Margem alta" NÃO está definida no livro (pendência de texto, sem número inventado). D2 e D8 ficam em SOMA e sem número (resposta 076: só as quantidades ganham número; a lista das 95 Técnicas de topo está em `tmp/arquiteto/recalibracao/topo-sem-numero.md`).
+  - **D7 e D12 viram SOMA (resposta 074; a 072 fica corrigida neste ponto):** a aprovação do SUBSTITUI vinha de uma premissa velha (antes da RT-020 o Aguentar o Tranco ignorava só o Machucado de −1); com o Machucado inteiro (−2) ignorado, "substitui" deixaria o Machucado pior para quem tem as duas. Teimosia: "Soma com a Técnica Aguentar Firme: a Aguentar Firme zera o Machucado, e esta tira 1 dos estados piores."
+  - **Correções da Revisora (89342540):** P27 por componente (o dano soma, o total é +2d6; a Penetração de +4 substitui a do Tiro Certeiro), P44 e P82 com escopo ("enquanto ativa", "no que as duas fazem igual"), P87 sem o parêntese sobre a provocação, e P69 SOMA (a Sempre Alerta ficaria sem uso com "substitui").
+  - **Pendência de texto:** "Margem alta" (Enigma Vivo, Porte Inabalável, nível 4) não é definida no livro; a Técnica a usa para o limiar de leitura (D23). Definir quando o autor quiser (o livro só tem a Margem de 6 acima da Dificuldade, `acoes-resistir.md:44`).
+  - **Coração Incansável (T18, 075, 25/11/2026; 256622fb):** o autor aprovou as nove Técnicas novas, sobre o Desgaste, com os mesmos nove ids e nomes (molde: Carne Teimosa; 175 XP; regras do autor: as que ignoram degraus não somam, vale a maior, e "ignorar um degrau" é só a penalidade, com o degrau contando no teto de 4). O Caminho voltou a ter Técnicas e saiu da situação "sem nenhuma Técnica" que o fbc83892 deixou; a marca "em revisão" que eu tinha preparado foi descartada (diff em `tmp/executora/marca-em-revisao.diff`). A conta de cada Técnica está em `tmp/arquiteto/recalibracao/lote-06.md`. Com os ids reaproveitados, o chip cru do `ficha-card.ts` (N32) deixa de aparecer para essas nove; vale só para uma id que alguém tire no futuro.

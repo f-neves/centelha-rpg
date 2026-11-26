@@ -96,8 +96,8 @@
       "reflexos-de-vento"
     ],
     "aliases": [],
-    "texto": "Ao ver um ataque que te visa, +6 na Defesa contra ele: o corpo já saiu do caminho quando o golpe chega.",
-    "pendente": false,
+    "texto": "Ao ver um ataque que te visa, +6 na Defesa contra ele: o corpo já saiu do caminho quando o golpe chega. Substitui as Técnicas Reflexos de Vento e Esquiva de Vento: o +6 não soma com os outros bônus de Defesa.",
+    "pendente": true,
     "nivel": 3,
     "efeito": "bonus"
   },
@@ -152,7 +152,7 @@
       "esquiva-impossivel"
     ],
     "aliases": [],
-    "texto": "Vira um borrão: **−9** a disparos contra você; pode cruzar um campo de batalha num único Tick.",
+    "texto": "Vira um borrão: **−9** a disparos contra você; pode cruzar um campo de batalha num único Tick. Contra disparos, substitui as Técnicas Reflexos de Vento, Esquiva de Vento e Esquiva Impossível (os −9 já fazem o papel dos +3, +4 e +6, e como são do atacante ficam fora do teto de +6 dos bônus de Defesa); contra o resto, elas continuam valendo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "bonus"
@@ -330,7 +330,7 @@
       "salto-do-grilo"
     ],
     "aliases": [],
-    "texto": "Avança e desfere um golpe que derruba e empurra; some a distância percorrida ao impacto.",
+    "texto": "+1 de dano a cada 2 m percorridos na investida, até +7 (a média de 2d6, o valor da trilha de dano no nível 3). O mesmo golpe derruba e empurra pelas regras de Derrubar e Empurrar (D-048), com a mesma jogada de ataque contra a Defesa, sem segunda jogada. É uma Investida: a Força mais uma vez da Investida comum continua valendo, e o +1 a cada 2 m vem por cima.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -348,7 +348,7 @@
       "soco-trovejante"
     ],
     "aliases": [],
-    "texto": "**+3d6** de dano num único golpe colossal.",
+    "texto": "**+3d6** de dano num único golpe colossal. Substitui as Técnicas Golpe Pesado e Pancada Atordoante no dano desse golpe (os bônus de dano não somam).",
     "pendente": false,
     "nivel": 4,
     "efeito": "dano"
@@ -364,7 +364,7 @@
       "esmagar"
     ],
     "aliases": [],
-    "texto": "Suas mãos quebram pedra e metal; ataques ignoram 6 de Absorção de armaduras mundanas (não a Absorção natural do alvo).",
+    "texto": "Suas mãos quebram pedra e metal; ataques ignoram 6 de Absorção de armaduras mundanas (não a Absorção natural do alvo). Substitui a Técnica Esmagar: os 6 de Absorção ignorados não somam com os 4.",
     "pendente": false,
     "nivel": 4,
     "efeito": "penetracao"
@@ -687,7 +687,7 @@
       "instinto-de-sobrevivencia"
     ],
     "aliases": [],
-    "texto": "**+6 na Iniciativa**; 1×/cena, refaça uma rolagem de Defesa.",
+    "texto": "**+6 na Iniciativa**; 1×/cena, obrigue o atacante a refazer o acerto contra você. Soma com a Proeza do Destino.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -705,7 +705,7 @@
       "instinto-de-sobrevivencia"
     ],
     "aliases": [],
-    "texto": "Defende-se normalmente contra um ataque que não poderia ver (pelas costas, oculto).",
+    "texto": "Defende-se normalmente contra um ataque que não poderia ver (pelas costas, oculto). Substitui a Técnica Faro do Perigo (defender-se normalmente tira a desvantagem que o +4 compensava).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -817,7 +817,7 @@
       "ler-o-fio"
     ],
     "aliases": [],
-    "texto": "Verdadeira precognição: faça ao Mestre uma pergunta significativa sobre o futuro e receba uma resposta enigmática, porém verdadeira, ou reescreva um resultado uma vez.",
+    "texto": "Verdadeira precognição: faça ao Mestre uma pergunta significativa sobre o futuro e receba uma resposta enigmática, porém verdadeira, ou reescreva um resultado uma vez. Soma com a Proeza do Destino (reescrever um resultado não é refazer a rolagem).",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -883,7 +883,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "+4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1.",
+    "texto": "+4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1. Enquanto ativa, substitui as Técnicas Pele Curtida, Tensionar e Couro Endurecido: a Absorção não soma. Soma com a Técnica Aguentar o Tranco: o Tranco zera o Machucado, e esta tira 1 dos estados piores.",
     "pendente": false,
     "nivel": 3,
     "efeito": "soak"
@@ -955,7 +955,7 @@
       "fortaleza-viva"
     ],
     "aliases": [],
-    "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes mortais.",
+    "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes mortais. Soma com as Técnicas Pele de Pedra, Couro Endurecido e Pele Curtida.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -1021,7 +1021,7 @@
       "mira-firme"
     ],
     "aliases": [],
-    "texto": "+4 de Penetração e +1d6 de dano num disparo cuidadoso.",
+    "texto": "+4 de Penetração (Absorção ignorada) e +1d6 de dano num disparo cuidadoso. O dano soma com o do Tiro Certeiro (o total é +2d6); a Penetração de +4 substitui a dele.",
     "pendente": false,
     "nivel": 3,
     "efeito": "penetracao"
@@ -1058,7 +1058,7 @@
       "tiro-perfurante"
     ],
     "aliases": [],
-    "texto": "Acerta a distâncias extremas, contorna cobertura parcial e mira pontos vitais (ignora a penalidade de cobertura do alvo).",
+    "texto": "Acerta a distâncias extremas, contorna cobertura parcial e mira pontos vitais (ignora a penalidade de cobertura do alvo). Soma com a Técnica Olho de Alcance (o alcance dobrado dela continua valendo).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1077,7 +1077,7 @@
       "tiro-impossivel"
     ],
     "aliases": [],
-    "texto": "O disparo curva e persegue o alvo, ignorando cobertura.",
+    "texto": "O disparo curva e persegue o alvo, ignorando cobertura. Substitui a Técnica Tiro Impossível no que as duas fazem igual (ignorar a cobertura); o resto da Tiro Impossível continua.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -1183,7 +1183,7 @@
       "palavra-calmante"
     ],
     "aliases": [],
-    "texto": "Convence alguém a baixar a guarda ou a arma; suspende a hostilidade do momento.",
+    "texto": "Convence alguém a baixar a guarda ou a arma; suspende a hostilidade do momento. Substitui a Técnica Palavra que Acalma.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -1340,7 +1340,7 @@
       "ler-o-terreno"
     ],
     "aliases": [],
-    "texto": "Vê o invisível, ilusões e disfarces; a escuridão perfeita não o cega.",
+    "texto": "Vê o invisível, ilusões e disfarces; a escuridão perfeita não o cega. Soma com a Técnica Visão na Penumbra.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1392,7 +1392,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Cura o dobro do normal e estabiliza sozinho ao cair.",
+    "texto": "Cura o dobro do normal (da cura que recebe de outra fonte; não dobra a própria Regeneração) e estabiliza sozinho ao cair.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -1480,7 +1480,7 @@
       "fechar-feridas"
     ],
     "aliases": [],
-    "texto": "Recupera PV igual ao seu Vigor a cada 6 Ticks.",
+    "texto": "Recupera PV igual ao seu Vigor a cada 6 Ticks. Soma com as Técnicas Recuperação Acelerada, Segundo Fôlego e Fechar Feridas.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1604,7 +1604,7 @@
       "esgueirar"
     ],
     "aliases": [],
-    "texto": "Ataque furtivo contra alvo desavisado: +2d6 de dano (o alvo desavisado já sofre a penalidade de Defesa por surpresa).",
+    "texto": "Ataque furtivo contra alvo desavisado: +2d6 de dano (o alvo desavisado já sofre a penalidade de Defesa por surpresa). Substitui a Técnica Bote da Sombra no dano (os +2d6 não somam com o +1d6).",
     "pendente": false,
     "nivel": 3,
     "efeito": "dano"
@@ -1728,7 +1728,7 @@
       "aparar"
     ],
     "aliases": [],
-    "texto": "Ao aparar com sucesso, contra-ataca imediatamente.",
+    "texto": "Ao aparar com sucesso, contra-ataca imediatamente. Substitui a Técnica Aparar e Responder.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -1887,7 +1887,7 @@
       "brado-de-guerra"
     ],
     "aliases": [],
-    "texto": "Avança e ataca com +2d6 de dano por empurrão.",
+    "texto": "Avança e ataca com +2d6 de dano por empurrão. Substitui a Técnica Fúria no dano da investida (os +2d6 não somam com o +1d6).",
     "pendente": false,
     "nivel": 3,
     "efeito": "dano"
@@ -1905,7 +1905,7 @@
       "sede-de-sangue"
     ],
     "aliases": [],
-    "texto": "Ataca repetidamente sem as penalidades de múltiplos ataques por 6 Ticks.",
+    "texto": "Por 6 Ticks, suas Rajadas saem sem o −1d6 acumulado por golpe; o teto de golpes é o da arma. A Recuperação e a Guarda sob pressão continuam.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1943,7 +1943,7 @@
       "nao-sentir-dor"
     ],
     "aliases": [],
-    "texto": "Uma tempestade de violência: dano massivo, imune a medo, quase imparável.",
+    "texto": "Uma tempestade de violência: dano massivo, imune a medo, quase imparável. Soma com a Técnica Fúria.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -2011,7 +2011,7 @@
       "inspirar"
     ],
     "aliases": [],
-    "texto": "Enquanto visível, aliados resistem melhor a medo e desânimo.",
+    "texto": "Enquanto visível, aliados resistem melhor a medo e desânimo. Enquanto ativa, substitui a Técnica Farol de Coragem; sem ela ativa, o Farol (passiva) continua valendo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2438,7 +2438,7 @@
       "fingir"
     ],
     "aliases": [],
-    "texto": "Uma mentira que resiste a escrutínio (contra a Defesa Social ou o Olho da Verdade).",
+    "texto": "Uma mentira que resiste a escrutínio (contra a Defesa Social ou o Olho da Verdade). Substitui a Técnica Mentira Sólida.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2545,7 +2545,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "Ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra).",
+    "texto": "Ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra). Substitui as Técnicas Força de Carga e Erguer o Enorme: o ×4 não soma com os outros multiplicadores.",
     "pendente": false,
     "nivel": 3,
     "efeito": "carga"
@@ -2579,7 +2579,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "Sustenta pesos imensos por longos períodos (~×4 o normal).",
+    "texto": "Sustenta pesos imensos por longos períodos (~×4 o normal). Substitui as Técnicas Força de Carga e Erguer o Enorme: o ×4 não soma com os outros multiplicadores.",
     "pendente": false,
     "nivel": 3,
     "efeito": "carga"
@@ -2635,7 +2635,7 @@
       "arrancar"
     ],
     "aliases": [],
-    "texto": "Ergue carroças, estátuas e pedras de tonelada (~×30 o normal).",
+    "texto": "Ergue carroças, estátuas e pedras de tonelada (~×30 o normal). Substitui as Técnicas Força de Carga, Erguer o Enorme e Levantamento Poderoso: o ×30 não soma com os outros multiplicadores.",
     "pendente": false,
     "nivel": 5,
     "efeito": "carga"
@@ -2654,7 +2654,7 @@
       "forca-titanica"
     ],
     "aliases": [],
-    "texto": "Sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco).",
+    "texto": "Sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco). Substitui as Técnicas Força de Carga, Erguer o Enorme, Levantamento Poderoso, Carregar o Mundo, Força Titânica e Arremesso: o ×100 não soma com os outros multiplicadores.",
     "pendente": false,
     "nivel": 6,
     "efeito": "carga"
@@ -2740,7 +2740,7 @@
       "pancada-destrutiva"
     ],
     "aliases": [],
-    "texto": "Um golpe de Romper com +6 (trilha de Bônus, nível 3) contra parede: derruba uma parede fraca (taipa, adobe ou tábuas) num golpe.",
+    "texto": "Um golpe de Romper com +6 (trilha de Bônus, nível 3) contra parede: derruba uma parede fraca (taipa, adobe ou tábuas) num golpe. Substitui a Técnica Pancada Destrutiva: só um bônus de Romper entra por golpe; o Demolidor soma por cima.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -2759,7 +2759,7 @@
       "abrir-brecha"
     ],
     "aliases": [],
-    "texto": "Um golpe de Romper com +9 (trilha de Bônus, nível 4) contra pedra e portão reforçado.",
+    "texto": "Um golpe de Romper com +9 (trilha de Bônus, nível 4) contra pedra e portão reforçado. Substitui as Técnicas Pancada Destrutiva e Abrir Brecha: só um bônus de Romper entra por golpe; o Demolidor soma por cima.",
     "pendente": false,
     "nivel": 4,
     "efeito": "bonus"
@@ -2797,7 +2797,7 @@
       "terremoto"
     ],
     "aliases": [],
-    "texto": "Um golpe de Romper com +15 (trilha de Bônus, nível 6) contra muralha ou torre.",
+    "texto": "Um golpe de Romper com +15 (trilha de Bônus, nível 6) contra muralha ou torre. Substitui as Técnicas Pancada Destrutiva, Abrir Brecha e Esmaga-Pedra: só um bônus de Romper entra por golpe; o Demolidor soma por cima.",
     "pendente": false,
     "nivel": 6,
     "efeito": "bonus"
@@ -3008,7 +3008,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "Passa por aberturas mínimas, escapa de amarras e grades.",
+    "texto": "Passa por aberturas mínimas, escapa de amarras e grades. Substitui a Técnica Corpo de Gato no que as duas fazem igual (passar por aberturas mínimas e escapar de amarras); o cair de pé da Corpo de Gato continua.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3151,7 +3151,7 @@
       "dedos-ageis"
     ],
     "aliases": [],
-    "texto": "Manipula vários objetos rápido demais para acompanhar.",
+    "texto": "Manipula vários objetos rápido demais para acompanhar. Substitui a Técnica Mãos Rápidas Demais.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3169,7 +3169,7 @@
       "truque-de-mao"
     ],
     "aliases": [],
-    "texto": "Desarma armadilhas e abre qualquer fechadura mundana num instante.",
+    "texto": "Desarma armadilhas e abre qualquer fechadura mundana num instante. Soma com a Técnica Dedos Ágeis (o +3 ainda vale na fechadura que não seja mundana).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3188,7 +3188,7 @@
       "toque-preciso"
     ],
     "aliases": [],
-    "texto": "Várias ações manuais finas numa única ação.",
+    "texto": "Várias ações manuais finas numa única ação. Substitui as Técnicas Mãos Borradas e Mãos Rápidas Demais no que se repete (várias ações manuais finas numa ação).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3233,7 +3233,6 @@
   },
   {
     "id": "folego-profundo",
-    "modulo": "folego",
     "nome": "Fôlego Profundo",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3241,14 +3240,31 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Recupera **+2× Vigor** de Fôlego por Tick, o dobro da recuperação normal.",
+    "texto": "Respira fundo: +3 em Vigor + Resistência contra o Ambiente e na conta dos Ticks de ar (30 Ticks a mais).",
+    "pendente": false,
+    "nivel": 1,
+    "efeito": "bonus"
+  },
+  {
+    "id": "marcha-forcada",
+    "nome": "Marcha Forçada",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 1
+    },
+    "prereq": [
+      "folego-profundo"
+    ],
+    "aliases": [],
+    "texto": "Ao falhar na jogada de Ambiente de um intervalo, o +1 de Desgaste daquele intervalo não entra.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
   },
   {
     "id": "segundo-vento",
-    "modulo": "folego",
     "nome": "Segundo Vento",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3260,31 +3276,31 @@
       "folego-profundo"
     ],
     "aliases": [],
-    "texto": "Uma vez por cena, recupere **metade do Fôlego máximo** numa ação **rápida (Velocidade 1)**, o respiro que quase não custa tempo.",
+    "texto": "Ação rápida (Velocidade 1), uma vez por cena: um respiro, e até o fim da cena você ignora 1 degrau de Desgaste (só a penalidade dele some; o degrau continua contando no teto de 4).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
   },
   {
-    "id": "marcha-forcada",
-    "modulo": "folego",
-    "nome": "Marcha Forçada",
+    "id": "folego-de-sobra",
+    "nome": "Fôlego de Sobra",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "tipo": "passiva",
-    "custo": {},
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
     "prereq": [
       "folego-profundo"
     ],
     "aliases": [],
-    "texto": "Fora de combate, corrida e marcha forçada custam **metade** do Fôlego; não acumula exaustão em jornadas longas.",
+    "texto": "Quando um degrau de Desgaste ia entrar (ambiente, marcha ou sono), ele não entra até o fim da cena.",
     "pendente": false,
-    "nivel": 1,
+    "nivel": 2,
     "efeito": "estado"
   },
   {
     "id": "incansavel",
-    "modulo": "folego",
     "nome": "Incansável",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3294,33 +3310,31 @@
       "folego-profundo"
     ],
     "aliases": [],
-    "texto": "Ignora a penalidade de **−1d6** do cansaço: age sem perda mesmo abaixo de 25% do Fôlego.",
+    "texto": "O corpo não cobra o que cobraria dos outros: você ignora 2 degraus de Desgaste. Substitui a Técnica Segundo Vento enquanto ativa: vale o maior número de degraus.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
   },
   {
     "id": "pulmoes-de-ferro",
-    "modulo": "folego",
     "nome": "Pulmões de Ferro",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "tipo": "ativa",
+    "tipo": "reflexiva",
     "custo": {
       "energia": 3
     },
     "prereq": [
-      "segundo-vento"
+      "marcha-forcada"
     ],
     "aliases": [],
-    "texto": "**Postura:** enquanto sustentada, cada golpe custa o Fôlego de **uma classe mais leve** (o pesado custa como médio, o médio como leve). Também prende a respiração por minutos: resiste a fumaça e gases.",
+    "texto": "Ao ficar sem ar de surpresa ou em esforço, conte os Ticks de ar como se tivesse enchido o peito.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
   },
   {
     "id": "sem-limites",
-    "modulo": "folego",
     "nome": "Sem Limites",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3333,31 +3347,32 @@
       "pulmoes-de-ferro"
     ],
     "aliases": [],
-    "texto": "**Postura:** enquanto sustentada, o **Esforço custa um grau de duplicação a menos**: o +1d6 sai pelo custo normal do golpe; o +2d6 dobra só uma vez. Age no auge por horas.",
+    "texto": "Por uma cena, ou por uma hora de marcha, ignore 3 degraus de Desgaste. Substitui as Técnicas Segundo Vento e Incansável enquanto ativas: vale o maior número de degraus.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
   },
   {
     "id": "vigor-inesgotavel",
-    "modulo": "folego",
     "nome": "Vigor Inesgotável",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
-    "tipo": "passiva",
-    "custo": {},
+    "tipo": "ativa",
+    "custo": {
+      "energia": 5,
+      "vontade": 1
+    },
     "prereq": [
       "sem-limites"
     ],
     "aliases": [],
-    "texto": "Sua reserva **nunca para de se renovar**: você recupera Vigor de Fôlego por Tick **mesmo enquanto ataca ou corre**. Na prática, golpes leves passam a se pagar sozinhos e só os pesados e o Esforço ainda drenam. Dispensa sono e comida por longos períodos.",
+    "texto": "Por um dia e uma noite, ignore 3 degraus de Desgaste, e a noite sem dormir desse período não conta para a dívida de sono. Substitui as Técnicas Segundo Vento, Incansável e Sem Limites enquanto ativas: vale o maior número de degraus.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
   },
   {
     "id": "coracao-eterno",
-    "modulo": "folego",
     "nome": "Coração Eterno",
     "caminho": "coracao-incansavel",
     "atributo": "vigor",
@@ -3370,7 +3385,7 @@
       "vigor-inesgotavel"
     ],
     "aliases": [],
-    "texto": "Por uma cena, seu **Fôlego não diminui**: ataque, force o golpe e corra à vontade sem gastar nada. O coração que não para.",
+    "texto": "Tira todos os degraus de Desgaste que você tem (até os 4 do teto), e por uma cena nenhum entra.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3436,7 +3451,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "Neutraliza um veneno já no corpo; expele toxinas.",
+    "texto": "Neutraliza um veneno já no corpo; expele toxinas. Substitui a Técnica Purgar o Veneno no que as duas fazem igual (neutralizar o veneno já no corpo); o aguentar o ambiente hostil da Purgar o Veneno continua.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3452,7 +3467,7 @@
       "aclimatacao"
     ],
     "aliases": [],
-    "texto": "Suporta temperaturas e ambientes que matariam outros.",
+    "texto": "Suporta temperaturas e ambientes que matariam outros. Substitui a Técnica Aclimatação (a mesma adaptação, em grau maior); soma com a Técnica Purgar o Veneno.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3471,7 +3486,7 @@
       "resistir-doenca"
     ],
     "aliases": [],
-    "texto": "Imune a venenos e doenças mundanos.",
+    "texto": "Imune a venenos e doenças mundanos. Substitui as Técnicas Estômago de Ferro e Resistir Doença contra veneno e doença mundanos; contra o sobrenatural, elas continuam valendo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3575,7 +3590,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "Reduz todas as penalidades de ferimento em 1.",
+    "texto": "Reduz todas as penalidades de ferimento em 1. Soma com a Técnica Aguentar Firme: a Aguentar Firme zera o Machucado, e esta tira 1 dos estados piores.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3593,7 +3608,7 @@
       "cerrar-os-dentes"
     ],
     "aliases": [],
-    "texto": "Ao chegar a 0 PV, fica de pé por mais 6 Ticks.",
+    "texto": "Ao chegar a 0 PV, fica de pé por mais 6 Ticks. Soma com a Técnica Segurar o Baque.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3718,7 +3733,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "Aliados coordenados ganham +6 de Defesa e de ataque juntos.",
+    "texto": "Aliados coordenados ganham +6 de Defesa e de ataque juntos. Substitui a Técnica Formar Fileira na Defesa dos aliados (o +6 toma o lugar do +2); a coordenação da Formar Fileira continua.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -3879,7 +3894,7 @@
       "distrair"
     ],
     "aliases": [],
-    "texto": "A plateia fica absorta enquanto você se apresenta.",
+    "texto": "A plateia fica absorta enquanto você se apresenta. Substitui a Técnica Prender a Plateia.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4147,7 +4162,7 @@
       "trama"
     ],
     "aliases": [],
-    "texto": "Usa uma alavanca para dobrar a vontade de alguém.",
+    "texto": "Usa uma alavanca para dobrar a vontade de alguém. Substitui a Técnica Alavanca.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4290,7 +4305,7 @@
       "lingua-de-prata"
     ],
     "aliases": [],
-    "texto": "Fecha acordos com armadilhas que o alvo não percebe.",
+    "texto": "Fecha acordos com armadilhas que o alvo não percebe. Substitui a Técnica Torcer o Acordo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4576,7 +4591,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "Impõe um desejo passageiro que o alvo racionaliza como seu (contra a Defesa Mental).",
+    "texto": "Impõe um desejo passageiro que o alvo racionaliza como seu (contra a Defesa Mental). Substitui a Técnica Impulso Plantado.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5289,7 +5304,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "Ninguém lê suas intenções; imune a leitura corporal mundana.",
+    "texto": "Ninguém lê suas intenções; imune a leitura corporal mundana. Soma com a Técnica Face Neutra.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5430,7 +5445,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "Age normalmente em emboscadas; não pode ser pego de surpresa.",
+    "texto": "Age normalmente em emboscadas; não pode ser pego de surpresa. Soma com a Técnica Sempre Alerta: esta garante agir normalmente em emboscada, e a Sempre Alerta continua evitando o flanqueio.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5734,7 +5749,7 @@
       "ver-atraves"
     ],
     "aliases": [],
-    "texto": "Revela um disfarce ou mentira mundana (contra o Camaleão ou a Máscara).",
+    "texto": "Revela um disfarce ou mentira mundana (contra o Camaleão ou a Máscara). Substitui as Técnicas Farejar a Farsa e Ver Através (revelar é o passo seguinte de sentir e de notar).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5859,7 +5874,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "Vê espíritos, encantamentos ativos e marcas mágicas.",
+    "texto": "Vê espíritos, encantamentos ativos e marcas mágicas. Substitui as Técnicas Tocar o Véu e Sentir o Véu.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6429,7 +6444,7 @@
       "olhar-investigativo"
     ],
     "aliases": [],
-    "texto": "Reconstrói o que houve num local pelos vestígios.",
+    "texto": "Reconstrói o que houve num local pelos vestígios. Substitui a Técnica Reconstituir a Cena.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6570,7 +6585,7 @@
       "mente-rapida"
     ],
     "aliases": [],
-    "texto": "Age sempre entre os primeiros.",
+    "texto": "Age sempre entre os primeiros. Substitui a Técnica Mente Rápida na Iniciativa (agir entre os primeiros já inclui o +3).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6588,7 +6603,7 @@
       "reacao"
     ],
     "aliases": [],
-    "texto": "Realiza uma ação mental e uma física quase simultâneas.",
+    "texto": "Realiza uma ação mental e uma física quase simultâneas. Substitui a Técnica Duplo Tempo no que as duas fazem igual (uma ação mental e uma física quase simultâneas); a Duplo Tempo segue valendo como reação.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6856,7 +6871,7 @@
       "ler-o-outro"
     ],
     "aliases": [],
-    "texto": "Monta um perfil preciso após breve contato.",
+    "texto": "Monta um perfil preciso após breve contato. Substitui a Técnica Traçar o Perfil.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6997,7 +7012,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "+6 para resistir a manipulação, medo e efeitos mentais.",
+    "texto": "+6 para resistir a manipulação, medo e efeitos mentais. Substitui a Técnica Calma no que as duas cobrem; os +6 não somam com o +3, e a distração e a provocação da Calma continuam.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -7108,7 +7123,7 @@
       "olhar-perspicaz"
     ],
     "aliases": [],
-    "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+6** nas jogadas sociais que explorem o que captou.",
+    "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+6** nas jogadas sociais que explorem o que captou. Soma com a Técnica Tomar o Pulso.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -7165,7 +7180,7 @@
       "antecipar-o-gesto"
     ],
     "aliases": [],
-    "texto": "Por uma cena, lê intenções como livro aberto: nenhuma mentira ou disfarce social passa sem que você role para perceber, e sente as **motivações reais** de quem o encara.",
+    "texto": "Por uma cena, lê intenções como livro aberto: toda mentira ou disfarce social dá a você a jogada do Farejar a Mentira, mesmo sem desconfiar, e você sente sem rolar as **motivações reais** de quem o encara.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -7217,7 +7232,7 @@
       "voz-calma"
     ],
     "aliases": [],
-    "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−6**.",
+    "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−6**. Soma com a Técnica Semblante Fechado.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -7253,7 +7268,7 @@
       "inabalavel"
     ],
     "aliases": [],
-    "texto": "Você é fundamentalmente ilegível: leitura social e adivinhação mundana sobre suas intenções falham salvo Margem alta, e mantém quantas personas quiser sem esforço.",
+    "texto": "Você é fundamentalmente ilegível: leitura social e adivinhação mundana sobre suas intenções falham salvo Margem alta, e mantém quantas personas quiser sem esforço. Soma com as Técnicas Águas Profundas e Semblante Fechado: o −6 das Águas Profundas e a Margem alta daqui valem juntos.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -7317,7 +7332,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "Levanta acima da cabeça, por um instante, o que precisaria de duas pessoas; capacidade de carga ×3.",
+    "texto": "Levanta acima da cabeça, por um instante, o que precisaria de duas pessoas; capacidade de carga ×3. Substitui a Técnica Força de Carga: o ×3 não soma com o ×2.",
     "pendente": false,
     "nivel": 2,
     "efeito": "carga"
@@ -7335,7 +7350,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Concentra o golpe num só ponto: +1d6 de dano e o alvo cambaleia, agindo com −2 na ação seguinte.",
+    "texto": "Concentra o golpe num só ponto: +1d6 de dano e o alvo cambaleia, agindo com −2 na ação seguinte. Substitui a Técnica Golpe Pesado no dano do golpe (os dois +1d6 não somam); o cambalear vem por cima.",
     "pendente": false,
     "nivel": 2,
     "efeito": "dano"
@@ -7353,7 +7368,7 @@
       "demolidor"
     ],
     "aliases": [],
-    "texto": "O baque atravessa a guarda: Penetração 3, amassa o elmo e racha o escudo de madeira.",
+    "texto": "O baque atravessa a guarda: Penetração 3 (Absorção ignorada), amassa o elmo e racha o escudo de madeira.",
     "pendente": false,
     "nivel": 2,
     "efeito": "penetracao"
@@ -7411,23 +7426,6 @@
     "efeito": "estado"
   },
   {
-    "id": "folego-de-sobra",
-    "modulo": "folego",
-    "nome": "Fôlego de Sobra",
-    "caminho": "coracao-incansavel",
-    "atributo": "vigor",
-    "tipo": "passiva",
-    "custo": {},
-    "prereq": [
-      "folego-profundo"
-    ],
-    "aliases": [],
-    "texto": "Ignora a penalidade de cansaço: corre, marcha e luta bem além do que derrubaria outro.",
-    "pendente": false,
-    "nivel": 2,
-    "efeito": "estado"
-  },
-  {
     "id": "couro-endurecido",
     "nome": "Couro Endurecido",
     "caminho": "pele-de-pedra",
@@ -7438,7 +7436,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "A pele curte-se: +3 de Absorção contra Impacto e +2 contra Corte, sem pesar no movimento.",
+    "texto": "A pele curte-se: +3 de Absorção contra Impacto e +2 contra Corte, sem pesar no movimento. Substitui as Técnicas Pele Curtida e Tensionar: a Absorção contra Impacto não soma.",
     "pendente": false,
     "nivel": 2,
     "efeito": "soak"
@@ -7456,7 +7454,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "Neutraliza um veneno ou toxina já no corpo e aguenta um ambiente hostil (frio, calor, ar rarefeito) por um tempo.",
+    "texto": "Neutraliza um veneno ou toxina já no corpo e aguenta um ambiente hostil (frio, calor, ar rarefeito) por um tempo. Soma com a Técnica Aclimatação.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7493,7 +7491,7 @@
       "duas lâminas",
       "mão trocada"
     ],
-    "texto": "Suas duas mãos golpeiam como uma só. Efeito em recalibração: na empunhadura dupla as duas mãos já atacam a −1d6, sem penalidade extra na inábil, e o que esta Proeza dará de novo será decidido na recalibração das Proezas.",
+    "texto": "Suas duas mãos golpeiam como uma só. Golpeando com as duas armas, a Defesa no Tick do Golpe fica em −2, e não em −4: o mesmo alívio que quem golpeia com uma só já tem.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7509,7 +7507,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "Passa por vãos mínimos, escapa de amarras e cai de pé de qualquer altura mundana, sem se ferir.",
+    "texto": "Passa por vãos mínimos, escapa de amarras e cai de pé de qualquer altura mundana, sem se ferir. Substitui a Técnica Queda de Gato na queda de altura mundana; fora do mundano, a Queda de Gato continua valendo.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7545,7 +7543,7 @@
       "mira-firme"
     ],
     "aliases": [],
-    "texto": "Mira num ponto fraco antes de soltar: +1d6 de dano e +1 de Penetração no disparo.",
+    "texto": "Mira num ponto fraco antes de soltar: +1d6 de dano e +1 de Penetração (Absorção ignorada) no disparo.",
     "pendente": false,
     "nivel": 2,
     "efeito": "dano"
@@ -7581,7 +7579,7 @@
       "passo-veloz"
     ],
     "aliases": [],
-    "texto": "Ao ver um ataque que te visa, +4 na Defesa contra ele: um passo lateral que confunde a mira.",
+    "texto": "Ao ver um ataque que te visa, +4 na Defesa contra ele: um passo lateral que confunde a mira. Substitui a Técnica Reflexos de Vento: os +4 não somam com o +3.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7599,7 +7597,7 @@
       "centelha"
     ],
     "aliases": [],
-    "texto": "Inflama um pequeno grupo a agir por impulso; a plateia esquenta e se move na direção que você acende.",
+    "texto": "Inflama um pequeno grupo a agir por impulso; a plateia esquenta e se move na direção que você acende. Substitui as Técnicas Incitar e Inflamar em escala de grupo (é o mesmo efeito, maior).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7847,7 +7845,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "Nada do que sente vaza: leituras da sua emoção ou intenção falham por padrão contra você.",
+    "texto": "Nada do que sente vaza: leituras da sua emoção ou intenção falham por padrão contra você. Soma com a Técnica Face Neutra.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7865,7 +7863,7 @@
       "voz-calma"
     ],
     "aliases": [],
-    "texto": "Contra intimidação ou provocação, +4 na Defesa Social e você não demonstra o menor abalo.",
+    "texto": "Contra intimidação ou provocação, +4 na Defesa Social e você não demonstra o menor abalo. Substitui a Técnica Voz Calma: os +4 não somam com o +3.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7883,7 +7881,7 @@
       "porte"
     ],
     "aliases": [],
-    "texto": "Um olhar que faz o alvo hesitar ou recuar e impõe silêncio numa roda barulhenta.",
+    "texto": "Um olhar que faz o alvo hesitar ou recuar e impõe silêncio numa roda barulhenta. Substitui a Técnica Olhar Severo.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7899,7 +7897,7 @@
       "maos-habeis"
     ],
     "aliases": [],
-    "texto": "+4 em qualquer ofício ou reparo; enxerga a solução técnica que trava os outros.",
+    "texto": "+4 em qualquer ofício ou reparo; enxerga a solução técnica que trava os outros. Substitui a Técnica Mãos Hábeis: os +4 não somam com o +3.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7935,7 +7933,7 @@
       "mente-tatica"
     ],
     "aliases": [],
-    "texto": "Antevê o próximo movimento do inimigo: +4 para reagir ou reposicionar um aliado a tempo.",
+    "texto": "Antevê o próximo movimento do inimigo: +4 para reagir ou reposicionar um aliado a tempo. Soma com a Técnica Antecipar.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7969,7 +7967,7 @@
       "memoria-eidetica"
     ],
     "aliases": [],
-    "texto": "+4 em deduções, contas e memória sob pressão; conecta fatos soltos num instante.",
+    "texto": "+4 em deduções, contas e memória sob pressão; conecta fatos soltos num instante. Soma com as Técnicas Cálculo Veloz e Memória Eidética (o +4 é na jogada; as outras são o estado).",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -7987,7 +7985,7 @@
       "jeitinho"
     ],
     "aliases": [],
-    "texto": "Usa o cenário a favor num átimo: transforma o que está à mão numa vantagem tática inesperada.",
+    "texto": "Usa o cenário a favor num átimo: transforma o que está à mão numa vantagem tática inesperada. Substitui a Técnica Usar o Cenário.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -8075,7 +8073,7 @@
       "rastreador"
     ],
     "aliases": [],
-    "texto": "+4 para rastrear e seguir; lê num relance a idade de um rastro e a pressa de quem o deixou.",
+    "texto": "+4 para rastrear e seguir; lê num relance a idade de um rastro e a pressa de quem o deixou. Substitui a Técnica Rastreador: os +4 não somam com o +3.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -8093,7 +8091,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "Percebe espíritos, auras e resíduos de magia à volta, e sente o humor de um lugar.",
+    "texto": "Percebe espíritos, auras e resíduos de magia à volta, e sente o humor de um lugar. Substitui a Técnica Sentir o Véu.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -8109,7 +8107,7 @@
       "sentidos-apurados"
     ],
     "aliases": [],
-    "texto": "+4 em Percepção: capta o quase-imperceptível, um som fraco, um cheiro, um detalhe fora do lugar.",
+    "texto": "+4 em Percepção: capta o quase-imperceptível, um som fraco, um cheiro, um detalhe fora do lugar. Substitui a Técnica Sentidos Apurados: os +4 não somam com o +3; o nunca ser pego totalmente de surpresa da Sentidos Apurados continua.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
@@ -8127,7 +8125,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (contra a Defesa Social).",
+    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (contra a Defesa Social). Substitui as Técnicas Farejar Mentira e Ver Através.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"

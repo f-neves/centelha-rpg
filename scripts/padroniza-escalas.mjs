@@ -16,7 +16,7 @@
 //    muda de perícia para perícia é o texto, que diz o que aquele degrau parece na prática.
 //
 // Script de mão única: rodou, os dados passaram a ser a fonte de verdade. Fica no repositório
-// como registro do que foi feito, junto de add-folego.mjs e migrate-social.mjs.
+// como registro do que foi feito, junto de migrate-social.mjs (e do add-folego.mjs, removido em 25/11/2026, D16).
 import fs from 'node:fs';
 import path from 'node:path';
 

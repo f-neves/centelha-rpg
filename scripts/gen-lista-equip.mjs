@@ -70,10 +70,10 @@ out.push(`## Armas (${armas.length}, ${comImagem(armas)} com imagem)`);
 out.push('');
 out.push('`Dado` é a quantidade de dados da arma e `Bônus` o modificador fixo de dano.');
 out.push('`Def` é a Defesa que a arma dá ao empunhá-la, `Pen` o nível de Perfuração,');
-out.push('`Ticks` o tempo do golpe e `Fôlego` o custo do ataque.');
+out.push('`Ticks` o tempo do golpe.');
 out.push('');
 out.push(tabela(
-  ['id', 'Nome', 'Classe', 'Atributo', 'Perícia', 'Dado', 'Bônus', 'Acerto', 'Def', 'Mãos', 'Ticks', 'Fôlego', 'Dano', 'Pen', 'Alcance', 'Tags', 'Imagem'],
+  ['id', 'Nome', 'Classe', 'Atributo', 'Perícia', 'Dado', 'Bônus', 'Acerto', 'Def', 'Mãos', 'Ticks', 'Dano', 'Pen', 'Alcance', 'Tags', 'Imagem'],
   armas.map((a) => [
     `\`${a.id}\``,
     `**${a.nome}**`,
@@ -86,7 +86,6 @@ out.push(tabela(
     sinal(a.defesaArma ?? 0),
     String(a.maos),
     String(a.ticks),
-    String(a.folego),
     a.tipoDano,
     String(a.pen ?? 0),
     a.alcance || '—',

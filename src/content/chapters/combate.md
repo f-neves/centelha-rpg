@@ -103,7 +103,7 @@ Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a
 
 <p class="formula">Preparo: Defesa −2 · Golpe (o Tick em que ele sai): Defesa −4</p>
 
-É a régua que aparece mais adiante em *Correndo* (o mesmo −4 do Tick do Golpe), na Investida e na Recarga (o −2 do Preparo) e em *Golpes no mesmo instante* (o −4 no Tick do golpe). Empunhar duas armas e golpear só com uma alivia esse −4 para **−2** no Tick do Golpe: a outra mão continua guardando.
+É a régua que aparece mais adiante em *Correndo* (o mesmo −4 do Tick do Golpe), na Investida e na Recarga (o −2 do Preparo) e em *Golpes no mesmo instante* (o −4 no Tick do golpe). Empunhar duas armas e golpear só com uma alivia esse −4 para **−2** no Tick do Golpe: a outra mão continua guardando. Quem tem a Técnica **Ambidestria** tem o mesmo alívio golpeando com as duas.
 
 ### Distância e tempo de voo
 

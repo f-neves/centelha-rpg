@@ -4,7 +4,6 @@ import { fichaParaLeitura, fichaParaGravar } from './ficha-formato';
 // A persistência e o orçamento são configuráveis via opts, para servir tanto a /ficha
 // (localStorage) quanto a /personagem (Supabase, com XP definido pelo mestre).
 import { conjuntoPersonagem, numerosPersonagem, massaDoJogador, itemDoJogador } from './motor';
-import { tecnicaDisponivel } from './modulos';
 import { alcanceArremesso } from './forca-empurrao';
 import { custoPontos, custoTecnica, custoArte, custoEfeito, custoEspecialidade, pisoXp, pv, pvPorte, type Porte, comRequisitoDeForca, forcaFaltando, forcaNoArco, defesa, defesaMental, defesaSocial, centelhaNaJogada, energia, mana, iniciativa, deslocamento, ataqueCentelha, aparenciaMod, empilharArmaduras, soakNatural, MODO_NOME, MODO_ORDEM, SOAK_CATS, regras } from './motor';
 import ATTRS_D from '../data/atributos.json';
@@ -124,7 +123,7 @@ export function montarFicha(opts: FichaOpts) {
     }
     if (p && (window as any).refModal) (window as any).refModal(p);
   }
-  const TEC_VISIVEIS = (TEC_D as any[]).filter((t) => tecnicaDisponivel(t));
+  const TEC_VISIVEIS = TEC_D as any[];
   const CAM_ORDER = (CAM_D as any[]).filter((c) => TEC_VISIVEIS.some((t) => t.caminho === c.id)).map((c) => c.id);
   const CAM_NOME: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.nome]));
   const CAM_ATR: Record<string, string> = Object.fromEntries((CAM_D as any[]).map((c) => [c.id, c.atributo]));

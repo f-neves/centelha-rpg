@@ -472,3 +472,6 @@ limitações conhecidas, que são as três de baixo.
 - [ ] **B29 · [FAZER] A Mesa e o Grid seguem com a imagem antiga do bestiário (resposta 067, 25/11/2026).**
   - O livro (a lista de `/bestiario`) diz: a imagem principal é a `_01` do índice das imagens (aquarela com fundo), servida por `srcset`.
   - A Mesa e o Grid fazem: leem o campo `imagens` do dado e `imagem-escolhida.ts` (D-179, a troca por clique), que o carrossel não mexeu (D-054), então continuam com o recorte transparente de antes. Quando o autor quiser a imagem nova na Mesa, é outro prompt.
+- [ ] **B30 · [DECIDIR] Os losangos de Ameaça têm contraste baixo sobre a aquarela (conjunto real das imagens do bestiário).**
+  - O livro (a lista de `/bestiario`) diz: a imagem principal é a `_01` do índice, aquarela com fundo; o card põe os losangos de Ameaça (◆◇) sobre ela.
+  - O site faz: os losangos mantêm o desenho de hoje, pensado para o recorte transparente; sobre a aquarela o contraste é baixo. O autor decide quando as imagens do conjunto real entrarem (sem elas, o problema não aparece). Numeração: o main tem B28 e B29 do carrossel; esta é a B30.

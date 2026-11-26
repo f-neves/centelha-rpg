@@ -2185,7 +2185,6 @@
     "efeitos": {
       "nota": "Efeito é o resultado específico comprado dentro de uma Arte (o Special Effect do Sorcerer). A Arte dá o elemento em estado bruto; o Efeito dá forma, nome e comportamento. Régua: se precisa de um substantivo próprio para ser descrito, é Efeito.",
       "xp": "4 × nível do Efeito (ver xp.efeito). Não acumula: comprar o Efeito de nível 2 não exige ter o de nível 1.",
-      "upgrade": "Em revisão (proposta, ainda não regra): efeito escalonável paga só a diferença: 4 × novo − 4 × antigo",
       "outraArte": "Efeito que você já sabe e que cabe em outra Arte sua não custa XP, só treino; mas é preciso ter cada Arte no nível do Efeito",
       "compra": "só até o nível que você tem na Arte; sem teto de quantidade",
       "ticks": "4 + nível do Efeito + 1 por grau que qualquer parâmetro passe do nível dele",
