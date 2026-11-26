@@ -9,7 +9,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { caminhoDe, pegar, por, planejar, textoJson, ehNumero } from './bestiario-editor/aplica-alteracoes.mjs';
+import { caminhoDe, pegar, por, planejar, textoJson, ehNumero, numerosDe } from './bestiario-editor/aplica-alteracoes.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.join(RAIZ, 'src', 'data', 'bestiario');
@@ -117,8 +117,26 @@ ok(orc.r.numeros.some((x) => x.derivado && /^pv: \d+ -> \d+/.test(x.derivado)), 
 // os campos narrativos NÃO entram, mesmo com dígitos no texto
 for (const [id, caminho, depois] of [
   ['aasimar', 'nome', 'Aasimar 2'], ['aasimar', 'descricao', 'Humano de 1,75 m com 3 olhos.'], ['aasimar', 'lore.0.texto', 'Nasceu em 1203.'], ['aasimar', 'comoLuta.0.texto', 'Luta em 2 tempos.'], ['aasimar', 'sentidos.0.descricao', 'enxerga a 30 m no escuro'],
-  ['aasimar', 'habilidadesEspeciais.0.nome', 'Canalizar luz 2'], ['aasimar', 'habilidadesEspeciais.0.efeito', 'à escolha: cura 2 aliados'],
 ]) { const { r } = await mudar(id, caminho, depois); ok(r.erros.length === 0 && r.numeros.length === 0, `narrativo: ${id} ${caminho} (texto com dígitos) não é mudança de número: ${JSON.stringify(r.numeros).slice(0, 160)}`); }
+// a prosa de regra dentro de habilidadesEspeciais, formas, artes e ataques carrega número: só entra se o NÚMERO mudou (a regra: número dentro de texto continua sendo número)
+const trocaTexto = async (id, caminho, de, para) => { const cam = caminhoDe(caminho); const antes = pegar(lerC(pasta, id), cam); ok(antes.includes(de), `${id} ${caminho} traz "${de}"`); return mudar(id, caminho, antes.replace(de, para)); };
+for (const [id, caminho, de, para, rot] of [
+  ['arconte-trombeta', 'habilidadesEspeciais.0.duracao', '6 Ticks', '7 Ticks', 'duracao "6 Ticks" para "7 Ticks"'],
+  ['aasimar', 'habilidadesEspeciais.0.ativacao', 'Velocidade 5', 'Velocidade 6', 'ativacao "Velocidade 5" para "6"'],
+  ['aasimar', 'habilidadesEspeciais.1.efeito', '1d6 PV', '2d6 PV', 'efeito "1d6" para "2d6"'],
+  ['diabo-barbado', 'habilidadesEspeciais.5.nome', 'Regeneração 5', 'Regeneração 6', 'nome "Regeneração 5" para "6"'],
+]) {
+  const { r } = await trocaTexto(id, caminho, de, para);
+  ok(r.erros.length === 0 && r.numeros.some((x) => x.id === id && x.caminho === caminho), `ENTRA na seção de números: ${rot}`);
+}
+for (const [id, caminho, de, para, rot] of [
+  ['aasimar', 'habilidadesEspeciais.1.efeito', 'estabiliza o aliado (para o Sangramento e a queda) e devolve 1d6 PV', 'devolve 1d6 PV ao aliado e estabiliza, parando o Sangramento e a queda', 'efeito reescrito com os mesmos números (1 e 6)'],
+  ['aasimar', 'habilidadesEspeciais.0.ativacao', 'uma ação, Velocidade 5. O efeito sai no Tick do Golpe', 'uma ação (Velocidade 5), e o efeito sai no Tick do Golpe', 'ativacao reescrita com o mesmo número (5)'],
+]) {
+  const { r } = await trocaTexto(id, caminho, de, para);
+  ok(r.erros.length === 0 && r.criaturas.length === 1 && r.numeros.every((x) => x.caminho !== caminho), `NÃO entra: ${rot}`);
+}
+ok(numerosDe('devolve 1d6 PV') === numerosDe('1d6 PV devolvidos') && numerosDe('1,5 m') === numerosDe('1.5 m') && numerosDe('6 Ticks') !== numerosDe('7 Ticks'), 'numerosDe compara os números do texto, e não a string');
 ok(ehNumero({ cam: ['ataques', 0, 'dado'], antes: '1d6', depois: '2d6' }) && ehNumero({ cam: ['deslocamento', 'terra', 'batalha'], antes: 4, depois: 5 }) && !ehNumero({ cam: ['imagens', 0], antes: 'a2.webp', depois: 'b3.webp' }), 'ehNumero: dado e deslocamento entram; imagem não');
 
 fs.rmSync(tmp, { recursive: true, force: true });

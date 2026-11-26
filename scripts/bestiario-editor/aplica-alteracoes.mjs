@@ -64,14 +64,26 @@ export function por(obj, cam, valor) {
 
 // MUDANÇA DE NÚMERO = qualquer campo que não seja narrativo. Lista PRETA (e não branca): uma chave nova com número entra sozinha na lista à
 // parte, e o que fica de fora é só o que é texto da criatura. Narrativas de topo: a identidade e os textos; narrativas em qualquer
-// profundidade: o nome, a descrição, o efeito e parecidos. Um campo com número dentro de texto ("2d6 + Centelha", "9 m") continua sendo número.
+// profundidade: o nome, a descrição e parecidos. EXCEÇÃO (consequência da regra "número dentro de texto continua sendo número"): dentro de
+// habilidadesEspeciais, formas, artes e ataques a prosa de regra (efeito, texto, ativacao, duracao, nome) carrega número ("devolve 1d6 PV",
+// "Velocidade 5", "6 Ticks", "Regeneração 5"), então ali NÃO é narrativa: mas só conta se o NÚMERO mudou. O que se compara são os números
+// extraídos do texto, antes e depois (em multiconjunto), e não a string: reescrever a prosa mantendo os mesmos números não abre a seção.
 const NARRATIVAS_TOPO = new Set(['id', 'idAntigo', 'nome', 'nomeIngles', 'categoria', 'papel', 'comoLuta', 'sentidos', 'fisiologia', 'aptidoes', 'comportamento', 'ecologia', 'descricao', 'lore', 'imagens', 'elementos', 'revisao', 'fonte', 'formaPrincipal']);
 const NARRATIVAS_FOLHA = new Set(['nome', 'descricao', 'texto', 'justificativa', 'motivo', 'legenda', 'foco', 'origem', 'ativacao', 'duracao', 'categoria', 'efeito', 'classe', 'tracos', 'camuflagem', 'postura', 'posturaDoTamanho', 'apoio', 'id', 'forma', 'formas', 'parte', 'tipoDano', 'arma']);
+const ESTRUTURAS_DE_REGRA = new Set(['habilidadesEspeciais', 'formas', 'artes', 'ataques']);
+const PROSA_DE_REGRA = new Set(['efeito', 'texto', 'ativacao', 'duracao', 'nome']);
+/** Os números de um texto, em ordem canônica ("1d6" dá 1 e 6; "1,5" e "1.5" valem o mesmo). */
+export const numerosDe = (s) => (String(s).match(/\d+(?:[.,]\d+)?/g) || []).map((x) => x.replace(',', '.')).sort().join('|');
 export function ehNumero(a) {
-  if (NARRATIVAS_TOPO.has(String(a.cam[0]))) return false;
-  if (NARRATIVAS_FOLHA.has(String(a.cam[a.cam.length - 1]))) return false;
-  const v = (x) => typeof x === 'number' || (typeof x === 'string' && /\d/.test(x));
-  return v(a.antes) || v(a.depois);
+  const topo = String(a.cam[0]), folha = String(a.cam[a.cam.length - 1]);
+  if (NARRATIVAS_TOPO.has(topo)) return false;
+  const temNumero = (x) => typeof x === 'number' || (typeof x === 'string' && /\d/.test(x));
+  if (ESTRUTURAS_DE_REGRA.has(topo) && PROSA_DE_REGRA.has(folha)) {
+    if (typeof a.antes === 'string' && typeof a.depois === 'string') return numerosDe(a.antes) !== numerosDe(a.depois);
+    return temNumero(a.antes) || temNumero(a.depois);
+  }
+  if (NARRATIVAS_FOLHA.has(folha)) return false;
+  return temNumero(a.antes) || temNumero(a.depois);
 }
 
 const DERIVADOS = ['pv', 'pesoErguido', 'faixa', 'tamanho', 'esquiva', 'bloqueio', 'defesaMental', 'defesaSocial', 'iniciativa', 'energia', 'mana'];
