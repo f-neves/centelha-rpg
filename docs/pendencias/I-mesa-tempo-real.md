@@ -6,17 +6,17 @@ em `src/lib/mesa-tempo-real.ts` e no topo de `supabase/migracao-20.sql`: quem es
 view. Nada de estado viaja pelo canal, e é isso que mantém a máscara de coluna da migração 14 de pé.
 Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma consulta por evento.
 
-- [ ] **I1 · [FAZER] Fechar o canal.** Hoje ele é público: quem soubesse o UUID da mesa poderia
+- [ ] **I1 · [FAZER] [GRID-CÓDIGO] Fechar o canal.** Hoje ele é público: quem soubesse o UUID da mesa poderia
   ouvir as campainhas dela (descobriria que *algo* mexeu, e leria o nome de quem apontou uma casa).
   As duas policies estão prontas e comentadas no fim de `migracao-20.sql`; falta ligar o
   `private: true` no cliente e **testar com dois navegadores antes de subir**. O motivo de não estar
   ligado é o preço de errar: com a policy torta, todo mundo é recusado e o tempo real some sem
   mensagem de erro na tela.
-- [ ] **I2 · [FAZER] O registro da arena ainda é um `jsonb` reescrito inteiro.** A migração 20
+- [ ] **I2 · [FAZER] [GRID-CÓDIGO] O registro da arena ainda é um `jsonb` reescrito inteiro.** A migração 20
   barateia a LEITURA (uma linha por entrada, as 60 últimas); a ESCRITA continua subindo o array
   todo, até uns 45 KB, a cada peça movida. O conserto é o mesmo da migração 19 com os efeitos:
   `arena_log` como tabela, uma linha por entrada, e o desfazer virando um `delete`.
-- [ ] **I5 · [FAZER] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
+- [ ] **I5 · [FAZER] [LIVRO-NO-GRID] Um editor de cenário no Grid.** Hoje o mestre só põe peças: o tabuleiro não
   tem parede, terreno difícil nem item no chão, e o único veto de passo é casa ocupada
   (`ocupadoPor`, `grid.astro:7457`). Decidido em 02/09/2026, ao desenhar o harness de simulação
   (`docs/simulacao/02-projeto-harness.md` §0.4 P2): a **parede entra como funcionalidade**, e o
@@ -25,25 +25,25 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   com campo de `velocidade`, e o Grid não a lê. Abre junto a pergunta da **linha de visão**, que
   não existe em lugar nenhum e que o Efeito `passo-relampago` exige pelo texto.
 
-- [ ] **I3 · [FAZER] As outras abas ainda não ouvem.** Grid e Combate estão no canal; Grupo, Mapas,
+- [ ] **I3 · [FAZER] [GRID-CÓDIGO] As outras abas ainda não ouvem.** Grid e Combate estão no canal; Grupo, Mapas,
   Compêndio, Diário e Arquivos não. A ficha aprovada, o mapa revelado e o handout liberado
   continuam pedindo F5 do outro lado. É barato: `abrirCanal` + um `carregar()` no aviso, como em
   `combate.astro`.
-- [ ] **I4 · [FAZER] Nada garante entrega.** Sem número de sequência, uma mensagem perdida deixa a
+- [ ] **I4 · [FAZER] [GRID-CÓDIGO] Nada garante entrega.** Sem número de sequência, uma mensagem perdida deixa a
   tela velha até o próximo aviso, até religar o canal ou até voltar para a aba. Um contador por
   mesa (um `int` que sobe a cada campainha) deixaria o ouvinte perceber o buraco e pedir tudo.
-- [ ] **I14 (renumerado de I5 em 23/09/2026) · [FAZER] O anel de Vida remoto aparece em salto.** A peça que anda por ordem de outra
+- [ ] **I14 (renumerado de I5 em 23/09/2026) · [FAZER] [GRID-CÓDIGO] O anel de Vida remoto aparece em salto.** A peça que anda por ordem de outra
   tela desliza; a Vida que muda por ordem de outra tela pula direto para o valor final, porque o
   desenho troca o nó e transição de CSS não roda em elemento recém-nascido. O caminho é o mesmo do
   `deslizarTokens`: mexer no `stroke-dashoffset` do nó que já está lá.
   **Renumerado na rodada 96:** a sigla I5 era também a do editor de cenário (acima), que é o citado de fora (`02-projeto-harness.md` §0.4 P2) e ficou com ela. O conteúdo deste item não mudou, e nenhum documento citava este pela sigla velha.
-- [ ] **I15 · [DECIDIR] Sugestão de interface: mostrar juntos os resultados de todos os golpes de
+- [ ] **I15 · [DECIDIR] [GRID-CÓDIGO] Sugestão de interface: mostrar juntos os resultados de todos os golpes de
   um Tick.** Registrado pelo autor em 27/09/2026 (item 7f do despacho da Regra do Quase-Acerto),
   sem resolver. Hoje a faixa dos golpes no ar (`pintarGolpesNoAr`, `grid.astro`) mostra um cartão
   por golpe, resolvido um de cada vez pelo mestre; a sugestão é uma tela que reúna o resultado dos
   vários golpes do MESMO Tick (o "simultâneo" de verdade) numa vista só, em vez de o mestre clicar
   cartão por cartão. Sem desenho de tela ainda: só a pergunta registrada.
-- [ ] **I6 · [FAZER] A presença não distingue quem está olhando.** Ela conta abas abertas, e uma
+- [ ] **I6 · [FAZER] [GRID-CÓDIGO] A presença não distingue quem está olhando.** Ela conta abas abertas, e uma
   aba em segundo plano conta igual. O navegador estrangula os timers da aba escondida, então ela
   também **atrasa a própria campainha** quando é ela que escreve (não incomoda na prática: quem
   age está com a aba na frente).
@@ -53,17 +53,17 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   **fica** (vira névoa leve, que mostra o chão e esconde quem está nele), e o alcance é um **raio da
   cena**, igual para todos. Migrações 23 e 25; o corte é na view `token_visao`, e não na tela. O
   quadro completo e os seis limites que sobraram estão em `Grid_melhorias.md`.
-- [ ] **I8 · [ADIADO] [DECIDIR] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
+- [ ] **I8 · [ADIADO] [DECIDIR] [GRID-CÓDIGO] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
   mundo, assinada). O passo seguinte é o cursor de cada um deslizando pelo mapa, que é o que as
   mesas virtuais grandes fazem. Custa uma mensagem a cada ~50 ms por pessoa que estiver mexendo o
   mouse, e é a única coisa desta lista que pesa de verdade: vale a pena?
   **Adiado na rodada 96 (23/09/2026), por proposta do humano:** o próprio item pergunta se o ponteiro ao vivo vale a pena.
-- [ ] **I9 · [DECIDIR] O caderno de melhorias do tabuleiro.** `Grid_melhorias.md` guarda a lista
+- [ ] **I9 · [DECIDIR] [LIVRO-NO-GRID] O caderno de melhorias do tabuleiro.** `Grid_melhorias.md` guarda a lista
   inteira do que as mesas virtuais têm, do que os usuários reclamam que falta nelas e do que os
   jogos de combate por turno resolveram (Fire Emblem, FFT, Into the Breach, Grandia, Valkyria,
   XCOM, Divinity, BG3). São ~25 ideias com custo estimado; três delas precisam de decisão de regra
   antes do código (**terreno por hexágono**, **altura** e **face da peça**).
-- [ ] **I10 · [FAZER] As pontas soltas do jogador no tabuleiro.** Em 2026-08-12 o jogador passou a
+- [ ] **I10 · [FAZER] [GRID-CÓDIGO] As pontas soltas do jogador no tabuleiro.** Em 2026-08-12 o jogador passou a
   mover a própria peça, mirar, conjurar e lançar dano (migração 22: funções `jogador_*`, e não
   policy, porque RLS filtra linha e o que precisa ser filtrado é coluna). Ficaram seis pendências
   pequenas, listadas em `Grid_melhorias.md` na seção "Pontas soltas": as **Proezas** ainda não são
@@ -71,7 +71,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   dele**, a **caixa de acerto vem vazia** do lado dele, o **número de dano só aparece para quem
   enxerga o número**, e o adaptador `sbDoJogador` conhece cinco formas de escrita (nota de
   manutenção, para quando o módulo das Artes ganhar outra).
-- [~] **I11 · [DECIDIR] A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21.** O que entrou
+- [~] **I11 · [DECIDIR] [GRID-CÓDIGO] A Arte sai no ÚLTIMO Tick, no tabuleiro. PARCIAL em 2026-08-21.** O que entrou
   (§15.6 do `Combate_Tempo.md`): conjurar declara a ação com a anatomia da Arte (Preparo = ciclo − 1,
   Golpe no último Tick), o relógio anda a Velocidade inteira, e o efeito **nasce no Tick do Golpe**
   em vez de na hora do clique; enquanto o relógio não o alcança ele não queima ninguém e não é
@@ -95,7 +95,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   mira e a forma travadas cedo, quem se move durante o Preparo escapa; travadas tarde, não escapa.
   **A marca `[DECIDIR]` entrou em 24/09/2026**: o item carregava a pergunta sem marca, e o contador
   da lista não o via.
-- [~] **I12 · [DECIDIR] O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
+- [~] **I12 · [DECIDIR] [GRID-CÓDIGO] O Grid como copiloto: menos toque, mais escolha. FEITO em 21/08, menos uma decisão de regra.** Medido
   antes: **um ataque custava seis toques e um número digitado, e só três dos sete eram escolha**; o
   resto era o mestre transcrevendo para o Grid um número que o Grid já tinha. O documento é o
   `Grid_Automacao.md`: a conta do atrito, o princípio (nunca perguntar o que dá para calcular · todo
