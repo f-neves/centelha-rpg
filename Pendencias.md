@@ -40,7 +40,7 @@ está na seção 3.
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 21 | 0 | 15 | 8 | 6 | 7 | 0 | 0 | 0 |
-| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 32 | 23 | 0 | 9 | 8 | 14 | 0 | 0 | 0 | 1 |
+| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 36 | 21 | 0 | 15 | 4 | 12 | 3 | 0 | 0 | 2 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 12 | 0 | 9 | 5 | 2 | 0 | 0 | 0 | 5 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 12 | 8 | 0 | 4 | 5 | 1 | 0 | 2 | 0 | 0 |
@@ -52,7 +52,7 @@ está na seção 3.
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **419** | **297** | **3** | **119** | **100** | **84** | **11** | **13** | **81** | **11** |
+| | **Total** | | **423** | **295** | **3** | **125** | **96** | **82** | **14** | **13** | **81** | **12** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -351,28 +351,26 @@ Fechados (15): A9, A11, A12, A17, A18, A22, A23, A27, A21, A22, A20, A28, A29, A
 | B4 | aberto | DECIDIR | Nada causa dano `sagrado` nem `profano`. |
 | B5 | aberto | DECIDIR | `prata` não é representável. |
 | B6 | aberto | DECIDIR | `sol` é ambiente, não ataque. |
-| B2 | aberto | FAZER | Modificadores de Defesa por porte. |
-| B3 | aberto | FAZER | Rebalancear os brutos grandes. |
-| B7 | aberto | FAZER | O ataque da criatura do livro não volta para o formulário. |
-| B8 | aberto | FAZER | O modal não edita poderes, técnicas nem artes. |
-| B9 | aberto | DECIDIR | Onde a criatura editada mora. |
-| B11 | aberto | FAZER | Palavra nova de fraqueza precisa de rito para virar oficial. |
-| B14 | aberto | DECIDIR | Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do bestiário. |
-| B16 | aberto | DECIDIR | Tipos de dano fora do vocabulário fechado (ácido, e possivelmente outros). |
-| B17 | aberto | DECIDIR | Descrições faltando (item 4 inteiro) + 38 criaturas com Arte ainda para reverter a poder natural, sem nota … |
+| B9 | aberto | FAZER | Onde a criatura editada mora. |
+| B14 | aberto | FAZER | Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do bestiário. |
+| B16 | aberto | FAZER | Tipos de dano fora do vocabulário fechado (ácido, e possivelmente outros). |
+| B17 | aberto | FAZER | Descrições faltando (item 4 inteiro) + 38 criaturas com Arte ainda para reverter a poder natural, sem nota … |
 | B18 | aberto | FAZER | Fila da B14: medir o bando por N, com a Regra de Horda a partir de 8. |
 | B20 | aberto | FAZER | Bestiário novo: refazer as fichas pelas descrições da ficha humana, começando pelos animais. |
-| B21 | aberto | FAZER | Regeneração N: a regra sai da bancada (R46, D-325). |
-| B22 | aberto, ADIADO |  | Os planos: aguarda o lore (R42, D-321). |
+| B22 | aberto, ADIADO | ESPERA: | Os planos: aguarda o lore (R42, D-321). |
 | B24 | aberto | FAZER | Catálogo de armas: as que as fichas usam por equivalência (itens 014, 016, 017, 019, 020 e 021; D-344). |
-| B25 | aberto | FAZER | Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366). |
-| B26 | aberto | FAZER | Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas … |
-| B28 | aberto | FAZER | Carrossel de imagens do bestiário: o código está pronto; as imagens reais ainda não entraram no repositório … |
+| B25 | aberto | AUTOR-REGRA | Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366). |
+| B26 | aberto, ADIADO | FAZER | Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas … |
+| B28 | aberto | AUTOR-REGRA | Carrossel de imagens do bestiário: o código está pronto; as imagens reais ainda não entraram no repositório … |
 | B29 | aberto | FAZER | A Mesa e o Grid seguem com a imagem antiga do bestiário (resposta 067, 25/11/2026). |
 | B30 | aberto | DECIDIR | Os losangos de Ameaça têm contraste baixo sobre a aquarela (conjunto real das imagens do bestiário). |
 | B31 | aberto | FAZER | O fluxo "o Arquiteto propõe, o autor aprova" do editor antigo de criaturas não foi portado para o editor novo … |
+| B32 | aberto | FAZER | Fichas da T4 (D-377) não aplicadas: trol, vampiro, planetar, solar. |
+| B33 | aberto | AUTOR-REGRA | Sete imagens de elemental sem ficha. |
+| B34 | aberto | FAZER | `iffrit` e `incubo`: imagem com nome sem ficha. |
+| B35 | aberto | FAZER | `cao-de-guerra-nessiano` sem imagem; `ninfa_verde-mar_pantano.png` fora de 3:2. |
 
-Fechados (9): B12, B1, B1b, B10, B13, B15, B19, B23, B27.
+Fechados (15): B12, B1, B1b, B2, B3, B7, B8, B10, B11, B13, B15, B19, B21, B23, B27.
 
 ### C · Trilhas de Feitiçaria
 
