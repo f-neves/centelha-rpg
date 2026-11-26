@@ -5715,7 +5715,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "Vê espíritos, encantamentos ativos e marcas mágicas.",
+    "texto": "Vê espíritos, encantamentos ativos e marcas mágicas. Substitui as Técnicas Tocar o Véu e Sentir o Véu.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -7932,7 +7932,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "Percebe espíritos, auras e resíduos de magia à volta, e sente o humor de um lugar.",
+    "texto": "Percebe espíritos, auras e resíduos de magia à volta, e sente o humor de um lugar. Substitui a Técnica Sentir o Véu.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
