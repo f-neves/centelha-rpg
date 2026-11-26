@@ -49,10 +49,10 @@ está na seção 3.
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 4 | 0 | 3 | 1 | 1 | 1 | 0 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 15 | 0 | 5 | 0 | 7 | 5 | 1 | 1 | 1 |
-| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
+| K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 19 | 1 | 19 | 9 | 5 | 5 | 0 | 0 | 1 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **423** | **270** | **3** | **150** | **41** | **105** | **44** | **2** | **66** | **15** |
+| | **Total** | | **423** | **265** | **3** | **155** | **30** | **105** | **49** | **2** | **66** | **16** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -61,7 +61,7 @@ está na seção 3.
 - `A-arcano-artes.md`: a sigla **A22** aparece 2 vezes (fechado · fechado)
 - `G-acoes-sistema.md`: item sem sigla, "As cinco físicas de toda sessão." (fechado)
 - `J-infraestrutura.md`: item sem sigla, "A linha de fechamento do `test-grid` é texto fixo · [DECIDIR]" (aberto)
-- `K-combate-linha-do-tempo.md`: a sigla **K36** aparece 2 vezes (aberto · aberto)
+- `K-combate-linha-do-tempo.md`: a sigla **K36** aparece 2 vezes (fechado · aberto)
 - `L-simulacao-simultaneo.md`: **L6** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
 - `L-simulacao-simultaneo.md`: **L9** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
 - `L-simulacao-simultaneo.md`: a sigla **L6** aparece 2 vezes (fechado · aberto, riscado)
@@ -532,31 +532,26 @@ Fechados (5): J1, J11, J10, J4, J5.
 |---|---|---|---|
 | K11 | aberto | DECIDIR | Alabarda, Maça e o Impacto de uma mão. |
 | K8 | aberto | DECIDIR | Cinco das nove bordas. |
-| K4 | aberto | DECIDIR | O Preparo de distância e arremesso. |
-| K9 | aberto | DECIDIR | A carga voluntária. |
-| K6 | aberto | DECIDIR | A leitura do sinal. |
+| K9 | aberto | AUTOR-REGRA | A carga voluntária. |
+| K6 | aberto | AUTOR-REGRA | A leitura do sinal. |
 | K20 | aberto | DECIDIR | O que se pode fazer no Preparo e na Recuperação. |
 | K17 | aberto | DECIDIR | O arqueiro ficou forte demais. |
 | K19 | aberto | FAZER | A cadeia foi medida só na arma leve. |
-| K21 | aberto | FAZER/DECIDIR | As armas versáteis: a regra, a lista e o preço da forma de duas mãos. |
+| K21 | aberto | AUTOR-REGRA | As armas versáteis: a regra, a lista e o preço da forma de duas mãos. |
 | K24 | aberto | DECIDIR | O montante e o martelo pagam duas vezes, e o dano não conserta. |
 | K27 | aberto | DECIDIR | O Golpe sai depois, e a mesa ainda resolve na declaração. |
 | K30 | aberto | FAZER | A CAIXA QUE ABRE NO TICK EM QUE A ARTE SAI |
-| K28 | parcial | DECIDIR | Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a ausência. |
-| K25 | aberto | DECIDIR | A Defesa da arma e a do escudo somam, e o escudeiro vira parede. |
-| K14 | aberto | DECIDIR | A bancada só mede o canto "todo mundo esquiva". |
+| K28 | parcial | AUTOR-REGRA | Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a ausência. |
 | K5 | aberto | FAZER | A implementação: os DOIS sistemas. |
 | K31 | aberto | FAZER | O Grid anda a Corrida só na primeira fase: a regra publicada tem duas, e o código aplica metade. |
-| K32 | aberto | DECIDIR | Tags de arma sem definição. |
-| K33 | aberto | DECIDIR | Redução de raspão quando armaduras são vestidas juntas. |
-| K34 | aberto | DECIDIR | `quaseAcerto()` (`src/lib/quase-acerto.ts:214-230`), o card de ficha fora de combate, continua sem Centelha … |
+| K32 | aberto | FAZER | Tags de arma sem definição. |
+| K33 | aberto | AUTOR-REGRA | Redução de raspão quando armaduras são vestidas juntas. |
 | K35 | aberto | DECIDIR | `lib-tempo.mjs` continua na régua antiga de Centelha |
-| K36 | aberto | DECIDIR | Agarrar não tem regra escrita em lugar nenhum. |
 | K36 | aberto | DECIDIR | Dano fenômeno (armadura não absorve, só Centelha) não alcança ataque normal de criatura. |
 | K37 | aberto | DECIDIR | `defesaPerdida` só soma o ataque RECEBIDO; `combate.md:405` cobra também o FEITO. |
-| K38 | aberto | DECIDIR | Guarda sob pressão: como a guarda se renova para quem não age. |
+| K38 | aberto, ADIADO | DECIDIR | Guarda sob pressão: como a guarda se renova para quem não age. |
 
-Fechados (14): K29, K1, K2, K3, K10, K7, K15, K16, K18, K22, K23, K26, K12, K13.
+Fechados (19): K29, K1, K2, K3, K10, K7, K4, K15, K16, K18, K22, K23, K26, K25, K12, K13, K14, K34, K36.
 
 ### L · Simulação em massa e as oito regras novas do Simultâneo
 
