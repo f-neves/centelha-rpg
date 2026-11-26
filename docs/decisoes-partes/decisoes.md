@@ -1545,7 +1545,16 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Data: 2026-10-04
 - Decisão: "Fica como está até decidir o modelo de economia."
 - Origem: conversa do autor, 04/10/2026, dúvida 4, opção C
-- Estado: em vigor. A parte 2 da rodada 7 (SERVICOS, REQUISITO-FAIXA, RENDA-1, GANHO-BRUTO, TETO) fica segurada. Consistente com a D-010 e a D-011.
+- Estado: **atualizada em 26/11/2026 pela D-386** (o modelo foi decidido: Forma 1). Antes: em vigor; a parte 2 da rodada 7 (SERVICOS, REQUISITO-FAIXA, RENDA-1, GANHO-BRUTO, TETO) ficava segurada. Consistente com a D-010 e a D-011.
+
+### D-386 · Modelo de economia: Forma 1, o pacote da Veterana só em Ganhar a vida; Serviços congelado [tags: economia, renda, servicos, ganhar-a-vida, longa, d-034, d-058, t23]
+- Data: 2026-11-26
+- Decisão (coordenador, por delegação do autor, T22; `DECISOES-AUTOR.md`, T23, resposta 087): o pacote da Veterana (`veterana-1e.md`, linhas 374 a 439) só em Ganhar a vida, a Forma 1 da proposta. Base dita pelo autor em 02/10/2026, na conversa das regras (uma das decisões da 1c que a D-034 diz ficarem sem verbatim): "Com a Longa a 3 por dado, a tabela de Serviços não muda: só os valores por ponto de 'Ganhar a vida' são reajustados."
+- Muda (e só isto): a média a 3 por dado (D-034) no cálculo de Ganhar a vida; o valor por ponto de Dificuldade 26 / 47 / 96 pc (faixas de Dificuldade 4, 7 e 11); o Requisito de Habilidade 1 / 3 / 5 nas faixas; o 20 fixo de `salario_x20` vira V4 (26), para o Oficial seguir em 130 (sem isso voltam 18 mercadorias e 4 pacotes); a tabela do capítulo (média 9 / 14 / 18, ganho 130 / 330 / 670 iguais aos de hoje, Livre por semana 12 / 22 / 35, Requisito, valor por ponto), as frases RENDA-1 e GANHO-BRUTO e a sugestão ao Mestre (D-087).
+- Não muda, byte a byte: custo-de-vida, mercadorias, montarias-veiculos, pacotes-equipamento, recompensas, servicos e viagens, e a curva por soma, as tarifas, as aulas, os criados e os tetos (100 / 300 / 1.000 / sem teto, em bruto). A curva por soma e as tarifas saem de uma tabela publicada fixa (`RENDA_PUBLICADA`, em `lore/economia/v2/base.py`), travada por `scripts/test-economia-servicos-congelados.mjs`.
+- Forma 2 (o pacote da Veterana inteiro: 11 serviços, 5 aulas, 1 recompensa, até −20%) fica como passo seguinte possível, sem data. O TETO em Livre (Aldeia 12, Vila 22, Cidade 35, da Veterana) NÃO se aplica: é mudança de efeito (com 100 de teto bruto a Aldeia limita até o oficial; com 12 em Livre ele rende inteiro), pendência.
+- Origem: `../tmp/arquiteto/economia/proposta.md` e `conta-media3.md`; `../tmp/ponte/para-arquiteto/lidas/087-regras.md`.
+- Estado: aplicada no ramo `economia-longa3` (7ed7c327); no ar com o merge dele.
 
 ### D-059 · Dúvidas 5 e 12 (A e B): as fichas ficam sem a Técnica; a aplicação espera o fim da revisão [tags: criacao, exemplos, tecnicas, d-047, kael, sora, veil, bram]
 - Data: 2026-10-04

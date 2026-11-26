@@ -45,14 +45,14 @@ está na seção 3.
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 12 | 0 | 9 | 5 | 2 | 0 | 0 | 0 | 5 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 11 | 7 | 0 | 4 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 81 | 55 | 0 | 26 | 31 | 4 | 0 | 5 | 15 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 82 | 55 | 0 | 27 | 32 | 3 | 0 | 5 | 15 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **417** | **300** | **4** | **113** | **108** | **84** | **8** | **12** | **81** | **11** |
+| | **Total** | | **418** | **300** | **4** | **114** | **109** | **83** | **8** | **12** | **81** | **11** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -81,7 +81,7 @@ está na seção 3.
 | **O Grid** | Simulação encerrada (06/09). Fases 2 e 2.5 fechadas. Fase 3 congelada até a mesa reavaliar o plano. Fase 4 bloqueada por uma batalha de verdade. | Humano (fila do `PLANO.md` §8, itens 3 e 4) | `PLANO.md` §8 e §9; `ESTADO.md`; tema L |
 | **Voz** | Barra de comando, desfazer e captura de áudio fechados (rodadas 30 a 33). Parada de propósito até o humano usar a barra numa batalha. | Humano (a batalha); depois execução | `VOZ.md` §8; L62, L71, L74 |
 | **Mapa de Uldun** | Frente do Cartógrafo, em `lore/mapas/`. Empreitada autônoma na noite de 23/09, com o que é decisão marcado como recomendação dele, esperando o usuário testar. | Humano, pelo que o `RELATORIO-FINAL.md` lista | `lore/mapas/CARTOGRAFO.md`, `lore/mapas/RELATORIO-FINAL.md` |
-| **Economia** | Um catálogo unificado de preços e um pedido de revisão para outra IA, em `lore/economia/`, **não versionados**. Nada decidido. | Humano | `lore/economia/catalogo-unificado.md`, `lore/economia/prompt-revisao-economica.md` |
+| **Economia** | Um catálogo unificado de preços e um pedido de revisão para outra IA, em `lore/economia/`, **não versionados**. O modelo de economia foi decidido em 26/11/2026 (D-386, Forma 1: o pacote da Veterana só em Ganhar a vida, Serviços congelado); o TETO em Livre e a Forma 2 seguem em aberto (G80). | Humano | `lore/economia/catalogo-unificado.md`, `lore/economia/prompt-revisao-economica.md` |
 | **Os temas A a L** | 249 itens; a contagem está na seção 0 e a lista na seção 7. | Por item (a marca diz) | `docs/pendencias/` |
 
 ---
@@ -496,10 +496,10 @@ Fechados (1): F9.
 | G73 | aberto | DECIDIR | Preços do sobre-humano: Centelha, Proezas e Magia. |
 | G74 | aberto | DECIDIR | Poções como estoque de emergência caro. |
 | G76 | aberto | DECIDIR | Itens mágicos: poções, pergaminhos, itens mágicos, armas e armaduras encantadas, artefatos. |
-| G77 | aberto | FAZER | Longa a 3 por dado (D-034): Ofício (lote, espada gabarito, Especialidade na Longa, tabela … |
 | G78 | aberto | FAZER | Catálogo de armas: o campo de estilo e as imagens por raça (I1, D-371). |
+| G80 | aberto | DECIDIR | TETO em Livre (Veterana), a Forma 2 do modelo de economia e a tabela `custo_qualidade` do lore (Forma 1, … |
 
-Fechados (26): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29, G52, G54, G55, G56, G57, G58, G59, G62, G65, G70, G75, G79.
+Fechados (27): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29, G52, G54, G55, G56, G57, G58, G59, G62, G65, G70, G75, G77, G79.
 
 ### H · Arremesso
 

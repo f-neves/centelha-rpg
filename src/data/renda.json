@@ -491,7 +491,7 @@
   "curva_por_soma": [
     {
       "soma": 4,
-      "media": 7,
+      "media": 6,
       "renda": {
         "por": "semana",
         "preco": {
@@ -502,7 +502,7 @@
     },
     {
       "soma": 5,
-      "media": 9,
+      "media": 8,
       "renda": {
         "por": "semana",
         "preco": {
@@ -513,7 +513,7 @@
     },
     {
       "soma": 6,
-      "media": 10.5,
+      "media": 9,
       "renda": {
         "por": "semana",
         "preco": {
@@ -524,7 +524,7 @@
     },
     {
       "soma": 7,
-      "media": 12.5,
+      "media": 11,
       "renda": {
         "por": "semana",
         "preco": {
@@ -535,7 +535,7 @@
     },
     {
       "soma": 8,
-      "media": 14,
+      "media": 12,
       "renda": {
         "por": "semana",
         "preco": {
@@ -546,7 +546,7 @@
     },
     {
       "soma": 9,
-      "media": 16,
+      "media": 14,
       "renda": {
         "por": "semana",
         "preco": {
@@ -557,7 +557,7 @@
     },
     {
       "soma": 10,
-      "media": 17.5,
+      "media": 15,
       "renda": {
         "por": "semana",
         "preco": {
@@ -568,7 +568,7 @@
     },
     {
       "soma": 11,
-      "media": 19.5,
+      "media": 17,
       "renda": {
         "por": "semana",
         "preco": {
@@ -579,7 +579,7 @@
     },
     {
       "soma": 12,
-      "media": 21,
+      "media": 18,
       "renda": {
         "por": "semana",
         "preco": {
@@ -593,21 +593,26 @@
     "dif4": {
       "por": "semana",
       "preco": {
-        "pc": 20
+        "pc": 26
       }
     },
     "dif7": {
       "por": "semana",
       "preco": {
-        "pc": 37.14
+        "pc": 47
       }
     },
     "dif11": {
       "por": "semana",
       "preco": {
-        "pc": 66.86
+        "pc": 96
       }
     }
+  },
+  "requisito_por_faixa": {
+    "dif4": 1,
+    "dif7": 3,
+    "dif11": 5
   },
   "tetos_demanda": {
     "aldeia": {

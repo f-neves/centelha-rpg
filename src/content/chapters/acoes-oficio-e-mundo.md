@@ -231,29 +231,29 @@ Uma sela Ótima remendada no acampamento volta a servir como uma sela Comum. Os 
 
 No tempo morto entre aventuras, o artesão trabalha. É uma **Longa** de intervalo **semana**, sem jogada, e o que ela produz é dinheiro em vez de peça.
 
-<p class="formula">Ganho por semana = o <b>melhor</b> (média − Dificuldade) × valor da faixa, entre as faixas cujo Requisito a Habilidade alcança</p>
+<p class="formula">Ganho por semana = o <b>melhor</b> (média − Dificuldade) × valor da faixa, entre as faixas cujo Requisito a Habilidade alcança (a Habilidade, e não a soma com o Atributo, como nas peças)</p>
 
-A média é a da Longa, a mesma da fabricação. Cada faixa paga um valor por ponto de média acima da Dificuldade dela, e o artesão fica com a faixa que lhe rende mais:
+A média é a da Longa, a mesma da fabricação. Cada faixa paga um valor por ponto de média acima da Dificuldade dela, e o artesão fica com a faixa que lhe rende mais. O valor por ponto cresce mais depressa do que a Dificuldade (26, 47 e 96 pc para as Dificuldades 4, 7 e 11), então a Habilidade alta pesa mais do que várias baixas:
 
 <!-- gen:economia-ganhar-a-vida -->
 
 <div class="table-wrap">
 
-| Faixa | Dificuldade | Valor por ponto de média acima dela, por semana |
-|---|:---:|:---:|
-| Serviço simples | 4 | 20 pc |
-| Ofício | 7 | 37 pc |
-| Arte rara | 11 | 67 pc |
+| Faixa | Dificuldade | Requisito de Habilidade | Valor por ponto de média acima dela, por semana |
+|---|:---:|:---:|:---:|
+| Serviço simples | 4 | 1 | 26 pc |
+| Ofício | 7 | 3 | 47 pc |
+| Arte rara | 11 | 5 | 96 pc |
 
 </div>
 
 <div class="table-wrap">
 
-| Quem | Soma | Média | Melhor faixa (Dificuldade) | Ganho por semana |
-|---|:---:|:---:|:---:|:---:|
-| Oficial | 6 | 10,5 | 4 | 130 pc |
-| Perito | 9 | 16 | 7 | 330 pc |
-| Mestre | 12 | 21 | 11 | 670 pc |
+| Quem | Soma | Média | Melhor faixa (Dificuldade) | Ganho por semana | Livre por semana |
+|---|:---:|:---:|:---:|:---:|:---:|
+| Oficial | 6 | 9 | 4 | 130 pc | 12 pc |
+| Perito | 9 | 14 | 7 | 330 pc | 22 pc |
+| Mestre | 12 | 18 | 11 | 670 pc | 35 pc |
 
 </div>
 
@@ -269,6 +269,12 @@ A média é a da Longa, a mesma da fabricação. Cada faixa paga um valor por po
 </div>
 
 <!-- /gen:economia-ganhar-a-vida -->
+
+**O que entra no bolso.** Quem trabalha por semanas embolsa só o Livre (o que sobra do ganho bruto depois do custo de vida), e não o ganho bruto. É uma simplificação, decisão do Mestre, para poupar a conta de gastos: o personagem não paga custo de vida à parte e anota só o Livre.
+
+**Um ganho que não está na tabela.** Para um ganho bruto que não está na tabela (bônus de secundária, Especialidade, Arte), o Livre é o da linha de Serviços cuja Renda por semana fica mais perto dele; acima de 670 pc, o Livre é o ganho bruto × 35 ÷ 670, arredondado ao inteiro mais próximo.
+
+**É uma sugestão.** A fórmula de ganho por ficha é uma sugestão ao Mestre, que pode ajustar as faixas ao mundo dele (princípio do Mestre, D-087); não há tabela nova.
 
 **O bônus.** A Habilidade mais alta que cobre o trabalho entra no pool; a mais alta entre as **restantes** soma como bônus fixo, e só uma. A **Firula não conta**: a renda é Longa, sem jogada, e a Firula é bônus de jogada.
 
