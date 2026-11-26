@@ -85,6 +85,7 @@ def formato_site(nome, o):
                             "nivel_de_vida": x["nivel_de_vida"], "origem": x["origem"]} for x in o["faixas"]],
                 "curva_por_soma": [{"soma": c["soma"], "media": c["media"], "renda": P(c["renda_semana"], "semana"), "faixa_dificuldade": c["faixa_dificuldade"]} for c in o["curva_por_soma"]],
                 "valor_por_ponto": {k: P(v, "semana") for k, v in o["valor_por_ponto_semana"].items()},
+                "requisito_por_faixa": o["requisito_por_faixa"],
                 "tetos_demanda": {k: P(v, "semana") for k, v in o["tetos_demanda_semana"].items()}}
     if nome == "pacotes-equipamento.json":
         return {"_nota": o["_nota"], "pacotes": {k: {"total": pcx(p["total_pc"]), "total_anterior": pcx(p["total_atual_pc"]), "itens": p["itens"]} for k, p in o["pacotes"].items()}}
@@ -125,6 +126,7 @@ renda = {"_nota": "PROPOSTA. Renda por semana de trabalho (6 jornadas). Livre = 
                      "custo_semana": r["custo"], "nivel_de_vida": m.FAIXA_NIVEL[r["faixa"]], "origem": r["origem"]} for r in O["renda"]],
          "curva_por_soma": [{"soma": c["soma"], "media": c["media"], "renda_semana": arred(c["convexa"]), "faixa_dificuldade": c["faixa_dif"]} for c in O["curva"]["curva"]],
          "valor_por_ponto_semana": {"dif4": V4, "dif7": round(V7, 2), "dif11": round(V11, 2)},
+         "requisito_por_faixa": {"dif4": FAIXAS_DIF[0][2], "dif7": FAIXAS_DIF[1][2], "dif11": FAIXAS_DIF[2][2]},
          "tetos_demanda_semana": m.TETOS}
 dump("renda.json", renda)
 

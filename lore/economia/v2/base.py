@@ -20,7 +20,8 @@ def ano_terra_para_semana(v_ano):   # valores históricos anuais (365 dias) -> s
 
 # ---------------- Média de uma soma (regra do sistema) ----------------
 def media(soma):
-    return 3.5 * (soma // 2) + (2 if soma % 2 else 0)
+    """A Longa a 3 por dado (D-034): 3 × (soma ÷ 2, para baixo) + 2 se a soma é ímpar."""
+    return 3 * (soma // 2) + (2 if soma % 2 else 0)
 
 # ---------------- Arredondamento ----------------
 # A régua do `arred` em tabela (rodada 115): (abaixo de, passo), a última sem teto. O site recebe a
@@ -54,13 +55,41 @@ def fmt(pc):
 
 # ---------------- Produtores de referência (H-x20 e curva por faixa) ----------------
 # Salário pelo trabalho simples (Dif 4): (média - 4) x 20 por semana
-def salario_x20(soma): return (media(soma) - 4) * 20
+def salario_x20(soma): return (media(soma) - 4) * V4
 
 # Valor por ponto-semana em cada faixa de Dificuldade, pelo produtor marginal:
-V4 = 20.0
-V7 = salario_x20(6) / (media(6) - 7)                 # oficial indiferente entre Dif 4 e Dif 7 = 37,14
-V11 = (media(9) - 7) * V7 / (media(9) - 11)            # perito indiferente entre Dif 7 e Dif 11 = 66,86
-FAIXAS_DIF = [(4, V4, 0), (7, V7, 2), (11, V11, 4)]    # (Dif, valor, Requisito mínimo típico da faixa)
+V4 = 26.0
+V7 = 47.0
+V11 = 96.0
+FAIXAS_DIF = [(4, V4, 1), (7, V7, 3), (11, V11, 5)]    # (Dif, valor, Requisito de Habilidade da faixa)
+
+# ---------------- SERVIÇOS CONGELADOS (Forma 1, 26/11/2026; decisão do autor de 02/10/2026)
+# "Com a Longa a 3 por dado, a tabela de Serviços não muda: só os valores por ponto de 'Ganhar a vida' são reajustados."
+# O modelo novo acima (média a 3 por dado, 26 / 47 / 96, Requisito 1 / 3 / 5) vale SÓ para Ganhar a vida. A curva por soma, as
+# tarifas por perfil, as diárias com bônus, as aulas, os criados e os tetos continuam os de antes, byte a byte, e por isso saem
+# de uma TABELA PUBLICADA FIXA (a renda por semana de cada soma, a que o livro publica) e das funções `*_v1`, que repetem a conta
+# antiga com as constantes antigas (média a 3,5 por dado, V4 = 20, V7 e V11 pela indiferença do oficial e do perito, Requisito 0 / 2 / 4).
+# Quem mudar V4, V7, V11 ou a média NÃO muda Serviços: o teste scripts/test-economia-servicos-congelados.mjs trava a tabela e
+# acusa se a conta antiga deixar de bater com ela.
+RENDA_PUBLICADA = {4: 60, 5: 100, 6: 130, 7: 200, 8: 260, 9: 330, 10: 430, 11: 570, 12: 670}   # pc por semana de trabalho, por soma
+
+def media_v1(soma):
+    return 3.5 * (soma // 2) + (2 if soma % 2 else 0)
+def salario_x20_v1(soma): return (media_v1(soma) - 4) * 20
+V4_V1 = 20.0
+V7_V1 = salario_x20_v1(6) / (media_v1(6) - 7)
+V11_V1 = (media_v1(9) - 7) * V7_V1 / (media_v1(9) - 11)
+FAIXAS_DIF_V1 = [(4, V4_V1, 0), (7, V7_V1, 2), (11, V11_V1, 4)]
+def renda_ficha_v1(soma, hab=None, bonus=0):
+    """A conta antiga, congelada: melhor (média + bônus - Dif) x valor, entre as faixas cujo Requisito antigo a Habilidade alcança."""
+    m = media_v1(soma) + bonus
+    if hab is None: hab = soma // 2
+    melhor, faixa = 0.0, None
+    for dif, v, req in FAIXAS_DIF_V1:
+        if hab >= req and m > dif:
+            r = (m - dif) * v
+            if r > melhor: melhor, faixa = r, dif
+    return melhor, faixa
 
 def renda_ficha(soma, hab=None, bonus=0):
     """Melhor (média + bônus - Dif) x valor, entre as faixas cujo Requisito a Habilidade alcança."""

@@ -190,11 +190,19 @@ const TETO = { aldeia: 'Aldeia', vila: 'Vila', cidade: 'Cidade', capital: 'Capit
 for (const k of Object.keys(RENDA.tetos_demanda)) if (!TETO[k]) throw new Error(`teto sem rótulo em gen-cap-economia.mjs: ${k}`);
 const blocosOficio = {
   'ganhar-a-vida': envolve(tabela(
-    ['Faixa', 'Dificuldade', 'Valor por ponto de média acima dela, por semana'], ['l', 'c', 'c'],
-    Object.entries(RENDA.valor_por_ponto).map(([k, v]) => [FAIXA_VALOR[k][0], FAIXA_VALOR[k][1], emPc(pcDe(v))]),
+    ['Faixa', 'Dificuldade', 'Requisito de Habilidade', 'Valor por ponto de média acima dela, por semana'], ['l', 'c', 'c', 'c'],
+    Object.entries(RENDA.valor_por_ponto).map(([k, v]) => {
+      const req = RENDA.requisito_por_faixa?.[k];
+      if (!Number.isInteger(req)) throw new Error(`renda.json sem requisito_por_faixa.${k}`);
+      return [FAIXA_VALOR[k][0], FAIXA_VALOR[k][1], req, emPc(pcDe(v))];
+    }),
   )) + '\n\n' + envolve(tabela(
-    ['Quem', 'Soma', 'Média', 'Melhor faixa (Dificuldade)', 'Ganho por semana'], ['l', 'c', 'c', 'c', 'c'],
-    Object.entries(PERFIL).map(([s, nome]) => { const c = curva[s]; if (!c) throw new Error(`curva_por_soma sem a soma ${s}`); return [nome, s, num(c.media), c.faixa_dificuldade, emPc(pcDe(c.renda))]; }),
+    ['Quem', 'Soma', 'Média', 'Melhor faixa (Dificuldade)', 'Ganho por semana', 'Livre por semana'], ['l', 'c', 'c', 'c', 'c', 'c'],
+    Object.entries(PERFIL).map(([s, nome]) => {
+      const c = curva[s]; if (!c) throw new Error(`curva_por_soma sem a soma ${s}`);
+      const tp = SERV.tarifas_por_perfil.find((x) => x.soma === Number(s)); if (!tp) throw new Error(`servicos.json sem a soma ${s} em tarifas_por_perfil`);
+      return [nome, s, num(c.media), c.faixa_dificuldade, emPc(pcDe(c.renda)), emPc(pcDe(tp.livre))];
+    }),
   )) + '\n\n' + envolve(tabela(
     ['Lugar', 'Teto do ganho, por semana'], ['l', 'c'],
     Object.entries(RENDA.tetos_demanda).map(([k, v]) => {

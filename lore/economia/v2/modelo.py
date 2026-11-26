@@ -67,12 +67,13 @@ OUT["moeda"] = dict(moedas=moeda, cobre_mercadoria_100g=pb("cobre") / 10,
 # =====================================================================
 curva = []
 for s in range(4, 13):
-    r, f = renda_ficha(s)
-    curva.append(dict(soma=s, media=media(s), linear_x20=salario_x20(s), convexa=r, faixa_dif=f,
-                      x_bracal=r / 60))
-proezas = [(b, renda_ficha(12, 6, b)[0]) for b in (0, 3, 4, 6, 9, 12, 15)]
+    r, _ = renda_ficha_v1(s)
+    assert arred(r) == RENDA_PUBLICADA[s], f"a conta antiga de Serviços não bate mais com a tabela publicada na soma {s}: {arred(r)} contra {RENDA_PUBLICADA[s]}"
+    curva.append(dict(soma=s, media=media(s), linear_x20=salario_x20(s), convexa=RENDA_PUBLICADA[s], faixa_dif=renda_ficha(s)[1],
+                      x_bracal=RENDA_PUBLICADA[s] / 60))
+proezas = [(b, renda_ficha_v1(12, 6, b)[0]) for b in (0, 3, 4, 6, 9, 12, 15)]
 OUT["curva"] = dict(curva=curva, V4=V4, V7=V7, V11=V11, proezas=proezas,
-                    oficial_proeza15_trava=renda_ficha(6, 3, 15)[0])
+                    oficial_proeza15_trava=renda_ficha_v1(6, 3, 15)[0])
 
 TETOS = {"aldeia": 100, "vila": 300, "cidade": 1000, "capital": None}
 
@@ -318,13 +319,13 @@ OUT["viagens"] = dict(vel=VELOCIDADES, **viagens)
 # ETAPA C.7 · SERVIÇOS CONTRATADOS
 # =====================================================================
 def diaria(soma, bonus=0, hab=None):
-    r, _ = renda_ficha(soma, hab, bonus)
+    r, _ = renda_ficha_v1(soma, hab, bonus)
     return r / JORNADAS_SEMANA
 PERFIS = [("Braçal", 4), ("Destreinado", 5), ("Oficial", 6), ("Oficial experiente (soma 7)", 7), ("Profissional (soma 8)", 8), ("Perito (soma 9)", 9),
           ("Especialista (soma 10)", 10), ("Especialista (soma 11)", 11), ("Mestre (soma 12)", 12)]
 tarifas = []
 for nome, s in PERFIS:
-    sem = arred(renda_ficha(s)[0])          # o valor publicado no livro (curva_por_soma)
+    sem = RENDA_PUBLICADA[s]                   # o valor publicado no livro (curva_por_soma), da tabela fixa
     av = sem / 4                            # avulsa = contrato x 1,5 = semana / 4
     tarifas.append(dict(perfil=nome, soma=s, semana=sem, contrato=inteiro(sem / JORNADAS_SEMANA), avulsa=inteiro(av),
                         hora_leve=inteiro(av / 6), hora_artesao=inteiro(av / 8), hora_bracal=inteiro(av / 10),
@@ -388,7 +389,7 @@ def custo_qualidade(req, dif, mont, peca, intervalo, grau, regra="texto", piso=0
             n_int = ac / (m - d)
             if regra == "piso" and grau >= 2: n_int = max(n_int, piso * (grau - 1))
             semanas = n_int * INTERVALO_SEM[iv]
-            sal = renda_ficha(soma, hab)[0]
+            sal = renda_ficha_v1(soma, hab)[0]
             melhores.append((semanas * sal * 1.8, soma, hab, semanas))
     if not melhores: return None
     return min(melhores)
@@ -421,7 +422,7 @@ for nome, req, dif, mont, peca in [("Faca", 2, 4, 6, 3), ("Espada", 3, 7, 12, 10
     base = custo_qualidade(req, dif, mont, peca, "dia", 0)[0]
     for g, gn in ((1, "Tosca"), (2, "Sucata")):
         r = max(1, req - g); d = max(1, dif - 3 * g); ac = (mont + peca) * 0.5 ** g
-        c = min(ac / (media(s) - d) / 6 * renda_ficha(s, h)[0] * 1.8 for s, h in PERFIS_Q if h >= r and media(s) > d)
+        c = min(ac / (media(s) - d) / 6 * renda_ficha_v1(s, h)[0] * 1.8 for s, h in PERFIS_Q if h >= r and media(s) > d)
         abaixo.append(dict(peca=nome, grau=gn, preco=c, mult=c / base))
 OUT["qualidade_abaixo"] = abaixo
 
