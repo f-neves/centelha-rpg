@@ -1602,7 +1602,8 @@
       {
         "nome": "Duração",
         "tipo": "fixo",
-        "valor": "permanente"
+        "valor": "permanente",
+        "nota": "O nível paga a Duração permanente (o chão fica aberto); este parâmetro não sobe com o grau."
       },
       {
         "nome": "Jogada",
@@ -2020,7 +2021,8 @@
       {
         "nome": "Alvos",
         "tipo": "fixo",
-        "valor": "1"
+        "valor": "1",
+        "nota": "O nível paga o alvo único e o traço que ele ganha; este parâmetro não sobe com o grau."
       },
       {
         "nome": "Duração",
@@ -4275,7 +4277,8 @@
       {
         "nome": "Alvos",
         "tipo": "fixo",
-        "valor": "1 bicho por vez, trocável durante a duração"
+        "valor": "1 bicho por vez, trocável durante a duração",
+        "nota": "O nível paga os sentidos de um bicho por vez, trocável durante a Duração; este parâmetro não sobe com o grau."
       },
       {
         "nome": "Duração",
@@ -4732,7 +4735,8 @@
       {
         "nome": "Duração",
         "tipo": "fixo",
-        "valor": "permanente"
+        "valor": "permanente",
+        "nota": "O nível 6 paga a obra que fica; a Duração permanente não sobe com o grau."
       }
     ],
     "efeito": "Levanta do chão uma formação de pedra do tamanho de uma colina pequena, ou derruba uma que já estava lá. O terreno muda de verdade e continua mudado: quem passar por ali daqui a um ano vai ver a sua obra.",
@@ -5265,7 +5269,8 @@
       {
         "nome": "Duração",
         "tipo": "fixo",
-        "valor": "permanente"
+        "valor": "permanente",
+        "nota": "O nível 6 paga a mudança que fica; a Duração permanente não sobe com o grau."
       }
     ],
     "efeito": "Converte qualquer material em qualquer outro: pedra em ouro, ferro em vidro, água em óleo. A mudança fica. O que era vivo não entra nisso, e o que era mágico resiste pelo nível de quem o fez.",
@@ -6496,7 +6501,8 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "qualquer lugar que você conheça de verdade"
+        "valor": "qualquer lugar que você conheça de verdade",
+        "nota": "O nível paga o Alcance de qualquer lugar que você conheça de verdade, e não o do catálogo (que para em 50 m); este parâmetro não sobe com o grau."
       },
       {
         "nome": "Alvos",
@@ -6915,7 +6921,8 @@
       {
         "nome": "Alvos",
         "tipo": "fixo",
-        "valor": "1 espírito poderoso"
+        "valor": "1 espírito poderoso",
+        "nota": "O nível paga o espírito poderoso, um só, e o freio é a Dificuldade, que sobe com o grau investido; este parâmetro não sobe."
       },
       {
         "nome": "Duração",
@@ -7239,7 +7246,8 @@
       {
         "nome": "Duração",
         "tipo": "fixo",
-        "valor": "permanente"
+        "valor": "permanente",
+        "nota": "O nível paga a transformação que leva dias para fechar e fica; a Duração permanente não sobe com o grau."
       }
     ],
     "efeito": "Transforma um ermo em mata: capim onde havia areia, árvore onde havia pedra, água onde o chão estava seco. Leva dias para fechar, não um instante, e fica. O que nasce dali em diante é vida comum, e morre se ninguém cuidar.",
