@@ -12503,7 +12503,7 @@
      "largura": 0.002,
      "profundidade": null,
      "comprimento": 0.0046,
-     "massa": 7e-06,
+     "massa": 0.000007,
      "area": 0,
      "posturaDoTamanho": "indivíduo, anatomia"
     },
@@ -12809,7 +12809,7 @@
      "largura": 0.0015,
      "profundidade": null,
      "comprimento": 0.006,
-     "massa": 3e-06,
+     "massa": 0.000003,
      "area": 0,
      "posturaDoTamanho": "indivíduo, anatomia"
     },
@@ -13243,7 +13243,7 @@
      "profundidade": null,
      "comprimento": 0.015,
      "envergadura": 0.02,
-     "massa": 8.4e-05,
+     "massa": 0.000084,
      "area": 0,
      "posturaDoTamanho": "indivíduo, anatomia"
     },
