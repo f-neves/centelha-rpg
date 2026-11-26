@@ -77,7 +77,7 @@ export const numerosDe = (s) => (String(s).match(/\d+(?:[.,]\d+)?/g) || []).map(
 export function ehNumero(a) {
   const topo = String(a.cam[0]), folha = String(a.cam[a.cam.length - 1]);
   if (NARRATIVAS_TOPO.has(topo)) return false;
-  const temNumero = (x) => typeof x === 'number' || (typeof x === 'string' && /\d/.test(x));
+  const temNumero = (x) => typeof x === 'number' || (typeof x === 'string' && /\d/.test(x)) || (x !== null && typeof x === 'object' && /\d/.test(JSON.stringify(x)));
   if (ESTRUTURAS_DE_REGRA.has(topo) && PROSA_DE_REGRA.has(folha)) {
     if (typeof a.antes === 'string' && typeof a.depois === 'string') return numerosDe(a.antes) !== numerosDe(a.depois);
     return temNumero(a.antes) || temNumero(a.depois);

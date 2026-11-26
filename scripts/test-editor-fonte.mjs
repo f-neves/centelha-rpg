@@ -78,6 +78,24 @@ try {
   const lembra = /1 campo\(s\) alterado\(s\)/.test(await p.$eval('#resumo', (e) => e.textContent));
   console.log('  ' + (lembra ? '✓' : '·') + ' a alteração sobrevive ao recarregar (localStorage' + (lembra ? '' : ' indisponível neste navegador/arquivo: não é falha') + ')');
   if (lembra) { await p.click('#bLimpar'); ok(/0 campo\(s\) alterado\(s\)/.test(await p.$eval('#resumo', (e) => e.textContent)), 'descartar tudo zera as alterações'); }
+  // corte 2: a LINHA NOVA ("+ item"): duplica o último item da lista como modelo; editar o item novo muda o "depois" dele
+  await p.click('#bLimpar'); await p.click('#itens li[data-id="lobo"]');
+  const botao = await p.evaluateHandle(() => { const d = [...document.querySelectorAll('#campos details')].find((x) => x.querySelector(':scope > summary').textContent.startsWith('ataques [')); d.open = true; return d.querySelector(':scope > button.peq'); });
+  const totalAntes = await p.evaluate(() => Number([...document.querySelectorAll('#campos details > summary')].find((s) => s.textContent.startsWith('ataques [')).textContent.match(/\[(\d+)\]/)[1]));
+  await botao.click();
+  const totalDepois = await p.evaluate(() => Number([...document.querySelectorAll('#campos details > summary')].find((s) => s.textContent.startsWith('ataques [')).textContent.match(/\[(\d+)\]/)[1]));
+  ok(totalDepois === totalAntes + 1 && await p.$$eval('#campos summary', (s) => s.some((x) => /\(item novo\)/.test(x.textContent))), `"+ item" acrescenta um ataque (de ${totalAntes} para ${totalDepois}) marcado "item novo"`);
+  const campoNome = await p.evaluateHandle((n) => [...document.querySelectorAll('#campos .campo label')].find((l) => l.title === `ataques.${n}.nome`).parentElement.querySelector('input'), totalAntes);
+  await campoNome.evaluate((e) => { e.value = 'Mordida de teste'; e.dispatchEvent(new Event('input', { bubbles: true })); });
+  await p.click('#bExportar');
+  const exp2 = await p.evaluate(() => window.__ULTIMA_EXPORTACAO);
+  const nova = exp2.alteracoes.find((x) => x.caminho.length === 2 && x.caminho[0] === 'ataques');
+  ok(exp2.alteracoes.length === 1 && nova && nova.caminho[1] === totalAntes && !('antes' in nova) && nova.depois.nome === 'Mordida de teste', 'o Exportar traz UMA alteração de item novo (caminho ["ataques", ' + totalAntes + '], sem "antes", com o nome editado): ' + JSON.stringify(exp2.alteracoes).slice(0, 160));
+  const plano2 = await planejar(exp2);
+  ok(plano2.erros.length === 0 && plano2.criaturas.length === 1 && plano2.criaturas[0].depois.ataques.length === totalAntes + 1, 'o aplicador aceita o ataque novo (dry-run no site de verdade): ' + JSON.stringify(plano2.erros).slice(0, 200));
+  ok(plano2.numeros.some((n) => n.id === 'lobo' && n.caminho === `ataques.${totalAntes}`), 'e o ataque novo entra na lista de mudanças de número');
+  await p.evaluate(() => [...document.querySelectorAll('#campos button.peq')].find((b) => /tirar este item novo/.test(b.textContent)).click());
+  ok(/0 campo\(s\) alterado\(s\)/.test(await p.$eval('#resumo', (e) => e.textContent)), '"tirar este item novo" desfaz a linha nova');
   ok(erros.length === 0, 'nenhum erro de página: ' + erros.join('; ').slice(0, 300));
 } finally { await br.close(); fs.rmSync(tmp, { recursive: true, force: true }); }
 if (falhas.length) { console.error(`✘ ${falhas.length} falha(s)`); process.exit(1); }
