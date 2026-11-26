@@ -22,7 +22,7 @@ Como tudo no Centelha, os Antecedentes vão de **1 a 6**. Seis é o teto do que 
 
 O exemplo que resume o formato Nomeado:
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável).</strong> São três famas distintas na mesma pessoa, cada uma com o seu valor e o seu público: medianamente conhecida como guarda-costas, bastante famosa como cantor, e com uma fama pequena de ser confiável. Cada instância é comprada e sobe por conta própria.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável).</strong> São três famas distintas na mesma pessoa, cada uma com o seu valor e o seu público: medianamente conhecida como guarda-costas, bastante famosa como cantor, e com uma fama pequena de ser confiável. O Mestre concede cada instância, e cada uma sobe por conta própria.</div>
 
 ## Antecedente não custa XP: o Mestre concede e ajusta pela história e pela ficha
 
@@ -38,7 +38,7 @@ Quando a história tira um Antecedente de você, não há XP a devolver, porque 
 
 **Recursos** e **Artefato** são os dois que mais facilmente quebram o jogo, porque dinheiro compra equipamento e artefato compra poder. Na criação, eles não têm teto próprio: quem os limita é o Mestre, pelas restrições da campanha.
 
-Antecedentes que são **pessoas** (Aliados, Contatos, Mentor, Séquito) nascem numa posição da [Régua de Relação](/regras/relacoes-sociais) e continuam sujeitos a ela: um aliado tratado como ferramenta esfria e desce a régua. O número compra a **capacidade e a lealdade inicial**, e nunca a obediência eterna.
+Antecedentes que são **pessoas** (Aliados, Contatos, Mentor, Séquito) nascem numa posição da [Régua de Relação](/regras/relacoes-sociais) e continuam sujeitos a ela: um aliado tratado como ferramenta esfria e desce a régua. O número dá a **capacidade e a lealdade inicial**, e nunca a obediência eterna.
 
 ## Onde a régua já começa
 
@@ -50,7 +50,7 @@ O Antecedente age antes de qualquer rolagem:
 
 Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não ganha o duelo social do momento. E o desconto é mudo onde não há Neutro a romper: quem já nasce acima dele por outra amarra (os contatos em Simpatia, os aliados em Aliança ou Devoção) não desconta nada em cima disso.
 
-<p class="muted">A Régua de Relação e o Combate Social, citados acima, são o capítulo <a href="/centelha-rpg/regras/relacoes-sociais"><strong>Relações Sociais</strong></a>. Antecedentes vem antes dele no livro porque é matéria de ficha, e não de cena: você compra estes traços quando monta o personagem, junto dos Atributos e das Habilidades.</p>
+<p class="muted">A Régua de Relação e o Combate Social, citados acima, são o capítulo <a href="/centelha-rpg/regras/relacoes-sociais"><strong>Relações Sociais</strong></a>. Antecedentes vem antes dele no livro porque é matéria de ficha, e não de cena: você recebe estes traços quando monta o personagem, junto dos Atributos e das Habilidades; o Mestre os concede e ajusta o nível, e eles não custam XP.</p>
 
 ## Os catorze Antecedentes
 
@@ -73,7 +73,7 @@ Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não
 
 ### Aliados
 
-*Nomeado.* Poucos indivíduos capazes e leais que agem **por você** de coração, não por salário. Cada aliado é comprado à parte, com nome e cara. O nível mede a **capacidade** do aliado combinada com a **dedicação** dele.
+*Nomeado.* Poucos indivíduos capazes e leais que agem **por você** de coração, não por salário. Cada aliado é concedido à parte, com nome e cara. O nível mede a **capacidade** do aliado combinada com a **dedicação** dele.
 
 | Nível | O que significa |
 |:---:|---|
@@ -282,4 +282,4 @@ Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não
 - **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada. O Antecedente não soma a jogada nenhuma: ele **desconta passos do Neutro** na Régua de Relação, a metade do nível do traço, para baixo, por passo (só o 6 chega aos três), e o Mestre soma outros traços quando a situação pedir, dentro dos três passos.
 - **Voláteis:** sobem e caem na ficção, e o Mestre ajusta o nível, sem XP a devolver.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se maltratadas. **Reputação** desconta passos do Neutro com quem a conhece, e não soma na jogada. **Segredo** e **Dívida** são meio consumíveis. **Artefato** e **Aliado Animal** têm ficha própria por nível.
-- **A regra de ouro:** o número compra a **capacidade e a disposição inicial**, nunca a obediência eterna. O mundo continua vivo por baixo do Antecedente.
+- **A regra de ouro:** o número dá a **capacidade e a disposição inicial**, nunca a obediência eterna. O mundo continua vivo por baixo do Antecedente.

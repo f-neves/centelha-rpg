@@ -44,7 +44,7 @@
     "ordem": 2,
     "nome": "Aliados",
     "formato": "nomeado",
-    "descricao": "Poucos indivíduos capazes e leais que agem **por você** de coração, não por salário. Cada aliado é comprado à parte, com nome e cara. O nível mede a **capacidade** do aliado combinada com a **dedicação** dele.",
+    "descricao": "Poucos indivíduos capazes e leais que agem **por você** de coração, não por salário. Cada aliado é concedido à parte, com nome e cara. O nível mede a **capacidade** do aliado combinada com a **dedicação** dele.",
     "niveis": [
       {
         "nivel": 1,
