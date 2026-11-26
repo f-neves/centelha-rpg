@@ -528,11 +528,11 @@
       "nota": "Metade exata da primária em todos os níveis: 3·4·5·6·7·8 · acumulado 3·7·12·18·25·33."
     },
     "antecedente": {
-      "tipo": "acum",
+      "tipo": "gratis",
       "base": 0,
-      "mult": 3,
+      "mult": 0,
       "piso": 0,
-      "nota": "O custo do próximo ponto é o novo valor × 3: 3·6·9·12·15·18 · acumulado 3·9·18·30·45·63. Fica entre a Habilidade secundária e a primária, porque é poder de campanha e não de dado."
+      "nota": "Não custa XP. O Mestre concede o Antecedente e ajusta o nível pela história e pela ficha (T24, 26/11/2026); nenhum dos catorze custa, o Artefato inclusive."
     },
     "especialidadePrimaria": {
       "tipo": "acum",

@@ -279,7 +279,7 @@
         "texto": "Um artefato único e divino: poder de semideus preso num objeto; nações guerreiam por ele."
       }
     ],
-    "amarra": "equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): por isso o XP volta como crédito se ele se perde."
+    "amarra": "equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): se ele se perde, o Mestre ajusta o nível."
   },
   {
     "id": "refugio",
@@ -381,7 +381,7 @@
         "texto": "O segredo definitivo: a fraqueza de um deus, a verdade que derruba impérios; guardá-lo é carregar o destino de muitos."
       }
     ],
-    "amarra": "o Combate Social (a Chantagem só existe com um Segredo, e cobrá-lo a fundo o gasta; ver Cap. X, Ameaça, Chantagem e Ruptura) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). O XP volta como crédito quando queima."
+    "amarra": "o Combate Social (a Chantagem só existe com um Segredo, e cobrá-lo a fundo o gasta; ver Cap. X, Ameaça, Chantagem e Ruptura) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). Quando queima, o Mestre ajusta o nível."
   },
   {
     "id": "fe",
@@ -485,6 +485,6 @@
       }
     ],
     "notaFormato": "Nomeado e consumível",
-    "amarra": "a Régua (é um pico de capital que você gasta de uma vez, sem construir vínculo); resolve uma cena e acaba. O XP volta como crédito quando a dívida é cobrada."
+    "amarra": "a Régua (é um pico de capital que você gasta de uma vez, sem construir vínculo); resolve uma cena e acaba. Quando a dívida é cobrada, o Mestre ajusta o nível."
   }
 ]
