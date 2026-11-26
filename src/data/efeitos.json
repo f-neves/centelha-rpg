@@ -666,7 +666,7 @@
         "nome": "Dano",
         "tipo": "fixo",
         "valor": "1d6",
-        "nota": "Fixo: não sobe com o grau."
+        "nota": "O 1d6 é o do aquecimento do metal, não o do golpe; o nível 2 o paga e ele não sobe com o grau."
       },
       {
         "nome": "Duração",
@@ -6449,7 +6449,8 @@
       {
         "nome": "Alvos",
         "tipo": "fixo",
-        "valor": "1 escolha, sua ou de quem você tocar"
+        "valor": "1 escolha, sua ou de quem você tocar",
+        "nota": "O nível 4 paga a escolha única; este parâmetro não sobe, e o que cresce com o grau é a Visão (quantos futuros se vê)."
       },
       {
         "nome": "Visão",
@@ -7196,7 +7197,8 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "a região em volta"
+        "valor": "a região em volta",
+        "nota": "O nível 5 paga o Alcance da região em volta, sem a medida do catálogo; o Mestre define a região (D-087), e este parâmetro não sobe com o grau."
       },
       {
         "nome": "Duração",
