@@ -62,8 +62,17 @@ export function por(obj, cam, valor) {
   return null;
 }
 
-const NUMERICOS = /^(atributos|habilidades|habilidadesSec|virtudes|vontade|aparencia|centelha|ameaca|corpo|couraca|perfilCouraca|deslocamento|ataques|equipamento|artes)(\.|$)/;
-const ehNumero = (a) => NUMERICOS.test(rotulo(a.cam)) && (typeof a.antes === 'number' || typeof a.depois === 'number' || /\b\d/.test(String(a.antes ?? '') + String(a.depois ?? '')));
+// MUDANÇA DE NÚMERO = qualquer campo que não seja narrativo. Lista PRETA (e não branca): uma chave nova com número entra sozinha na lista à
+// parte, e o que fica de fora é só o que é texto da criatura. Narrativas de topo: a identidade e os textos; narrativas em qualquer
+// profundidade: o nome, a descrição, o efeito e parecidos. Um campo com número dentro de texto ("2d6 + Centelha", "9 m") continua sendo número.
+const NARRATIVAS_TOPO = new Set(['id', 'idAntigo', 'nome', 'nomeIngles', 'categoria', 'papel', 'comoLuta', 'sentidos', 'fisiologia', 'aptidoes', 'comportamento', 'ecologia', 'descricao', 'lore', 'imagens', 'elementos', 'revisao', 'fonte', 'formaPrincipal']);
+const NARRATIVAS_FOLHA = new Set(['nome', 'descricao', 'texto', 'justificativa', 'motivo', 'legenda', 'foco', 'origem', 'ativacao', 'duracao', 'categoria', 'efeito', 'classe', 'tracos', 'camuflagem', 'postura', 'posturaDoTamanho', 'apoio', 'id', 'forma', 'formas', 'parte', 'tipoDano', 'arma']);
+export function ehNumero(a) {
+  if (NARRATIVAS_TOPO.has(String(a.cam[0]))) return false;
+  if (NARRATIVAS_FOLHA.has(String(a.cam[a.cam.length - 1]))) return false;
+  const v = (x) => typeof x === 'number' || (typeof x === 'string' && /\d/.test(x));
+  return v(a.antes) || v(a.depois);
+}
 
 const DERIVADOS = ['pv', 'pesoErguido', 'faixa', 'tamanho', 'esquiva', 'bloqueio', 'defesaMental', 'defesaSocial', 'iniciativa', 'energia', 'mana'];
 function derivados(M, c) {

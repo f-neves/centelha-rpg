@@ -9,7 +9,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { caminhoDe, pegar, por, planejar, textoJson } from './bestiario-editor/aplica-alteracoes.mjs';
+import { caminhoDe, pegar, por, planejar, textoJson, ehNumero } from './bestiario-editor/aplica-alteracoes.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = path.join(RAIZ, 'src', 'data', 'bestiario');
@@ -91,6 +91,35 @@ ok(r5.erros.length === 1 && /não há JSON/.test(r5.erros[0]), 'criatura que nã
 // o ajuste de texto não é "mudança de número"
 const r6 = await planejar(JSON.parse(fs.readFileSync(arquivoDeMudancas('texto', [{ id: 'aasimar', caminho: ['nomeIngles'], antes: aasimar.nomeIngles, depois: 'Outro' }]), 'utf8')), pasta);
 ok(r6.numeros.length === 0, 'mudar um texto não entra na lista de mudanças de número');
+
+// ---- a lista de mudanças de número é por lista PRETA: toda chave com número entra (CORRIGE da Revisora, etapa 2, corte 1)
+// uma alteração para cada uma das seis chaves que a lista branca antiga deixava de fora, num caso real do site
+const mudar = async (id, caminho, depois) => {
+  const cam = caminhoDe(caminho);
+  const antes = pegar(lerC(pasta, id), cam);
+  const r = await planejar(JSON.parse(fs.readFileSync(arquivoDeMudancas('n-' + id + '-' + cam.join('-'), [{ id, caminho: cam, antes, depois }]), 'utf8')), pasta);
+  return { r, antes, rot: cam.join('.') };
+};
+for (const [id, caminho, depois, nome] of [
+  ['aasimar', 'habilidadesEspeciais.0.base.nivel', 3, 'habilidadesEspeciais'],
+  ['aasimar', 'especialidades.integridade.0.valor', 3, 'especialidades'],
+  ['arconte-cao', 'formas.0.deslocamento.terra.batalha', 6, 'formas'],
+  ['balor', 'especialidadesSec.lideranca.0.valor', 3, 'especialidadesSec'],
+  ['enxame-de-aranhas', 'enxame.individuosPorQuadrado', 3600, 'enxame'],
+  ['orc', 'bonusPV', 6, 'bonusPV'],
+]) {
+  const { r, antes, rot } = await mudar(id, caminho, depois);
+  ok(r.erros.length === 0 && r.criaturas.length === 1, `${nome}: a alteração ${id} ${rot} ${antes} -> ${depois} é aceita: ${JSON.stringify(r.erros)}`);
+  ok(r.numeros.some((x) => x.id === id && x.caminho === rot && x.antes === antes && x.depois === depois), `${nome}: a seção MUDANÇAS DE NÚMERO abre para ${id} ${rot}`);
+}
+const orc = await mudar('orc', 'bonusPV', 7);
+ok(orc.r.numeros.some((x) => x.derivado && /^pv: \d+ -> \d+/.test(x.derivado)), 'bonusPV: o PV que o motor calcula também aparece, antes e depois');
+// os campos narrativos NÃO entram, mesmo com dígitos no texto
+for (const [id, caminho, depois] of [
+  ['aasimar', 'nome', 'Aasimar 2'], ['aasimar', 'descricao', 'Humano de 1,75 m com 3 olhos.'], ['aasimar', 'lore.0.texto', 'Nasceu em 1203.'], ['aasimar', 'comoLuta.0.texto', 'Luta em 2 tempos.'], ['aasimar', 'sentidos.0.descricao', 'enxerga a 30 m no escuro'],
+  ['aasimar', 'habilidadesEspeciais.0.nome', 'Canalizar luz 2'], ['aasimar', 'habilidadesEspeciais.0.efeito', 'à escolha: cura 2 aliados'],
+]) { const { r } = await mudar(id, caminho, depois); ok(r.erros.length === 0 && r.numeros.length === 0, `narrativo: ${id} ${caminho} (texto com dígitos) não é mudança de número: ${JSON.stringify(r.numeros).slice(0, 160)}`); }
+ok(ehNumero({ cam: ['ataques', 0, 'dado'], antes: '1d6', depois: '2d6' }) && ehNumero({ cam: ['deslocamento', 'terra', 'batalha'], antes: 4, depois: 5 }) && !ehNumero({ cam: ['imagens', 0], antes: 'a2.webp', depois: 'b3.webp' }), 'ehNumero: dado e deslocamento entram; imagem não');
 
 fs.rmSync(tmp, { recursive: true, force: true });
 console.log(`✓ test-aplica-alteracoes: dry-run não grava, aplicar preserva formato e ordem (diff de uma linha) e guarda o antes, conflito deixa a criatura de fora, schema derruba o lote, número vai à parte (${n} conferências)`);
