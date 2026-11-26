@@ -252,7 +252,7 @@
       "base": {
         "arte": "gelo",
         "nivel": 2,
-        "efeito": "inverno"
+        "efeito": "lascas"
       },
       "categoria": "magia",
       "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",

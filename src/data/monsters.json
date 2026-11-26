@@ -52006,7 +52006,7 @@
      "base": {
       "arte": "gelo",
       "nivel": 2,
-      "efeito": "inverno"
+      "efeito": "lascas"
      },
      "categoria": "magia",
      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
@@ -52492,7 +52492,7 @@
     "base": {
      "arte": "gelo",
      "nivel": 2,
-     "efeito": "inverno"
+     "efeito": "lascas"
     },
     "texto": "neve fechada; quem está dentro tem −2 em Prontidão e nas jogadas de Percepção pela vista, e ele não sofre a penalidade",
     "campos": [
