@@ -34,7 +34,7 @@ A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técn
 
 Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Por isso a Centelha inicial também não se compra: na criação, o Mestre e o grupo a combinam pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica, com referência 1), e dali em diante ela sobe em jogo. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (especialista).
 
-> **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**. A escada dos níveis altos é suave, e o topo da régua é alcançável em jogo. **Força de Vontade e Aparência têm piso 0** (você compra o nível 1) e a **Centelha não custa XP**. Duas trilhas não acumulam, a Técnica de Proeza e o Efeito Especial: paga-se só o preço do nível da Técnica ou do Efeito comprado.
+> **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**. A escada dos níveis altos é suave, e o topo da régua é alcançável em jogo. **Força de Vontade e Aparência têm piso 0** (você compra o nível 1) e **a Centelha e os Antecedentes não custam XP**. Duas trilhas não acumulam, a Técnica de Proeza e o Efeito Especial: paga-se só o preço do nível da Técnica ou do Efeito comprado.
 >
 > **Pendente.** Os orçamentos de 1500 / 2000 / 2600 foram calibrados na economia antiga, quando as Proezas comiam cerca de 40% do bolo. Com a curva nova elas se acumulam ao longo da campanha em vez de saírem da criação, e um personagem inicial típico fecha perto de **1050 XP**. Os três exemplos abaixo estão **recusteados pela função de custo real**, mas os orçamentos ainda serão reajustados.
 
@@ -51,7 +51,7 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 | Virtude | 4 + (novo × 2) | 1→2 = 8 · 2→3 = 10 · 5→6 = 16 |
 | Força de Vontade | novo × 2 | piso 0 · 0→1 = 2 · 5→6 = 12 · 11→12 = 24 |
 | Aparência | novo × 2 | piso 0 · mesma trilha da Vontade |
-| Antecedente | novo × 3 | 0→1 = 3 · 2→3 = 9 · 5→6 = 18 |
+| Antecedente | **grátis** | o Mestre concede e ajusta o nível |
 | Centelha | **grátis** | o tier vem do Mestre, não do XP |
 | Técnica de Proeza | 5 + (nível × 5) | 10 · 15 · 20 · 25 · 30 · 35 · **não acumula** |
 | Nível de Arte (Arcano) | 10 + (nível × 5) | 0→1 = 15 · 2→3 = 25 · 5→6 = 40 |

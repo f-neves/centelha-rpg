@@ -18,29 +18,27 @@ Como tudo no Centelha, os Antecedentes vão de **1 a 6**. Seis é o teto do que 
 ## Dois formatos: Único e Nomeado
 
 - **Único.** Você tem **um valor** dele, e pronto. "Recursos 3" é uma coisa só. São Únicos: Recursos, Linhagem e Fé (esta, salvo quando o personagem serve a mais de um culto).
-- **Nomeado.** Você compra **instâncias separadas, cada uma com nome e com valor próprio de 1 a 6**, e pode ter várias no mesmo personagem. São os outros onze.
+- **Nomeado.** Você tem **instâncias separadas, cada uma com nome e com valor próprio de 1 a 6**, e pode ter várias no mesmo personagem. São os outros onze.
 
 O exemplo que resume o formato Nomeado:
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável).</strong> São três famas distintas na mesma pessoa, cada uma com o seu valor e o seu público: medianamente conhecida como guarda-costas, bastante famosa como cantor, e com uma fama pequena de ser confiável. Cada instância é comprada e sobe por conta própria.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável).</strong> São três famas distintas na mesma pessoa, cada uma com o seu valor e o seu público: medianamente conhecida como guarda-costas, bastante famosa como cantor, e com uma fama pequena de ser confiável. O Mestre concede cada instância, e cada uma sobe por conta própria.</div>
 
-## Custo · tudo por XP, a ×3 por ponto
+## Antecedente não custa XP: o Mestre concede e ajusta pela história e pela ficha
 
-Antecedente se compra e se eleva com XP como o resto da ficha, a **×3 por ponto**: o próximo ponto custa o novo valor × 3, então sair de 2 para 3 custa 9 XP.
+Nenhum dos catorze Antecedentes custa XP, o Artefato inclusive, na criação e em jogo. O Mestre concede cada um e ajusta o nível pela história do personagem e pela ficha dele; não há tabela, é o bom senso de quem conduz a mesa.
 
-O lugar dele na economia é deliberado: no nível 1 custa o mesmo que a Habilidade secundária (2 + o novo valor) e dali em diante custa mais; em relação à primária (4 + 2 × o novo valor), custa menos até o nível 3, o mesmo no 4 e mais nos níveis 5 e 6 (15 contra 14, 18 contra 16).
-
-É **poder de campanha, não poder de dado**, e não disputa de igual para igual com Atributo (5 + 5 × o novo valor); a Centelha nem custa XP, é concedida pelo Mestre. Na criação, sai do mesmo orçamento de XP do resto do personagem.
+É **poder de campanha, não poder de dado**: o que ele muda está na ficção, e por isso é o Mestre quem o mede.
 
 **E é volátil de propósito.** Diferente de um Atributo, um Antecedente **sobe e cai na ficção**: o mentor morre, a fortuna queima num naufrágio, a reputação de herói vira infâmia depois de um escândalo.
 
-Quando a história tira um Antecedente de você, o XP investido **volta como crédito** para recomprar outro, para ninguém sentir que perdeu pontos por uma decisão do Mestre. E ganhar Antecedentes novos em jogo (herdar uma fortuna, conquistar um título) é comum, e **não custa XP** quando a ficção os entrega.
+Quando a história tira um Antecedente de você, não há XP a devolver, porque ele nunca custou: o Mestre só ajusta o nível. Ganhar Antecedentes novos em jogo (herdar uma fortuna, conquistar um título) é comum e acontece quando a ficção os entrega.
 
 ## Tetos de bom senso
 
 **Recursos** e **Artefato** são os dois que mais facilmente quebram o jogo, porque dinheiro compra equipamento e artefato compra poder. Na criação, eles não têm teto próprio: quem os limita é o Mestre, pelas restrições da campanha.
 
-Antecedentes que são **pessoas** (Aliados, Contatos, Mentor, Séquito) nascem numa posição da [Régua de Relação](/regras/relacoes-sociais) e continuam sujeitos a ela: um aliado tratado como ferramenta esfria e desce a régua. O número compra a **capacidade e a lealdade inicial**, e nunca a obediência eterna.
+Antecedentes que são **pessoas** (Aliados, Contatos, Mentor, Séquito) nascem numa posição da [Régua de Relação](/regras/relacoes-sociais) e continuam sujeitos a ela: um aliado tratado como ferramenta esfria e desce a régua. O número dá a **capacidade e a lealdade inicial**, e nunca a obediência eterna.
 
 ## Onde a régua já começa
 
@@ -52,7 +50,7 @@ O Antecedente age antes de qualquer rolagem:
 
 Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não ganha o duelo social do momento. E o desconto é mudo onde não há Neutro a romper: quem já nasce acima dele por outra amarra (os contatos em Simpatia, os aliados em Aliança ou Devoção) não desconta nada em cima disso.
 
-<p class="muted">A Régua de Relação e o Combate Social, citados acima, são o capítulo <a href="/centelha-rpg/regras/relacoes-sociais"><strong>Relações Sociais</strong></a>. Antecedentes vem antes dele no livro porque é matéria de ficha, e não de cena: você compra estes traços quando monta o personagem, junto dos Atributos e das Habilidades.</p>
+<p class="muted">A Régua de Relação e o Combate Social, citados acima, são o capítulo <a href="/centelha-rpg/regras/relacoes-sociais"><strong>Relações Sociais</strong></a>. Antecedentes vem antes dele no livro porque é matéria de ficha, e não de cena: você recebe estes traços quando monta o personagem, junto dos Atributos e das Habilidades; o Mestre os concede e ajusta o nível, e eles não custam XP.</p>
 
 ## Os catorze Antecedentes
 
@@ -75,7 +73,7 @@ Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não
 
 ### Aliados
 
-*Nomeado.* Poucos indivíduos capazes e leais que agem **por você** de coração, não por salário. Cada aliado é comprado à parte, com nome e cara. O nível mede a **capacidade** do aliado combinada com a **dedicação** dele.
+*Nomeado.* Poucos indivíduos capazes e leais que agem **por você** de coração, não por salário. Cada aliado é concedido à parte, com nome e cara. O nível mede a **capacidade** do aliado combinada com a **dedicação** dele.
 
 | Nível | O que significa |
 |:---:|---|
@@ -182,7 +180,7 @@ Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não
 | **5** | Um tesouro do mundo: rivaliza com uma Proeza de tier alto; a sua existência é um evento. |
 | **6** | Um artefato único e divino: poder de semideus preso num objeto; nações guerreiam por ele. |
 
-**Amarra com:** equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): por isso o XP volta como crédito se ele se perde.
+**Amarra com:** equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): se ele se perde, o Mestre ajusta o nível.
 
 ### Refúgio
 
@@ -227,7 +225,7 @@ Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não
 | **5** | Um segredo que muda o mundo: a fraqueza de um rei, a origem de uma guerra, algo que reescreve a história. |
 | **6** | O segredo definitivo: a fraqueza de um deus, a verdade que derruba impérios; guardá-lo é carregar o destino de muitos. |
 
-**Amarra com:** o Combate Social (a Chantagem só existe com um Segredo, e cobrá-lo a fundo o gasta; ver Cap. X, Ameaça, Chantagem e Ruptura) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). O XP volta como crédito quando queima.
+**Amarra com:** o Combate Social (a Chantagem só existe com um Segredo, e cobrá-lo a fundo o gasta; ver Cap. X, Ameaça, Chantagem e Ruptura) e a Proeza Teia. **É meio consumível:** usar um segredo a fundo costuma gastá-lo (uma vez revelado ou cobrado, perde a força). Quando queima, o Mestre ajusta o nível.
 
 ### Fé
 
@@ -272,16 +270,16 @@ Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não
 | **5** | Um favor que quase a arruína: ela paga um preço alto, uma única vez, e a dívida está quitada. |
 | **6** | Um favor que a arruína: ela dá tudo o que tem por você, uma única vez, e fica em ruínas. |
 
-**Amarra com:** a Régua (é um pico de capital que você gasta de uma vez, sem construir vínculo); resolve uma cena e acaba. O XP volta como crédito quando a dívida é cobrada.
+**Amarra com:** a Régua (é um pico de capital que você gasta de uma vez, sem construir vínculo); resolve uma cena e acaba. Quando a dívida é cobrada, o Mestre ajusta o nível.
 
 <!-- /gen:antecedentes -->
 
 ## Folha de referência
 
-- **Escala 1 a 6**, tudo por **XP a ×3 por ponto**, na criação e em jogo, do mesmo orçamento.
+- **Escala 1 a 6**, e **não custa XP**: o Mestre concede e ajusta o nível.
 - **Únicos:** Recursos, Linhagem, Fé. **Nomeados** (várias instâncias, cada uma de 1 a 6): os outros onze.
 - **Sem teto na criação** para Recursos e Artefato: quem limita é o Mestre.
 - **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada. O Antecedente não soma a jogada nenhuma: ele **desconta passos do Neutro** na Régua de Relação, a metade do nível do traço, para baixo, por passo (só o 6 chega aos três), e o Mestre soma outros traços quando a situação pedir, dentro dos três passos.
-- **Voláteis:** sobem e caem na ficção, e o XP perdido volta como crédito.
+- **Voláteis:** sobem e caem na ficção, e o Mestre ajusta o nível, sem XP a devolver.
 - **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se maltratadas. **Reputação** desconta passos do Neutro com quem a conhece, e não soma na jogada. **Segredo** e **Dívida** são meio consumíveis. **Artefato** e **Aliado Animal** têm ficha própria por nível.
-- **A regra de ouro:** o número compra a **capacidade e a disposição inicial**, nunca a obediência eterna. O mundo continua vivo por baixo do Antecedente.
+- **A regra de ouro:** o número dá a **capacidade e a disposição inicial**, nunca a obediência eterna. O mundo continua vivo por baixo do Antecedente.
