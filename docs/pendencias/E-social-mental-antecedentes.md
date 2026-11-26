@@ -92,3 +92,7 @@
   O autor está discutindo o cortejo. Até lá ficam como estão a frase "o intervalo do cortejo (8 dias
   ou mais) não é uma ação" (`relacoes-sociais.md`, Quando o alvo segura) e a Vontade presa
   (`vontadePresa` e `vontadePresaNota` em `regras.json`, `social.modoDevagar.resistencia`).
+- [ ] **E12 · [CONSERTAR] Documentos de trabalho fora do site ainda dizem que Antecedente custa XP (T24, 26/11/2026).**
+  - O livro diz: Antecedente não custa XP, nenhum dos catorze (D-385; `antecedentes.md`, `criacao-de-personagem.md`, `regras.json` `xp.antecedente` como `gratis`).
+  - Os documentos de trabalho dizem outra coisa e não foram tocados (não são o site): `Antecedentes.md` na raiz do repositório (seção "Custo e a economia", linhas 61 a 71, com "×2 / ×5 / ×10 / ×15" e "perícia"); `docs/MAPA.md` linha 41 ("14 antecedentes, XP ×3"); `Arcano_revisao.md` linha 1615; e dois trechos de `lore/economia/etapas-abc/revisao-economica-etapas-abc.md` (linhas 629 e 751, sobre o Mentor: "evita cobrar duas vezes (XP e pc)", "A dívida de XP é a mesma").
+  - Conserto quando o autor quiser limpar os documentos: tirar o custo de XP desses trechos; nada do site lê isso.
