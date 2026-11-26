@@ -5590,7 +5590,7 @@
       "ver-atraves"
     ],
     "aliases": [],
-    "texto": "Revela um disfarce ou mentira mundana (contra o Camaleão ou a Máscara).",
+    "texto": "Revela um disfarce ou mentira mundana (contra o Camaleão ou a Máscara). Substitui as Técnicas Farejar a Farsa e Ver Através (revelar é o passo seguinte de sentir e de notar).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -7966,7 +7966,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (contra a Defesa Social). Substitui a Técnica Farejar Mentira.",
+    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (contra a Defesa Social). Substitui as Técnicas Farejar Mentira e Ver Através.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
