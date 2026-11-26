@@ -39,7 +39,7 @@ está na seção 3.
 
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 25 | 1 | 10 | 17 | 5 | 4 | 0 | 0 | 0 |
+| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 21 | 0 | 15 | 8 | 6 | 7 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 32 | 23 | 0 | 9 | 8 | 14 | 0 | 0 | 0 | 1 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 12 | 0 | 9 | 5 | 2 | 0 | 0 | 0 | 5 |
@@ -52,7 +52,7 @@ está na seção 3.
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **419** | **301** | **4** | **114** | **109** | **83** | **8** | **13** | **81** | **11** |
+| | **Total** | | **419** | **297** | **3** | **119** | **100** | **84** | **11** | **13** | **81** | **11** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -320,34 +320,29 @@ Os itens abertos e parciais de cada tema, com a marca e o título; os fechados v
 
 | Sigla | Estado | Marcação | Título |
 |---|---|---|---|
-| A1 | aberto | DECIDIR | Guardar um feitiço: os limites. |
+| A1 | aberto | AUTOR-REGRA | Guardar um feitiço: os limites. |
 | A2 | aberto | DECIDIR | Focos das Artes não elementais. |
-| A3 | aberto | DECIDIR | O desconto da fonte pode passar de +1? |
+| A3 | aberto | AUTOR-REGRA | O desconto da fonte pode passar de +1? |
 | A4 | aberto | DECIDIR | Rituais. |
-| A5 | aberto | DECIDIR | Clarão Cegante. |
-| A6 | aberto | DECIDIR | O campo `escalonavel`. |
+| A5 | aberto | AUTOR-REGRA | Clarão Cegante. |
+| A6 | aberto | AUTOR-REGRA | O campo `escalonavel`. |
 | A7 | aberto | AUTOR | Treze Efeitos elementais ainda sem número |
 | A8 | aberto | FAZER | Revisar em mesa a primeira leva |
-| A9 | aberto | FAZER | O Efeito Especial no bestiário. |
 | A10 | aberto | FAZER | Abertura do capítulo para iniciante. |
-| A11 | parcial | DECIDIR | Duas partes, dois estados |
 | A13 | aberto | AUTOR | Revisar Área × Volume. |
 | A14 | aberto | FAZER | Revisar os textos de Regras das Artes |
 | A24 | aberto | AUTOR | Dar um molde a cada Efeito que ainda declara `zona`. |
 | A25 | aberto | DECIDIR | A geometria das Artes que não manifestam elemento. |
-| A15 | aberto | AUTOR | Revisar as descrições de nível das Artes |
+| A15 | aberto | FAZER | Revisar as descrições de nível das Artes |
 | A26 | aberto | DECIDIR | O improviso pode começar em qualquer lugar? |
 | A19 | aberto | DECIDIR | O que a matéria dentro da fatia faz em número. |
 | A16 | aberto | DECIDIR | A Fonte do Elemento: os elementos que faltam. |
-| A28 | aberto | DECIDIR | A Cura com Proeza ou Arte não tem número fora do combate. |
-| A29 | aberto | DECIDIR | Preço de serviço e de item mágico, e raridade por lugar. |
 | A30 | aberto | DECIDIR | Cura, Acerto Arcano e Energia Espiritual: comparar por pacote na etapa das Artes. |
 | A31 | aberto | DECIDIR | Energia/Mana fora da Reforma da Centelha, avaliar com as Artes. |
-| A32 | aberto | DECIDIR | O mortal conjura no livro, e o código ainda bloqueia. |
-| A33 | aberto | DECIDIR | O campo `custo.mana` dos níveis do catálogo das Artes. |
+| A33 | aberto | FAZER | O campo `custo.mana` dos níveis do catálogo das Artes. |
 | A34 | aberto | FAZER | Recalibração das Artes: ART-34, ART-5, ART-38 e ART-40 (D-061). |
 
-Fechados (10): A12, A17, A18, A22, A23, A27, A21, A22, A20, A35.
+Fechados (15): A9, A11, A12, A17, A18, A22, A23, A27, A21, A22, A20, A28, A29, A32, A35.
 
 ### B · Bestiário
 

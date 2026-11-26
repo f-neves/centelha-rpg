@@ -11,34 +11,35 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
 > pela **distância**, que é como a regra em seis linhas do doc está escrita, e a A21 e a A22 seguem
 > abertas na caixa "Em revisão" da própria página.
 
-- [ ] **A1 · [DECIDIR] Guardar um feitiço: os limites.** A regra base está no site (paga o Mana na
+- [ ] **A1 · [AUTOR-REGRA] Guardar um feitiço: os limites.** A regra base está no site (paga o Mana na
   hora, Raciocínio conta um nível abaixo e −1d6 nas rolagens enquanto carrega). Falta: a penalidade
   **acumula** por feitiço guardado? Há **teto** de quantos dá para carregar? O feitiço guardado
   **vence** com o tempo?
-- [ ] **A2 · [DECIDIR] Focos das Artes não elementais.** As sete rascunhadas estão no site. Falta
+- [ ] **A2 · [DECIDIR] [MESTRE: frase proposta em varredura-26-11/mestre.md] Focos das Artes não elementais.** As sete rascunhadas estão no site. Falta
   dizer quais outras Artes ganham foco e, principalmente, **como se mede a abundância** de um foco
   que não é elemento (um baralho de tarô não tem volume como um rio tem).
-- [ ] **A3 · [DECIDIR] O desconto da fonte pode passar de +1?** Hoje é fixo. Fica registrado que
+- [ ] **A3 · [AUTOR-REGRA] O desconto da fonte pode passar de +1?** Hoje é fixo. Fica registrado que
   lugar sagrado do elemento, estação do ano ou um pacto poderiam aumentá-lo.
-- [ ] **A4 · [DECIDIR] Rituais.** Ritual já é o modo lento de conjurar (troca Mana por tempo e
+- [ ] **A4 · [DECIDIR] [MESTRE: frase proposta em varredura-26-11/mestre.md] Rituais.** Ritual já é o modo lento de conjurar (troca Mana por tempo e
   Vontade). Falta: a regra antiga de "metade do Mana no Ritual" **morre de vez**? Existe **algum
   Efeito que só funciona no modo lento** (o círculo de invocação, por exemplo)?
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração)**, a parte de Mana em ação Longa (a primeira frase do bloco 1d):
     > Serviço mágico = tabela de serviços pelo perfil do conjurador × tempo, mais Mana e material quando houver regra.
-- [ ] **A5 · [DECIDIR] Clarão Cegante.** Ficou **sem Dificuldade** por ora: quem está na área e
+- [ ] **A5 · [AUTOR-REGRA] Clarão Cegante.** Ficou **sem Dificuldade** por ora: quem está na área e
   olhando sofre a Penalidade, sem rolagem. Confirmar assim ou dar uma resistência.
-- [ ] **A6 · [DECIDIR] O campo `escalonavel`.** Órfão desde que os níveis dos Efeitos viraram
+- [ ] **A6 · [AUTOR-REGRA] O campo `escalonavel`.** Órfão desde que os níveis dos Efeitos viraram
   fixos. Ou vira `sucede` (comprar a Fenda por cima do Terremoto pagando a diferença), ou some do
   schema.
-- [ ] **A7 · [AUTOR] Treze Efeitos elementais ainda sem número**, e **Fogo, Raio e Luz não têm nada
+- [ ] **A7 · [AUTOR] [ESPERA: a lista de recalibração dos Efeitos (D-380, T7a) e a recalibração das Artes (A34); quem move: o Arquiteto abre a lista, o autor abre a recalibração] Treze Efeitos elementais ainda sem número**, e **Fogo, Raio e Luz não têm nada
   de nível 1**. Sua frente de revisão dos elementais.
-- [ ] **A8 · [FAZER] Revisar em mesa a primeira leva** dos Efeitos das Artes não elementais: os
+- [ ] **A8 · [FAZER] [ESPERA: jogo em mesa e a recalibração das Artes (A34); quem move: o autor] Revisar em mesa a primeira leva** dos Efeitos das Artes não elementais: os
   números e os limites saíram no papel e não passaram por jogo.
-- [ ] **A9 · [FAZER] O Efeito Especial no bestiário.** Na ficha ele já tem lugar; falta decidir
+- [x] **A9 · [FAZER] O Efeito Especial no bestiário.** Na ficha ele já tem lugar; falta decidir
   como uma criatura carrega Efeitos no stat block.
+  Fechado em 26/11/2026 (varredura): D-274: "Efeito similar à magia ... Funciona como a ação sobrenatural, com usos grátis"; `poderes-das-criaturas.md:12` "A base de um poder é um Efeito Especial de Arte num nível" e `:24`. D-196: "A ficha traz as Artes que a criatura tem e os efeitos especiais"; D-253 (linha `livro:` com `arte`). O site já remete: `regras.astro:570`
 - [ ] **A10 · [FAZER] Abertura do capítulo para iniciante.** As seções 2 a 4 do `Arcano_revisao.md`
   (o que a feitiçaria é) ainda não viraram prosa no site.
-- [~] **A11 · [DECIDIR] Duas partes, dois estados** (achado na auditoria de memória de 08/09: fechar isto
+- [x] **A11 · [DECIDIR] Duas partes, dois estados** (achado na auditoria de memória de 08/09: fechar isto
   como um item só escondia uma condição futura dentro do "fechado", a forma que o `CATALOGO.md` da
   simulação agora cataloga). **[FECHADO em 2026-08-17, escopo elemental improvisado:]** o "Ocultismo
   + Atributo" saiu de todos os textos e do `regras.json`, porque nunca foi regra viva: a única
@@ -49,11 +50,12 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   Tradição decidir se um efeito **Moldado** rola por perícia própria (a proposta de
   `trilhas-feiticaria.md`, 28/07, nunca batida) é que o par de dados acima pode mudar para esse caso.
   "Quando a Tradição decidir" não é ressalva de rodapé: é a condição que mantém esta metade aberta.
+  Duplicado de C1 (varredura de 26/11/2026): 1ª parte FECHADA: `regras.json:1967` já diz que o "Ocultismo + Atributo" saiu e que Ocultismo LÊ. 2ª parte é a mesma coisa que C1/C2 (`C-trilhas-feiticaria.md:5-14`: "Trava a metade Tradição do A11"). Fica o C1
 - [x] **A12 · [RESOLVIDO 2026-08-15] Metal não vira Arte.** Passa a ser um **bloco de Efeitos de
   Terra** aberto por **Trilha**: os verbos dele são coisas que se fazem com equipamento (e coisa
   que se faz é Efeito), não tem dano nem parâmetro próprio, e a tabela de estado já o põe junto da
   Terra em "sólido, metade". Falta escrever os Efeitos, o que é conteúdo e cai na A15.
-- [ ] **A13 · [AUTOR] Revisar Área × Volume.** **Encaminhado pela A17**, que separou os dois de vez:
+- [ ] **A13 · [AUTOR] [LIVRO-NO-GRID] Revisar Área × Volume.** **Encaminhado pela A17**, que separou os dois de vez:
   chão é molde, matéria é Volume. **E encaminhado outra vez em 18/08**, quando o improviso ficou com
   o Volume: o parâmetro passou a ter duas réguas, a da **manifestação** (o lado da base, 0,5 a 6 m) e
   a da **matéria** (o lado, 2 cm a 2 m), e a Área ficou sem dono, sobrevivendo na tabela só pelos 46
@@ -68,20 +70,20 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   capítulo cresceu por acréscimo em várias conversas seguidas (grau 0, as três travas do improviso,
   Área ou Volume, estado da matéria) e precisa de uma passada de edição: ordem das seções, o que
   ficou repetido e o que ficou sem explicação de por quê.
-- [ ] **A24 · [AUTOR] Dar um molde a cada Efeito que ainda declara `zona`.** Aberta em 2026-08-18,
+- [ ] **A24 · [AUTOR] [LIVRO-NO-GRID] Dar um molde a cada Efeito que ainda declara `zona`.** Aberta em 2026-08-18,
   quando o Grid passou a ler as réguas da **§5.3** e da **§5.4**. A forma declarada por um Efeito já
   escolhe o molde dele (`cone` é o Leque, `muro` é a Muralha, `aura` é a Aura), e isso resolveu 12 dos
   48 sozinho. Sobram os **23 que declaram `zona`**, a genérica que engordou: hoje todos caem na
   **Explosão**, e o mestre pode trocar na caixa, mas vários pedem outra coisa (a Chuva de Fogo é
   Explosão mesmo, o Vendaval não). Cada um é um julgamento, não é mecânica. Junto vem o resto da
   **A13**: doze deles nem chão medem, medem corpo, e deveriam usar Volume.
-- [ ] **A25 · [DECIDIR] A geometria das Artes que não manifestam elemento.** Cura, Fascinação,
+- [ ] **A25 · [DECIDIR] [LIVRO-NO-GRID] A geometria das Artes que não manifestam elemento.** Cura, Fascinação,
   Adivinhação, Conjuração e Metamorfose não põem elemento no mundo, e a fatia da §5.4 não quer dizer
   nada nelas. No tabuleiro isso agora está dito em voz alta (a caixa avisa e o improviso delas vira
   Dardo, que gruda num alvo), mas o que **deveria** acontecer não está decidido: a §5 já promete
   parâmetros próprios por Arte (Gravidade na Cura, Plateia na Fascinação, Porte na Conjuração) e
   nenhum deles tem forma no chão.
-- [ ] **A15 · [AUTOR] Revisar as descrições de nível das Artes** em `artes.json`, conforme os
+- [ ] **A15 · [FAZER] Revisar as descrições de nível das Artes** em `artes.json`, conforme os
   Efeitos Especiais e os Parâmetros de hoje. Vários níveis ainda descrevem improvisos que as travas
   não permitem mais: Fogo 3 "sustentar uma parede baixa de chamas", Fogo 4 "parede de chamas
   fechando um corredor" e "explosão que pega quatro inimigos juntos". Os seis níveis de cada Arte
@@ -191,13 +193,13 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   e o volume), então virou botão na caixa de conjuração, a cada conjuração. Junto entrou a obrigação
   de **escrever a altura da base**: vista de cima, no grau 6 em 180°, as duas desenham a mesma
   meia-lua, e só o número diz que uma tem 6 m de altura com 2 m de raio e a outra o contrário.
-- [ ] **A26 · [DECIDIR] O improviso pode começar em qualquer lugar?** Aberta em 2026-08-19. A §5.4 diz
+- [ ] **A26 · [DECIDIR] [LIVRO-NO-GRID] O improviso pode começar em qualquer lugar?** Aberta em 2026-08-19. A §5.4 diz
   que a manifestação nasce no feiticeiro e **nunca é colocada**, e era assim que o tabuleiro fazia. A
   mesa pediu para experimentar o contrário, e por ora o arco começa onde se clicar, com o Alcance
   comprado sendo conferido. É **afrouxamento provisório**: se ficar, a fronteira que separa improviso
   de Efeito Especial muda de lugar, porque "pôr num ponto escolhido" era justamente o que se comprava
   com XP. Decidir depois de jogar.
-- [ ] **A19 · [DECIDIR] O que a matéria dentro da fatia faz em número.** Aberta pela A18. A
+- [ ] **A19 · [DECIDIR] [MESTRE: frase proposta em varredura-26-11/mestre.md] O que a matéria dentro da fatia faz em número.** Aberta pela A18. A
   manifestação diz **quanto** elemento aparece e **onde**, e não diz o que ele faz além do parâmetro
   de Dano: o que 62 m³ de chama fazem a quem está dentro, o que a espessura de uma fatia de Terra
   aguenta antes de ceder, o que pesa ao desabar. Encosta na A9 e no capítulo de Vida & Ferimentos.
@@ -217,12 +219,12 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   a **Área ficou sem dono**: nos Efeitos ela virou molde pela A17, no improviso ela virou a base, e só
   segue na tabela porque 46 Efeitos ainda a declaram. Passar cada um para o molde que lhe cabe é a
   **A14/A18**, e é julgamento de Efeito, não mecânica.
-- [ ] **A16 · [DECIDIR] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
+- [ ] **A16 · [DECIDIR] [MESTRE: frase proposta em varredura-26-11/mestre.md] A Fonte do Elemento: os elementos que faltam.** A régua de abundância tem
   oito escadas, uma por elemental, e nenhuma para **Areia**, **Som** e o que mais aparecer. O caso
   da areia é o mais visível: a escada da Terra desliza de solo solto para rocha viva conforme sobe,
   então um deserto cai perto do fundo de uma régua que trata material solto como fraco. Decidir
   quais materiais ganham escada própria, e se Som é escola de Ar ou outra coisa.
-- [ ] **A28 · [DECIDIR] A Cura com Proeza ou Arte não tem número fora do combate.**
+- [x] **A28 · [DECIDIR] A Cura com Proeza ou Arte não tem número fora do combate.**
   Registrado em 26/09/2026, na rodada 114, a partir de uma sugestão do Comerciante. **A Cura mundana
   já tem número desde a rodada 110** (`vida-ferimentos-cura.md:90`, 10% de aceleração por nível de
   Cura de quem cuida, 50% exige Cura 5) e preço (`custo-servicos.md`, atendimento 3, consulta 15). A
@@ -236,27 +238,29 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
     > Preços mundanos baratos já no livro (atendimento 3, consulta 15, tratamento 10 por dia).
     > Cura com Proeza ou Magia encarece: preço pela tabela de serviços do perfil do curador, mais o
     > custo de Mana quando existir regra de Mana em ação Longa.
-- [ ] **A29 · [DECIDIR] Preço de serviço e de item mágico, e raridade por lugar.** Registrado em
+  Duplicado de G73 (varredura de 26/11/2026): Número: já existe, `vida-ferimentos-cura.md:123` (D-009 "+3 por nível da Arte de Cura, ou +1 por nível da Vida") e `:127`, `:155` (D-062, Acelerar a Cura). Preço: é o G73 (`G-acoes-sistema.md:517`); B-016 "NÃO implementar"; `custo-servicos.md:282` "com Proeza ou Arte, o preço é outro". Fica o G73
+- [x] **A29 · [DECIDIR] Preço de serviço e de item mágico, e raridade por lugar.** Registrado em
   26/09/2026, na rodada 114, a partir de uma sugestão do Comerciante. As páginas de custo não citam
   "mágic", "encant" nem "Artefato" com preço nenhum (a mesma ausência que a rodada D6 do Revisor
   externo mediu, `lore/economia/estado-revisao.md`, "5. Item encantado e Artefato").
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração)**, a segunda frase do bloco 1d:
     > Raridade por lugar: usar os tetos de aldeia, vila, cidade e capital como base.
-- [ ] **A30 · [DECIDIR] Cura, Acerto Arcano e Energia Espiritual: comparar por pacote na etapa
+  Duplicado (varredura de 26/11/2026; o item que fica está dito abaixo): G73 (preços do sobre-humano) e G76 (`G-acoes-sistema.md:559`, itens mágicos). `custo-de-servico-e-itens.md:10` "O que o sobre-humano custa ... ficam para depois". B-037 "anotar, sem executar". Ficam G73 e G76
+- [ ] **A30 · [DECIDIR] [ESPERA: a bancada de Artes e a recalibração das Artes (A34); quem move: o Arquiteto, depois do autor] Cura, Acerto Arcano e Energia Espiritual: comparar por pacote na etapa
   das Artes.** Registrado pelo autor em 27/09/2026 (item 7c do despacho da Regra do
   Quase-Acerto), sem resolver. O valor dessas três Habilidades depende de magia (nível de Arte,
   Efeitos comprados, reserva de Mana), então não dá para calibrar uma delas isolada como se faz
   com Armas/Esquiva na bancada de combate físico. A comparação certa é por PACOTE completo
   (guerreiro com Armas e uma arma contra mago com Arte e Acerto Arcano), e essa etapa ainda não
   chegou: fica registrada para quando a bancada cobrir Artes, não para esta rodada.
-- [ ] **A31 · [DECIDIR] Energia/Mana fora da Reforma da Centelha, avaliar com as Artes.**
+- [ ] **A31 · [DECIDIR] [ESPERA: a recalibração das Artes (A34); quem move: o autor, com o Arquiteto] Energia/Mana fora da Reforma da Centelha, avaliar com as Artes.**
   Decisão do autor, 28/09/2026 (mensagem "Decisões do autor: energia/mana fora, quaseAcerto()
   vira fonte única"): a Reforma da Centelha não tocou `centelhaMult` de `derivados.energia`/
   `derivados.mana` (`regras.json`), que continuam com a régua antiga (`Energia = ... + Centelha
   × 2`, `Mana = Centelha × 2 + Vontade`). Texto do autor, verbatim: "a energia cresce com a
   Centelha e as Artes agora também ganham dano +C e Dificuldade de resistência com 2 × min(C,
   nível da Arte); avaliar o conjunto quando as Artes forem calibradas".
-- [ ] **A32 · [DECIDIR] O mortal conjura no livro, e o código ainda bloqueia.** Registrado em
+- [x] **A32 · [DECIDIR] O mortal conjura no livro, e o código ainda bloqueia.** Registrado em
   02/10/2026, rodada 123 (`docs/simulacao/caixa/123-revisora.md`, ESCALA), sobre a F2 decidida pelo
   autor no Adendo 2 do despacho dos achados de duas leituras: o mortal (Centelha 0) tem Mana, que é a
   Força de Vontade, e conjura Artes. O livro já diz isso (`centelha.md`, `criacao-de-personagem.md`,
@@ -273,12 +277,13 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   Mana é por Centelha (`regras.json` `arcano.recuperacaoMana`: "Centelha por hora", e "2 × Centelha
   por hora" em descanso). Com Centelha 0, a Mana do mortal nunca volta pelo relógio, só pela Firula
   ou pela Arte Manipulação de Mana. É pergunta do autor.
-- [ ] **A33 · [DECIDIR] O campo `custo.mana` dos níveis do catálogo das Artes.** Registrado em 04/10/2026,
+  Fechado em 26/11/2026 (varredura): C-076: "o mortal (Centelha 0) tem Mana e pode usá-la, então conjura Artes"; C-077 "Estado: cumprida pela D-006 (código liberado em 7e0d0bb7)"; D-006 "Centelha 0 → 2". Código: `ficha-engine.ts:183-185` lê `tetoNivelArte.porCentelha` (`[2,3,4,5,6,6,6]`); `grid.astro:3329` já é `mana: R.mana`; `FichaSkeleton.astro:117` diz "nível máximo: Centelha + 2, até 6". Recuperação da Mana do mortal: D-002 "1 de Mana por dia, 2 se estiver descansando" (`regras.astro:531`). O enunciado da A32 é anterior a 03/10
+- [ ] **A33 · [FAZER] O campo `custo.mana` dos níveis do catálogo das Artes.** Registrado em 04/10/2026,
   rodada 9 do veterana-1e (ART-19). O "(N Mana)" saiu da página do catálogo, porque a Mana não é o nível
   (o custo é a soma dos pontos menos a Centelha, e a Cura custa 2 por nível). O campo continua em
   `artes.json` porque o schema de `scripts/validate-data.mjs` o exige, de 1 a 6. Nenhuma tela o mostra
   mais. Decidir se o campo sai do dado e do schema.
-- [ ] **A34 · [FAZER] Recalibração das Artes: ART-34, ART-5, ART-38 e ART-40 (D-061).** Registrado em
+- [ ] **A34 · [FAZER] [ESPERA: o autor abrir a recalibração das Artes (D-061, T7a) e o Grid (T21); quem move: o autor] Recalibração das Artes: ART-34, ART-5, ART-38 e ART-40 (D-061).** Registrado em
   04/10/2026, rodada 12 do veterana-1e. Os quatro pontos do 1e mexem em número que o código ou os testes
   leem, e ficam para a recalibração das Artes:
   - **ART-34**: ficar parado contra a régua da Virtude (borda 5, 2 m 7, 3 m 9, núcleo 11);
