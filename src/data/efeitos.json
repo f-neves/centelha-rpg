@@ -666,7 +666,7 @@
         "nome": "Dano",
         "tipo": "fixo",
         "valor": "1d6",
-        "nota": "Fixo: não sobe com o grau."
+        "nota": "O 1d6 é o do aquecimento do metal, não o do golpe; o nível 2 o paga e ele não sobe com o grau."
       },
       {
         "nome": "Duração",
@@ -1602,7 +1602,8 @@
       {
         "nome": "Duração",
         "tipo": "fixo",
-        "valor": "permanente"
+        "valor": "permanente",
+        "nota": "O nível paga a Duração permanente (o chão fica aberto); este parâmetro não sobe com o grau."
       },
       {
         "nome": "Jogada",
@@ -2020,7 +2021,8 @@
       {
         "nome": "Alvos",
         "tipo": "fixo",
-        "valor": "1"
+        "valor": "1",
+        "nota": "O nível paga o alvo único e o traço que ele ganha; este parâmetro não sobe com o grau."
       },
       {
         "nome": "Duração",
@@ -4275,7 +4277,8 @@
       {
         "nome": "Alvos",
         "tipo": "fixo",
-        "valor": "1 bicho por vez, trocável durante a duração"
+        "valor": "1 bicho por vez, trocável durante a duração",
+        "nota": "O nível paga os sentidos de um bicho por vez, trocável durante a Duração; este parâmetro não sobe com o grau."
       },
       {
         "nome": "Duração",
@@ -4476,6 +4479,7 @@
       }
     ],
     "efeito": "O fogo cai sobre a área e continua caindo: o dano volta a cada 6 Ticks enquanto durar, e o que é combustível pega e segue queimando depois que a magia acaba. Não separa amigo de inimigo.",
+    "notas": "Em região maior que a Explosão do grau 6, o tamanho fica com o Mestre.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4520,6 +4524,7 @@
       }
     ],
     "efeito": "Traz o inverno para a região. A água vira chão, o barro endurece, a plantação morre e quem fica exposto sofre −1d6 nas ações físicas enquanto exposto. A região demora a esquecer que você passou por ali.",
+    "notas": "Em região maior que a Explosão do grau 6, o tamanho fica com o Mestre.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4582,6 +4587,7 @@
       }
     ],
     "efeito": "Chama a tempestade. A cada 6 Ticks um raio (no Vento, uma rajada) cai onde você apontar dentro da área, sem gastar a sua ação. No Raio, quem veste metal atrai o próximo.",
+    "notas": "Em região maior que a Explosão do grau 6, o tamanho fica com o Mestre.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4732,7 +4738,8 @@
       {
         "nome": "Duração",
         "tipo": "fixo",
-        "valor": "permanente"
+        "valor": "permanente",
+        "nota": "O nível 6 paga a obra que fica; a Duração permanente não sobe com o grau."
       }
     ],
     "efeito": "Levanta do chão uma formação de pedra do tamanho de uma colina pequena, ou derruba uma que já estava lá. O terreno muda de verdade e continua mudado: quem passar por ali daqui a um ano vai ver a sua obra.",
@@ -4873,7 +4880,7 @@
       }
     ],
     "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
-    "notas": "É a exceção à cura comum, que não tem Área: este Efeito cura em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o maior grau investido por quem conjurou: 1 PV por grau. Em troca, paga-se a cura de cada um: o custo de curar uma pessoa, uma vez por alvo dentro da área.",
+    "notas": "É a exceção à cura comum, que não tem Área: este Efeito cura em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o maior grau investido por quem conjurou: 1 PV por grau. Em troca, paga-se a cura de cada um: o custo de curar uma pessoa, uma vez por alvo dentro da área. Em região maior que a Explosão do grau 6, o tamanho fica com o Mestre.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4934,6 +4941,7 @@
       }
     ],
     "efeito": "O lugar vira mata viva e do seu lado: raiz que prende o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar.",
+    "notas": "Em região maior que a Explosão do grau 6, o tamanho fica com o Mestre.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -5265,7 +5273,8 @@
       {
         "nome": "Duração",
         "tipo": "fixo",
-        "valor": "permanente"
+        "valor": "permanente",
+        "nota": "O nível 6 paga a mudança que fica; a Duração permanente não sobe com o grau."
       }
     ],
     "efeito": "Converte qualquer material em qualquer outro: pedra em ouro, ferro em vidro, água em óleo. A mudança fica. O que era vivo não entra nisso, e o que era mágico resiste pelo nível de quem o fez.",
@@ -5415,6 +5424,7 @@
       }
     ],
     "efeito": "Consagra um lugar. Nada entra sem permissão, magia alheia se desfaz na borda e quem for expulso não acha o caminho de volta. Dura o que a Duração comprou, e cai antes se você mesmo quebrar a regra que estabeleceu.",
+    "notas": "Em região maior que a Explosão do grau 6, o tamanho fica com o Mestre.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -6407,7 +6417,7 @@
       }
     ],
     "efeito": "Uma doença cai sobre a área e fica. Quem falha adoece e piora dia após dia, a plantação murcha e o gado morre. Não é conjuração de combate: é o que se faz a uma cidade que fechou os portões para você.",
-    "notas": "Cura, tratamento e tempo vencem a praga em quem sobreviver. O lugar leva mais tempo.",
+    "notas": "Cura, tratamento e tempo vencem a praga em quem sobreviver. O lugar leva mais tempo. Em região maior que a Explosão do grau 6, o tamanho fica com o Mestre.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -6444,7 +6454,8 @@
       {
         "nome": "Alvos",
         "tipo": "fixo",
-        "valor": "1 escolha, sua ou de quem você tocar"
+        "valor": "1 escolha, sua ou de quem você tocar",
+        "nota": "O nível 4 paga a escolha única; este parâmetro não sobe, e o que cresce com o grau é a Visão (quantos futuros se vê)."
       },
       {
         "nome": "Visão",
@@ -6496,7 +6507,8 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "qualquer lugar que você conheça de verdade"
+        "valor": "qualquer lugar que você conheça de verdade",
+        "nota": "O nível paga o Alcance de qualquer lugar que você conheça de verdade, e não o do catálogo (que para em 50 m); este parâmetro não sobe com o grau."
       },
       {
         "nome": "Alvos",
@@ -6915,7 +6927,8 @@
       {
         "nome": "Alvos",
         "tipo": "fixo",
-        "valor": "1 espírito poderoso"
+        "valor": "1 espírito poderoso",
+        "nota": "O nível paga o espírito poderoso, um só, e o freio é a Dificuldade, que sobe com o grau investido; este parâmetro não sobe."
       },
       {
         "nome": "Duração",
@@ -7189,7 +7202,8 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "a região em volta"
+        "valor": "a região em volta",
+        "nota": "O nível 5 paga o Alcance da região em volta, sem a medida do catálogo; o Mestre define a região (D-087), e este parâmetro não sobe com o grau."
       },
       {
         "nome": "Duração",
@@ -7239,7 +7253,8 @@
       {
         "nome": "Duração",
         "tipo": "fixo",
-        "valor": "permanente"
+        "valor": "permanente",
+        "nota": "O nível paga a transformação que leva dias para fechar e fica; a Duração permanente não sobe com o grau."
       }
     ],
     "efeito": "Transforma um ermo em mata: capim onde havia areia, árvore onde havia pedra, água onde o chão estava seco. Leva dias para fechar, não um instante, e fica. O que nasce dali em diante é vida comum, e morre se ninguém cuidar.",

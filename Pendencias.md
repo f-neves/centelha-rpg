@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 31 | 31 | 0 | 0 | 0 | 31 | 0 | 0 | 0 | 0 |
-| | **Total** | | **414** | **297** | **4** | **113** | **106** | **84** | **8** | **11** | **81** | **11** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 33 | 33 | 0 | 0 | 2 | 31 | 0 | 0 | 0 | 0 |
+| | **Total** | | **416** | **299** | **4** | **113** | **108** | **84** | **8** | **11** | **81** | **11** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -705,6 +705,8 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N30 | aberto | FAZER | O Frenesi (C20, 25/11/2026) tira o −1d6 acumulado por golpe das Rajadas por 6 Ticks; o Grid não lê a Técnica. |
 | N31 | aberto | FAZER | A Investida Devastadora (C21, 25/11/2026) soma +1 de dano a cada 2 m percorridos, até +7, e derruba e empurra … |
 | N32 | aberto | FAZER | O card "Ver a ficha por dentro" da mesa mostra o chip cru de uma Técnica removida (achado da Revisora no D16, … |
+| N33 | aberto | DECIDIR | O livro diz Área grau 3 = 2 m e o Grid desenha ao menos 28 Efeitos de zona e aura pela régua do molde no … |
+| N34 | aberto | DECIDIR | Os sete Efeitos de forma fora da tabela: trocar ou tirar a Área muda o que a caixa do Grid lê (RT-069, T21 do … |
 
 Fechados (0): nenhum.
 
