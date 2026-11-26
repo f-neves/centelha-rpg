@@ -3,7 +3,8 @@
   "pasta": "tmp/arquiteto/fichas-glaive",
   "data": "2026-11-12",
   "fichas": 324,
-  "gerador": "scripts/gen-criaturas-esperado.mjs"
+  "gerador": "scripts/gen-criaturas-esperado.mjs",
+  "historico": "A pasta e o gerador acima são HISTÓRICO (as fichas .md, 12/11/2026). Desde 25/11/2026 a `entrada` de cada criatura é a de src/data/bestiario (B3), conferida por scripts/test-fonte-criaturas.mjs, e o `esperado` só muda com a conferência da Revisora (scripts/mostra-esperado-fonte.mjs; o commit diz \"esperado conferido por\")."
  },
  "criaturas": {
   "aasimar": {
@@ -12502,7 +12503,7 @@
      "largura": 0.002,
      "profundidade": null,
      "comprimento": 0.0046,
-     "massa": 0.000007,
+     "massa": 7e-06,
      "area": 0,
      "posturaDoTamanho": "indivíduo, anatomia"
     },
@@ -12808,7 +12809,7 @@
      "largura": 0.0015,
      "profundidade": null,
      "comprimento": 0.006,
-     "massa": 0.000003,
+     "massa": 3e-06,
      "area": 0,
      "posturaDoTamanho": "indivíduo, anatomia"
     },
@@ -13242,7 +13243,7 @@
      "profundidade": null,
      "comprimento": 0.015,
      "envergadura": 0.02,
-     "massa": 0.000084,
+     "massa": 8.4e-05,
      "area": 0,
      "posturaDoTamanho": "indivíduo, anatomia"
     },

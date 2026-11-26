@@ -1,5 +1,10 @@
 // gen-criaturas-esperado.mjs · os números conferidos das fichas de criatura, para o motor (plano-conversao.md, A1).
 //
+// HISTÓRICO (25/11/2026, Etapa 2): a fonte das criaturas é src/data/bestiario (B3), não mais as fichas .md. Este gerador só roda com --historico: sem a
+// flag ele recusa, para não sobrescrever o fixture com o das fichas velhas. O fixture hoje se mantém por scripts/mostra-esperado-fonte.mjs, e o
+// teste test-fonte-criaturas.mjs compara a entrada dele com o site.
+//
+//
 // Lê cada ficha .md de `tmp/arquiteto/bestiario/fichas-v3/` (fora do repositório) e grava em
 // `scripts/fixtures/criaturas-esperado.json`, por criatura:
 //   - `entrada`: o que o motor precisa, tirado do JSON que o conversor escreve (scripts/conversor-criatura.mjs, A3), e
@@ -26,7 +31,7 @@ import { converterFicha, converterFichaAnteriorR03 } from './conversor-criatura.
 const converterDaFicha = (texto, opcoes) => (/ · categoria: /.test(texto) ? converterFicha : converterFichaAnteriorR03)(texto, opcoes);
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
-const PASTA = path.resolve(process.argv[2] || path.join(RAIZ, '..', 'tmp', 'arquiteto', 'bestiario', 'fichas-v3'));
+const PASTA = path.resolve(process.argv.slice(2).find((a) => !a.startsWith('--')) || path.join(RAIZ, '..', 'tmp', 'arquiteto', 'bestiario', 'fichas-v3'));
 const SAIDA = path.join(RAIZ, 'scripts', 'fixtures', 'criaturas-esperado.json');
 const SITE = path.join(RAIZ, 'src', 'data', 'bestiario');
 const TAMANHOS = 'Minúsculo|Miúdo|Pequeno|Médio|Grande|Enorme|Imenso|Colossal';
@@ -146,6 +151,12 @@ export function lerEsperado(texto) {
 }
 
 if (path.resolve(process.argv[1] || '') === path.resolve(fileURLToPath(import.meta.url))) {
+if (!process.argv.includes('--historico')) {
+  console.error('✘ HISTÓRICO: este gerador lê as fichas .md (fichas-v3), que deixaram de ser a fonte das criaturas (B3, 24/11/2026). A fonte é src/data/bestiario;\n'
+    + '  a entrada do fixture é a do site (test-fonte-criaturas.mjs) e o esperado só muda com a conferência da Revisora (scripts/mostra-esperado-fonte.mjs).\n'
+    + '  Rodar este gerador SOBRESCREVERIA o fixture com o das fichas velhas. Se for mesmo de propósito: node scripts/gen-criaturas-esperado.mjs --historico [pasta]');
+  process.exit(2);
+}
 const arquivos = fs.readdirSync(PASTA).filter((a) => a.endsWith('.md')).sort();
 const criaturas = {};
 let comParada = 0;
