@@ -50,9 +50,9 @@ está na seção 3.
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 15 | 0 | 5 | 0 | 7 | 5 | 1 | 1 | 1 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 19 | 1 | 19 | 9 | 5 | 5 | 0 | 0 | 1 |
-| L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
+| L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 49 | 0 | 58 | 0 | 12 | 2 | 0 | 29 | 6 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **423** | **265** | **3** | **155** | **30** | **105** | **49** | **2** | **66** | **16** |
+| | **Total** | | **423** | **240** | **3** | **180** | **30** | **109** | **50** | **2** | **30** | **22** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -62,10 +62,8 @@ está na seção 3.
 - `G-acoes-sistema.md`: item sem sigla, "As cinco físicas de toda sessão." (fechado)
 - `J-infraestrutura.md`: item sem sigla, "A linha de fechamento do `test-grid` é texto fixo · [DECIDIR]" (aberto)
 - `K-combate-linha-do-tempo.md`: a sigla **K36** aparece 2 vezes (fechado · aberto)
-- `L-simulacao-simultaneo.md`: **L6** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
-- `L-simulacao-simultaneo.md`: **L9** tem a caixa aberta e o título riscado (a contagem o conta como aberto)
-- `L-simulacao-simultaneo.md`: a sigla **L6** aparece 2 vezes (fechado · aberto, riscado)
-- `L-simulacao-simultaneo.md`: a sigla **L9** aparece 2 vezes (fechado · aberto, riscado)
+- `L-simulacao-simultaneo.md`: a sigla **L6** aparece 2 vezes (fechado · fechado, riscado)
+- `L-simulacao-simultaneo.md`: a sigla **L9** aparece 2 vezes (fechado · fechado, riscado)
 
 <!-- /gen:pendencias-contagem -->
 
@@ -558,81 +556,56 @@ Fechados (19): K29, K1, K2, K3, K10, K7, K4, K15, K16, K18, K22, K23, K26, K25, 
 | Sigla | Estado | Marcação | Título |
 |---|---|---|---|
 | L1 | aberto | FAZER | As oito regras novas do Simultâneo (N1 a N8), na mesa. |
-| L2 | aberto | FAZER | As 15 bandeiras de regra |
-| L3 | aberto | FAZER | O `ate` das condições passa a ser lido |
-| L4 | aberto | FAZER | A migração 30 |
-| L6 | aberto, riscado | DEPOIS | O harness. |
-| L9 | aberto, riscado | PRIMEIRO | O encontro carimba o perfil de bandeiras. |
 | L10 | aberto | ANTES DE LER O RESULTADO | Duas coisas que não bloqueiam o começo e bloqueiam a leitura. |
-| L8 | aberto | FAZER | Fundir as duas especificações de política. |
-| L16 | aberto | OBSERVAÇÃO | A política automática do produto termina a cena em debandada. |
 | L25 | aberto | DÍVIDA DE PRODUTO, NÃO DE INSTRUMENTO | O item 1.0 da Etapa 1 foi dado como feito e não está feito. |
-| L35 | aberto | DECISÃO DE MESA | A CRIATURA NÃO TEM PERÍCIA, E A COMPARAÇÃO DO GOLPE DO ESCURO FECHA PARA UM LADO SÓ |
-| L33 | aberto | FASE 2.5 | A VISTA DO JOGADOR COMO PRODUTO |
 | L30 | aberto | FAZER | OS DEZ MÓDULOS FORA DE TODO PACOTE DE TESTE |
 | L29 | aberto | A FILA DO GRID | Sete consertos, e o `ESTADO.md` é a fonte. |
-| L28 | aberto | PEQUENO | O alarme do E4 inerte é o único sem teste. |
-| L26 | aberto | PRIMEIRO, E NÃO É CÓDIGO | Por que as mesas rolam o dado na mão? |
+| L28 | aberto | FAZER | O alarme do E4 inerte é o único sem teste. |
 | L24 | aberto | DEPOIS | O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca. |
 | L23 | aberto | DEPOIS | A fração de gestos com JOGADOR na mesa. |
 | L20 | aberto | DEPOIS | Uma política que recua |
 | L7 | aberto | DEPOIS | A medição de campo do Supabase real |
 | L40 | aberto | MITIGADO EM 05/09/2026 | O registro do jogador que o mestre apaga sem saber |
 | L41 | aberto | PENDÊNCIA DA MESMA FAMÍLIA | Leitura-modificação-escrita de coleção inteira a partir de foto local |
-| L42 | aberto | AS CINCO RODARAM | As migrações pendentes |
-| L43 | aberto | OS DOIS LADOS FEITOS | A marca da mordida que a aba do jogador apagava |
-| L45 | aberto | A 36 FECHOU O DEFEITO ORIGINAL | A fachada que preserva a forma e troca o destino |
 | L36 | aberto | QUANDO A REGRA APARECER | O `resumoParaBanco` é vitrine, e não entrada de conta. |
 | L47 | aberto | ACHADO NA REVISÃO DE 06/09/2026, SÓ REGISTRO | O portão por literal continua dentro da própria bancada do avanço unificado. |
 | L48 | aberto | ABERTO | O harness chamava 20 funções da lib, e a mesa 41. |
 | L51 | aberto | FAZER | Só 1 das 4 views do lado do jogador tem prova automática contra o SQL real. |
-| L52 | aberto | PARCIAL | Duas contagens que nunca existiram. |
+| L52 | aberto, ADIADO | PARCIAL | Duas contagens que nunca existiram. |
 | L54 | aberto | FAZER | `scripts/mapa.mjs`, a forma final do `docs/MAPA.md`. |
 | L55 | aberto | BLOQUEADO | O `~42%` de `regras.json:910` está errado; o número certo para o lugar dele ainda não existe. |
-| L56 | aberto | ANOTADO | Payoff da arma leve. |
-| L57 | aberto | ANOTADO | Bookkeeping do Quase-Acerto. |
-| L58 | aberto | ANOTADO | Trilha de aprendizado para quem chega agora. |
-| L59 | aberto | ANOTADO | As quatro reservas (Energia/Mana/Fôlego/Vontade) podem ser carga cognitiva demais. |
-| L60 | aberto | ANOTADO | Quatro recomendações de `Auditoria_Memoria/RELATORIO.md` §5, de uma sessão fora do arranjo. |
-| L62 | aberto |  | dois achados da revisão do aviso 30 (barra de comando, `VOZ.md` §8 item 1), nenhum bloqueando o veredito … |
-| L63 | aberto | ANOTADO | Os três termos do trabalho do mestre aparecem com dois arredondamentos diferentes. |
-| L101 | aberto | DITO | O alcance do portão de vocabulário foi justificado por uma medida presa à lista de palavras de HOJE, e ela … |
-| L100 | aberto | ACHADO | O foco da caixa de diálogo cai no botão errado por ordem do DOM, e a intenção escrita é a oposta. |
-| L99 | aberto | MEDIDO | A trava da cura não existe no SERVIDOR, e as quatro saídas têm preço. |
-| L98 | aberto | ESCALA | O gancho passou a escrever `.astro/` a cada commit de código, e o `.astro/` é compartilhado por quem divide a … |
+| L56 | aberto | AUTOR-REGRA | Payoff da arma leve. |
+| L57 | aberto | AUTOR-REGRA | Bookkeeping do Quase-Acerto. |
+| L58 | aberto, ADIADO | ANOTADO | Trilha de aprendizado para quem chega agora. |
+| L62 | aberto, ADIADO |  |  |
+| L63 | aberto | FAZER | Os três termos do trabalho do mestre aparecem com dois arredondamentos diferentes. |
+| L100 | aberto | FAZER | O foco da caixa de diálogo cai no botão errado por ordem do DOM, e a intenção escrita é a oposta. |
+| L99 | aberto | GRID-CÓDIGO | A trava da cura não existe no SERVIDOR, e as quatro saídas têm preço. |
+| L98 | aberto | FAZER | O gancho passou a escrever `.astro/` a cada commit de código, e o `.astro/` é compartilhado por quem divide a … |
 | L97 | aberto | ACHADO | O `test-grid` do smoke falha de forma INTERMITENTE, e a taxa medida subiu: 3 falhas em 7 execuções … |
 | L96 | aberto | ESCALA 1 | Duas varreduras de dano contínuo escrevem a Vida por motores diferentes, e só uma tem piso. |
-| L95 | aberto | ACHADO | O peso de quem é empurrado nunca vem do bestiário: o campo lido não existe, e a estimativa por porte responde … |
-| L94 | aberto | ACHADO | Passar pelo espaço de outra criatura: hoje é impossível, e "cercado não é preso" é o nome de um cenário de … |
-| L93 | aberto | LEVANTADO | O passo automático grava posição, ignora a recusa, e escreve no registro que a peça andou. |
+| L95 | aberto | GRID-CÓDIGO | O peso de quem é empurrado nunca vem do bestiário: o campo lido não existe, e a estimativa por porte responde … |
+| L94 | aberto | LIVRO-NO-GRID | Passar pelo espaço de outra criatura: hoje é impossível, e "cercado não é preso" é o nome de um cenário de … |
 | L92 | aberto | ACHADO | O tipo não protege os dublês: campo novo obrigatório numa interface passa pelo compilador e quebra em tempo … |
-| L91 | aberto | MEDIDO | Sobram 59 travessões de prosa em SEIS documentos que nunca foram varridos, e o `L79` não mentiu sobre isso. |
-| L90 | aberto | ACHADO | Uma cena de `scripts/test-grid.mjs` falha por intermitência no arrasto por mouse simulado, e passa na … |
-| L89 | aberto | ESTRAGO | O reapontador movia em silêncio, e rodá-lo duas vezes sobre o mesmo diff não commitado quebrou 39 citações de … |
+| L91 | aberto | FAZER | Sobram 59 travessões de prosa em SEIS documentos que nunca foram varridos, e o `L79` não mentiu sobre isso. |
 | L65 | aberto | ANOTADO | Dez citações de linha em `grid.astro` foram reapontadas TRÊS vezes num só dia, e vão envelhecer de novo no … |
-| L71 | aberto | ESCALADO | O carregamento do modelo de voz não tem prazo, e um modelo PRESENTE mas corrompido trava para sempre, sem … |
-| L74 | aberto |  | O teste do status da voz fica verde com o defeito de volta: a costura RECALCULA o texto em vez de OBSERVAR o … |
-| L77 | aberto | ACHADO | O `L67` foi construído só de um lado: o raio do ALVO entra na régua, o do próprio ATACANTE não entra em lugar … |
-| L76 | aberto | ESCALADO | A interposição continua medindo de centro a centro depois do `L67`, e a régua nova não chegou nela. |
-| L78 | aberto | PEDIDO | Falta um campo de ALCANCE por criatura: o braço derivado do porte trata corpos diferentes como iguais. |
-| L80 | aberto | MEDIDO | O portão da procedência confere DOIS documentos, e há dez outros com citação de código viva. |
-| L81 | aberto | ACHADO | O `BASE` do aviso sai do `HEAD` da worktree da Revisora, e esse `HEAD` fica num commit órfão toda vez que o … |
-| L82 | aberto | SEPARADO | A dívida de travessão no CÓDIGO: 702 ocorrências em 116 arquivos, e 55 delas não são pontuação. |
-| L70 | aberto | REGISTRADO | A gravação de posição não passa pela checagem de ocupação, e a invariante mora nos chamadores em vez de morar … |
-| L83 | aberto | PERGUNTADO | O que acontece quando um empurrão joga um corpo para cima de outro. A regra passou a existir; o que falta são … |
-| L88 | aberto | MEDIDO | A invariante de ocupação ganha um DETECTOR no cliente, e não uma trava no banco. |
-| L86 | aberto | ACHADO | Sete Artes marcadas como cura não curam nada no tabuleiro, e o caminho não está escrito. |
+| L74 | aberto, ADIADO |  | O teste do status da voz fica verde com o defeito de volta: a costura RECALCULA o texto em vez de OBSERVAR o … |
+| L77 | aberto | FAZER | O `L67` foi construído só de um lado: o raio do ALVO entra na régua, o do próprio ATACANTE não entra em lugar … |
+| L78 | aberto, ADIADO | PEDIDO | Falta um campo de ALCANCE por criatura: o braço derivado do porte trata corpos diferentes como iguais. |
+| L80 | aberto | FAZER | O portão da procedência confere DOIS documentos, e há dez outros com citação de código viva. |
+| L82 | aberto, ADIADO | SEPARADO | A dívida de travessão no CÓDIGO: 702 ocorrências em 116 arquivos, e 55 delas não são pontuação. |
+| L83 | aberto | LIVRO-NO-GRID | O que acontece quando um empurrão joga um corpo para cima de outro. A regra passou a existir; o que falta são … |
+| L86 | aberto | GRID-CÓDIGO | Sete Artes marcadas como cura não curam nada no tabuleiro, e o caminho não está escrito. |
 | L87 | aberto | ACHADO | Duas escritas de condição gravam no banco sem repintar a coluna de iniciativa, e uma delas não avisa a mesa. |
-| L84 | aberto | MEDIDO | `noChao` responde duas perguntas diferentes com uma função só, e a condição "Caído" paga a conta. |
+| L84 | aberto | LIVRO-NO-GRID | `noChao` responde duas perguntas diferentes com uma função só, e a condição "Caído" paga a conta. |
 | L69 | aberto | ANOTADO | Nem toda criatura chega pelo caminho de borda. |
-| L66 | aberto | ANOTADO | `porNoMapa` recusa em silêncio, e quem a chama tem de trazer o próprio sinal. |
-| L102 | aberto | AUTOR | M-18, Canalizar Virtude: teto ou contrapartida. Regra nova de verdade, não conserto pontual. |
+| L102 | aberto | FAZER | M-18, Canalizar Virtude: teto ou contrapartida. Regra nova de verdade, não conserto pontual. |
 | L103 | aberto | ANOTADO | O laço do harness não soma ao ataque as condições nem o porte que a mesa soma. |
 | L104 | aberto | ESCALA | Uma asserção do `test-grid` cai às vezes: 3 falhas em 60 runs do CI, sempre na "Criatura 17". |
 | L105 | aberto | ANOTADO | A caixa que o mestre lê ao rolar a iniciativa no Grid ainda diz "Tick 0". |
 | L106 | aberto | ANOTADO | "No máximo 60 KB de HTML por movimento (foram 67,1 KB)". |
 
-Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34, L32, L31, L27, L37, L39, L44, L46, L49, L50, L53, L61, L64, L67, L72, L73, L75, L79, L85, L68.
+Fechados (58): L2, L3, L4, L5, L6, L6, L9, L9, L11, L12, L8, L13, L14, L15, L16, L17, L18, L19, L21, L22, L34, L35, L33, L32, L31, L27, L26, L37, L39, L42, L43, L44, L45, L46, L49, L50, L53, L59, L60, L61, L64, L101, L93, L90, L89, L67, L71, L72, L73, L75, L76, L79, L81, L70, L88, L85, L68, L66.
 
 ### N · Grid e mesa · o que o livro diz e o tabuleiro ainda não faz
 
