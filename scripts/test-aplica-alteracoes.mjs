@@ -137,6 +137,11 @@ for (const [id, caminho, de, para, rot] of [
   ok(r.erros.length === 0 && r.criaturas.length === 1 && r.numeros.every((x) => x.caminho !== caminho), `NÃO entra: ${rot}`);
 }
 ok(numerosDe('devolve 1d6 PV') === numerosDe('1d6 PV devolvidos') && numerosDe('1,5 m') === numerosDe('1.5 m') && numerosDe('6 Ticks') !== numerosDe('7 Ticks'), 'numerosDe compara os números do texto, e não a string');
+// a ORDEM dos números conta: trocar de lugar é mudar (o multiconjunto antigo não via)
+ok(ehNumero({ cam: ['habilidadesEspeciais', 0, 'ativacao'], antes: 'Velocidade 5, dura 6 Ticks', depois: 'Velocidade 6, dura 5 Ticks' }), 'ENTRA: "Velocidade 5, dura 6 Ticks" para "Velocidade 6, dura 5 Ticks" (os mesmos números, trocados de lugar)');
+ok(ehNumero({ cam: ['habilidadesEspeciais', 1, 'efeito'], antes: 'devolve 1d6 PV', depois: 'devolve 6d1 PV' }), 'ENTRA: "1d6" para "6d1"');
+ok(ehNumero({ cam: ['habilidadesEspeciais', 0, 'ativacao'], antes: 'Velocidade 5, dura 6 Ticks', depois: 'dura 6 Ticks e é de Velocidade 5' }), 'ENTRA: o 5 e o 6 trocam de ordem ao reescrever a frase');
+ok(!ehNumero({ cam: ['habilidadesEspeciais', 0, 'ativacao'], antes: 'Velocidade 5, dura 6 Ticks', depois: 'tem Velocidade 5 e dura 6 Ticks' }), 'NÃO entra: reescrita sem mudar os números nem a ordem (5 e depois 6)');
 ok(ehNumero({ cam: ['ataques', 0, 'dado'], antes: '1d6', depois: '2d6' }) && ehNumero({ cam: ['deslocamento', 'terra', 'batalha'], antes: 4, depois: 5 }) && !ehNumero({ cam: ['imagens', 0], antes: 'a2.webp', depois: 'b3.webp' }), 'ehNumero: dado e deslocamento entram; imagem não');
 
 // ---- criatura NOVA a partir de outra (corte 2): o JSON inteiro com id novo

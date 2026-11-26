@@ -72,8 +72,8 @@ const NARRATIVAS_TOPO = new Set(['id', 'idAntigo', 'nome', 'nomeIngles', 'catego
 const NARRATIVAS_FOLHA = new Set(['nome', 'descricao', 'texto', 'justificativa', 'motivo', 'legenda', 'foco', 'origem', 'ativacao', 'duracao', 'categoria', 'efeito', 'classe', 'tracos', 'camuflagem', 'postura', 'posturaDoTamanho', 'apoio', 'id', 'forma', 'formas', 'parte', 'tipoDano', 'arma']);
 const ESTRUTURAS_DE_REGRA = new Set(['habilidadesEspeciais', 'formas', 'artes', 'ataques']);
 const PROSA_DE_REGRA = new Set(['efeito', 'texto', 'ativacao', 'duracao', 'nome']);
-/** Os números de um texto, em ordem canônica ("1d6" dá 1 e 6; "1,5" e "1.5" valem o mesmo). */
-export const numerosDe = (s) => (String(s).match(/\d+(?:[.,]\d+)?/g) || []).map((x) => x.replace(',', '.')).sort().join('|');
+/** A LISTA dos números de um texto, NA ORDEM em que aparecem, sem ordenar ("1d6" dá 1, 6, e "6d1" dá 6, 1: trocar de lugar é mudar; "1,5" e "1.5" valem o mesmo). */
+export const numerosDe = (s) => (String(s).match(/\d+(?:[.,]\d+)?/g) || []).map((x) => x.replace(',', '.')).join('|');
 export function ehNumero(a) {
   const topo = String(a.cam[0]), folha = String(a.cam[a.cam.length - 1]);
   if (NARRATIVAS_TOPO.has(topo)) return false;
