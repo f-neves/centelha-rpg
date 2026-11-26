@@ -1803,10 +1803,10 @@
       "mil-cortes"
     ],
     "aliases": [],
-    "texto": "Cada ataque acha um ponto vital e cada defesa é impecável.",
+    "texto": "Cada ataque acha um ponto vital: ignora a armadura e a Absorção natural do alvo (Penetração). Cada defesa é impecável.",
     "pendente": false,
     "nivel": 6,
-    "efeito": "estado"
+    "efeito": "penetracao"
   },
   {
     "id": "furia",
