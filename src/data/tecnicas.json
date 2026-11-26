@@ -955,10 +955,10 @@
       "fortaleza-viva"
     ],
     "aliases": [],
-    "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes mortais. Soma com as Técnicas Pele de Pedra, Couro Endurecido e Pele Curtida.",
+    "texto": "Quase indestrutível: +12 de Absorção (todos os tipos) e ignora ambientes mortais. Enquanto ativa, substitui as Técnicas Pele de Pedra, Pele Curtida, Tensionar e Couro Endurecido no que dão de Absorção: a Absorção não soma. A redução de 1 nas penalidades de ferimento da Pele de Pedra continua.",
     "pendente": false,
     "nivel": 6,
-    "efeito": "estado"
+    "efeito": "soak"
   },
   {
     "id": "mira-firme",
@@ -1803,10 +1803,10 @@
       "mil-cortes"
     ],
     "aliases": [],
-    "texto": "Cada ataque acha um ponto vital e cada defesa é impecável.",
+    "texto": "Cada ataque acha um ponto vital: ignora a armadura e a Absorção natural do alvo (Penetração). Cada defesa é impecável.",
     "pendente": false,
     "nivel": 6,
-    "efeito": "estado"
+    "efeito": "penetracao"
   },
   {
     "id": "furia",
@@ -1943,10 +1943,10 @@
       "nao-sentir-dor"
     ],
     "aliases": [],
-    "texto": "Uma tempestade de violência: dano massivo, imune a medo, quase imparável. Soma com a Técnica Fúria.",
+    "texto": "Uma tempestade de violência: +6d6 de dano corpo a corpo, imune a medo, quase imparável. Enquanto ativa, substitui as Técnicas Fúria e Investida Furiosa no dano: os dados de dano não somam, vale o +6d6. A penalidade de −1 na Defesa da Fúria continua.",
     "pendente": false,
     "nivel": 6,
-    "efeito": "estado"
+    "efeito": "dano"
   },
   {
     "id": "presenca-imponente",
