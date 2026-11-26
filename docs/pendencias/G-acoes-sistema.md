@@ -23,7 +23,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   campos em ordem fixa, o princípio de que a ficha só escreve o que **desvia** do padrão da §3, a
   régua de calibragem da §5.3 (Dificuldade de Acumulada e Longa a 70% da de Direta) e a regra
   §5.5 de primária + secundária. O caso sem modo está previsto, com Arremesso (§6.6) de exemplo.
-- [ ] **G2 · [DECIDIR] Reequilibrar a Especialidade.** Efeito colateral assumido da regra de
+- [ ] **G2 · [AUTOR-REGRA] Reequilibrar a Especialidade.** Efeito colateral assumido da regra de
   primária + secundária (`Acoes_Sistema.md` §5.5): a maior entra no pool e a **menor inteira**
   vira bônus fixo, o que torna a secundária cerca de duas vezes e meia mais eficiente por XP do
   que a Especialidade (secundária 4 custa 18 XP e dá +4; dois níveis de Especialidade custam 28 e
@@ -75,11 +75,12 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   ((Vigor + Resistência) × 10 Ticks de ar, depois Vigor × 20 de socorro) e não toca em Fôlego.
   Pendências novas na §8.8, sendo a que mais importa: **Desgaste ainda não conversa com as
   penalidades de ferimento** de Vida & Ferimentos, e as duas vão se somar em mesa.
-- [ ] **G6 · [DECIDIR] Percepção passiva: confirmar.** A ficha de Esgueirar-se (§6.5) já usa o
+- [x] ~~**G6 · [DECIDIR] Percepção passiva: confirmar.**~~ A ficha de Esgueirar-se (§6.5) já usa o
   **Valor Passivo de Prontidão** (2 × Percepção + Prontidão) como alvo, e a calibragem sai
   razoável: servo distraído 6, sentinela comum 10, batedor de elite 16, mestre de espiões 20.
   Falta só confirmar que é assim que o jogo lê "notar sem procurar", e o resto da família de
   Sentidos herda.
+  Fechado em 26/11/2026 (varredura): C-073: "o Valor Passivo do alvo (Percepção Passiva) é a Dificuldade"; C-074: "a Dificuldade é 70% do Valor Passivo do vigia, e a suspeita é medida contra o Valor Passivo inteiro". Livro: `acoes-sentidos-e-engano.md:18` ("Notar sem procurar é Passiva"), `:52`. A fórmula do item (2 × Percepção + Prontidão) é a antiga; hoje `:18` traz a da Reforma
 
 **Arrumação:**
 
@@ -117,7 +118,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   caracteres eram o dobro do maior capítulo do livro): `acoes-e-sistema` (A Régua Comum),
   `acoes-corpo-e-movimento`, `acoes-resistir`, `acoes-sentidos-e-engano` e `acoes-oficio-e-mundo`.
   As quatro famílias que ainda não têm ficha couberam numa página só.
-- [ ] **G12 · [DECIDIR] Desgaste e ferimento não se conhecem.** Levantado na §8.8 do
+- [ ] **G12 · [AUTOR-REGRA] Desgaste e ferimento não se conhecem.** Levantado na §8.8 do
   `Acoes_Sistema.md` e é o que mais importa das sobras: o Desgaste (−1d6 por degrau, teto 4) não
   conversa com PV nem com as penalidades de ferimento do capítulo de Vida & Ferimentos, e os dois
   **vão se somar em mesa** no primeiro personagem envenenado que também apanhou. Ou o teto 4 passa
@@ -127,7 +128,7 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   `2b08d7a` (22/09/2026), `vida-ferimentos-cura.md` diz que ferimento e Desgaste cortam do MESMO
   pool, somando direto, com o piso comum em 1d6: os dois já se conhecem, e o Mestre não arbitra a
   soma. **Aberto de verdade está só se o teto 4 do Desgaste vale para a soma dos dois.**
-- [ ] **G13 · [FAZER] As sobras das duas famílias escritas.** Sete assuntos que as fichas
+- [ ] **G13 · [AUTOR-REGRA] As sobras das duas famílias escritas.** Sete assuntos que as fichas
   encostaram e não cobriram. Do ofício (§7.10): **preço da peça pronta** (o `precos.json` não cobre
   arma, armadura nem obra), **material sobrenatural** como ponte com Artes e bestiário, **a oficina
   como traço** do personagem em vez de modificador de circunstância, e **colheita e extração**
@@ -139,28 +140,30 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   são texto: nada disso é lido pelo motor nem aparece na ficha. Os melhores candidatos são a
   tabela de dano por queda, o Desgaste e os cinco números das peças do ofício, que destravariam
   o ajuste de peça na ficha deixar de ser um campo livre.
-- [ ] **G14 · [DECIDIR] Firula na ação Longa.** Levantado em 24/09/2026. O documento de regra
+- [x] ~~**G14 · [DECIDIR] Firula na ação Longa.**~~ Levantado em 24/09/2026. O documento de regra
   admite: `Acoes_Sistema.md:168` põe a Firula entre os meios de levantar a média, e `:328-331`
   converte ("em modo Longa, Firula em dado vale a média do dado", nível 2 = +3,5, nível 3 = +7).
   O capítulo publicado tirou a Firula da lista (`acoes-e-sistema.md:109`), e nenhum texto em
   `src/` fala de Firula na Longa. Decidir se vale e alinhar os dois.
-- [ ] **G15 · [DECIDIR] Como o bônus fixo de Proeza entra na Longa.** Levantado em 24/09/2026.
+  Fechado em 26/11/2026 (varredura): `acoes-e-sistema.md:127` "A Firula não conta, porque é bônus de jogada"; `acoes-oficio-e-mundo.md:279` idem na renda; B-010 "Firula não conta"; texto da Veterana em `veterana-1d.md:616`. Resíduo só no rascunho: `Acoes_Sistema.md:168` e `:328-331`
+- [ ] **G15 · [FAZER] Como o bônus fixo de Proeza entra na Longa.** Levantado em 24/09/2026.
   `acoes-e-sistema.md:107-109` diz que Proezas e Artes quebram a parede da Longa e levantam a
   média, mas não diz a forma. Um "+3 em Ofícios" (Mãos Hábeis) soma à média? Vale o mesmo para as
   Técnicas de estado do Artesão (Obra Fina, Reparo Veloz), que não trazem número.
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):**
     > Na renda de ofício, a segunda Habilidade entra como bônus fixo, só uma. Firula não conta.
     > Proeza conta como bônus na média. Número a definir junto com D8.
-- [ ] **G16 · [DECIDIR] Alcance da regra da maior e da menor.** Levantado em 24/09/2026.
+- [ ] **G16 · [FAZER] Alcance da regra da maior e da menor.** Levantado em 24/09/2026.
   `acoes-e-sistema.md:195` restringe à "secundária que a ação nomear"; `habilidades-secundarias.md:15`
   formula sem a trava ("Quando as duas cabem na mesma ação"). E o documento de regra diz "que a
   ficha nomear" (`Acoes_Sistema.md:590`). Decidir o alcance e alinhar os três textos.
-- [ ] **G17 · [CONSERTAR] Nomes de ofício divergentes.** Levantado em 24/09/2026.
+- [x] ~~**G17 · [CONSERTAR] Nomes de ofício divergentes.**~~ Levantado em 24/09/2026.
   `Acoes_Sistema.md:1040-1042` usa Ferraria, Armaria, Curtume, Alfaiataria e Culinária; o catálogo
   publicado de secundárias usa Ferreiro, Couraria, Costura e Gastronomia (`habilidades-secundarias.md:69-87`,
   que é a fonte, gerada de `habilidades-secundarias.json`). O capítulo `acoes-oficio-e-mundo.md:51`
   já segue o catálogo. Alinhar o documento de regra ao catálogo; Armaria (usada na tabela, `:176`)
   não existe como secundária e pede decisão à parte.
+  Fechado em 26/11/2026 (varredura): `veterana-1e.md:116`: "Arcos vira Carpintaria; Serralheria vira Ferreiro; Armaria vira Ferreiro ...; Naval vira Carpintaria ...; Alfaiataria vira Costura; Curtume vira Couraria". Livro: `acoes-oficio-e-mundo.md:57` (lista) e as linhas `:177-198`. D-354: "o ofício do livro é Ferreiro". Resíduo só no rascunho `Acoes_Sistema.md:1040-1041,1260-1280`
 - [x] **G18 · [DECIDIR] Regra de ajudante divergente.** Levantado em 24/09/2026.
   `Acoes_Sistema.md:256-282` (§3.5) tem dois modos: "Somar Acúmulo" em tarefa divisível e
   "Apoiar o principal", em que o ajudante rola contra a **mesma** Dificuldade, dá +2 ao passar e
@@ -203,50 +206,53 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   Dificuldade 7 da espada. Fica em aberto, no relato da rodada 105 (`105-executora.md`), se a média
   de um aprendiz passa de 7: o livro chama de aprendiz a Habilidade 1, e só com Destreza 4 a soma
   chega a 5. As linhas citadas neste item são do texto de antes da decisão (`bbec609`).
-- [ ] **G21 · [DECIDIR] Direção sem custo.** Levantado em 24/09/2026. No exemplo da muralha
+- [ ] **G21 · [DECIDIR] [MESTRE: frase proposta em varredura-26-11/mestre.md] Direção sem custo.** Levantado em 24/09/2026. No exemplo da muralha
   (`Acoes_Sistema.md:1283-1287`, `acoes-oficio-e-mundo.md:186`) o mestre de obras soma os 5 pontos
   próprios por estação além de dirigir dez ajudantes (5 + 10 × 3 = 35). Decidir se dirigir consome
   parte da produção do supervisor.
-- [ ] **G22 · [DECIDIR] O que é o "ganho por semana".** Levantado em 24/09/2026. O §7.9 dá
+- [x] ~~**G22 · [DECIDIR] O que é o "ganho por semana".**~~ Levantado em 24/09/2026. O §7.9 dá
   "Ganho por semana = (média − 4) × 10 pc, limitado pela demanda do lugar"
   (`Acoes_Sistema.md:1318`, `acoes-oficio-e-mundo.md:206`), e a tabela de Serviços & Renda dá
   "Renda/Sem" e "Livre/Sem" por faixa de Recursos, com "Uma semana de trabalho vale 6 dias"
   (`custo-de-servico-e-itens.md:39-53`). Nenhum dos dois diz se o número é renda disponível, valor
   produzido em seis dias, resultado de uma Longa de intervalo semana, ou capacidade abstrata. Os
   casos de trabalho parcial (meia semana, trabalho entre aventuras, dias perdidos) dependem disso.
-- [ ] **G23 · [CONSERTAR] Duas espadas no mesmo documento.** Levantado em 24/09/2026. O exemplo da
+  Fechado em 26/11/2026 (varredura): `acoes-oficio-e-mundo.md:232` ("É uma Longa de intervalo semana, sem jogada, e o que ela produz é dinheiro"), `:273` (entra o Livre), `:283` (6 jornadas em 8 dias, renda proporcional aos dias); B-010; G63 (Falta de `:206` cumprida em `:232-283`); B-011 (jornada por ofício, `:155`)
+- [ ] **G23 · [FAZER] Duas espadas no mesmo documento.** Levantado em 24/09/2026. O exemplo da
   Longa no §3.3 (`Acoes_Sistema.md:160-163`) diz "Forjar uma espada: Dificuldade 7, Acúmulo 10,
   intervalo de uma semana". O §7 dá à espada Comum Acúmulo 22 (Montagem 12 + Peça 10) e intervalo
   dia (`Acoes_Sistema.md:1138-1144`, `:1257`; capítulo `acoes-oficio-e-mundo.md:93`, `:160`). A
   escada de intervalos publicada também põe "forjar a espada" em Semana (`acoes-e-sistema.md:143`).
   Alinhar o exemplo e a escada ao §7.
-- [ ] **G24 · [DECIDIR] Semântica do teto de demanda do ganho de ofício.** Levantado em 24/09/2026.
+- [x] ~~**G24 · [DECIDIR] Semântica do teto de demanda do ganho de ofício.**~~ Levantado em 24/09/2026.
   `acoes-oficio-e-mundo.md:206-208` e `Acoes_Sistema.md:1318-1322`: "uma aldeia absorve talvez 50
   pc por semana de qualquer ofício" representa o valor bruto das mercadorias vendidas, ou o
   ganho (valor adicionado) do artesão? O texto diz "Ganho por semana [...] limitado pela demanda do
   lugar"; "absorve" sugere gasto bruto. Muda quantas peças o mercado absorve (numa cidade, 500 pc:
   2 espadas se for bruto, cerca de 3 se for líquido).
+  Fechado em 26/11/2026 (varredura): B-010: "o teto limita o ganho, não a venda bruta". Livro `acoes-oficio-e-mundo.md:281` ("o valor do trabalho, já sem o material, e não o quanto se vende em bruto") e tabela `:262-267` (Aldeia 100, Vila 300, Cidade 1.000, Capital sem teto). G51 aplicado. O que segue aberto é o G80 (teto em Livre), outro item
 
-- [ ] **G25 · [DECIDIR] Peça de mais de um ofício.** Levantado em 24/09/2026, na revisão econômica.
+- [ ] **G25 · [FAZER] Peça de mais de um ofício.** Levantado em 24/09/2026, na revisão econômica.
   O §7 não tem regra para peça que exige dois ofícios (a arma de haste é cabeça de Ferraria e haste
   de Carpintaria ou Gerais): não diz se os Acúmulos das partes se somam, se cada ofício faz a sua
   parte, nem se há montagem final. As linhas da tabela com dois ofícios também não se explicam:
   "Arco longo, besta" com Arcos e Carpintaria (`Acoes_Sistema.md:1258`, `acoes-oficio-e-mundo.md:161`)
   e "Navio de guerra, catedral" com Naval e Alvenaria (`Acoes_Sistema.md:1281`,
   `acoes-oficio-e-mundo.md:184`). Basta um, os dois são exigidos, ou um por parte?
-- [ ] **G26 · [DECIDIR] O que é "arma marcial".** Levantado em 24/09/2026, na revisão econômica. A
+- [ ] **G26 · [FAZER] O que é "arma marcial".** Levantado em 24/09/2026, na revisão econômica. A
   linha "Espada, machado de guerra, arma marcial" (`Acoes_Sistema.md:1257`,
   `acoes-oficio-e-mundo.md:160`) usa uma categoria que o livro não define e que o `armas.json` não
   tem. Decidir quais armas entram nela, em particular maças, martelos, picareta e a cabeça da
   Alabarda.
-- [ ] **G27 · [DECIDIR] O machado da faca.** Levantado em 24/09/2026, na revisão econômica. A linha
+- [ ] **G27 · [FAZER] O machado da faca.** Levantado em 24/09/2026, na revisão econômica. A linha
   "Faca, machado, ponta de lança" (`Acoes_Sistema.md:1254`, `acoes-oficio-e-mundo.md:157`) não diz
   se o machado é ferramenta ou arma. O `armas.json` tem Machado, Machadinha, Machado de Arremesso e
   Machado Pesado; a revisão econômica cita Machado (média, 300 pc) e Machadinha (leve, 80 pc).
-- [ ] **G28 · [CONSERTAR] O ofício Arcos não está na lista de ofícios.** Levantado em 24/09/2026, na
+- [x] ~~**G28 · [CONSERTAR] O ofício Arcos não está na lista de ofícios.**~~ Levantado em 24/09/2026, na
   revisão econômica. "Arcos" aparece na tabela de fabricação (`Acoes_Sistema.md:1242` e `:1258`;
   `acoes-oficio-e-mundo.md:145` e `:161`), e não na lista de ofícios da §7.2
   (`Acoes_Sistema.md:1040-1042`) nem na do capítulo (`acoes-oficio-e-mundo.md:51`).
+  Fechado em 26/11/2026 (varredura): `veterana-1e.md:116` "Arcos vira Carpintaria" (e "«Arcos, Carpintaria» vira «Carpintaria»"). Livro `acoes-oficio-e-mundo.md:181` "Arco longo, besta ... Carpintaria"; Carpintaria está na lista de `:57`
 - [x] **G29 · [DECIDIR] O que a regra de condução herda, e de que lado fica a carroça.** Levantado
   em 24/09/2026, pela Revisora no veredito da rodada 105 (`f8e3e1e`), depois de a G19 e a G20
   fecharem. Duas perguntas: (1) a "Dificuldade da peça" contra a qual o ajudante trabalha leva a
@@ -269,35 +275,37 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   de estações). O critério não depende do ofício da linha." Fica em aberto, no relato da rodada 106
   (`106-executora.md`), que o material também herda e, somado a uma oficina boa, faz o braçal somar.
   As linhas citadas neste item são do texto de antes da decisão (`5407b38`).
-- [ ] **G30 · [DECIDIR] O braçal soma com material bom.** Levantado em 24/09/2026, no relato da
+- [ ] **G30 · [FAZER] O braçal soma com material bom.** Levantado em 24/09/2026, no relato da
   rodada 106 e confirmado pela Revisora (`dc3e6ac`). A condução herda oficina e material (decisão da
   G29), e com material selecionado ou excepcional numa oficina boa o braçal passa a somar (2 ou 4 por
   intervalo). O texto diz "em nenhuma oficina", o que só vale com material corrente
   (`acoes-oficio-e-mundo.md`, a regra de condução). Saídas: acrescentar "com material corrente"; o
   material não valer para quem não tem o ofício; ou aceitar.
-- [ ] **G31 · [DECIDIR] A cerca é obra?** Levantado em 24/09/2026, na rodada 106. A linha "Porta,
+- [ ] **G31 · [FAZER] A cerca é obra?** Levantado em 24/09/2026, na rodada 106. A linha "Porta,
   banco, mesa tosca, cerca de 20 m" está na escala de dias (`acoes-oficio-e-mundo.md:154`), e pelo
   critério de obra da G29 (construção fixa no lugar) a cerca seria obra, e as outras três peças não.
-- [ ] **G32 · [DECIDIR] O curandeiro ainda apoia pelo modo antigo.** Levantado em 24/09/2026, na
+- [x] ~~**G32 · [DECIDIR] O curandeiro ainda apoia pelo modo antigo.**~~ Levantado em 24/09/2026, na
   rodada 106. `Acoes_Sistema.md:1492-1493`: contra a Virulência, o curandeiro "apoia pela §3.5 (+2
   passando, +1d6 por Margem)", e o §3.5 passou à metade da Dificuldade e +1 a cada 6 (G18). É regra
   de doença: decidir se segue o §3.5 novo ou fica com números próprios.
-- [ ] **G33 · [DECIDIR] O teste coletivo perdeu o equilíbrio.** Levantado em 24/09/2026, pela
+  Fechado em 26/11/2026 (varredura): `acoes-resistir.md:134` "rola Raciocínio + Cura contra metade da Virulência e apoia como Ajudante" (a regra nova do §3.5, A-033). Resíduo só no rascunho `Acoes_Sistema.md:1528`
+- [x] ~~**G33 · [DECIDIR] O teste coletivo perdeu o equilíbrio.**~~ Levantado em 24/09/2026, pela
   Revisora no veredito da 106 (`dc3e6ac`). `Acoes_Sistema.md:286-289` diz que cada pessoa a mais
   sobe a Dificuldade em 2 e "devolve +2 se passar", e que "o companheiro competente é neutro". Com o
   apoio novo (metade da Dificuldade, +1 a cada 6), o companheiro de média 10,5 custa +2 e devolve
   menos, e o competente vira peso. O capítulo (`acoes-e-sistema.md:178`) dá ao líder +1d6 a cada 6, e
   os dois lados já divergiam antes da 106.
-- [ ] **G34 · [DECIDIR] "Apoio numa jogada única" e "jogada estendida" no mesmo parágrafo.**
+  Fechado em 26/11/2026 (varredura): D-354 (C-REG-2): "o líder rola contra a Dificuldade já com os +2". Livro `acoes-e-sistema.md:210-212`: +2 por participante e líder dá +1d6 a cada 6; a frase "devolve +2 se passar" e o apoio de cada um no coletivo não existem mais. Resta só em `Acoes_Sistema.md:276-290`. Ver nota de cautela abaixo
+- [ ] **G34 · [FAZER] "Apoio numa jogada única" e "jogada estendida" no mesmo parágrafo.**
   Levantado em 24/09/2026, pela Revisora no veredito da 106 (`dc3e6ac`). `acoes-e-sistema.md:172`
   abre dizendo que o ajudante é apoio numa jogada única, numa ação que não se divide, e mantém a
   frase "Numa jogada estendida, pode-se usar a média [...] a cada intervalo". O parágrafo se
   contradiz: ou a frase sai, ou a jogada estendida indivisível tem regra própria.
-- [ ] **G35 · [CONSERTAR] O catálogo de ações ainda cita o apoio antigo.** Levantado em 24/09/2026,
+- [ ] **G35 · [FAZER] O catálogo de ações ainda cita o apoio antigo.** Levantado em 24/09/2026,
   pela Revisora no veredito da 106 (`dc3e6ac`). `Acoes_Catalogo.md:75` diz "o ajudante rola e dá +2
   mais +1d6 por Margem. Ver §3.5", e o §3.5 mudou na 106. O verbete é registro da bancada: uma nota
   apontando para o §3.5 novo basta.
-- [ ] **G36 · [DECIDIR] A Brigandina domina a Cota de malha e a Camisa de malha.** Levantado em
+- [ ] **G36 · [AUTOR-REGRA] A Brigandina domina a Cota de malha e a Camisa de malha.** Levantado em
   24/09/2026, na revisão econômica, proposta de preços das Fases 1 a 3. Pela tabela de armaduras
   (`armas-e-armaduras.md:118-120`), a Brigandina (Impacto 4, Corte 6, Perfuração 3 / N1, −2) supera
   a Cota de malha (1, 6, 1 / N1, −2) em tudo, e a Camisa de malha (1, 5, 1 / N1, −1) em tudo menos a
@@ -305,22 +313,22 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   `custo-de-servico-e-itens.md:190`, `:194-195`). O legado diz que ela era vestida "sobre malha"
   (`legacy/raiz/armaduras_escudos_centelha.txt:187`), e a descrição do JSON repete "sobre malha"
   (`src/data/armaduras.json:108`). As estatísticas dela supõem malha por baixo?
-- [ ] **G37 · [DECIDIR] A Placa articulada domina a Placa de transição.** Levantado em 24/09/2026, na
+- [ ] **G37 · [AUTOR-REGRA] A Placa articulada domina a Placa de transição.** Levantado em 24/09/2026, na
   revisão econômica, proposta de preços das Fases 1 a 3. Absorções e Nível iguais (4, 8, 3 / N2), e
   a articulada tem Penalidade menor (−2 contra −3, `armas-e-armaduras.md:123` e `:125`) e custa
   menos (14 po contra 21 po, `custo-de-servico-e-itens.md:199` e `:202`).
-- [ ] **G38 · [DECIDIR] Kite × Heater e Pavês × Scutum.** Levantado em 24/09/2026, na revisão
+- [ ] **G38 · [AUTOR-REGRA] Kite × Heater e Pavês × Scutum.** Levantado em 24/09/2026, na revisão
   econômica, proposta de preços das Fases 1 a 3. Kite e Heater têm as mesmas estatísticas (+3,
   bloqueia, −2, `armas-e-armaduras.md:146-147`), e o Kite custa 2,5 vezes o Heater (25 pp contra
   1 po, `custo-de-servico-e-itens.md:213` e `:215`). O Scutum (acesso 3, `src/data/escudos.json:145`)
   custa menos que o Pavês (acesso 5, `:168`): 35 pp contra 45 pp (`custo-de-servico-e-itens.md:216-217`).
-- [ ] **G39 · [DECIDIR] O Machado custa mais que a Espada Longa.** Levantado em 24/09/2026, na
+- [ ] **G39 · [AUTOR-REGRA] O Machado custa mais que a Espada Longa.** Levantado em 24/09/2026, na
   revisão econômica, proposta de preços das Fases 1 a 3. Machado 3 po, Espada Longa 25 pp
   (`custo-de-servico-e-itens.md:148` e `:152`), com o machado mais leve (1,2 kg contra 1,4 kg,
   `src/data/armas.json`) e, pela proposta, da mesma linha de fabricação. A linha em que o machado
   cai ainda é a G27 ("Faca, machado, ponta de lança", `acoes-oficio-e-mundo.md:157`, ou "Espada,
   machado de guerra, arma marcial", `:160`).
-- [ ] **G40 · [DECIDIR] Preços provisórios de baixa confiança, sem linha de fabricação.** Levantado
+- [ ] **G40 · [FAZER] Preços provisórios de baixa confiança, sem linha de fabricação.** Levantado
   em 24/09/2026, na revisão econômica, proposta de preços das Fases 1 a 3. Dardos (5 pc cada, 5 vezes
   a flecha), Funda (1 pp, cerca de uma corda de 15 m), Bumerangue (3 pp, abaixo do Bastão) e Rede
   (3 pp, cerca de três cordas de 15 m, com a unidade de venda pendente) entraram com preço por
@@ -328,11 +336,11 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   (`custo-de-servico-e-itens.md:169-171`, `:174`).
   - **Nota de 10/10/2026 (D-085):** os Dardos saem do catálogo (D-076) e a Plumbata fica em 35 pc, definitivo.
     Funda, Bumerangue (agora dois, D-076) e Rede seguem com preço provisório.
-- [ ] **G41 · [DECIDIR] As três bestas sem base de custo.** Levantado em 24/09/2026, na revisão
+- [ ] **G41 · [AUTOR-REGRA] As três bestas sem base de custo.** Levantado em 24/09/2026, na revisão
   econômica, proposta de preços das Fases 1 a 3. Besta Pequena 3 po, Média 55 pp, Grande 95 pp
   (`custo-de-servico-e-itens.md:164-166`) ficaram como estavam, sem conta de fabricação por trás:
   dependem da G25 (peça de mais de um ofício).
-- [ ] **G42 · [DECIDIR] O preço unitário dos Dardos lido como preço de maço.** Levantado em
+- [ ] **G42 · [FAZER] O preço unitário dos Dardos lido como preço de maço.** Levantado em
   25/09/2026, na rodada 107 (ESCALA do veredito `ae1c526`). O catálogo lista "Dardos · 5 pc"
   (`custo-de-servico-e-itens.md:170`) sob o título "Munição vendida em maços", e quem lê pode entender
   que o maço custa 5 pc; o mesmo vale para a Adaga de Arremesso. O item é uma unidade (prova no
@@ -341,12 +349,12 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   - **Nota de 10/10/2026 (D-085): os Dardos saem do catálogo e a Plumbata (35 pc, definitivo) ocupa o lugar
     deles.** O item perde o objeto para os Dardos e segue valendo para a Adaga de Arremesso (e para a Plumbata,
     que também é munição).
-- [ ] **G43 · [DECIDIR] Dois nomes de armadura ainda de trabalho.** Levantado em 25/09/2026, no resíduo
+- [ ] **G43 · [FAZER] Dois nomes de armadura ainda de trabalho.** Levantado em 25/09/2026, no resíduo
   do CORRIGE da rodada 107 (`ae1c526`). O catálogo mostra "Gambeson (acolchoado)" e "Brigandina / coat
   of plates" (`custo-de-servico-e-itens.md:192`, `:194`), que vêm do `nome` no `armaduras.json`, e o
   aviso "Provisório" (`:10`) passou a dizer isso em vez de afirmar que todos os nomes foram traduzidos.
   Decidir o nome final dos dois; renomear o `nome` não quebra ficha salva (a persistência é pelo id).
-- [ ] **G44 · [DECIDIR] Proposta de design do autor: empréstimo de XP por aulas pagas.** Levantado em
+- [x] ~~**G44 · [DECIDIR] Proposta de design do autor: empréstimo de XP por aulas pagas.**~~ Levantado em
   25/09/2026, na revisão econômica. O personagem paga aulas (em dinheiro) e compra um ponto de
   Atributo, Habilidade ou Especialidade ANTES de ter o XP, ficando em débito; depois, metade do XP que
   ganhar (por sessão ou pela Firula de nível 3) vai para quitar a dívida. **Já decidido pelo autor:** um
@@ -355,16 +363,19 @@ pode vir a ser ocultado, então nenhuma ficha deve depender dele.
   tempo do professor × o salário dele (entra na futura tabela de serviços). **Aberto:** quanto tempo a
   aula leva (provavelmente mais rápido que aprender sozinho, sem ser rápido demais); o que acontece
   com a dívida se o XP não vier. Não aplicar agora.
-- [ ] **G45 · [DECIDIDO, APLICAR DEPOIS, junto com a G22] A jornada por ofício.** Decidido pelo autor
+  Duplicado de G68 (varredura de 26/11/2026): Completada e fechada pela G68 ("Ao aplicar, fecha a G44"). Fica a G68
+- [x] ~~**G45 · [DECIDIDO, APLICAR DEPOIS, junto com a G22] A jornada por ofício.**~~ Decidido pelo autor
   em 25/09/2026, na revisão econômica. Ofícios leves (escrivão, acadêmico) 5 a 6 h; artesão 8 h;
   braçal e trabalho pesado 10 h; 6 dias por semana. Um "dia" da tabela de fabricação é uma jornada
   daquele ofício; linhas em escala de hora convertem pela jornada do ofício; Apressar é dobrar a
   jornada do próprio ofício; meia jornada é meio intervalo. **Não aplicar até a revisão econômica
   fechar a G22.**
-- [ ] **G46 · [CONSERTAR] O tamanho do salto entre degraus da escada de intervalos diverge.** Levantado
+  Fechado em 26/11/2026 (varredura): `acoes-oficio-e-mundo.md:155` "A jornada é do ofício ... 6 horas no ofício leve, 8 no artesão, 10 no braçal ... a linha em escala de horas converte pela jornada do próprio ofício, e meia jornada é meio intervalo"; `:147` "Dobrar a jornada do próprio ofício" (Apressar). B-011: "jornada: leve 6 h, artesão 8 h, braçal 10 h; meia jornada = meio intervalo; apressar = dobrar a jornada do ofício"
+- [x] ~~**G46 · [CONSERTAR] O tamanho do salto entre degraus da escada de intervalos diverge.**~~ Levantado
   em 25/09/2026, na revisão econômica. `Acoes_Sistema.md:216` diz que o salto "vai de dez a sessenta
   vezes em tempo real"; `src/content/chapters/relacoes-sociais.md:215` diz que os saltos "multiplicam
   de 8 a 24 vezes cada um". Com a jornada de 8 h (G45), hora → dia salta 8, fora da primeira faixa.
+  Fechado em 26/11/2026 (varredura): B-011: em `Acoes_Sistema.md` o salto passa a "de oito a sessenta vezes"; "relacoes-sociais.md '8 a 24' fica". O livro publicado não declara nenhum "vezes" na escada (`acoes-e-sistema.md:165-176`); `relacoes-sociais.md:266` fala dos quatro degraus seguidos da régua racial (8 a 24), outro recorte. `Acoes_Sistema.md:216` já diz "oito a sessenta"
 
 **Revisão econômica, Etapas A, B e C: as decisões aprovadas (registradas em 25/09/2026, NÃO aplicadas).**
 
@@ -373,32 +384,35 @@ do documento, e a linha é a do cabeçalho da seção). Aprovadas pelo autor; na
 recusar saem desta lista quando ele disser quais. G47 a G60 são as marcadas **[DIVERGE]** no Resumo (mudam
 texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões novas.
 
-- [ ] **G47 · [DECIDIDO, APLICAR DEPOIS] A2 · Equipamento de aventura pela tabela de mercadorias.**
+- [ ] **G47 · [FAZER] [DECIDIDO, APLICAR DEPOIS] A2 · Equipamento de aventura pela tabela de mercadorias.**
   Documento §A2 (`:71`). Todo item de equipamento de aventura passa ao preço da tabela de mercadorias,
   mantendo os ids do `precos.json`; entram duas linhas novas de fabricação (sapato; cadeado); a regra
   Misto se refina (a tabela de fabricação vale para armas, armaduras, escudos, munição e sela). Afeta
   `src/data/precos.json`, `custo-de-servico-e-itens.md:355` (Equipamento de Aventura) e a tabela de
   fabricação de `acoes-oficio-e-mundo.md`. **Rodada 110 (25/09/2026), em parte** (`3ee18df`): os pacotes somam os itens de `src/data/mercadorias.json` (`pacotes-equipamento.json`, seção gerada `src/content/chapters/custo-mercadorias.md:323-333`) e o `precos.json` foi apagado. **Falta:** as duas linhas novas de fabricação (sapato, cadeado) e o refinamento da regra Misto em `acoes-oficio-e-mundo.md`.
-- [ ] **G48 · [DECIDIDO, APLICAR DEPOIS] A4 · Moeda e metais.** Documento §A4 (`:113`). O pc é a menor
+- [ ] **G48 · [FAZER] [DECIDIDO, APLICAR DEPOIS] A4 · Moeda e metais.** Documento §A4 (`:113`). O pc é a menor
   moeda; metais por 100 g: ferro 1,5 pc (hoje ¼), cobre 3 pc (hoje 2), prata 3 pp, ouro 3 po, platina
   3 pl (nova); joias e letras de câmbio com deságio e taxa. Afeta `custo-de-servico-e-itens.md:12`
   (Moedas & Conversão).
-- [ ] **G49 · [DECIDIDO, APLICAR DEPOIS] B1 · O multiplicador do ofício: ×20.** Documento §B1 (`:146`).
+- [x] ~~**G49 · [DECIDIDO, APLICAR DEPOIS] B1 · O multiplicador do ofício: ×20.**~~ Documento §B1 (`:146`).
   A fórmula passa de `(média − 4) × 10 pc` para `× 20`, e o exemplo do capítulo muda para os valores da
   curva da B2 (G50). Afeta `acoes-oficio-e-mundo.md:206` e o espelho em `Acoes_Sistema.md`.
-- [ ] **G50 · [DECIDIDO, APLICAR DEPOIS] B2 · A curva de renda convexa.** Documento §B2 (`:155`). Renda
+  Fechado em 26/11/2026 (varredura): Substituído e aplicado pela D-386: "o valor por ponto de Dificuldade 26 / 47 / 96 pc (faixas de Dificuldade 4, 7 e 11)"; `acoes-oficio-e-mundo.md:234-246` e `renda.json` `valor_por_ponto` (26, 47, 96)
+- [x] ~~**G50 · [DECIDIDO, APLICAR DEPOIS] B2 · A curva de renda convexa.**~~ Documento §B2 (`:155`). Renda
   de trabalho por semana = o melhor (média − Dif) × valor da faixa, entre as faixas que a Habilidade
   alcança pelo Requisito: 20 / 37 / 67 pc por ponto-semana nas faixas de Dif 4 / 7 / 11. Afeta
   `acoes-oficio-e-mundo.md:206` (a fórmula e o exemplo).
-- [ ] **G51 · [DECIDIDO, APLICAR DEPOIS] B4 · Tetos de mercado (resolve a G24).** Documento §B4
+  Fechado em 26/11/2026 (varredura): Os 20 / 37 / 67 do item viraram 26 / 47 / 96 (D-386); `acoes-oficio-e-mundo.md:234` "o melhor (média − Dificuldade) × valor da faixa, entre as faixas cujo Requisito a Habilidade alcança"; `:236`
+- [x] ~~**G51 · [DECIDIDO, APLICAR DEPOIS] B4 · Tetos de mercado (resolve a G24).**~~ Documento §B4
   (`:217`). Aldeia 100, vila 300, cidade 1.000, capital sem teto; o teto limita o ganho, líquido de
   material. Afeta `acoes-oficio-e-mundo.md:206` ("limitado pela demanda do lugar"). Ao aplicar, fecha a
   G24.
+  Fechado em 26/11/2026 (varredura): D-386: "os tetos (100 / 300 / 1.000 / sem teto, em bruto)" não mudam; `acoes-oficio-e-mundo.md:262-267` e `:281` "O teto limita o ganho, e não a venda". O G24 fecha com ele (itens-G1). O que fica é o G80
 - [x] ~~**G52 · [DECIDIDO, APLICAR DEPOIS] B5 · A tabela de Renda nova.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): a tabela de Renda sai de `src/data/renda.json` pelo gerador `scripts/gen-cap-economia.mjs` (`src/content/chapters/custo-de-servico-e-itens.md:37-55`), com o Livre pela curva D da v2 §3 (12% no braçal, 2% na nobreza, e não os 20%/7% daqui) e mês e ano em 4 e 48 semanas. Registro original: Documento §B5 (`:235`). Rendas
   mantidas; o Livre recalculado e decrescente (20% no braçal, 7% na nobreza); as colunas mês e ano
   passam a 4 e 48 semanas exatas (hoje Braçal 22 pp/mês, deveria ser 24; Livre/ano 38 pp, deveria ser
   48). Afeta `custo-de-servico-e-itens.md:33` (Serviços & Renda).
-- [ ] **G53 · [DECIDIDO, APLICAR DEPOIS] B6 · Recursos por faixas.** Documento §B6 (`:282`). Mapa de
+- [ ] **G53 · [FAZER] [DECIDIDO, APLICAR DEPOIS] B6 · Recursos por faixas.** Documento §B6 (`:282`). Mapa de
   faixas para Recursos 1 a 5; o Destreinado passa de ●● para ●. Afeta `custo-de-servico-e-itens.md:41-42`
   (a coluna de Recursos da tabela de Renda) e `antecedentes.md:92` (Recursos). **Rodada 110 (25/09/2026), em parte** (`3ee18df`): a coluna de Recursos da tabela de Renda sai de `renda.json` e o Destreinado está em ● (`src/content/chapters/custo-de-servico-e-itens.md:44`). **Falta:** o mapa de faixas no Recursos de `antecedentes.md` (o verbete gerado de `antecedentes.json`).
 - [x] ~~**G54 · [DECIDIDO, APLICAR DEPOIS] B8 · A Placa completa sobe (~39%).**~~ **Aplicado em 25/09/2026, rodada 110** (`a58e6f4`): `src/data/armaduras.json:200-205`, `placa-completa` a 3.600 pc; o catálogo gerado mostra "Placa completa · Pesada · 36 po". Registro original: Documento §B8 (`:314`). A
@@ -424,31 +438,33 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
 - [x] ~~**G59 · [DECIDIDO, APLICAR DEPOIS] E4 · Rações.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): ração de viagem 3 pc (`src/data/mercadorias.json`, `racao-dia`), ração de cavalo 4 pc e estábulo 7 pc (`src/data/montarias-veiculos.json`, `racao-cavalo` e `estabulo`); a seção Hospedagem & Comida saiu, e a estalagem está no Custo de Vida (`src/content/chapters/custo-de-servico-e-itens.md:80-96`). Registro original: Documento §E4 (`:756`). Ração de viagem 3 pc;
   ração de cavalo 4 pc; estábulo 7 pc. Afeta `custo-de-servico-e-itens.md:271` (Ração (dia), 2 pc hoje),
   a seção Hospedagem & Comida (`:228`) e o `racao-dia` do `src/data/precos.json`.
-- [ ] **G60 · [DECIDIDO, APLICAR DEPOIS] E7 · Correções de texto.** Documento §E7 (`:783`). O salto
+- [x] ~~**G60 · [DECIDIDO, APLICAR DEPOIS] E7 · Correções de texto.**~~ Documento §E7 (`:783`). O salto
   entre degraus (`Acoes_Sistema.md:216` × `relacoes-sociais.md:215`, a G46), a fórmula, os tetos, a
   Renda, a Qualidade e os Itens Gerais (`custo-de-servico-e-itens.md:319`). Ao aplicar, fecha a G46. **Rodada 110 (25/09/2026), em parte** (`3ee18df`, `f9709bc`): a Renda, a Qualidade e os Itens Gerais. **Falta:** o salto entre degraus (a G46) e a fórmula e os tetos de `src/content/chapters/acoes-oficio-e-mundo.md:206` (G49 a G51).
-- [ ] **G61 · [DECIDIDO, APLICAR DEPOIS] A1 · Munição.** Documento §A1 (`:46`). Flechas de guerra e
+  Fechado em 26/11/2026 (varredura): As três faltas estão feitas: o salto (G46, B-011), a fórmula (`acoes-oficio-e-mundo.md:234-236`) e os tetos (`:262-267`, `:281`), mais Renda, Qualidade e Itens Gerais (já em G52, G58, G62)
+- [ ] **G61 · [FAZER] [DECIDIDO, APLICAR DEPOIS] A1 · Munição.** Documento §A1 (`:46`). Flechas de guerra e
   virotes ficam 10 pc o maço de 10; entra Flechas rústicas (10) a 4 pc; regra de recuperação: metade.
   Afeta `src/data/municao.json`, o catálogo de `custo-de-servico-e-itens.md` e a regra da tag Munição em
   `armas-e-armaduras.md:51`.
 - [x] ~~**G62 · [DECIDIDO, APLICAR DEPOIS] A3 · Mercadorias.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): `src/data/mercadorias.json`, 193 itens da v2, na seção gerada `src/content/chapters/custo-mercadorias.md:14-317`; Roupas, Itens Gerais e Hospedagem & Comida à mão saíram. Registro original: Documento §A3 (`:95`). 190 itens, com as
   correções da rodada A2 do Revisor, num arquivo próprio `mercadorias.json` (G70). Afeta
   `custo-de-servico-e-itens.md` (Roupas `:304`, Itens Gerais `:319`, Hospedagem & Comida `:228`).
-- [ ] **G63 · [DECIDIDO, APLICAR DEPOIS] B3 · O "Ganho por semana" (resolve a G22).** Documento §B3
+- [x] ~~**G63 · [DECIDIDO, APLICAR DEPOIS] B3 · O "Ganho por semana" (resolve a G22).**~~ Documento §B3
   (`:211`). Ganho por semana = renda de 6 jornadas do ofício; meia jornada = meio intervalo. Aplica junto
   com a jornada por ofício (G45). Afeta `acoes-oficio-e-mundo.md:206`. Ao aplicar, fecha a G22. **Rodada 110 (25/09/2026), em parte** (`3ee18df`): a semana de 6 dias e a renda proporcional aos dias trabalhados estão em `src/content/chapters/custo-de-servico-e-itens.md:63-66`. **Falta:** `src/content/chapters/acoes-oficio-e-mundo.md:206` e a jornada por ofício (G45).
-- [ ] **G64 · [DECIDIDO, APLICAR DEPOIS] B7 · Status obrigatório.** Documento §B7 (`:298`). Regra nova
+  Fechado em 26/11/2026 (varredura): `acoes-oficio-e-mundo.md:232` "É uma Longa de intervalo semana, sem jogada, e o que ela produz é dinheiro", `:283` "6 jornadas em 8 dias ... renda proporcional aos dias trabalhados", `:155` (jornada por ofício, meia jornada = meio intervalo). A "Falta" do item apontava `:206`, hoje o exemplo da muralha. Fecha o G22 (itens-G1)
+- [ ] **G64 · [FAZER] [DECIDIDO, APLICAR DEPOIS] B7 · Status obrigatório.** Documento §B7 (`:298`). Regra nova
   de viver abaixo do nível, com Temperança, e dívida para manter o status. Afeta
   `custo-de-servico-e-itens.md:33` (Serviços & Renda) e o custo de vida (G65).
 - [x] ~~**G65 · [DECIDIDO, APLICAR DEPOIS] C4 · Custo de vida.**~~ **Aplicado em 25/09/2026, rodada 110** (`3ee18df`): `src/data/custo-de-vida.json`, com os níveis por pessoa (`src/content/chapters/custo-de-servico-e-itens.md:80-96`) e o pacote por família em cada faixa (`src/content/chapters/custo-de-servico-e-itens.md:102-120`). Registro original: Documento §C4 (`:326`). Quatro cestas
   por adulto-equivalente, cinco moradias, sete níveis de vida por pessoa e um pacote por família em cada
   faixa da B5, no arquivo novo `custo-de-vida.json` (G70). Afeta `custo-de-servico-e-itens.md:228`
   (Hospedagem & Comida).
-- [ ] **G66 · [DECIDIDO, APLICAR DEPOIS] C7 · Serviços contratados.** Documento §C7 (`:543`). Tarifa =
+- [ ] **G66 · [FAZER] [DECIDIDO, APLICAR DEPOIS] C7 · Serviços contratados.** Documento §C7 (`:543`). Tarifa =
   renda do perfil ÷ 6 (contrato) ou × 1,5 (avulso); lista de 38 serviços no arquivo novo `servicos.json`
   (G70); o Séquito não custa dinheiro na mesa. O documento deixa aberta a regra do curandeiro contra a
   Cura (`:625`). Afeta `custo-de-servico-e-itens.md:33` e `antecedentes.md:139` (Séquito). **Rodada 110 (25/09/2026), em parte** (`3ee18df`, `f9709bc`): as tarifas e os 38 serviços de `src/data/servicos.json` (`src/content/chapters/custo-servicos.md:10-151`), o soldo por dia corrido (`src/content/chapters/custo-servicos.md:150`) e a Cura acelerada, 10% por nível (`src/content/chapters/vida-ferimentos-cura.md:90`). **Falta:** "o Séquito não custa dinheiro na mesa" em `antecedentes.md` (Séquito).
-- [ ] **G67 · [DECIDIDO, APLICAR DEPOIS] E2 · Reparo e desgaste.** Documento §E2 (`:704`). Reparo em
+- [x] ~~**G67 · [DECIDIDO, APLICAR DEPOIS] E2 · Reparo e desgaste.**~~ Documento §E2 (`:704`). Reparo em
   fração do preço (1/6, 1/3, 3/4); desgaste opcional por marcas. Afeta `acoes-oficio-e-mundo.md`
   (fabricação) e `armas-e-armaduras.md`. **Rodada 110 (25/09/2026), em parte** (`f9709bc`): o reparo pela regra da v2 §8 (leve sem Montagem, pesado com metade, arruinada inteira; ~1/10, 1/3 e 2/3 do preço), em `src/content/chapters/acoes-oficio-e-mundo.md:193`. **Falta:** o desgaste opcional por marcas, em `armas-e-armaduras.md`.
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):** "Desgaste e manutenção (regra opcional)". Não muda o veredito nem o "Falta" acima.
@@ -469,7 +485,8 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
     > Reparo (se ainda não estiver no livro): leve sem Montagem, 1/4 da Peça, cerca de 1/10 do preço,
     > Ofícios Gerais faz no campo; pesado 1/2 Montagem + 1/2 Peça, cerca de 1/3; arruinada com
     > material, trabalho inteiro, cerca de 2/3 mais material.
-- [ ] **G68 · [DECIDIDO, APLICAR DEPOIS] E3 · Empréstimo de XP, a regra completa (completa a G44).**
+  Fechado em 26/11/2026 (varredura): Reparo feito: B-005 "leve ~1/10 do preço sem Montagem, pesado ~1/3 com meia Montagem, arruinada ~2/3" em `acoes-oficio-e-mundo.md:216-218`. O "desgaste opcional por marcas" foi superado pela decisão posterior do autor: D-330 (R51, 05/11) "O desgaste pelo uso comum (manutenção e conserto periódico) é regra extra, opcional, se o Mestre quiser"; `armas-e-armaduras.md:260` "Regra extra: desgaste pelo uso. Se o Mestre quiser ...". A versão por marcas (3 / 6 / 9, e a do Comerciante) ficou "sem decisão do autor" (B-016); se ele a quiser, é decisão nova
+- [ ] **G68 · [FAZER] [DECIDIDO, APLICAR DEPOIS] E3 · Empréstimo de XP, a regra completa (completa a G44).**
   Documento §E3 (`:726`). Tempo, preço e dívida, sobre o que o autor já decidiu na G44. Afeta
   `criacao-de-personagem.md` (onde o XP se gasta). Ao aplicar, fecha a G44.
   - **Sugestão do Comerciante, não aprovada (registrada na rodada 114, texto dele sem alteração):** "Empréstimo de XP", desenho pronto, aguarda o autor.
@@ -488,7 +505,7 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
     "se o XP não vier"; o **mentor que ensina de graça e mantém a dívida**; e a **aula em grupo, até 4
     alunos, por 1,5×**. A G44 não fala de grupo nem de mentor: esses dois são proposta nova, e não
     decisão do autor. O documento §E3 que a G68 cita já trazia os mesmos pontos.
-- [ ] **G69 · [DECIDIDO, APLICAR DEPOIS] E5 · Pacote inicial pelo Recursos.** Documento §E5 (`:767`).
+- [ ] **G69 · [FAZER] [DECIDIDO, APLICAR DEPOIS] E5 · Pacote inicial pelo Recursos.** Documento §E5 (`:767`).
   Bolsa de 4 semanas de Livre na criação (regra do Jogador). Afeta `criacao-de-personagem.md` e
   `antecedentes.md:92` (Recursos).
 - [x] ~~**G70 · [DECIDIDO, APLICAR DEPOIS] E6 · Os arquivos do site.**~~ **Aplicado em 25 e 26/09/2026, rodadas 110 e 111** (`3ee18df` e o commit da F4 da 111): os sete arquivos próprios em `src/data` (`mercadorias.json`, `montarias-veiculos.json`, `servicos.json`, `pacotes-equipamento.json`, `renda.json`, `custo-de-vida.json`, `viagens.json`), o `precos.json` apagado, e a procedência em `lore/economia/mercadorias.procedencia.json` e `lore/economia/montarias.procedencia.json`, com a pasta versionada (`lore/economia/README.md`). O catálogo de mercadorias é gerado por `scripts/gen-cap-economia.mjs`, e não pelo `gen-cap-itens.mjs`. Registro original: Documento §E6 (`:771`).
@@ -497,7 +514,7 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   site; as tarifas em arquivos próprios (`custo-de-vida.json`, `renda.json`, `servicos.json`,
   `viagens.json`, `montarias-veiculos.json`). Afeta `src/data/` e o gerador do catálogo
   (`scripts/gen-cap-itens.mjs`).
-- [ ] **G71 · [DECIDIR] Comércio e modificador regional.** Registrado em 26/09/2026, na rodada 114,
+- [ ] **G71 · [ADIADO: B-037 (autor, 01/10/2026): pendência para anotar, sem executar] [DECIDIR] Comércio e modificador regional.** Registrado em 26/09/2026, na rodada 114,
   a partir de uma sugestão do Comerciante. Hoje o site não tem pechincha, revenda por conta própria
   nem variação regional de preço: o próprio capítulo de custo diz que "a diferença de preço entre
   regiões" fica para depois (`src/content/chapters/custo-de-servico-e-itens.md:8`), e a única
@@ -509,12 +526,13 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   - **Reafirmado pelo autor em 01/10/2026** (item 4 do fechamento da economia, junto com a G73 e a
     G74, sem execução): "o modificador regional" segue pendente. Anotado aqui, e não numa entrada
     nova, porque esta já é a pendência dele.
-- [ ] **G72 · [DECIDIR] Atributo sugerido para cada Habilidade secundária.** Registrado pelo autor
+- [x] ~~**G72 · [DECIDIR] Atributo sugerido para cada Habilidade secundária.**~~ Registrado pelo autor
   em 27/09/2026 (item 7a do despacho da Regra do Quase-Acerto), sem resolver. Hoje nenhuma das 66
   entradas de `src/data/habilidades-secundarias.json` tem um campo de Atributo associado (a
   Especialidade combina Atributo + Habilidade PRIMÁRIA, mas a secundária fica solta). Decidir se
   cada secundária ganha um Atributo sugerido, e onde esse campo mora no JSON.
-- [ ] **G73 · [DECIDIR] Preços do sobre-humano: Centelha, Proezas e Magia.** Registrado em
+  Fechado em 26/11/2026 (varredura): O livro responde: `habilidades-secundarias.md:21` "As Secundárias não trazem o parêntese da inclinação: o Atributo sai da descrição da ação" (revisão de textos, `f70f4482`, 17/11/2026); `habilidades-secundarias.json` não tem campo de Atributo. C-023(a) "registrar sem resolver" fica respondida pelo texto publicado. Sem D- própria; se o autor quiser o campo, é decisão nova
+- [ ] **G73 · [ADIADO: B-037 (autor, 01/10/2026): pendência para anotar, sem executar] [DECIDIR] Preços do sobre-humano: Centelha, Proezas e Magia.** Registrado em
   01/10/2026, item 4 do fechamento da economia
   (`docs/simulacao/caixa/fechamento-economia-reforma-despacho.md`), sem execução. A economia
   mundana (`lore/economia/`) só preça o mundo sem Centelha, Proeza ou Arte; o que custa o serviço,
@@ -528,7 +546,7 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
     Capacidade só limitam a bolsa, e bolsa mais partes não tem teto.
   - **Topo da tabela de recompensa (desafio 4 em diante)** (rodada de pendências de 03/10/2026, Bloco K): segue provisório
     até esta pendência, como o capítulo e a calculadora já dizem; adiado pelo autor, "sem pressa".
-- [ ] **G74 · [DECIDIR] Poções como estoque de emergência caro.** Registrado em 01/10/2026, item 4
+- [ ] **G74 · [ADIADO: B-037 (autor, 01/10/2026): pendência para anotar, sem executar] [DECIDIR] Poções como estoque de emergência caro.** Registrado em 01/10/2026, item 4
   do fechamento da economia, sem execução. Mesma fala do autor da G73: a poção entra na economia
   como estoque de emergência, e cara; o preço e a regra de compra ficam por decidir.
 - [x] **G75 · [FECHADA] Rever de uma vez todo efeito da Margem dentro da Acumulada.** **Decidido pelo
@@ -556,13 +574,13 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
     sobra"): é a D3 da Leitura de novato 3, e a Longa não rola.
   - Já resolvidos e fora da lista: Escalar, Esgueirar (os metros) e Nadar (os metros), que deixaram
     de somar por cima do progresso.
-- [ ] **G76 · [DECIDIR] Itens mágicos: poções, pergaminhos, itens mágicos, armas e armaduras
+- [ ] **G76 · [DECIDIR] [ESPERA: a G73 e a G74 (preço do sobre-humano e das poções, B-037) e a abertura do tema; quem move: o autor] Itens mágicos: poções, pergaminhos, itens mágicos, armas e armaduras
   encantadas, artefatos.** Registrado em 03/10/2026 (rodada de pendências, Bloco I). Centelha não
   tem regra para nenhum deles. A pesquisa de referência (D&D, Pathfinder 2e, Exalted 3e, sem
   desenho) está em `docs/itens-magicos/itens-magicos-pesquisa.md`, com seis perguntas de contato
   com Centelha na seção 4. Cruza com a G73 (preço do sobre-humano) e a G74 (poções).
 - [x] **G77 · [FAZER] Longa a 3 por dado (D-034): Ofício (lote, espada gabarito, Especialidade na Longa, tabela Oficial/Perito/Mestre) e economia ainda calculados a 3,5 até a rodada 7 do veterana-1d.** Registrado em 04/10/2026, rodada 3 do veterana-1d (opção (a) do Arquiteto). O Cap. VIII já diz 3 por dado; os números de `acoes-oficio-e-mundo.md` (o ganho por lote, a espada gabarito da qualidade, os tempos do oficial "soma 6, média 10,5" e a tabela gerada do ganhar a vida) e toda a economia gerada (`lore/economia/v2/base.py:22-23`, `media(soma)`, e o que sai dela por `copiar-economia.mjs` e `gen-cap-economia.mjs`, inclusive `recompensas.json` e o `test-recompensa.mjs`) seguem a 3,5. O parágrafo da Especialidade na Longa já entrou com o texto novo (+2 por nível, fixo) na rodada 3; o que fica a 3,5 são os números. Refazer o modelo mexe em preço (D-011 manda o catálogo ficar), e por isso fica para a rodada 7. Levantamento: `../tmp/executora/levantamento-rodada3.md`. **Atualizado em 04/10/2026, rodada 7 do veterana-1e (parte de texto):** os números escritos à mão do capítulo de Ofício (tempos do oficial, lote, espada por grau, faz-tudo, aprendizes, muralha, carroça) passaram a 3 por dado (LONGA-2). Seguem a 3,5 o bloco gerado do Ganhar a vida (`gen:economia-ganhar-a-vida`, de `renda.json`) e toda a economia gerada, à espera da decisão sobre o grupo SERVICOS, REQUISITO-FAIXA, RENDA-1, GANHO-BRUTO e TETO. **Fechado em 26/11/2026 (D-386):** Forma 1 aplicada em 7ed7c327, no ramo `economia-longa3`: a média a 3 por dado, 26 / 47 / 96 pc por ponto e o Requisito 1 / 3 / 5 só em Ganhar a vida, com a tabela, RENDA-1, GANHO-BRUTO e a sugestão ao Mestre no capítulo; Serviços congelado numa tabela publicada fixa, e os outros sete JSON de `src/data` saem byte a byte iguais. O TETO ficou fora (G80).
-- [ ] **G78 · [FAZER] Catálogo de armas: o campo de estilo e as imagens por raça (I1, D-371).** Registrado em 11/11/2026.
+- [ ] **G78 · [FAZER] [ESPERA: a conferência do autor sobre o mapeamento da Curadora (D-371); quem move: o autor, depois o Arquiteto] Catálogo de armas: o campo de estilo e as imagens por raça (I1, D-371).** Registrado em 11/11/2026.
   Cada arma de `src/data/armas.json` continua um item só, com os mesmos números, e ganha o campo de estilo com sete valores (comum,
   élfico, anão, orc, halfling, humano e gnomo), cada um com a imagem normal e a de Relíquia. A lista pode mostrar cada estilo como
   uma linha ("Sabre élfico") sobre o mesmo item, e a ficha do personagem guarda o estilo escolhido. Começa só pelas armas.
@@ -582,7 +600,7 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
 
     O primeiro golpe (o do montanteiro, o primeiro a chegar) saiu no Tick 16 antes e no Tick 43 com a inteira (nas duas sementes, 20260903 e 771107), acima do teto de 30. Os outros cenários do `test-espelho` com a inteira: `1v1-cacada` de 7 e 8 para 4 lances; `4x4-media` e `4x4-aberto` de 27 e 31 para 19; o `2x2-longa` ficou sem golpe.
   - **Prova depois da volta à metade:** `test-espelho` verde, com os lances de antes do `840a60e9` (`2x2-longa` 8 e 7, `1v1-cacada` 7 e 8, `4x4-media` e `4x4-aberto` 27 e 31, as duas sementes, mesa e laço iguais); o passo do escudeiro volta a 2 / 4 / 7 e o do montanteiro a 3 / 5 / 7; Kael e Sora de malha: Batalha 3, Arranque 5 / 6, Corrida 8 / 9 (a metade de 2 é 1). O CI vermelho do `test-espelho` tinha essa causa, e fecha com o merge.
-- [ ] **G80 · [DECIDIR] TETO em Livre (Veterana), a Forma 2 do modelo de economia e a tabela `custo_qualidade` do lore (Forma 1, 26/11/2026).**
+- [ ] **G80 · [AUTOR-REGRA] TETO em Livre (Veterana), a Forma 2 do modelo de economia e a tabela `custo_qualidade` do lore (Forma 1, 26/11/2026).**
   - TETO em Livre: a Veterana escreve o teto em Livre (Aldeia 12, Vila 22, Cidade 35); hoje o teto é em bruto (100, 300, 1.000) e o efeito difere: com 100 a Aldeia limita até o oficial (bruto 130 cai para 100, Livre 10); com 12 em Livre ele rende inteiro. É mudança de efeito, não de unidade; para quando os Serviços puderem mexer.
   - Forma 2 (o pacote da Veterana inteiro: 11 serviços, 5 aulas, 1 recompensa, até −20%): passo seguinte possível, sem data; o delta já está medido em `tmp/arquiteto/economia/conta-media3.md`, cenário 2.
   - Achado: a tabela `custo_qualidade` do lore (`tab_qualidade.md`, `tab_qualidade_v2.md`, não publicada) muda com a média a 3 (Faca 55 para 70 pc, Placa completa 3.600 para 5.200 pc). NÃO se usa antes de conferir contra `armas.json` e `armaduras.json`.

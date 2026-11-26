@@ -45,14 +45,14 @@ está na seção 3.
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 11 | 0 | 10 | 0 | 0 | 5 | 0 | 0 | 6 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 12 | 8 | 0 | 4 | 0 | 4 | 4 | 0 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 8 | 0 | 2 | 0 | 0 | 8 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 82 | 55 | 0 | 27 | 32 | 3 | 0 | 5 | 15 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 82 | 37 | 0 | 45 | 2 | 23 | 9 | 0 | 0 | 3 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **423** | **291** | **3** | **129** | **78** | **82** | **29** | **11** | **81** | **13** |
+| | **Total** | | **423** | **273** | **3** | **147** | **48** | **102** | **38** | **6** | **66** | **16** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -433,63 +433,45 @@ Fechados (2): F3, F9.
 
 | Sigla | Estado | Marcação | Título |
 |---|---|---|---|
-| G2 | aberto | DECIDIR | Reequilibrar a Especialidade. |
-| G6 | aberto | DECIDIR | Percepção passiva: confirmar. |
-| G12 | aberto | DECIDIR | Desgaste e ferimento não se conhecem. |
-| G13 | aberto | FAZER | As sobras das duas famílias escritas. |
+| G2 | aberto | AUTOR-REGRA | Reequilibrar a Especialidade. |
+| G12 | aberto | AUTOR-REGRA | Desgaste e ferimento não se conhecem. |
+| G13 | aberto | AUTOR-REGRA | As sobras das duas famílias escritas. |
 | G11 | aberto | FAZER | `regras.json → acoes`. |
-| G14 | aberto | DECIDIR | Firula na ação Longa. |
-| G15 | aberto | DECIDIR | Como o bônus fixo de Proeza entra na Longa. |
-| G16 | aberto | DECIDIR | Alcance da regra da maior e da menor. |
-| G17 | aberto | CONSERTAR | Nomes de ofício divergentes. |
+| G15 | aberto | FAZER | Como o bônus fixo de Proeza entra na Longa. |
+| G16 | aberto | FAZER | Alcance da regra da maior e da menor. |
 | G21 | aberto | DECIDIR | Direção sem custo. |
-| G22 | aberto | DECIDIR | O que é o "ganho por semana". |
-| G23 | aberto | CONSERTAR | Duas espadas no mesmo documento. |
-| G24 | aberto | DECIDIR | Semântica do teto de demanda do ganho de ofício. |
-| G25 | aberto | DECIDIR | Peça de mais de um ofício. |
-| G26 | aberto | DECIDIR | O que é "arma marcial". |
-| G27 | aberto | DECIDIR | O machado da faca. |
-| G28 | aberto | CONSERTAR | O ofício Arcos não está na lista de ofícios. |
-| G30 | aberto | DECIDIR | O braçal soma com material bom. |
-| G31 | aberto | DECIDIR | A cerca é obra? |
-| G32 | aberto | DECIDIR | O curandeiro ainda apoia pelo modo antigo. |
-| G33 | aberto | DECIDIR | O teste coletivo perdeu o equilíbrio. |
-| G34 | aberto | DECIDIR | "Apoio numa jogada única" e "jogada estendida" no mesmo parágrafo. |
-| G35 | aberto | CONSERTAR | O catálogo de ações ainda cita o apoio antigo. |
-| G36 | aberto | DECIDIR | A Brigandina domina a Cota de malha e a Camisa de malha. |
-| G37 | aberto | DECIDIR | A Placa articulada domina a Placa de transição. |
-| G38 | aberto | DECIDIR | Kite × Heater e Pavês × Scutum. |
-| G39 | aberto | DECIDIR | O Machado custa mais que a Espada Longa. |
-| G40 | aberto | DECIDIR | Preços provisórios de baixa confiança, sem linha de fabricação. |
-| G41 | aberto | DECIDIR | As três bestas sem base de custo. |
-| G42 | aberto | DECIDIR | O preço unitário dos Dardos lido como preço de maço. |
-| G43 | aberto | DECIDIR | Dois nomes de armadura ainda de trabalho. |
-| G44 | aberto | DECIDIR | Proposta de design do autor: empréstimo de XP por aulas pagas. |
-| G45 | aberto | DECIDIDO, APLICAR DEPOIS | A jornada por ofício. |
-| G46 | aberto | CONSERTAR | O tamanho do salto entre degraus da escada de intervalos diverge. |
-| G47 | aberto | DECIDIDO, APLICAR DEPOIS | A2 · Equipamento de aventura pela tabela de mercadorias. |
-| G48 | aberto | DECIDIDO, APLICAR DEPOIS | A4 · Moeda e metais. |
-| G49 | aberto | DECIDIDO, APLICAR DEPOIS | B1 · O multiplicador do ofício: ×20. |
-| G50 | aberto | DECIDIDO, APLICAR DEPOIS | B2 · A curva de renda convexa. |
-| G51 | aberto | DECIDIDO, APLICAR DEPOIS | B4 · Tetos de mercado (resolve a G24). |
-| G53 | aberto | DECIDIDO, APLICAR DEPOIS | B6 · Recursos por faixas. |
-| G60 | aberto | DECIDIDO, APLICAR DEPOIS | E7 · Correções de texto. |
-| G61 | aberto | DECIDIDO, APLICAR DEPOIS | A1 · Munição. |
-| G63 | aberto | DECIDIDO, APLICAR DEPOIS | B3 · O "Ganho por semana" (resolve a G22). |
-| G64 | aberto | DECIDIDO, APLICAR DEPOIS | B7 · Status obrigatório. |
-| G66 | aberto | DECIDIDO, APLICAR DEPOIS | C7 · Serviços contratados. |
-| G67 | aberto | DECIDIDO, APLICAR DEPOIS | E2 · Reparo e desgaste. |
-| G68 | aberto | DECIDIDO, APLICAR DEPOIS | E3 · Empréstimo de XP, a regra completa (completa a G44). |
-| G69 | aberto | DECIDIDO, APLICAR DEPOIS | E5 · Pacote inicial pelo Recursos. |
-| G71 | aberto | DECIDIR | Comércio e modificador regional. |
-| G72 | aberto | DECIDIR | Atributo sugerido para cada Habilidade secundária. |
-| G73 | aberto | DECIDIR | Preços do sobre-humano: Centelha, Proezas e Magia. |
-| G74 | aberto | DECIDIR | Poções como estoque de emergência caro. |
+| G23 | aberto | FAZER | Duas espadas no mesmo documento. |
+| G25 | aberto | FAZER | Peça de mais de um ofício. |
+| G26 | aberto | FAZER | O que é "arma marcial". |
+| G27 | aberto | FAZER | O machado da faca. |
+| G30 | aberto | FAZER | O braçal soma com material bom. |
+| G31 | aberto | FAZER | A cerca é obra? |
+| G34 | aberto | FAZER | "Apoio numa jogada única" e "jogada estendida" no mesmo parágrafo. |
+| G35 | aberto | FAZER | O catálogo de ações ainda cita o apoio antigo. |
+| G36 | aberto | AUTOR-REGRA | A Brigandina domina a Cota de malha e a Camisa de malha. |
+| G37 | aberto | AUTOR-REGRA | A Placa articulada domina a Placa de transição. |
+| G38 | aberto | AUTOR-REGRA | Kite × Heater e Pavês × Scutum. |
+| G39 | aberto | AUTOR-REGRA | O Machado custa mais que a Espada Longa. |
+| G40 | aberto | FAZER | Preços provisórios de baixa confiança, sem linha de fabricação. |
+| G41 | aberto | AUTOR-REGRA | As três bestas sem base de custo. |
+| G42 | aberto | FAZER | O preço unitário dos Dardos lido como preço de maço. |
+| G43 | aberto | FAZER | Dois nomes de armadura ainda de trabalho. |
+| G47 | aberto | FAZER | A2 · Equipamento de aventura pela tabela de mercadorias. |
+| G48 | aberto | FAZER | A4 · Moeda e metais. |
+| G53 | aberto | FAZER | B6 · Recursos por faixas. |
+| G61 | aberto | FAZER | A1 · Munição. |
+| G64 | aberto | FAZER | B7 · Status obrigatório. |
+| G66 | aberto | FAZER | C7 · Serviços contratados. |
+| G68 | aberto | FAZER | E3 · Empréstimo de XP, a regra completa (completa a G44). |
+| G69 | aberto | FAZER | E5 · Pacote inicial pelo Recursos. |
+| G71 | aberto, ADIADO | DECIDIR | Comércio e modificador regional. |
+| G73 | aberto, ADIADO | DECIDIR | Preços do sobre-humano: Centelha, Proezas e Magia. |
+| G74 | aberto, ADIADO | DECIDIR | Poções como estoque de emergência caro. |
 | G76 | aberto | DECIDIR | Itens mágicos: poções, pergaminhos, itens mágicos, armas e armaduras encantadas, artefatos. |
 | G78 | aberto | FAZER | Catálogo de armas: o campo de estilo e as imagens por raça (I1, D-371). |
-| G80 | aberto | DECIDIR | TETO em Livre (Veterana), a Forma 2 do modelo de economia e a tabela `custo_qualidade` do lore (Forma 1, … |
+| G80 | aberto | AUTOR-REGRA | TETO em Livre (Veterana), a Forma 2 do modelo de economia e a tabela `custo_qualidade` do lore (Forma 1, … |
 
-Fechados (27): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29, G52, G54, G55, G56, G57, G58, G59, G62, G65, G70, G75, G77, G79.
+Fechados (45): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G6, G7, G8, G9, G10, G14, G17, G18, G19, G20, G22, G24, G28, G29, G32, G33, G44, G45, G46, G49, G50, G51, G52, G54, G55, G56, G57, G58, G59, G60, G62, G63, G65, G67, G70, G72, G75, G77, G79.
 
 ### H · Arremesso
 
