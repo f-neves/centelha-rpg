@@ -103,7 +103,8 @@
     "trilha": "corpo",
     "atributo": "vigor",
     "habilidade_ancora": "Resistência",
-    "descricao": "fôlego, fadiga, marcha sem fim"
+    "descricao": "fôlego, fadiga, marcha sem fim",
+    "nota": "**Ignorar um degrau** de Desgaste é só a penalidade dele sumir: o degrau continua contando no teto de 4 e sai do jeito normal (a noite de sono, em Resistir). As Técnicas deste Caminho que ignoram degraus **não somam entre si: vale a maior**."
   },
   {
     "id": "sangue-imune",

@@ -65,10 +65,10 @@ try {
   await p.waitForFunction(() => /Ataque/.test(document.getElementById('combate')?.textContent || ''), { timeout: 60000 });
   const cmb = await p.$eval('#combate', (e) => e.textContent.replace(/\s+/g, ' '));
   ok(/Ataque: Punhos, nenhum dado, total fixo 2 \+1/.test(cmb) && !/0d6/.test(cmb), 'ficha vazia: o ataque sem dado diz "nenhum dado, total fixo 2" (' + (cmb.match(/Ataque:[^·]*/) || [''])[0] + ')');
-  // D16 (25/11/2026, consulta 014): as nove Técnicas da Coração Incansável e o campo `folego` das armas saíram dos dados.
+  // D16 (25/11/2026, consulta 014): o campo `folego` das armas saiu dos dados, e uma Técnica pode sair um dia (as ids de teste abaixo não existem).
   // A ficha salva que ainda guarda uma dessas ids, ou uma arma com `folego`, abre sem quebrar, e regrava sem o `folego`.
   const antiga = structuredClone(salva);
-  antiga.proezas = [...(antiga.proezas || []), 'folego-profundo', 'incansavel', 'coracao-eterno'];
+  antiga.proezas = [...(antiga.proezas || []), 'id-removida-teste-a', 'id-removida-teste-b', 'id-removida-teste-c'];
   const itemAntigo = antiga.equipamento.conjuntos.find((c) => c.ativo).maoHabil.item; itemAntigo.arma.folego = 15;
   const xpDe = () => p.evaluate(() => (document.body.innerText.match(/[^\n]*XP[^\n]*/g) || []).join(' | ').replace(/\s+/g, ' '));
   await p.evaluate((f) => localStorage.setItem('centelha:ficha', JSON.stringify(f)), salva);
@@ -84,7 +84,7 @@ try {
   await p.$eval('[data-eqm]', (e) => { e.dispatchEvent(new Event('input', { bubbles: true })); });
   const regravada = await p.evaluate(() => JSON.parse(localStorage.getItem('centelha:ficha')));
   ok(!/"folego"\s*:/.test(JSON.stringify(regravada)), 'regravada: a arma salva com folego perde o campo');
-  ok((regravada.proezas || []).includes('folego-profundo'), 'regravada: a id da Técnica removida continua na ficha (nada é apagado calado)');
+  ok((regravada.proezas || []).includes('id-removida-teste-a'), 'regravada: a id da Técnica removida continua na ficha (nada é apagado calado)');
   ok(erros.length === 0, 'nenhum erro de página: ' + erros.join('; '));
 } finally { await browser.close(); await dev.parar(); }
 if (falhas.length) process.exitCode = 1; else { carimbar('test-ficha-item-inteiro'); console.log('✓ ficha: item inteiro OK'); }

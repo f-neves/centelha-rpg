@@ -3232,6 +3232,165 @@
     "efeito": "estado"
   },
   {
+    "id": "folego-profundo",
+    "nome": "Fôlego Profundo",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [],
+    "aliases": [],
+    "texto": "Respira fundo: +3 em Vigor + Resistência contra o Ambiente e na conta dos Ticks de ar (30 Ticks a mais).",
+    "pendente": false,
+    "nivel": 1,
+    "efeito": "estado"
+  },
+  {
+    "id": "marcha-forcada",
+    "nome": "Marcha Forçada",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 1
+    },
+    "prereq": [
+      "folego-profundo"
+    ],
+    "aliases": [],
+    "texto": "Ao falhar na jogada de Ambiente de um intervalo, o +1 de Desgaste daquele intervalo não entra.",
+    "pendente": false,
+    "nivel": 1,
+    "efeito": "estado"
+  },
+  {
+    "id": "segundo-vento",
+    "nome": "Segundo Vento",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 1
+    },
+    "prereq": [
+      "folego-profundo"
+    ],
+    "aliases": [],
+    "texto": "Ação rápida (Velocidade 1), uma vez por cena: um respiro, e até o fim da cena você ignora 1 degrau de Desgaste (só a penalidade dele some; o degrau continua contando no teto de 4).",
+    "pendente": false,
+    "nivel": 1,
+    "efeito": "estado"
+  },
+  {
+    "id": "folego-de-sobra",
+    "nome": "Fôlego de Sobra",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 2
+    },
+    "prereq": [
+      "folego-profundo"
+    ],
+    "aliases": [],
+    "texto": "Quando um degrau de Desgaste ia entrar (ambiente, marcha ou sono), ele não entra até o fim da cena.",
+    "pendente": false,
+    "nivel": 2,
+    "efeito": "estado"
+  },
+  {
+    "id": "incansavel",
+    "nome": "Incansável",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "passiva",
+    "custo": {},
+    "prereq": [
+      "folego-profundo"
+    ],
+    "aliases": [],
+    "texto": "O corpo não cobra o que cobraria dos outros: você ignora 2 degraus de Desgaste. Substitui a Técnica Segundo Vento enquanto ativa: vale o maior número de degraus.",
+    "pendente": false,
+    "nivel": 3,
+    "efeito": "estado"
+  },
+  {
+    "id": "pulmoes-de-ferro",
+    "nome": "Pulmões de Ferro",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "reflexiva",
+    "custo": {
+      "energia": 3
+    },
+    "prereq": [
+      "marcha-forcada"
+    ],
+    "aliases": [],
+    "texto": "Ao ficar sem ar de surpresa ou em esforço, conte os Ticks de ar como se tivesse enchido o peito.",
+    "pendente": false,
+    "nivel": 3,
+    "efeito": "estado"
+  },
+  {
+    "id": "sem-limites",
+    "nome": "Sem Limites",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 4
+    },
+    "prereq": [
+      "incansavel",
+      "pulmoes-de-ferro"
+    ],
+    "aliases": [],
+    "texto": "Por uma cena, ou por uma hora de marcha, ignore 3 degraus de Desgaste. Substitui as Técnicas Segundo Vento e Incansável enquanto ativas: vale o maior número de degraus.",
+    "pendente": false,
+    "nivel": 4,
+    "efeito": "estado"
+  },
+  {
+    "id": "vigor-inesgotavel",
+    "nome": "Vigor Inesgotável",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 5,
+      "vontade": 1
+    },
+    "prereq": [
+      "sem-limites"
+    ],
+    "aliases": [],
+    "texto": "Por um dia e uma noite, ignore 3 degraus de Desgaste, e a noite sem dormir desse período não conta para a dívida de sono. Substitui as Técnicas Segundo Vento, Incansável e Sem Limites enquanto ativas: vale o maior número de degraus.",
+    "pendente": false,
+    "nivel": 5,
+    "efeito": "estado"
+  },
+  {
+    "id": "coracao-eterno",
+    "nome": "Coração Eterno",
+    "caminho": "coracao-incansavel",
+    "atributo": "vigor",
+    "tipo": "ativa",
+    "custo": {
+      "energia": 6,
+      "vontade": 2
+    },
+    "prereq": [
+      "vigor-inesgotavel"
+    ],
+    "aliases": [],
+    "texto": "Tira todos os degraus de Desgaste que você tem (até os 4 do teto), e por uma cena nenhum entra.",
+    "pendente": false,
+    "nivel": 6,
+    "efeito": "estado"
+  },
+  {
     "id": "estomago-de-ferro",
     "nome": "Estômago de Ferro",
     "caminho": "sangue-imune",
