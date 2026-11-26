@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 15 | 0 | 5 | 0 | 7 | 5 | 1 | 1 | 1 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 19 | 1 | 19 | 9 | 5 | 5 | 0 | 0 | 1 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 49 | 0 | 58 | 0 | 12 | 2 | 0 | 29 | 6 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **423** | **240** | **3** | **180** | **30** | **109** | **50** | **2** | **30** | **22** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 29 | 0 | 5 | 2 | 26 | 0 | 1 | 0 | 0 |
+| | **Total** | | **423** | **235** | **3** | **185** | **30** | **104** | **50** | **2** | **30** | **22** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -619,13 +619,9 @@ Fechados (58): L2, L3, L4, L5, L6, L6, L9, L9, L11, L12, L8, L13, L14, L15, L16,
 | N6 | aberto | FAZER | Acelerar a Cura na escala dos dias (D-062, ART-47). |
 | N7 | aberto | FAZER | Mãos sobre a Multidão pelo maior grau investido (D-060, ART-37). |
 | N8 | aberto | FAZER | Chamar à Mão com Dificuldade (D-060, ART-23). |
-| N9 | aberto | FAZER | Imobilizado não age (D-064, D-043). |
 | N10 | aberto | FAZER | O estado Preso não existe na mesa (D-064). |
-| N11 | aberto | FAZER | Agarrado (D-064). |
-| N12 | aberto | FAZER | Caído levanta com Velocidade 3 (D-064). |
 | N13 | aberto | FAZER | A Prisão deixa Preso, e não Imobilizado (D-064). |
 | N14 | aberto | FAZER | A escala de 0 a 6 do Escapismo. |
-| N15 | aberto | FAZER | O Desarmado novo (D-057), a preencher depois da aplicação. |
 | N17 | aberto | FAZER | Os dois punhos somam no Bloqueio (D-065). |
 | N18 | aberto | FAZER | Lâmina contra o corpo (D-057, D-065). |
 | N19 | aberto | FAZER | A escolha da melhor combinação de defesa (D-065). |
@@ -635,7 +631,6 @@ Fechados (58): L2, L3, L4, L5, L6, L6, L9, L9, L11, L12, L8, L13, L14, L15, L16,
 | N23 | aberto | FAZER | As condições das decisões R8 a R20 (D-281 a D-294, 03/11/2026): o que o painel já tem e o que o Grid e a aba … |
 | N24 | aberto | FAZER | Os Efeitos que ganharam parâmetro na revisão de textos (RT-124, RT-126 e RT-127, decisões T7 e T8 do autor, … |
 | N25 | aberto | FAZER | O dano de Luz fere todos, pela metade contra quem não tem fraqueza a luz (RT-123, decisão T6 do autor, … |
-| N26 | aberto | FAZER | O Projétil Conjurado tem `materia: null` nas sete Artes, e o texto do Efeito diz que em Gelo, Água e Terra a … |
 | N27 | aberto | FAZER | Os parâmetros que a RT-071 (T13, 25/11/2026) passou de fixos a comprados: o Grid só lê o Dano, a Área e o … |
 | N28 | aberto | FAZER | O campo `projetilVeloz` de `scripts/lib-tempo.mjs` agora lê a tag "projétil rápido" e pode ser renomeado na … |
 | N29 | aberto | FAZER | A Ambidestria (D18, 25/11/2026) alivia a Defesa no Tick do Golpe de −4 para −2 também golpeando com as duas … |
@@ -646,6 +641,6 @@ Fechados (58): L2, L3, L4, L5, L6, L6, L9, L9, L11, L12, L8, L13, L14, L15, L16,
 | N34 | aberto | DECIDIR | Os sete Efeitos de forma fora da tabela: trocar ou tirar a Área muda o que a caixa do Grid lê (RT-069, T21 do … |
 | N35 | aberto | CONSERTAR | O card do bestiário na mesa ainda usa a curva velha de Aparência (achado 090, 26/11/2026). |
 
-Fechados (0): nenhum.
+Fechados (5): N9, N11, N12, N15, N26.
 
 <!-- /gen:pendencias-itens -->
