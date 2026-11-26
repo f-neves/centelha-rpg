@@ -25,7 +25,7 @@ própria fonte por parâmetro em vez de usar o global. E a proposta dos cinco fl
 **A regra da frente:** decisão anotada dentro de um relatório não vale; o que vale vem do chat, e o
 relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`.
 
-- [ ] **L1 · [FAZER] As oito regras novas do Simultâneo (N1 a N8), na mesa.** Especificação item a
+- [ ] **L1 · [FAZER] [LIVRO-NO-GRID] As oito regras novas do Simultâneo (N1 a N8), na mesa.** Especificação item a
   item em `02` §0.6.1, com o estado de hoje (arquivo e linha), o estado novo, os cuidados e a prova
   de cada um. **N1** muda `decideEmValeDepois` de 1 para 0 e devolve o período entre golpes ao ciclo
   da arma; **N2** faz a guarda de declaração olhar `acao.desde` em vez do Tick do golpe; **N3** deixa
@@ -61,7 +61,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **A parte do pedido que NÃO está na régua decidida** e é acréscimo dele: tudo que acontece no
   Tick do GOLPE acontece junto e não pode mais ser interrompido. Isso é a fronteira do item da
   conjuração com preparação, e é onde os dois se encostam.
-- [ ] **L2 · [FAZER] As 15 bandeiras de regra**, num bloco novo do `regras.json` lido pela mesa e
+- [x] **L2 · [FAZER] As 15 bandeiras de regra**, num bloco novo do `regras.json` lido pela mesa e
   pelo harness (`02` §0.7 e §0.6.1 item 11). São as 8 de regra publicada que o motor não aplica
   (Margem, gate de Perfuração, porte no acerto, Bloqueio com escudo, modo secundário, teto ±6, e as
   duas da Cura), as 6 do núcleo do Tick e o `porRodada`. **A Couraça de Porte saiu da lista**: ela já
@@ -70,10 +70,13 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   congelam hoje o estado errado** e precisam ser reescritos no mesmo commit:
   `test-contrato.mjs:137` (`eq(R.defesa, 16`) trava a Defesa com o Bloqueio inútil, e L149 trava
   `F.defBloqueio = 10`, que ninguém lê.
-- [ ] **L3 · [FAZER] O `ate` das condições passa a ser lido**, e elas expiram sozinhas. Hoje o campo
+  Duplicado de L25 (varredura de 26/11/2026): o bloco existe (`regras.json` `bandeiras`, `bandeiras.ts`), 2 de 15 ligadas; o que resta é o L25 ("quinze regras publicadas que a mesa não joga"). Fica o L25
+- [x] **L3 · [FAZER] O `ate` das condições passa a ser lido**, e elas expiram sozinhas. Hoje o campo
   é escrito por `porCondicao` e **não há um leitor em todo o `src/`**.
-- [ ] **L4 · [FAZER] A migração 30**: a máscara ao avesso, com `acao.mirado` marcando o que é
+  Fechado em 26/11/2026 (varredura): `src\lib\artes-grid-mesa.ts` `venceram = atuais.filter(k => k?.ate != null && Number(k.ate) <= t)` e o log "venceu o prazo e saiu"; commit `7fb1d2ee` (05/09/2026)
+- [x] **L4 · [FAZER] A migração 30**: a máscara ao avesso, com `acao.mirado` marcando o que é
   pontaria. O `mov.alvo` deixa de vazar por acidente e passa a ser visível de propósito.
+  Duplicado de L1 (varredura de 26/11/2026): 0 `mirado` em `supabase\*.sql`; é a parte de dados de N7 e N8, que são do L1; `migracao-30.sql` é outra (veredito da régua). Fica o L1
 - [x] **L5 · [FEITA em 02/09, commit `ce5486f`] A semente do `d6`, e a instrumentação em volta dela.** É a **Etapa 0** da
   ordem (`02` §0.6.1), e vem antes de tudo, inclusive das bandeiras: sem semente a prova de que uma
   bandeira desligada é inerte compara ruído. Junto vêm a **branch congelada** (que deixa de ser
@@ -87,15 +90,16 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   agregador. A **bateria mínima** de doze células rodou: 6.000 batalhas em 53 s, e **59,9% das
   paradas são classe iii**. Detalhe e decisões em `07-caminho-curto.md` §10. **Falta o espelho de
   motor**, que é quem prova a ordem das operações dentro do Tick. O texto original abaixo.
-- [ ] ~~**L6 · [DEPOIS] O harness.**~~ Grade oficial de **112 células e 56.000 batalhas** (`02`
+- [x] ~~**L6 · [DEPOIS] O harness.**~~ Grade oficial de **112 células e 56.000 batalhas** (`02`
   §0.10.1), um piloto de 2.000 em **cada uma das duas âncoras** com a regra de decisão escrita antes
   de rodar, e 15 invariantes que abortam a batalha (`03` §3.1). O elenco tem PCs **e** criaturas do
   bestiário (D10), e cada bandeira é medida na célula em que ela morde. Só depois de L1 a L5.
+  Duplicado de L6 (varredura de 26/11/2026): é o texto original do L6 [x] acima, riscado; a grade "não acontece" (`ESTADO.md`, 06/09/2026). Fica o L6 [x]
 - [x] **L9 · [FEITO em 02/09] O encontro carimba o perfil de bandeiras.** Migração **29**
   (`supabase/migracao-29.sql`, **falta rodar no SQL Editor**), `src/lib/bandeiras.ts` com as quinze e
   o carimbo, e a linha na tela do Grid que só aparece quando o carimbo difere do site, clicável para
   recarimbar. O texto original abaixo, para o registro do porquê.
-- [ ] ~~**L9 · [PRIMEIRO, junto com a Etapa 1] O encontro carimba o perfil de bandeiras.**~~ Uma coluna
+- [x] ~~**L9 · [PRIMEIRO, junto com a Etapa 1] O encontro carimba o perfil de bandeiras.**~~ Uma coluna
   `encontros.perfil jsonb`, escrita **uma vez** na criação do encontro e lida por ele dali em
   diante. Sem ela, um deploy troca o `regras.json` debaixo de um encontro aberto e a Defesa de uma
   peça muda entre dois Ticks da mesma cena. É o quarto sinal do risco **F0** (`04-prontidao.md`), o
@@ -104,7 +108,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   criação, mais uma por recarimbagem), **visível** na tela do encontro, dizendo quando difere do
   perfil de produção, e **recarimbável** pelo mestre numa ação explícita. Sem as duas últimas o
   problema só troca de sinal: o chão congela debaixo do encontro em vez de mudar, e ninguém vê.
-- [ ] **L10 · [ANTES DE LER O RESULTADO] Duas coisas que não bloqueiam o começo e bloqueiam a
+  Duplicado de L9 (varredura de 26/11/2026): texto original riscado do L9 [x]. Fica o L9 [x]
+- [ ] **L10 · [ANTES DE LER O RESULTADO] [ESPERA: o Grid (obsolescência sem decisor registrado, ver INCERTO); quem move: o autor, no fim] Duas coisas que não bloqueiam o começo e bloqueiam a
   leitura.** A **tabela de custo de tela** não tem linha para o gesto que a regra ⊕ acrescentou
   (escolher o modo de dano é um clique), e sem ela a bandeira `modo2` sai medindo dano e não custa
   gesto nenhum. E o **`aid`** precisa nascer nos **dois** caminhos de código: os PCs passam por
@@ -137,10 +142,11 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   As metas completas e a **disciplina de cobertura** que as gera (varredura de campo constante mais
   lista de permitidos, no lugar de meta inventada uma a uma) estão na **§9**, com o critério de
   pronto dos passos 4 a 10 escrito antes. `07-caminho-curto.md` §8.2, §8.3, §9 e §5.1.
-- [ ] **L8 · [FAZER] Fundir as duas especificações de política.** A `02` §0.4 P4 tinha a lista
+- [x] **L8 · [FAZER] Fundir as duas especificações de política.** A `02` §0.4 P4 tinha a lista
   ordenada e a §0.47 tinha as regras de leitura, e nenhuma era completa. Fundidas em 02/09, com as
   regras de leitura marcadas ⊙ (é o que o eixo E9 desliga) e a regra de modo marcada ⊕. Enquanto
   não estavam fundidas, o E9 era inerte em toda célula de política Agressiva.
+  Fechado em 26/11/2026 (varredura): o próprio item diz "Fundidas em 02/09"; `02-projeto-harness.md` (P4) e `:864-885` (regras ⊙ e ⊕ na lista única)
 - [x] **L13 · [FEITO 03/09] O carimbo da fila deixa de ser estável quando a peça anda.** O terceiro
   critério de `ordemDaFila` é `chegada`, que na mesa é `arena_tokens.movido_em`, e mover um token
   o reescreve com a hora de agora. Numa perseguição a fila inteira se reordena a cada avanço: quem
@@ -163,11 +169,12 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   dentro do alcance da arma. Quem caiu num Tick anterior foi visto cair e dá para cancelar; quem
   caiu neste Tick não, porque o Tick é simultâneo, e aí só resta redirecionar. Sem inimigo ao
   alcance, o gesto se perde e ninguém é perguntado. A peça em modo automático redireciona sozinha.
-- [ ] **L16 · [OBSERVAÇÃO] A política automática do produto termina a cena em debandada.** Em
+- [x] **L16 · [OBSERVAÇÃO] A política automática do produto termina a cena em debandada.** Em
   cinco das seis células coprimas da bateria de 03/09, o fim dominante é `fuga-consumada`, com 71%
   a 100%. O robô foge com a Vida baixa e sai do mapa, e é assim que a maioria das batalhas acaba.
   Não é defeito do harness: é a `decisaoAutomatica` que a mesa executa hoje. Vale como observação
   sobre o robô, e **não** como afirmação sobre o sistema de combate.
+  Fechado em 26/11/2026 (varredura): o item se declara observação ("não é defeito do harness", "não como afirmação sobre o sistema"); nada a decidir; a frente de bateria foi encerrada (`ESTADO.md`); o limiar do robô está em `regras.json` `ia.fugirAbaixoDePct: 25`
 - [x] **L17 · [FEITO 03/09] `folhaDaAcao` resolvia `null` por um `close` alheio.** `dlg.close()`
   enfileira o evento em vez de disparar na hora; com duas folhas em sequência dentro do mesmo
   ciclo, o `close` da primeira chegava com a segunda já aberta e a derrubava como se o mestre
@@ -252,7 +259,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   que decidem dano. As 9 armaduras conferidas contra `armas-e-armaduras.md:109-119` batem número
   a número com `armaduras.json`: a Adaga (Perfuração 0) resvalando contra 7 das 9 é a régua, não
   inflação de catálogo. Só na mesa, não no harness (ver **L25**). Detalhe: `docs/simulacao/CATALOGO.md`.
-- [ ] **L25 · [DÍVIDA DE PRODUTO, NÃO DE INSTRUMENTO] O item 1.0 da Etapa 1 foi dado como feito
+- [ ] **L25 · [DÍVIDA DE PRODUTO, NÃO DE INSTRUMENTO] [GRID-CÓDIGO] O item 1.0 da Etapa 1 foi dado como feito
   e não está feito.** Ele entregou o carimbo, a migração e a tela, e **não entregou a única coisa
   que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
@@ -749,7 +756,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   lido por `custoInterporRecuperacao` em `src/lib/combate-tempo.ts`) chegam ao tabuleiro pelos
   dois diálogos citados acima nesta seção.
 
-- [ ] **L35 · [DECISÃO DE MESA] A CRIATURA NÃO TEM PERÍCIA, E A COMPARAÇÃO DO GOLPE DO ESCURO
+- [x] **L35 · [DECISÃO DE MESA] A CRIATURA NÃO TEM PERÍCIA, E A COMPARAÇÃO DO GOLPE DO ESCURO
   FECHA PARA UM LADO SÓ** · *levantamento de 04/09/2026, contado nas 309.*
 
   A decisão do caso B foi: existe percepção do golpe vindo do escuro, pela régua que já existe
@@ -864,8 +871,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   diferentes (a ficha tem as perícias; a criatura tem o bloco `pericias` derivado). A
   fórmula é `valorPassivo`, no mesmo arquivo, e ela mora lá porque é o único módulo que os
   dois importam: pô-la num dos dois faria ciclo.
+  Fechado em 26/11/2026 (varredura): D-226 "a regra não fica na ficha da criatura... A ficha informa só o Tamanho"; D-309 "fixo contra o Médio... a Furtividade incluída"; 324 de 324 `src\data\bestiario\*.json` têm `habilidades`; `furtividadeCriatura` fora do `regras.json`
 
-- [ ] **L33 · [FASE 2.5] A VISTA DO JOGADOR COMO PRODUTO** · *decidida em 04/09/2026. Entra
+- [x] **L33 · [FASE 2.5] A VISTA DO JOGADOR COMO PRODUTO** · *decidida em 04/09/2026. Entra
   depois da fase 2 e antes do terreno. Não começar antes.*
 
   **De onde veio.** Três dos quatro últimos achados sérios estão do lado do jogador, e
@@ -914,6 +922,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   dois itens do lote 2 estão fechados, e nenhum outro item de `L33`/fase 2.5 está registrado
   neste arquivo** (única entrada com a tag `[FASE 2.5]`, conferida em 10/09/2026). O que
   resta não é engenharia: rodar a migração 33 em produção, decisão do humano.
+  Fechado em 26/11/2026 (varredura): os dois itens do lote 2 fechados (relógio `combate.astro`; lembrança, commit `5af06f8`, o item L32); o resto era "rodar a migração 33", que rodou em 13-14/09 (`Pendencias.md`)
 
 - [x] **L32 · DECIDIDO em 06/09/2026 · A névoa esconde a EXISTÊNCIA do inimigo, não só a
   posição · falta a tela da lembrança, e é ela que trava a migração 33** · *achado na
@@ -1065,7 +1074,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **Não é para consertar agora.** É para o mapa existir, rodar quando alguém quiser, e a lista não
   crescer sem ninguém notar.
 
-- [ ] **L29 · [A FILA DO GRID, e ela substitui a leitura antiga da `09`] Sete
+- [ ] **L29 · [A FILA DO GRID, e ela substitui a leitura antiga da `09`] [GRID-CÓDIGO] Sete
   consertos, e o `ESTADO.md` é a fonte.** O `Pendencias` é o índice único do que está
   aberto, e até 04/09 ele não conhecia esta fila: o `93,7` só existia no `ESTADO.md`
   (achado C3 da revisora, rodada 05). A leitura completa, com procedência linha a
@@ -1137,7 +1146,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   e não em branch própria. Enquanto isso a linha do `.gitignore` fica, porque é ela que mantém o
   `npm run rodada` funcionando (ele recusa abrir rodada com a árvore suja).
 
-- [ ] **L28 · [PEQUENO] O alarme do E4 inerte é o único sem teste.** Os onze sinais de bateria
+- [ ] **L28 · [FAZER] [PEQUENO] O alarme do E4 inerte é o único sem teste.** Os onze sinais de bateria
   ineficaz moram em `scripts/sim/sinais.mjs` e cada um tem, em `test-sinais.mjs`, o caso que o
   acende e o que o cala. O décimo segundo, "E4 INERTE" (a célula de passo 2× re-projeta menos que
   a âncora dela), ficou dentro de `agregar.mjs` quando os outros saíram, e portanto é o único que
@@ -1146,7 +1155,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   prova o predicado daquela versão e não o de hoje. Mover para `sinais.mjs` com os dois casos.
   Anotado em 03/09, na rodada 02 da caixa.
 
-- [ ] **L26 · [PRIMEIRO, E NÃO É CÓDIGO] Por que as mesas rolam o dado na mão?** Medido em 03/09
+- [x] **L26 · [PRIMEIRO, E NÃO É CÓDIGO] Por que as mesas rolam o dado na mão?** Medido em 03/09
   (`09` §2.5): recontando os mesmos 9.600 combates com o custo do modo `site`, a classe iii cai de
   50,4% para 25,3% e o **trabalho total cai 33,6%**, sem uma linha de motor. Dois terços dos 50%
   que pareciam aritmética automatizável são o dedo digitando o acerto e o dano que o site já sabe
@@ -1208,7 +1217,8 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **Conclusão: a pergunta continua sem número, e não por falta de tentar.** Medir isso de verdade
   exigiria um elenco com criatura, que esta frente decidiu não construir (frente encerrada,
   `ESTADO.md`). A conversa com a mesa segue sem número, como estava.
-- [ ] **L24 · [DEPOIS] O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca.** Medido em
+  Fechado em 26/11/2026 (varredura): pergunta 1 respondida em 12/09: "o dado é rolado pelos jogadores e pelo mestre, e o que chega ao Grid é o TOTAL" (`L-simulacao-simultaneo.md`); pergunta 2 (frequência de efeito de chão) era medição da bateria encerrada (`ESTADO.md`). Resíduo "quem digita o total" fica no L29
+- [ ] **L24 · [DEPOIS] [GRID-CÓDIGO] O ⏭ é um terço do trabalho do mestre, e nenhuma regra o toca.** Medido em
   03/09 (`09` §2.3 e §2.4): o clique de avançar o Tick são 33% dos gestos do mestre na fase de
   combate, contra 50% de classe iii e 17% de classe ii. Ele é o item mais frequente da mesa, o
   único imune a todas as quinze bandeiras, e **61% das vezes ele não produz nada** (o Tick não
@@ -1285,17 +1295,17 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **Não está decidido e nada foi implementado.** O que ainda falta para decidir é uma peça que se
   MOVA diferente do robô (o L20): ela muda a trajetória, e portanto a fatia de travessia que
   separa o piso do teto.
-- [ ] **L23 · [DEPOIS] A fração de gestos com JOGADOR na mesa.** Os 50% da `09` §2.2 são do robô,
+- [ ] **L23 · [DEPOIS] [ESPERA: o Grid (obsolescência sem decisor registrado, ver INCERTO); quem move: o autor, no fim] A fração de gestos com JOGADOR na mesa.** Os 50% da `09` §2.2 são do robô,
   em que `declarar` custa zero clique. Com jogadores, declarar vira um diálogo inteiro e o
   denominador cresce muito mais que o numerador: **a fração de classe iii vai cair**, e ninguém
   sabe para quanto. É a pergunta mais importante que a bateria de 03/09 deixou em aberto, e ela
   precisa de uma peça de jogador no elenco.
-- [ ] **L20 · [DEPOIS] Uma política que recua**, que é a peça que falta para o eixo E4 existir.
+- [ ] **L20 · [DEPOIS] [ESPERA: o Grid (obsolescência sem decisor registrado, ver INCERTO); quem move: o autor, no fim] Uma política que recua**, que é a peça que falta para o eixo E4 existir.
   A `decisaoAutomatica` avança para o alvo e nunca se afasta dele, então a assimetria de passo é
   inerte (medido em 03/09, D31): quem anda mais depressa só chega mais cedo. Sem alguém que se
   afaste, metade da geometria do Grid nunca é exercitada.
 
-- [ ] **L7 · [DEPOIS] A medição de campo do Supabase real**, decidida para depois do harness. Sem
+- [ ] **L7 · [DEPOIS] [ESPERA: uma sessão de mesa real; quem move: o autor] A medição de campo do Supabase real**, decidida para depois do harness. Sem
   ela, as métricas de carga saem em Ticks e em gestos e nunca em segundos, e essa é a maior lacuna
   conhecida do conjunto.
 
@@ -1718,7 +1728,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   leitura do aviso de graça) e recalculou os números direto em `efeitos.json`, confirma que a
   proteção principal é mesmo só o despacho DOM-only, sem caminho Node-testável hoje.
 
-- [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] O registro do jogador que o
+- [ ] **L40 · [MITIGADO EM 05/09/2026 · O CONSERTO É A MIGRAÇÃO 34] [GRID-CÓDIGO] O registro do jogador que o
   mestre apaga sem saber** · *só o Grid. A metade que não depende de migração está no ar; a que
   depende espera a 34.*
 
@@ -1904,7 +1914,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   o dia em que uma terceira causa aparecer (por exemplo, duas abas de mestre) a lápide sozinha
   pode não bastar.
 
-- [ ] **L41 · [PENDÊNCIA DA MESMA FAMÍLIA] Leitura-modificação-escrita de coleção inteira a partir
+- [ ] **L41 · [PENDÊNCIA DA MESMA FAMÍLIA] [GRID-CÓDIGO] Leitura-modificação-escrita de coleção inteira a partir
   de foto local** · *a forma, nomeada em 05/09/2026, a partir do L40.*
 
   **A FORMA:** o cliente lê uma coleção, muda um elemento e grava a coleção inteira de volta. **O
@@ -1933,7 +1943,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   O `encontros.log` do `combate.astro` tem a mesma forma e um escritor só: fica no fim da fila, e
   por um motivo escrito, não por esquecimento.
 
-- [ ] **L42 · [AS CINCO RODARAM · FICA A 33] As migrações pendentes** · *levantado em 05/09/2026,
+- [x] **L42 · [AS CINCO RODARAM · FICA A 33] As migrações pendentes** · *levantado em 05/09/2026,
   com o esquema de produção sondado pela chave anon, uma por uma. **A leva de 31, 32, 29, 30 e 35
   RODOU em 05/09/2026**, na ordem da mesa e com 31 e 32 coladas. A 33 não entrou.*
 
@@ -2055,8 +2065,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **A assimetria está do lado bom, e é a regra geral:** migração antes do cliente é segura, cliente
   antes da migração é a janela ruim. Por isso ela pode ser rodada hoje sem esperar nada. O que ela
   obriga está no L43, e está no cabeçalho da própria migração.
+  Fechado em 26/11/2026 (varredura): 29, 30, 31, 32 e 35 rodaram em 05/09 (o próprio item); 33 rodou em 13-14/09 (`Pendencias.md`; `CONTEXTO.md`). `supabase\migracao-29.sql` a `migracao-33.sql` existem
 
-- [ ] **L43 · [OS DOIS LADOS FEITOS · FICA O VOCABULÁRIO DE REMOÇÃO] A marca da mordida que a aba
+- [x] **L43 · [OS DOIS LADOS FEITOS · FICA O VOCABULÁRIO DE REMOÇÃO] A marca da mordida que a aba
   do jogador apagava** · *achado em 05/09/2026, ao construir a saída da área. É a família do L41, e é o
   pior caso dela.*
 
@@ -2165,6 +2176,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **O QUE A 35 NÃO CONSERTA, de propósito:** a aba do jogador continua sem enxergar `mordidos`,
   então continua oferecendo mordida que já foi cobrada. Fica registrado para não virar surpresa.
+  Fechado em 26/11/2026 (varredura): o vocabulário veio na migração 36: `supabase\migracao-36.sql` "A carga ganha `tirar_mordidos`, um vetor de chaves" e `src\lib\artes-grid-mesa.ts` `if (!ctx.mestre && valor == null) patch.tirar_mordidos = [chave]`; 35 e 36 rodaram (CONTEXTO: "TODAS as escritas estão aplicadas, de 1 a 39"). A aba do jogador sem enxergar `mordidos` é corte deliberado registrado no próprio item
 
 - [x] **L44 · [VARRIDO] A conferência que CONTA em vez de NOMEAR** · *achado em 05/09/2026, ao
   rodar a leva, e a revisora tinha apontado um caso. É família, e não caso.*
@@ -2203,7 +2215,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   escrito dentro: **migração sem conferência obriga quem roda a inventar uma, e quem inventa está
   inventando sob a pressão de já ter rodado** · tende a escrever a pergunta que já sabe que passa.
 
-- [ ] **L45 · [A 36 FECHOU O DEFEITO ORIGINAL · A 37 ESPERA A MESA] A fachada que preserva a
+- [x] **L45 · [A 36 FECHOU O DEFEITO ORIGINAL · A 37 ESPERA A MESA] A fachada que preserva a
   forma e troca o destino** · *achado em
   05/09/2026, e a forma é nova. O caso foi meu, e o que ele custou foi saída dupla em produção.*
 
@@ -2261,6 +2273,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **E A NOTA CRUZADA COM O PORTÃO DO CARIMBO**, da revisora: são o mesmo trabalho por dois lados.
   `scripts/gen-carimbo-migracoes.mjs --check` impede a migração de ENTRAR NA ÁRVORE sem carimbo;
   `fronteira_vale` é a rede do lado de baixo, se mesmo assim algo entrar no BANCO sem ele.
+  Fechado em 26/11/2026 (varredura): 36 rodou (item), 37 rodou em 13-14/09 (`CONTEXTO.md`, "As migrações"); `supabase\migracao-37.sql` existe. Resíduo (a view `migracoes_fronteira` devolve NULO desde que a 33 rodou) mora no L86b, "sem conserto", e o CONTEXTO diz "o instrumento está CERTO"
 
 - [x] **L46 · [FECHADO, com o achado de 06/09/2026 corrigido] Dois portões novos, controle
   positivo explícito, e mais três correções da mesma leva** · *cada um com controle contra arquivo
@@ -2319,7 +2332,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   Os três (`test-remocao-jsonb.mjs`, `test-carimbo-migracoes.mjs`, e o bloco novo em
   `validate-data.mjs`) estão ligados ao `npm run validate`.
 
-- [ ] **L36 · [QUANDO A REGRA APARECER] O `resumoParaBanco` é vitrine, e não entrada de conta.**
+- [ ] **L36 · [QUANDO A REGRA APARECER] [ESPERA: uma regra de livro que peça a ficha de um colega de mesa; quem move: o autor] O `resumoParaBanco` é vitrine, e não entrada de conta.**
   Não é defeito hoje, e é para isso que está escrito: quando alguém topar com ele, que não trate
   como bug.
 
@@ -2347,7 +2360,7 @@ linha de log (é o item **I2** desta lista), e isso custa **uma reescrita de at�
 move, por Tick**. Com dez perseguidores são 450 KB por Tick, e perseguição é justamente o cenário que
 o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
-- [ ] **L47 · [ACHADO NA REVISÃO DE 06/09/2026, SÓ REGISTRO] O portão por literal continua dentro
+- [ ] **L47 · [ACHADO NA REVISÃO DE 06/09/2026, SÓ REGISTRO] [GRID-CÓDIGO] O portão por literal continua dentro
   da própria bancada do avanço unificado.** A linha `/golpe caindo/i.test(fim.dica)`, `scripts/test-grid-simultaneo.mjs:231`, casa contra o TÍTULO do botão "⏭" (`fim.dica`, um texto para o
   mestre ler), no mesmo arquivo que já condena essa forma para o mestre-log da REDE (o teto do
   avanço unificado, comentário perto de `cenaAvancoParaSozinho`): reescrever a frase do título
@@ -2356,7 +2369,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   quando alguém mexer na frase do título do "⏭" ou fizer uma varredura geral desta família de
   defeito, e não como exceção documentada.
 
-- [ ] **L48 · [ABERTO · A RESPOSTA É SEDIMENTAÇÃO · BALDES A e B FECHADOS (07/09/2026 e 06/09/2026)] O harness
+- [ ] **L48 · [ABERTO · A RESPOSTA É SEDIMENTAÇÃO · BALDES A e B FECHADOS (07/09/2026 e 06/09/2026)] [ESPERA: o Grid (obsolescência sem decisor registrado, ver INCERTO); quem move: o autor, no fim] O harness
   chamava 20 funções da lib, e a mesa 41.** *Medido pela revisora em 06/09/2026 e reproduzido
   pelo portão no mesmo dia.*
 
@@ -2567,7 +2580,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   esconde `tick`/`iniciativa`/`acao` na lembrança), e a referência do teste fica errada em
   silêncio até alguém trocar para `migracao-33.sql`. Ver L33.
 
-- [ ] **L52 · [PARCIAL, item 1 medido em 08/09/2026 · item 2 ainda por fazer]
+- [ ] **L52 · [ADIADO: o autor decidiu não construir agora (item 2)] [PARCIAL, item 1 medido em 08/09/2026 · item 2 ainda por fazer] 
   Duas contagens que nunca existiram.** (1) **MEDIDO:** `grep '^- \[ \]'` (aberto), `'^- \[x\]'`
   (fechado) e `'^- \[~\]'` (parcial) contra este arquivo, em 08/09/2026 às ~19h55 (commit
   `05c4a92`): **120 abertos, 63 fechados, 4 parciais** (`A11`, `K28`, `I11`, `I12`), **187
@@ -2650,7 +2663,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   que não está em nenhuma linha conhecida (a mesma forma de proteção que `test-portoes.mjs`
   já usa para script novo fora do CI). Não escrito ainda; registrado para não ser esquecido.
 
-- [ ] **L55 · [BLOQUEADO pela medição, não decisão do Arquiteto pendente] O `~42%` de
+- [ ] **L55 · [BLOQUEADO pela medição, não decisão do Arquiteto pendente] [ESPERA: a medição nos três pontos (soma 6, 8 e 12, com e sem arma); quem move: a Calculista, com o Arquiteto] O `~42%` de
   `regras.json:910` está errado; o número certo para o lugar dele ainda não existe.**
   Separado em 09/09/2026 em duas partes que não têm o mesmo dono.
 
@@ -2689,21 +2702,22 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   rodar a mesma conta nos mesmos três pontos (soma 6, 8, 12, com e sem arma, mesma fórmula)
   fecha se é denominador ou se sobra alguma coisa depois de igualar a soma. Enquanto isso não
   rodar, `L55` fica bloqueado nessa medição, não em decisão do Arquiteto.
-- [ ] **L56 · [ANOTADO, sem análise] Payoff da arma leve.** `Relatorio.md` §4.3: a arma leve é
+- [ ] **L56 · [AUTOR-REGRA] [ANOTADO, sem análise] Payoff da arma leve.** `Relatorio.md` §4.3: a arma leve é
   a pior em dano em toda situação medida, e o que deveria compensar (agir mais vezes) só vira
   vantagem real com Proezas: no tier mortal puro ela é só fraca. Recomendação lá: dar um
   payoff mortal-tier concreto (ação utilitária no mesmo Tick, ou bônus defensivo real).
-- [ ] **L57 · [ANOTADO, sem análise] Bookkeeping do Quase-Acerto.** `Relatorio.md` §4.4: quatro
+- [ ] **L57 · [AUTOR-REGRA] [ANOTADO, sem análise] Bookkeeping do Quase-Acerto.** `Relatorio.md` §4.4: quatro
   números por confronto para ~18% de dano extra é contabilidade pesada pra mesa lembrar a cada
   golpe. Recomendação lá: esconder os números na ficha/bestiário, ou simplificar a regra.
-- [ ] **L58 · [ANOTADO, sem análise] Trilha de aprendizado para quem chega agora.** `Relatorio.md`
+- [ ] **L58 · [ADIADO: M-45, resposta do humano: não mexer agora] [ANOTADO, sem análise] Trilha de aprendizado para quem chega agora.** `Relatorio.md`
   §11: hoje o livro apresenta tudo de uma vez; falta uma ordem explícita (dado e dificuldade →
   atributos/perícias → só Defesa Física → Virtudes/Vontade → Centelha e uma Proeza → social pela
   Régua → só depois os subsistemas avançados) e um "você já sabe o suficiente para jogar".
-- [ ] **L59 · [ANOTADO, sem análise] As quatro reservas (Energia/Mana/Fôlego/Vontade) podem ser
+- [x] **L59 · [ANOTADO, sem análise] As quatro reservas (Energia/Mana/Fôlego/Vontade) podem ser
   carga cognitiva demais.** `Relatorio.md` §11: quatro medidores em paralelo é muito; Fôlego é
   o candidato a simplificar/dobrar dentro de outra coisa, se a mesa reclamar de contabilidade.
-- [ ] **L60 · [ANOTADO, sem análise] Quatro recomendações de `Auditoria_Memoria/RELATORIO.md` §5,
+  Fechado em 26/11/2026 (varredura): D-016 (03/10/2026) "Bloco C (Fôlego): variante da C. 1. Sai o motor inteiro, como a Executora mapeou ..." e "2. Sai a condição 'sem-folego'"; o livro hoje fala em "Energia, Mana ou Força de Vontade" (`habilidades.md`). Eram três reservas depois da D-016
+- [x] **L60 · [ANOTADO, sem análise] Quatro recomendações de `Auditoria_Memoria/RELATORIO.md` §5,
   de uma sessão fora do arranjo.** (1) marcar `[x]` no mesmo commit que fecha o trabalho, não
   depois (a causa direta de H1/H2/K28/D2); (2) reler os `[x]` mais antigos deste arquivo com o
   filtro "quando"/"assim que"/"depois que" na frase de fechamento (a forma "fechado com condição
@@ -2711,6 +2725,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `test-procedencia.mjs` que cheque **estado** do que é citado, não só a citação de linha; (4)
   conferir se todo achado de `Auditoria_Tecnica.md` §8.2 em diante tem linha correspondente aqui
   (só o das fraquezas foi conferido, achado como B12). Registrado sem julgar mérito nem prioridade.
+  Fechado em 26/11/2026 (varredura). Decisão do Arquiteto (26/11): (1) e (2) já são rotina; (3) variante do `test-procedencia.mjs` que cheque estado: não vale agora; (4) conferir todos os achados de `Auditoria_Tecnica.md` §8.2: não vale agora.
 
 - [x] **L61 · [FECHADO em 10/09/2026, achados da revisão do aviso 27] Quatro achados menores da
   Revisora sobre `docs/simulacao/caixa/27-executora.md`, nenhum bloqueando o veredito (SEGUE).**
@@ -2774,7 +2789,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   reportar mais um `✘` e seguir. Não invalida a prova (as três asserções relevantes já tinham
   falhado pelo motivo certo antes do crash).
 
-- [ ] **L62 · [dois achados da revisão do aviso 30 (barra de comando, `VOZ.md` §8 item 1), nenhum
+- [ ] **L62 · [ADIADO: o autor: a frente Voz fica parada até ele usar a barra numa batalha] [dois achados da revisão do aviso 30 (barra de comando, `VOZ.md` §8 item 1), nenhum
   bloqueando o veredito (SEGUE). O segundo FECHOU em 10/09/2026; o primeiro continua aberto por
   decisão do humano]**
 
@@ -2802,7 +2817,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
      da gramática. O tamanho do tabuleiro na mensagem sai do perfil da arena, não é texto fixo.
      `npm run validate` verde nas duas pontas. → o silêncio que sobra virou `L66`.
 
-- [ ] **L63 · [ANOTADO, achado de passagem em 10/09/2026, não corrigido] Os três termos do
+- [ ] **L63 · [FAZER] [ANOTADO, achado de passagem em 10/09/2026, não corrigido] Os três termos do
   trabalho do mestre aparecem com dois arredondamentos diferentes.** `CONTEXTO.md:32` e
   `ESTADO.md:1148` dizem **51% aritmética · 32% relógio · 17% julgamento**, com os gestos
   absolutos ao lado (597.714 / 375.005 / 199.238 de 1.171.957, que conferem: 51,0% / 32,0% /
@@ -2961,7 +2976,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   pior que o primeiro, porque o primeiro só gastou uma correção e este gastou uma investigação
   inteira que chegou à conclusão errada.
 
-- [ ] **L101 · [DITO pela Executora ao fechar a rodada 82, 16/09/2026] O alcance do portão de
+- [x] **L101 · [DITO pela Executora ao fechar a rodada 82, 16/09/2026] O alcance do portão de
   vocabulário foi justificado por uma medida presa à lista de palavras de HOJE, e ela expira
   sozinha se a lista crescer.** O portão passou a vigiar o `regras.json` inteiro (35 blocos de
   topo) em vez de quatro blocos, e o preço medido foi **uma frase reescrita**, porque "letal"
@@ -2972,8 +2987,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   envelhecer calada, que é a régua herdada da fase 0: toda tolerância escrita vem com a condição de
   expiração ao lado. **O que fecha este item:** a frase de expiração no comentário do próprio
   portão, ao lado do alcance, para quem for crescer a lista remedir antes.
+  Fechado em 26/11/2026 (varredura): o item diz que o que o fecha é a frase de expiração no comentário do portão: `scripts\validate-data.mjs` "E ESSE PREÇO EXPIRA COM A LISTA DE PALAVRAS (`L101`) ... mede de novo ANTES de acrescentar"
 
-- [ ] **L100 · [ACHADO pela Revisora na rodada 79, 16/09/2026, FORA da faixa] O foco da caixa de
+- [ ] **L100 · [FAZER] [ACHADO pela Revisora na rodada 79, 16/09/2026, FORA da faixa] O foco da caixa de
   diálogo cai no botão errado por ordem do DOM, e a intenção escrita é a oposta.** Na pergunta que
   guarda o Sopro de Vida, o foco cai no **"Não curar"**, o que é seguro contra o Enter reflexo · mas
   é seguro **por acidente**: o `querySelector` do `ui-dialog.ts` lista `.ui-dlg-ok` primeiro, ou
@@ -2983,7 +2999,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   garantia que está de pé pelo motivo errado, e por isso não sobrevive a uma edição inocente. O
   `ui-dialog.ts` não estava na faixa da rodada, e por isso está aqui e não como conserto.
 
-- [ ] **L99 · [MEDIDO pela Executora na rodada 79, 16/09/2026, e a escolha fica para o dia em que
+- [ ] **L99 · [GRID-CÓDIGO] [MEDIDO pela Executora na rodada 79, 16/09/2026, e a escolha fica para o dia em que
   um caminho real aparecer] A trava da cura não existe no SERVIDOR, e as quatro saídas têm preço.**
   A trava da `M-21b` (passou do limite, a cura não alcança) fechou as portas de INTERFACE em
   16/09/2026: o menu do mestre, as Artes e os botões da aba Combate, com o desfazer deixado aberto
@@ -3021,7 +3037,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   Arquiteto decidiu em 16/09/2026 não abrir rodada: escolher agora seria calibrar uma trava contra
   um atacante que não existe. → a medição completa em `docs/simulacao/caixa/progresso-79.md`.
 
-- [ ] **L98 · [ESCALA da Revisora na rodada 77, 15/09/2026] O gancho passou a escrever `.astro/` a
+- [ ] **L98 · [FAZER] [ESCALA da Revisora na rodada 77, 15/09/2026] O gancho passou a escrever `.astro/` a
   cada commit de código, e o `.astro/` é compartilhado por quem divide a árvore.** O `CLAUDE.md`
   declara que `dist/` e `.astro/` são compartilhados e que uso simultâneo produz saída corrompida e
   erros fantasma de "Duplicate id"; o `astro sync` que entrou no `pre-commit` em 15/09/2026 escreve
@@ -3035,7 +3051,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   verdade. **A saída que o próprio `CLAUDE.md` já descreve é a worktree por frente**, e ela continua
   não feita.
 
-- [ ] **L97 · [ACHADO pelo Arquiteto em 15/09/2026, lendo o CI] O `test-grid` do smoke falha de
+- [ ] **L97 · [ACHADO pelo Arquiteto em 15/09/2026, lendo o CI] [GRID-CÓDIGO] O `test-grid` do smoke falha de
   forma INTERMITENTE, e a taxa medida subiu: 3 falhas em 7 execuções (16/09/2026).** As duas falhas trazem
   exatamente as mesmas duas asserções, o que afasta ruído genérico: *"a peça saiu do lugar"* e
   *"mover custa de 2 a 7 idas ao banco (foram 0)"*. **Zero idas ao banco quer dizer que o gesto de
@@ -3054,7 +3070,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   saber se o clique de arrastar chegou à página (o teste conta idas ao banco, então zero é
   silêncio total), e isso se mede instrumentando o próprio teste, não relendo o código do Grid.
 
-- [ ] **L96 · [ESCALA 1 da Revisora na rodada 75, 15/09/2026] Duas varreduras de dano contínuo
+- [ ] **L96 · [ESCALA 1 da Revisora na rodada 75, 15/09/2026] [GRID-CÓDIGO] Duas varreduras de dano contínuo
   escrevem a Vida por motores diferentes, e só uma tem piso.** O tique de condição contínua do
   Grid chama `gravarVida`, que é `curarPv` (`src/pages/mesa/grid.astro:2683`) e só tem TETO, nunca piso; a aba
   Combate faz a MESMA varredura por `mexerVida` (`src/pages/mesa/combate.astro:1340`), e o piso dela está em `:1338`, que tem
@@ -3066,7 +3082,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   a trava da cura pelo número vai mexer nos dois pisos de qualquer jeito, e aí se mede se o
   conserto fecha este item de passagem ou se ele sobrevive.
 
-- [ ] **L95 · [ACHADO pela Executora no levantamento da rodada 54, CONFERIDO e AMPLIADO pelo
+- [ ] **L95 · [GRID-CÓDIGO] [ACHADO pela Executora no levantamento da rodada 54, CONFERIDO e AMPLIADO pelo
   Arquiteto em 12/09/2026] O peso de quem é empurrado nunca vem do bestiário: o campo lido não
   existe, e a estimativa por porte responde sempre, calada.**
 
@@ -3097,7 +3113,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   própria com controle próprio. → `L85` (que lê peso duas vezes, nos dois tetos),
   → `B10` (correção por cima de arquivo gerado morre no regen).
 
-- [ ] **L94 · [ACHADO pela Executora na rodada 53 ao consertar o `L93`, DESENHADO pelo humano em
+- [ ] **L94 · [LIVRO-NO-GRID] [ACHADO pela Executora na rodada 53 ao consertar o `L93`, DESENHADO pelo humano em
   12/09/2026] Passar pelo espaço de outra criatura: hoje é impossível, e "cercado não é preso" é o
   nome de um cenário de teste, não uma regra escrita.**
 
@@ -3131,7 +3147,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   três dependem, nesta ordem, do `L83`, de uma perícia que não existe, e de um conceito que não
   existe. → `L93` (onde nasceu), → `L83` (o que trava o segundo caso), → `L70`, → `L88`.
 
-- [ ] **L93 · [LEVANTADO pela Executora ao fechar a rodada 52, CONFERIDO e AMPLIADO pelo Arquiteto em
+- [x] **L93 · [LEVANTADO pela Executora ao fechar a rodada 52, CONFERIDO e AMPLIADO pelo Arquiteto em
   12/09/2026] O passo automático grava posição, ignora a recusa, e escreve no registro que a peça
   andou.**
 
@@ -3183,8 +3199,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   a prova de que "a regra mora na escrita" fecha a DECISÃO e não fecha o que o chamador faz com a
   resposta · a escrita recusou certo nos três casos, e o estrago veio de ninguém ter olhado.
   → `L70`, → `L88`, → `L66` (a recusa que não chega a quem chama).
+  Fechado em 26/11/2026 (varredura): o texto do item: "FEITO E FECHADO na rodada 53, em 12/09/2026 (`75bcb32`), veredito PROCEDE (`fcf778e`)"; `POSICAO_PENDENTE` em `grid.astro`; `scripts\test-l93-passocolossal-mesa.mjs` existe. O checkbox é que ficou aberto
 
-- [ ] **L92 · [ACHADO pela Executora na rodada 51, em 12/09/2026, CONFERIDO pelo Arquiteto] O tipo
+- [ ] **L92 · [ACHADO pela Executora na rodada 51, em 12/09/2026, CONFERIDO pelo Arquiteto] [GRID-CÓDIGO] O tipo
   não protege os dublês: campo novo obrigatório numa interface passa pelo compilador e quebra em
   tempo de execução, e só se um teste exercitar aquele caminho.**
 
@@ -3211,7 +3228,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   As duas são baratas; escolher exige medir quantos dublês existem. → `L87` (onde nasceu),
   → `CATALOGO` (o portão que não cobre o que parece cobrir).
 
-- [ ] **L91 · [MEDIDO pelo Arquiteto em 12/09/2026, depois do CORRIGE da rodada 50] Sobram 59
+- [ ] **L91 · [FAZER] [MEDIDO pelo Arquiteto em 12/09/2026, depois do CORRIGE da rodada 50] Sobram 59
   travessões de prosa em SEIS documentos que nunca foram varridos, e o `L79` não mentiu sobre isso.**
 
   **A medida, com o escopo colado:** fora de crase, `docs/simulacao/CATALOGO.md` 34,
@@ -3238,7 +3255,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   conferência à mão dependia de um instrumento quebrado (ver a forma nova do `CATALOGO`: o `git
   diff` deste ambiente devolve uma fração da saída).
 
-- [ ] **L90 · [ACHADO de passagem pela Executora na rodada 50, em 12/09/2026, PROVADO pré-existente
+- [x] **L90 · [ACHADO de passagem pela Executora na rodada 50, em 12/09/2026, PROVADO pré-existente
   e não investigado] Uma cena de `scripts/test-grid.mjs` falha por intermitência no arrasto por
   mouse simulado, e passa na repetição seguinte.**
 
@@ -3260,8 +3277,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   tocar em qualquer código. Sem a taxa não dá para saber se um conserto consertou ou se a moeda caiu
   do lado bom. → `CATALOGO` (o zero ambíguo), → `L89` (medir antes de consertar, aprendido caro no
   mesmo dia).
+  Duplicado de L97 (varredura de 26/11/2026): mesma família do L97 (o `test-grid` que cai e passa na repetição, no arrasto); o L90 não identifica a cena e foi achado de passagem. Fica o L97
 
-- [ ] **L89 · [ESTRAGO do Arquiteto em 12/09/2026, CONSERTADO no mesmo dia, e a ferramenta ganhou
+- [x] **L89 · [ESTRAGO do Arquiteto em 12/09/2026, CONSERTADO no mesmo dia, e a ferramenta ganhou
   a conferência que faltava] O reapontador movia em silêncio, e rodá-lo duas vezes sobre o mesmo
   diff não commitado quebrou 39 citações de uma vez.**
 
@@ -3313,8 +3331,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   mexeu, que é o sintoma da passada dupla), e a recomposição a partir do último commit verde resolveu
   em um passo, com duas citações de intervalo sobrando para a mão. Da primeira vez, sem ele, foram
   três tentativas e duas delas pioraram o estado.
+  Fechado em 26/11/2026 (varredura): o item diz "CONSERTADO no mesmo dia, e a ferramenta ganhou a conferência": `scripts\reapontar.mjs` e `scripts\test-reapontar.mjs` existem; a regra de convívio ("entre um reapontamento e o commit do código NÃO entra mais código", uma ordem só por mensagem) está escrita no próprio item
 
-- [ ] **L65 · [ANOTADO em 10/09/2026, achado de passagem, não corrigido] Dez citações de linha
+- [ ] **L65 · [ANOTADO em 10/09/2026, achado de passagem, não corrigido] [ESPERA: o Grid refeito (o autor, 26/11/2026: o Grid é a última frente); quem move: o Arquiteto, no fim] Dez citações de linha
   em `grid.astro` foram reapontadas TRÊS vezes num só dia, e vão envelhecer de novo no próximo
   commit que tocar o arquivo.**
 
@@ -3660,7 +3679,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   debaixo de outra não tem gesto normal de mover), e o que a interface faz com isso não foi
   decidido. → `L104`.
 
-- [ ] **L71 · [ESCALADO pela Revisora na rodada 33, em 10/09/2026, com prova ao vivo · não
+- [x] **L71 · [ESCALADO pela Revisora na rodada 33, em 10/09/2026, com prova ao vivo · não
   corrigido] O carregamento do modelo de voz não tem prazo, e um modelo PRESENTE mas corrompido
   trava para sempre, sem mensagem nenhuma.**
 
@@ -3725,6 +3744,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **O item fica FECHADO quanto à decisão**, e o teste do prazo (a outra metade que faltava) já
   existe desde a rodada 39.
+  Fechado em 26/11/2026 (varredura): "DECIDIDO PELO HUMANO EM 11/09/2026: fica a (a), o prazo, e a (b) NÃO se faz" e "O item fica FECHADO quanto à decisão"; `src\lib\comando-voz.ts` `prazoMs ?? 20_000`; teste do `model.tar.gz` corrompido em `scripts\test-grid.mjs`. A decisão só consta no tema (o registro não tem entrada sobre voz)
 
 - [x] **L72 · [achado pelo Arquiteto em 10/09/2026 ao reapontar a rodada 34, CONSTRUÍDO na rodada
   41 em 11/09/2026] O portão da procedência só conferia os itens ABERTOS deste arquivo, e as
@@ -3839,7 +3859,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   fixa, `rodada NN · aviso à revisora`), dizendo que o aviso daquela rodada já foi enviado e qual é
   o sha. Não decidido, e não abre agora.
 
-- [ ] **L74 · [achado na rodada 35 e FALSIFICADO ao vivo pela Revisora na 36, em 11/09/2026] O
+- [ ] **L74 · [ADIADO: o autor: a frente Voz fica parada até ele usar a barra numa batalha] [achado na rodada 35 e FALSIFICADO ao vivo pela Revisora na 36, em 11/09/2026] O
   teste do status da voz fica verde com o defeito de volta: a costura RECALCULA o texto em vez de
   OBSERVAR o que a tela escreveu.**
 
@@ -3966,7 +3986,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **Travar para sempre é a pior degradação que existe**, porque não diz nada e não se recupera · o
   mestre no meio de uma mesa não tem como saber se espera ou desiste. → `VOZ.md` §8 item 3.
 
-- [ ] **L77 · [ACHADO pelo Arquiteto em 11/09/2026, conferindo a varredura da Executora na rodada
+- [ ] **L77 · [FAZER] [ACHADO pelo Arquiteto em 11/09/2026, conferindo a varredura da Executora na rodada
   40 · DECISÃO DO HUMANO, não de implementação] O `L67` foi construído só de um lado: o raio do
   ALVO entra na régua, o do próprio ATACANTE não entra em lugar nenhum.**
 
@@ -4043,7 +4063,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   → `L67` (a metade construída), → `L76` (a mesma régua na interposição, que esta fórmula resolve),
   → `L78` (o campo de Alcance por criatura, que o humano pediu junto).
 
-- [ ] **L76 · [ESCALADO pela Revisora na rodada 39, em 11/09/2026, e o Arquiteto RECUSOU consertar
+- [x] **L76 · [ESCALADO pela Revisora na rodada 39, em 11/09/2026, e o Arquiteto RECUSOU consertar
   de passagem · a Executora chegou nela sozinha na rodada 40, por outro caminho] A interposição
   continua medindo de centro a centro depois do `L67`, e a régua nova não chegou nela.**
 
@@ -4090,8 +4110,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   → `L67` (a régua que originou), → `L70` (o outro que saiu pelo mesmo critério), → `L77` (a
   metade do atacante, que é a mesma pergunta de fundo).
+  Duplicado de L77 (varredura de 26/11/2026): do L77: o item diz "RESOLVIDO PELA FÓRMULA DO L77 em 11/09/2026 ... Isto deixou de ser decisão de regra e virou consequência", e `alcance.ts` e `grid.astro` já passam os dois raios. Fica o L77 (a frase do livro)
 
-- [ ] **L78 · [PEDIDO pelo humano em 11/09/2026, junto da decisão do `L77`] Falta um campo de
+- [ ] **L78 · [ADIADO: o autor, na mesma conversa: revisar os alcances depois do L77] [PEDIDO pelo humano em 11/09/2026, junto da decisão do `L77`] Falta um campo de
   ALCANCE por criatura: o braço derivado do porte trata corpos diferentes como iguais.**
 
   **O que ele pediu, com o exemplo dele:** o braço derivado do tamanho (`L77`) dá o mesmo alcance a
@@ -4359,7 +4380,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   comentário, e no segundo caso a varredura do código vem antes, medida de novo. Dizer isto aqui é
   a diferença entre um número e um número com o escopo do lado.
 
-- [ ] **L80 · [MEDIDO pelo Arquiteto em 11/09/2026, na rodada 43, depois de o reapontador
+- [ ] **L80 · [FAZER] [MEDIDO pelo Arquiteto em 11/09/2026, na rodada 43, depois de o reapontador
   reescrever citações num documento que portão nenhum lê] O portão da procedência confere DOIS
   documentos, e há dez outros com citação de código viva.**
 
@@ -4636,7 +4657,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   → `L65` (o reapontador e a sua conferência), → `L72` (o portão passou a ver item fechado),
   → `L79` (a outra regra sem portão).
 
-- [ ] **L81 · [ACHADO pela Executora em 11/09/2026, ao abrir a rodada 43, e MEDIDO pelo Arquiteto
+- [x] **L81 · [ACHADO pela Executora em 11/09/2026, ao abrir a rodada 43, e MEDIDO pelo Arquiteto
   no mesmo dia] O `BASE` do aviso sai do `HEAD` da worktree da Revisora, e esse `HEAD` fica num
   commit órfão toda vez que o push dela precisa de rebase feito por outra mão. Três dos últimos
   nove avisos saíram assim.**
@@ -4792,8 +4813,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   trava para um defeito que o `L73` já tinha fechado.
 
   → `L65` (a sequência dos commits da rodada), → `L73` (o outro defeito do `rodada.mjs`).
+  Fechado em 26/11/2026 (varredura): o item: "CONSTRUÍDO na rodada 44 (`e99049c`): `acharGemeo` mais o portão dentro do `abrir`", revisado SEGUE; `scripts\rodada.mjs` `function acharGemeo` e `:265` `const gemeo = acharGemeo(base)`; `scripts\test-rodada.mjs`. O hardening dos dois gêmeos é declarado pelo item como "HARDENING e não CORRIGE"
 
-- [ ] **L82 · [SEPARADO do `L79` em 11/09/2026, por decisão do humano, depois de a medida do
+- [ ] **L82 · [ADIADO: o autor limitou o portão a src/content por enquanto] [SEPARADO do `L79` em 11/09/2026, por decisão do humano, depois de a medida do
   código sair cinco vezes maior do que o `L79` anunciava] A dívida de travessão no CÓDIGO: 702
   ocorrências em 116 arquivos, e 55 delas não são pontuação.**
 
@@ -4830,7 +4852,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   → `L79` (a varredura dos documentos, feita), → `L80` (a outra dívida sem portão).
 
-- [ ] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, ABERTO por decisão do humano em
+- [x] **L70 · [REGISTRADO em 10/09/2026, ligado ao `L67`, ABERTO por decisão do humano em
   11/09/2026] A gravação de posição não passa pela checagem de ocupação, e a invariante mora nos
   chamadores em vez de morar na escrita.**
 
@@ -5004,8 +5026,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   atacar arrastando existe **porque** a casa ocupada recusava o movimento e o arrasto terminava em
   nada · `grid.astro:7016` (`A casa ocupada recusa o movimento`). Mexer na recusa mexe na razão de
   ser daquele atalho.
+  Fechado em 26/11/2026 (varredura): decidido pelo humano em 11/09 ("a conferência passa a morar na GRAVAÇÃO"), feito: `grid.astro` `gravarToken` confere `ocupadoPor` e devolve o motivo; rodada 49 (`5a6bb93`, SEGUE) e rodada 50; a trava no banco virou o detector do L88; testes `scripts\test-l70-ocupacao-mesa.mjs` e `test-l70-empurrao.mjs`
 
-- [ ] **L83 · [PERGUNTADO pelo Arquiteto em 12/09/2026 ao abrir a rodada 50, DESENHADO pelo humano
+- [ ] **L83 · [LIVRO-NO-GRID] [PERGUNTADO pelo Arquiteto em 12/09/2026 ao abrir a rodada 50, DESENHADO pelo humano
   no mesmo dia] O que acontece quando um empurrão joga um corpo para cima de outro. A regra passou a
   existir; o que falta são seis peças dela, e uma delas contradiz uma decisão antiga.**
 
@@ -5072,7 +5095,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   régua que os dados definem, desenhar a disputa em cima da distância de hoje é desenhar sobre número
   errado. → `L85`, → `L70` (o conserto que abriu a pergunta), → `L84` (a queda depende dele).
 
-- [ ] **L88 · [MEDIDO em 12/09/2026 pela Revisora e conferido pelo Arquiteto, DECIDIDO pelo humano no
+- [x] **L88 · [MEDIDO em 12/09/2026 pela Revisora e conferido pelo Arquiteto, DECIDIDO pelo humano no
   mesmo dia] A invariante de ocupação ganha um DETECTOR no cliente, e não uma trava no banco.**
 
   **A medida que originou a pergunta está no `L70`:** a invariante inteira depende de um retrato
@@ -5148,8 +5171,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **NÃO ERA DA RODADA 50.** Ela já carregava a gravação, a separação do balde, a condição nova e a queda.
   → `L70` (a medida), → `L84` (o retorno passivo), → `L87` (o pré-requisito), → `L86`.
+  Fechado em 26/11/2026 (varredura): "FEITO E FECHADO na rodada 52, em 12/09/2026 (`8d7b450`), veredito PROCEDE (`697fc29`)"; `grid.astro` `function conferirOcupacao`, `:4866` `POSICAO_PENDENTE`; `scripts\test-l88-ocupacao-detector-mesa.mjs`
 
-- [ ] **L86 · [ACHADO pela Revisora em 12/09/2026, auditando os caminhos do `L84`, CONFERIDO pelo
+- [ ] **L86 · [GRID-CÓDIGO] [ACHADO pela Revisora em 12/09/2026, auditando os caminhos do `L84`, CONFERIDO pelo
   Arquiteto do lado de fora] Sete Artes marcadas como cura não curam nada no tabuleiro, e o caminho
   não está escrito.**
 
@@ -5554,7 +5578,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   somar Vida. **A Arte não fica registrada como pronta por causa desta linha**, e quem a encostar de
   novo começa por aqui.
 
-- [ ] **L87 · [ACHADO pela Revisora em 12/09/2026, na mesma auditoria] Duas escritas de condição
+- [ ] **L87 · [ACHADO pela Revisora em 12/09/2026, na mesma auditoria] [GRID-CÓDIGO] Duas escritas de condição
   gravam no banco sem repintar a coluna de iniciativa, e uma delas não avisa a mesa.**
 
   **A grave, e é o furo real dos cinco caminhos do `L84`:**
@@ -5766,7 +5790,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   regra está completa o que falta é só a rodada. → `L83` (a regra do empurrão, que depende
   destes números), → `L70`.
 
-- [ ] **L84 · [MEDIDO pelo Arquiteto em 12/09/2026 ao conferir o modelo do `L83`, DECIDIDO pelo humano
+- [ ] **L84 · [LIVRO-NO-GRID] [MEDIDO pelo Arquiteto em 12/09/2026 ao conferir o modelo do `L83`, DECIDIDO pelo humano
   no mesmo dia] `noChao` responde duas perguntas diferentes com uma função só, e a condição "Caído"
   paga a conta.**
 
@@ -6002,13 +6026,13 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **A ordem:** entra depois da frente da voz. Registrado agora com a direção escrita, não aberto.
 
-- [ ] **L69 · [ANOTADO em 10/09/2026, observação para o futuro, sem análise e sem abrir] Nem toda
+- [ ] **L69 · [ANOTADO em 10/09/2026, observação para o futuro, sem análise e sem abrir] [GRID-CÓDIGO] Nem toda
   criatura chega pelo caminho de borda.** Existem criaturas que se teleportam e criaturas que se
   deslocam por baixo da terra. Quando o movimento animado e as regras de caminho entrarem, essas
   não seguem o mesmo trajeto nem param na mesma borda que o resto. Registrado agora, ao lado do
   item que vai definir a borda, para quem mexer num achar o outro. → `L67`.
 
-- [ ] **L66 · [ANOTADO em 10/09/2026, recomendação da Revisora no veredito da rodada 31, não
+- [x] **L66 · [ANOTADO em 10/09/2026, recomendação da Revisora no veredito da rodada 31, não
   corrigido] `porNoMapa` recusa em silêncio, e quem a chama tem de trazer o próprio sinal.**
 
   Hoje a invariante existe só como comentário no código, e é isto: a função sai muda quando a
@@ -6026,8 +6050,9 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   no aviso da rodada 31, com o custo escrito), e a instrução do humano para aquela rodada era o
   menos invasivo. Quem for abrir isto decide entre fazer a função devolver o motivo da recusa e
   deixar como está, e a escolha muda os dois chamadores de hoje.
+  Fechado em 26/11/2026 (varredura): a decisão do L70 ("a conferência passa a morar na GRAVAÇÃO", "devolve por que recusou") cobre este item (o L70 diz que é "a resposta aos três itens de uma vez (L70, L66, L62)"); `grid.astro` mostra que `porNoMapa` agora recebe o motivo em `error` e chama `uiErro('Não deu para mover: ' + error.message)`
 
-- [ ] **L102 · [AUTOR] M-18, Canalizar Virtude: teto ou contrapartida. Regra nova de verdade, não
+- [ ] **L102 · [FAZER] M-18, Canalizar Virtude: teto ou contrapartida. Regra nova de verdade, não
   conserto pontual.**
 
   Decidido em 16/09/2026 (`docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "As 19 do
@@ -6044,7 +6069,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   descrição do ciclo de carga/recarga.
 
 
-- [ ] **L103 · [ANOTADO, alcance registrado pela Revisora na rodada 97, 24/09/2026, sem conserto] O laço do
+- [ ] **L103 · [ANOTADO, alcance registrado pela Revisora na rodada 97, 24/09/2026, sem conserto] [ESPERA: uma cena do espelho de motor ganhar condição ou diferença de porte; quem move: a Calculista ou o Arquiteto] O laço do
   harness não soma ao ataque as condições nem o porte que a mesa soma.** A mesa monta o ajuste do
   acerto em `ajAtq` (`src/pages/mesa/grid.astro`) com o ferimento, as condições do atacante
   (`somarCondicoes`, que traz o Desgaste em dado) e o porte (quando a bandeira está ligada); o laço
@@ -6053,7 +6078,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   porte**, então ele não prova nada sobre essas duas parcelas. Se uma cena do espelho ganhar
   qualquer uma delas, o laço precisa da mesma soma antes.
 
-- [ ] **L104 · [ESCALA da Revisora na rodada 98, aberto pelo Arquiteto em 24/09/2026, diagnosticado na rodada 100, DECISÃO DO HUMANO] Uma asserção do `test-grid` cai às vezes: 3 falhas em 60 runs do CI, sempre na "Criatura 17".** A asserção é `[aquece] a peça pegável não está na vez, e arrastá-la abriria pergunta em vez de mover`, e caiu em `8dc0f27` (run `35911397511`, 23/09 19:45), `26f0d59` (run `35914287185`, 23/09 20:11) e `575be67` (run `35941091164`, 24/09 01:01). Nas três, o commit seguinte passou no mesmo teste, e nenhum dos três mexe no Grid. **Não é o L97**, que é outra asserção (a peça que não sai do lugar, com zero idas ao banco). A Revisora viu, e não investigou, que a mensagem conta "21 pegáveis de 10 no palco": mais peças pegáveis que peças no palco. **Por que isto é pior que um teste vermelho:** um teste que falha às vezes ensina a mesa a mandar rodar de novo, e desse dia em diante um vermelho de verdade passa pelo mesmo gesto. O portão deixa de ser portão sem que ninguém tenha decidido isso. **O que o humano pediu (24/09/2026):** o diagnóstico antes do conserto. A causa é ordem de execução, tempo ou estado que sobrou de outro bloco? Se for intermitência real e não do código testado, a saída pode ser a asserção estar errada, e não o Grid. **Diagnosticado na rodada 100, sem conserto (`100-executora.md`): nem ordem, nem tempo, nem estado de outro bloco. É a bancada com a iniciativa rolada.** Na cena de 30, nove peças pequenas (C7, C10, C13, C16, C19, C22, C25, C28, H4) ficam sem ponto pegável, cobertas por uma águia (57 px: C7, C10, C13, H4) ou por uma aboleth (115 px: C16, C19, C22, C25, C28) da fileira vizinha, e não pela peça do lado (geometria medida pela Revisora no veredito da 100, que corrigiu a frase "cada aboleth cobre a peça pequena seguinte"). Quando o d6 da iniciativa dá o Tick 1 só a elas (conta de rolagem, cerca de 2%, conferida pela Revisora), ninguém na vez é pegável, e a escolha cai no `pegaveis[0]`, que é sempre a Criatura 17. Reproduzido com `?semente=1369` e `?semente=767`, com as duas assinaturas exatas do CI, pela sonda da Executora e por uma sonda própria da Revisora; com espera de 3 s antes da leitura continua caindo. Quem está na vez é quem a regra põe no Tick 1. "21 de 10" é rótulo errado nas três linhas que dividem `pegaveis` por `noPalco` (`test-grid.mjs:1174` `noPalco`, e as seguintes `:1187` e `:1205`: 21 pegáveis entre as 30, 10 no palco), e não é a causa.
+- [ ] **L104 · [ESCALA da Revisora na rodada 98, aberto pelo Arquiteto em 24/09/2026, diagnosticado na rodada 100, DECISÃO DO HUMANO] [GRID-CÓDIGO] Uma asserção do `test-grid` cai às vezes: 3 falhas em 60 runs do CI, sempre na "Criatura 17".** A asserção é `[aquece] a peça pegável não está na vez, e arrastá-la abriria pergunta em vez de mover`, e caiu em `8dc0f27` (run `35911397511`, 23/09 19:45), `26f0d59` (run `35914287185`, 23/09 20:11) e `575be67` (run `35941091164`, 24/09 01:01). Nas três, o commit seguinte passou no mesmo teste, e nenhum dos três mexe no Grid. **Não é o L97**, que é outra asserção (a peça que não sai do lugar, com zero idas ao banco). A Revisora viu, e não investigou, que a mensagem conta "21 pegáveis de 10 no palco": mais peças pegáveis que peças no palco. **Por que isto é pior que um teste vermelho:** um teste que falha às vezes ensina a mesa a mandar rodar de novo, e desse dia em diante um vermelho de verdade passa pelo mesmo gesto. O portão deixa de ser portão sem que ninguém tenha decidido isso. **O que o humano pediu (24/09/2026):** o diagnóstico antes do conserto. A causa é ordem de execução, tempo ou estado que sobrou de outro bloco? Se for intermitência real e não do código testado, a saída pode ser a asserção estar errada, e não o Grid. **Diagnosticado na rodada 100, sem conserto (`100-executora.md`): nem ordem, nem tempo, nem estado de outro bloco. É a bancada com a iniciativa rolada.** Na cena de 30, nove peças pequenas (C7, C10, C13, C16, C19, C22, C25, C28, H4) ficam sem ponto pegável, cobertas por uma águia (57 px: C7, C10, C13, H4) ou por uma aboleth (115 px: C16, C19, C22, C25, C28) da fileira vizinha, e não pela peça do lado (geometria medida pela Revisora no veredito da 100, que corrigiu a frase "cada aboleth cobre a peça pequena seguinte"). Quando o d6 da iniciativa dá o Tick 1 só a elas (conta de rolagem, cerca de 2%, conferida pela Revisora), ninguém na vez é pegável, e a escolha cai no `pegaveis[0]`, que é sempre a Criatura 17. Reproduzido com `?semente=1369` e `?semente=767`, com as duas assinaturas exatas do CI, pela sonda da Executora e por uma sonda própria da Revisora; com espera de 3 s antes da leitura continua caindo. Quem está na vez é quem a regra põe no Tick 1. "21 de 10" é rótulo errado nas três linhas que dividem `pegaveis` por `noPalco` (`test-grid.mjs:1174` `noPalco`, e as seguintes `:1187` e `:1205`: 21 pegáveis entre as 30, 10 no palco), e não é a causa.
 
   **A conclusão "defeito do teste e não do Grid" SAIU** (decisão do humano, 24/09/2026, depois do veredito da 100, `bd347d6`; o Arquiteto a tinha escrito antes de a pergunta em aberto voltar). **O que sobra é defeito de tela com consequência de regra.** A peça coberta se alcança pela lista lateral (`grid.astro:6812-6817` `gr-ficha` e `:6899-6906`), e o soltar dela (`:6989-7031`, `deOnde === 'lista'`) vai direto ao `porNoMapa`, que teleporta, pulando a pergunta do `L68` (fora da vez) e o `moverSimultaneo` (o custo de movimento). Então existe no Grid um jeito de mover peça sem pagar, para qualquer peça já posta e não só a coberta, e ninguém decidiu que ele existe. A leitura é da Revisora no código, e o gesto não foi exercitado no navegador. A falha intermitente do teste é o sintoma pelo qual isto apareceu: a cena de 30 é a mesa de amanhã, e não bancada mal montada.
 
@@ -6065,6 +6090,6 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **É o `L67` visto do outro lado.** O `L67` e o `L70` são o motor chegando a um estado com peça dentro de peça (a perseguição do corpo a corpo gravava dentro do inimigo; a gravação de posição não confere ocupação); o `L104` é a interface diante desse estado, e ninguém decidiu o que a tela faz com uma peça coberta. Na bancada, a sobreposição vem da montagem da cena e não do motor; se o jogo de verdade chega a ela por porte grande invadindo a casa vizinha, não foi medido. → `L67`, → `L70`, → `L68`, → `L105` (a caixa da iniciativa, achada no mesmo diagnóstico).
 
-- [ ] **L105 · [ANOTADO pelo Arquiteto em 24/09/2026, achado de passagem da rodada 100, sem conserto] A caixa que o mestre lê ao rolar a iniciativa no Grid ainda diz "Tick 0".** `src/pages/mesa/grid.astro:5472`, o texto do `uiConfirmar` de "Rolar iniciativa": "Quem tirar o maior entra no Tick 0; os demais entram mais tarde". O comentário em `grid.astro:5493` e o de `scripts/test-grid.mjs:538` dizem o mesmo; a régua (`derivados.iniciativa`) e as asserções de `test-grid.mjs:569` (`Tick 1`) usam o Tick 1. **É a forma "consertar num lugar e não no outro":** o `C-22` (`docs/simulacao/caixa/jogador-novo-consertos.md`, fechado na rodada 99) tirou o "Tick 0" do livro, e a tela ficou. Já estava escrito em `00-diagnostico.md:354`, `01-diagnostico-carga.md:424` (item 13, "a frase da caixa mente") e `02-projeto-harness.md:1544`, que mandava "corrija a frase junto", e nunca virou item (achado da Revisora no veredito da 100). → `L104`.
+- [ ] **L105 · [ANOTADO pelo Arquiteto em 24/09/2026, achado de passagem da rodada 100, sem conserto] [GRID-CÓDIGO] A caixa que o mestre lê ao rolar a iniciativa no Grid ainda diz "Tick 0".** `src/pages/mesa/grid.astro:5472`, o texto do `uiConfirmar` de "Rolar iniciativa": "Quem tirar o maior entra no Tick 0; os demais entram mais tarde". O comentário em `grid.astro:5493` e o de `scripts/test-grid.mjs:538` dizem o mesmo; a régua (`derivados.iniciativa`) e as asserções de `test-grid.mjs:569` (`Tick 1`) usam o Tick 1. **É a forma "consertar num lugar e não no outro":** o `C-22` (`docs/simulacao/caixa/jogador-novo-consertos.md`, fechado na rodada 99) tirou o "Tick 0" do livro, e a tela ficou. Já estava escrito em `00-diagnostico.md:354`, `01-diagnostico-carga.md:424` (item 13, "a frase da caixa mente") e `02-projeto-harness.md:1544`, que mandava "corrija a frase junto", e nunca virou item (achado da Revisora no veredito da 100). → `L104`.
 
-- [ ] **L106 · [ANOTADO pelo Arquiteto em 24/09/2026, visto uma vez, sem diagnóstico e sem conserto] "No máximo 60 KB de HTML por movimento (foram 67,1 KB)".** A asserção de `scripts/test-grid.mjs:1286` (`KB de HTML por movimento`) caiu uma vez em 40 voltas numa sonda local da rodada 100 (a cena de 30 em laço, `100-executora.md`, "O que mais apareceu"). Nos 60 runs do CI lidos pela Revisora na rodada 98, zero ocorrências. Fica anotado com o número e a volta para o dia em que aparecer no CI; uma ocorrência local não abre conserto.
+- [ ] **L106 · [ANOTADO pelo Arquiteto em 24/09/2026, visto uma vez, sem diagnóstico e sem conserto] [ESPERA: a reaparição no CI (zero ocorrências em 60 runs); quem move: o Arquiteto] "No máximo 60 KB de HTML por movimento (foram 67,1 KB)".** A asserção de `scripts/test-grid.mjs:1286` (`KB de HTML por movimento`) caiu uma vez em 40 voltas numa sonda local da rodada 100 (a cena de 30 em laço, `100-executora.md`, "O que mais apareceu"). Nos 60 runs do CI lidos pela Revisora na rodada 98, zero ocorrências. Fica anotado com o número e a volta para o dia em que aparecer no CI; uma ocorrência local não abre conserto.

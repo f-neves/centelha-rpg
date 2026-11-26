@@ -66,24 +66,25 @@ revistos por ela.
   entre 87% e 96% contra tudo (Força ×2 com Velocidade 6, acerto +1 e Defesa +2, contra o Montante
   de Velocidade 7 e Defesa −2), e a **Maça** entre 0,7% e 13% (a Absorção natural contra Impacto,
   `Vigor + Centelha`, come o dano de uma arma de uma mão). Virou item próprio: **K11**.
-- [ ] **K11 · [DECIDIR] Alabarda, Maça e o Impacto de uma mão.** Ou o `forcaMult` da Alabarda cai
+- [ ] **K11 · [DECIDIR] [ESPERA: a T7; quem move: o Arquiteto despacha a T7] Alabarda, Maça e o Impacto de uma mão.** Ou o `forcaMult` da Alabarda cai
   para 1 (como a Lança), ou o dado dela cai. E a arma de Impacto de uma mão não tem nicho nenhum:
   contra alvo nu a Absorção natural a esmaga, contra armadura ela perde para a de duas mãos. §9 do
   `Combate_Tempo.md`.
-- [ ] **K8 · [DECIDIR] Cinco das nove bordas.** Quatro já foram medidas e fechadas (quem está em
+- [ ] **K8 · [DECIDIR] [LIVRO-NO-GRID] Cinco das nove bordas.** Quatro já foram medidas e fechadas (quem está em
   Preparo não reage, ninguém reage antes da própria estreia na cena, o gatilho é só a janela, e uma
   por ação). Faltam: duas áreas na mesma janela, reação e Reflexiva no mesmo gatilho, abortar
   (Firme × Solta), a dívida na virada da cena e **se o golpe normal interrompe** (a mais
   consequente). §6 do `Combate_Tempo.md`.
-- [ ] **K4 · [DECIDIR] O Preparo de distância e arremesso.** A curva está medida (§7): o Preparo do
+- [x] **K4 · [DECIDIR] O Preparo de distância e arremesso.** A curva está medida (§7): o Preparo do
   arco é pago no tiro que não sai antes do contato, e cada ponto custa de 5 a 13 pontos de win rate
   entre 45 e 100 metros. A 100 m, P=0 dá 68,6% ao arqueiro e P=2 dá 42,6%. Duas leituras
   defensáveis: caro demais (então P=1), ou o freio que faltava (então P=2). Escolha sua.
-- [ ] **K9 · [DECIDIR] A carga voluntária.** Medido: **1 Tick de Preparo comprado vale +2 na
+  Fechado em 26/11/2026 (varredura): D-082 "Arco Curto 4/1/1 · 6 ... Arco Longo 4/1/2 · 7 ... Arremesso leve 2/1/1 · 4, médio 3/1/1 · 5, pesado 3/1/2 · 6" e D-075 (arcos e bestas: classes e preço); a escolha P=1 ou P=2 foi superada. A medição de equilíbrio do arqueiro fica no K17
+- [ ] **K9 · [AUTOR-REGRA] A carga voluntária.** Medido: **1 Tick de Preparo comprado vale +2 na
   rolagem**, subindo devagar (+2,2 no primeiro, ~+2,7 no terceiro) e mais barato para arma pesada.
   Cai daí que o **Mirar de hoje está caro demais**: cobra uma ação inteira e entrega o preço de um
   Tick. Falta travar o teto (proposta: 3 Ticks).
-- [ ] **K6 · [DECIDIR] A leitura do sinal.** Desenhada na §8: Percepção + Prontidão para o golpe
+- [ ] **K6 · [AUTOR-REGRA] A leitura do sinal.** Desenhada na §8: Percepção + Prontidão para o golpe
   físico (o Ocultismo da §5.5 segue para a Arte), leitura grátis para quem tem a mesma arma e
   perícia, e a **finta** comprando 1 Tick de Preparo para mentir sobre o alvo, que dá à arma leve o
   primeiro motivo para comprar Preparo. Fica por último.
@@ -116,7 +117,7 @@ revistos por ela.
     Punhos: **decidido pelo autor em 10/10/2026** (cláusula da D-083): contam como duas armas leves (1/1/3, D-082)
     para a empunhadura dupla, a Rajada (teto 3), o Bloqueio (+1 cada) e a Guarda sob pressão (2 ataques); só as
     mãos fazem par (os dois punhos e a mão que conta como arma, D-070); chute, mordida, cauda e patas seguem a D-068.
-- [ ] **K20 · [DECIDIR] O que se pode fazer no Preparo e na Recuperação.** A §14.6 do
+- [ ] **K20 · [DECIDIR] [LIVRO-NO-GRID] O que se pode fazer no Preparo e na Recuperação.** A §14.6 do
   `Combate_Tempo.md` tem um primeiro recorte, mas ele foi escrito antes de duas coisas mudarem, e
   precisa de uma passada inteira. O que já está resolvido: **no Preparo você aborta** (perdendo os
   Ticks investidos, e só para mover, desviar ou se interpor, nunca para atacar); **no Golpe não há
@@ -135,7 +136,7 @@ revistos por ela.
     ser lido como "não pode fazer o seu ataque **normal**". Falta escrever isso sem ambiguidade.
   - **Falar, largar item, olhar em volta:** provavelmente livres em qualquer fase, mas nunca foram
     listados.
-- [ ] **K17 · [DECIDIR] O arqueiro ficou forte demais.** 63,9% a 100 metros contra 35,8% do sistema
+- [ ] **K17 · [DECIDIR] [ESPERA: a T7; quem move: o Arquiteto] O arqueiro ficou forte demais.** 63,9% a 100 metros contra 35,8% do sistema
   de hoje, por um motivo estrutural: com `R = 0` ele nunca passa pela fase exposta. Conversa com o
   **K4**, que por sua vez está travado pelo **K13**.
 - [x] **K18 · [FECHADA em 10/10/2026 pela D-091] A Técnica Ambidestria ficou sem função.** Decisão do
@@ -153,9 +154,9 @@ revistos por ela.
   - **Insumo para a decisão (10/10/2026):** o desenho que o código usa hoje é −1d6 na mão hábil e
     −2d6 na inábil (`ficha-engine.ts`, `dupla.inabilPen: ambi ? 1 : 2`; a Ambidestria baixa a inábil
     para −1d6), e o livro diz −1d6 nas duas. Nada muda agora.
-- [ ] **K19 · [FAZER] A cadeia foi medida só na arma leve.** Na média e na pesada cada elo custa 2
+- [ ] **K19 · [FAZER] [ESPERA: a T7 e a T8; quem move: o Arquiteto] A cadeia foi medida só na arma leve.** Na média e na pesada cada elo custa 2
   e 3 Ticks, e as três curvas de freio não foram varridas ali. Bateria `--so T`.
-- [ ] **K21 · [FAZER/DECIDIR] As armas versáteis: a regra, a lista e o preço da forma de duas
+- [ ] **K21 · [AUTOR-REGRA] [FAZER/DECIDIR] As armas versáteis: a regra, a lista e o preço da forma de duas
   mãos.** Esclarecido em 20/08/2026, e o catálogo diverge da regra em quase tudo.
   - **A regra:** a arma **versátil** pode ser usada com uma mão (Força **×1**) ou com as duas
     (Força **×2**). A exceção segue sendo a haste de estocada, que fere por alcance e não soma o
@@ -208,7 +209,7 @@ revistos por ela.
   o motor (`defesaBase` e a rolagem usam `centelha * 2`) e refazer as tabelas da frente K, que
   foram todas medidas no ×2 (em espelho o efeito se cancela, então a direção dos resultados se
   mantém; os absolutos mudam).
-- [ ] **K24 · [DECIDIR] O montante e o martelo pagam duas vezes, e o dano não conserta.** As duas
+- [ ] **K24 · [DECIDIR] [ESPERA: a T7; quem move: o Arquiteto] O montante e o martelo pagam duas vezes, e o dano não conserta.** As duas
   armas pesadas de duas mãos têm **acerto 0 e Defesa da arma −2**, o pior dos dois lados (a adaga
   tem +2 e +1: cinco pontos de diferença, ~40 pontos percentuais de acerto). Decidido em 20/08 que
   **acerto e Defesa estão condizentes** com a ficção da arma grande, e que a compensação, se vier,
@@ -246,7 +247,7 @@ revistos por ela.
   telas; no rastreador, só quando a cena está começando (a caixa "Reiniciar" com "zerar os Ticks"),
   porque rolar iniciativa no meio de uma luta é outra coisa.
 
-- [ ] **K27 · [DECIDIR] O Golpe sai depois, e a mesa ainda resolve na declaração.** Estudo completo
+- [ ] **K27 · [DECIDIR] [GRID-CÓDIGO] O Golpe sai depois, e a mesa ainda resolve na declaração.** Estudo completo
   em **`Golpe_Tardio.md`** (21/08), sem nenhuma mudança feita. O buraco: a régua diz que o golpe cai
   em `T + Preparo`, a tela desenha isso (fita, anel de Golpe, linha do tempo), e o motor resolve
   tudo no Tick da declaração: rolagem, dano e morte. O Preparo cobra Defesa e não adia nada.
@@ -291,7 +292,7 @@ revistos por ela.
   à mão. E falta a **prova de mesa**: a chave existe justamente porque a regra só se aprova jogando,
   e se reprovar um commit apaga o caminho novo e ela junto.
 
-- [ ] **K30 · [FAZER] A CAIXA QUE ABRE NO TICK EM QUE A ARTE SAI** · *é a mesma mecânica do K27,
+- [ ] **K30 · [FAZER] [GRID-CÓDIGO] A CAIXA QUE ABRE NO TICK EM QUE A ARTE SAI** · *é a mesma mecânica do K27,
   e o nome existe para ninguém resolver as duas separadas.*
 
   **A régua está cumprida para 27 dos 140 Efeitos e não para 19.** Em 04/09 a Arte passou a resolver
@@ -329,7 +330,7 @@ revistos por ela.
   anotado no código (`conjurar`, em `artes-grid-mesa.ts`). Não é regressão, é a metade que faltava
   desde 21/08.
 
-- [~] **K28 · [DECIDIR] Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a
+- [~] **K28 · [AUTOR-REGRA] Deslocamento: sete decisões tomadas em 21/08, a oitava (código) já saiu; falta só a
   ausência.** A varredura (§11 do `Golpe_Tardio.md`) achou **seis regras de andar** espalhadas por
   quatro lugares, mais dois modificadores esquecidos (a armadura tira metade da Penalidade em
   metros; baixa estatura) e uma ausência que segue **sem decisão registrada em lugar nenhum**:
@@ -352,7 +353,7 @@ revistos por ela.
   calibrado nas raças básicas; 270 vieram da fonte (D&D 3.5/Pathfinder) e 39 por tabela. K28 fecha
   inteiro.
 
-- [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
+- [x] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
   (`ficha-engine.ts:1504`, `Bloqueio soma a Defesa das armas/escudos do conjunto EM USO`). Com
   espada longa (+1) e heater (+3) dá **+4** sobre a Defesa nua 21, e o acerto contra guarda cheia
@@ -366,6 +367,7 @@ revistos por ela.
   (c) manter e assumir. Levantado em 20/08 ao medir o acerto com os bônus reais de catálogo, junto
   do **K22** (onde ficou registrado por que a convenção `>` não é o que conserta isto: o `>=`
   levaria o mesmo caso de 6% para 10%, e o ganho dele **encolhe** justamente nas Defesas altas).
+  Fechado em 26/11/2026 (varredura): D-065 item 3 "armas e escudos que tem nas mãos, e eles somam (dois escudos, os dois contam)"; D-078 "os bônus mantêm o teto de +6"; `combate.md:626`; `defesas.md:74-76` "defesa da arma/escudo" entra por cima, em jogo
 - [x] **K12 · [DECIDIR] Como se conta um teste de Virtude.** Teste de Virtude **não soma Atributo
   nem Habilidade**, só a Virtude, e por isso a régua de pool de hoje (`[(A+H)/2]d6`, com +2 se
   ímpar) não se aplica a ele. Duas formas na mesa: **pool** (a Virtude vira dados pela mesma
@@ -383,7 +385,7 @@ revistos por ela.
   rate (a 45 m, P=0 dá 28,3% e P=2 dá 13,4%, que é a §7 publicada); com −2, o Preparo **paga** (a
   45 m, P=0 dá 11,7% e P=5 dá 54,0%). **O K4 não pode ser decidido antes disto.**
   **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `b6af150` (19/08/2026). O `scripts/lib-tempo.mjs` diz no cabeçalho que o motor cobrava em dobro até essa data, e guarda o regime antigo em `pressaoDupla`.
-- [ ] **K14 · [DECIDIR] A bancada só mede o canto "todo mundo esquiva".** O motor tem **uma**
+- [x] **K14 · [DECIDIR] A bancada só mede o canto "todo mundo esquiva".** O motor tem **uma**
   Defesa e ignora a `defesaArma`, que pelo `defesas.md:67` entra **só no Bloqueio**
   (`Bloqueio = (Des + Bloqueio)×2 + Centelha + Esp + defesa da arma`). Todo número de equilíbrio
   entre classes, deste documento e do `Combate_Tempo.md`, é portanto o extremo em que ninguém
@@ -393,7 +395,8 @@ revistos por ela.
   verdade está entre os dois cantos e depende do roteamento das Defesas pelo "como". Enquanto o
   motor não souber escolher entre Esquiva e Bloqueio, **nenhum ajuste de catálogo (K11) deve ser
   feito com base nele**.
-- [ ] **K5 · [FAZER] A implementação: os DOIS sistemas.** Decidido em 20/08: o jogo tem o
+  Duplicado de K35 (varredura de 26/11/2026): mesmo assunto do K35 (o motor `lib-tempo.mjs`: `scripts\lib-tempo.mjs` "LIMITE CONHECIDO ... UMA Defesa e ignora a `defesaArma`"). Fica o K35. A bancada viva (`scripts\sim\`) usa a Defesa da mesa
+- [ ] **K5 · [FAZER] [GRID-CÓDIGO] A implementação: os DOIS sistemas.** Decidido em 20/08: o jogo tem o
   sistema normal (o de hoje) e o P/G/R como opção **por mesa**, com **um só conjunto de regras**
   escrito em moeda comum, e a dupla de média é a única regra com calibragem diferente por sistema
   (mesma Velocidade no normal, ciclo +1 no P/G/R). O plano em seis fases está na **§15 do
@@ -470,7 +473,7 @@ revistos por ela.
   o rastreador de combate ainda tem a coluna vertical antiga.
 
 
-- [ ] **K31 · [FAZER] O Grid anda a Corrida só na primeira fase: a regra publicada tem duas, e o código aplica metade.** Aberto pelo Arquiteto em 24/09/2026, por decisão do humano, **com a direção escrita e sem abrir o conserto** (a rodada 101 está em curso). **A regra, publicada desde 11/06/2026 (`1418de1`):** `combate.md:298-302` e a nota de `regras.json` `derivados.deslocamento`: os 3 primeiros Ticks de uma Corrida vão na velocidade de ARRANQUE (`2 + Força ÷ 4 + Atletismo ÷ 4 + Destreza ÷ 2`), e do 4º em diante na de CORRIDA (`4 + 0,75 Destreza + 0,5 Atletismo`). **O que o Grid faz desde `6ba575e` (28/08/2026):** `passoNoModo` (`src/pages/mesa/grid.astro`) anda o Arranque em TODOS os Ticks de uma Corrida e de uma Investida, e nunca passa à segunda fase; o corte está justificado só num comentário ("quase toda perseguição de combate cabe neles"), e ninguém o decidiu. Forma no `CATALOGO.md`: "a metade de uma regra publicada que o código largou num comentário".
+- [ ] **K31 · [FAZER] [GRID-CÓDIGO] O Grid anda a Corrida só na primeira fase: a regra publicada tem duas, e o código aplica metade.** Aberto pelo Arquiteto em 24/09/2026, por decisão do humano, **com a direção escrita e sem abrir o conserto** (a rodada 101 está em curso). **A regra, publicada desde 11/06/2026 (`1418de1`):** `combate.md:298-302` e a nota de `regras.json` `derivados.deslocamento`: os 3 primeiros Ticks de uma Corrida vão na velocidade de ARRANQUE (`2 + Força ÷ 4 + Atletismo ÷ 4 + Destreza ÷ 2`), e do 4º em diante na de CORRIDA (`4 + 0,75 Destreza + 0,5 Atletismo`). **O que o Grid faz desde `6ba575e` (28/08/2026):** `passoNoModo` (`src/pages/mesa/grid.astro`) anda o Arranque em TODOS os Ticks de uma Corrida e de uma Investida, e nunca passa à segunda fase; o corte está justificado só num comentário ("quase toda perseguição de combate cabe neles"), e ninguém o decidiu. Forma no `CATALOGO.md`: "a metade de uma regra publicada que o código largou num comentário".
 
   **A DIREÇÃO, decidida pelo humano em 24/09/2026 (a opção 1):** o Grid passa a seguir as duas fases. **E o "50 a 67%" de `combate.md:291` e de `regras.json:2477` FICA:** ele é a faixa do Arranque (entrou em `0f191fe`, 22/08, com o exemplo do Kael, cujo "corre 6" é o arranque dele). O conserto do texto é dizer que aquela faixa é a da PRIMEIRA fase, e não a da Corrida inteira, senão o capítulo continua ensinando metade da própria regra.
 
@@ -483,21 +486,21 @@ revistos por ela.
   **Fica fora deste item e continua decisão do humano:** o salto correndo (o JSON `saltoHorizontalCorrendo`, `regras.json:888-891`, contra o capítulo e o rótulo da ficha), na lista única.
 
   **Quem consertar:** o Grid precisa saber há quantos Ticks a peça corre (o movimento declarado já vive em `acao.mov`), e a Investida herda a mesma troca de fase. A ficha e o resumo já mostram as duas velocidades. O teste cobra uma Corrida de 5 Ticks andando 3 × Arranque + 2 × Corrida, e o controle negativo é a mesma Corrida com o código de hoje, que dá 5 × Arranque.
-- [ ] **K32 · [DECIDIR] Tags de arma sem definição.** Levantado em 24/09/2026, na revisão econômica
+- [ ] **K32 · [FAZER] Tags de arma sem definição.** Levantado em 24/09/2026, na revisão econômica
   (achado do Comerciante). A seção "Tags" de `armas-e-armaduras.md:45-52` define Alcance, Ágil,
   Versátil, Sangramento, Arremessável, Munição, Pesada e Imobiliza, e não define quatro tags que o
   `armas.json` usa: **distância** (6 armas), **projétil veloz** (9), **recarga** (3) e **caro** (1,
   só o arco composto). Nenhum código lê a tag `caro` (busca em `src/`). Decidir se cada uma ganha
   definição na seção ou sai do dado. (O pedido original listava também "pesada" e "imobiliza" como
   sem definição; as duas estão definidas em `armas-e-armaduras.md:51` e `:52`.)
-- [ ] **K33 · [DECIDIR] Redução de raspão quando armaduras são vestidas juntas.** Registrado pelo
+- [ ] **K33 · [AUTOR-REGRA] Redução de raspão quando armaduras são vestidas juntas.** Registrado pelo
   autor em 27/09/2026 (item 7b do despacho da Regra do Quase-Acerto), sem resolver. Hoje
   `qaDeArmaduras` (`src/lib/quase-acerto.ts:125-138`) já soma o Bônus de QA de todas as peças e
   usa a MAIOR Redução entre elas (regra de "Empilhar" já publicada no capítulo Quase-Acerto). A
   pergunta em aberto é outra: uma camisa de malha (leve) VESTIDA SOB uma placa (pesada) deveria
   ganhar alguma coisa além da maior Redução das duas, ou a regra do empilhar já fecha o caso?
   Não decidir aqui: só registrar a pergunta.
-- [ ] **K34 · [DECIDIR] `quaseAcerto()` (`src/lib/quase-acerto.ts:214-230`), o card de ficha fora
+- [x] **K34 · [DECIDIR] `quaseAcerto()` (`src/lib/quase-acerto.ts:214-230`), o card de ficha fora
   de combate, continua sem Centelha nenhuma.** Registrado em 28/09/2026, Fase 1 da Reforma da
   Centelha (achado do Arquiteto, confirmado pela Executora, não tocado por instrução do
   despacho). A função usada pelos cards de ficha fora de combate (sem um alvo real do outro
@@ -507,7 +510,8 @@ revistos por ela.
   Reforma da Centelha de 28/09/2026. Decidir se o card de ficha ganha o mesmo termo (e contra
   que Centelha, já que não há alvo fixado) ou se ele fica deliberadamente simplificado por não
   ter combate de verdade por trás.
-- [ ] **K35 · [DECIDIR] `lib-tempo.mjs` continua na régua antiga de Centelha**, no ataque
+  Fechado em 26/11/2026 (varredura): `src\lib\quase-acerto.ts` "Decisão do autor (28/09/2026): o card mostra o raspão com a Centelha do DONO da ficha somando ... e a Centelha do alvo tratada como 0"; C-027 "Pendência aberta ... (fonte única, resolvida em 82da902d)"
+- [ ] **K35 · [DECIDIR] [ESPERA: a T7; quem move: o Arquiteto despacha a T7] `lib-tempo.mjs` continua na régua antiga de Centelha**, no ataque
   (`A.centelha * (R.centelhaMult` em `scripts/lib-tempo.mjs:320`) e na defesa
   (`c.centelha * (c.regrasCentelha` em `scripts/lib-tempo.mjs:278`). Registrado em 28/09/2026, achado numa varredura pós
   Fase 1/2 da Reforma da Centelha (não fazia parte da lista explícita do despacho: "calc.ts,
@@ -521,7 +525,7 @@ revistos por ela.
   decisão do próprio despacho). Decidir se vale a pena reestruturar `lib-tempo.mjs` para carregar
   Atributo e Habilidade separados, ou se essa bancada fica deliberadamente na régua antiga
   (registrado no próprio arquivo).
-- [ ] **K36 · [DECIDIR] Agarrar não tem regra escrita em lugar nenhum.**
+- [x] **K36 · [DECIDIR] Agarrar não tem regra escrita em lugar nenhum.**
   `src/content/chapters/acoes-corpo-e-movimento.md:271` remete Agarrar/imobilizar/derrubar para
   o capítulo de Combate, mas `combate.md` não tem essa seção, e `regras.json` não tem chave
   nenhuma para isso. É uma lacuna livro→livro (o capítulo remetido não existe), não só
@@ -529,7 +533,8 @@ revistos por ela.
   em lugar algum. Achado no levantamento de limites de 28/09/2026
   (`docs/calibracao/discussao/inventario-limites.md`, grupo a). Não escrever a regra aqui:
   aguardar o texto do autor.
-- [ ] **K36 · [DECIDIR] Dano fenômeno (armadura não absorve, só Centelha) não alcança
+  Fechado em 26/11/2026 (varredura): `combate.md:213-245`: "**Agarrar.** Jogada de ataque: Força ou Destreza + Briga ... contra a Defesa de agarrão"; "**Manter.** A cada 6 Ticks ..."; "Dano do agarrão. 2 × Força + Centelha"; D-019 "Manobra: o modelo novo (agarrar, manter, dano, estados)", D-048, D-081, D-327 (Engolir), D-333. Também `acoes-corpo-e-movimento.md:271` remete para lá, e agora o alvo existe
+- [ ] **K36 · [DECIDIR] [GRID-CÓDIGO] Dano fenômeno (armadura não absorve, só Centelha) não alcança
   ataque normal de criatura.** Registrado em 29/09/2026, B14 Fase 4, item 7 (Fantasma e
   Sombra deveriam causar dano fenômeno pelo toque). O mecanismo existe só dentro do motor
   de Artes do Grid (`danoNoAlvo()`, `src/lib/artes-grid.ts`, parâmetro `materia: null`);
@@ -538,7 +543,7 @@ revistos por ela.
   de Artes) para um ataque carregar essa marca. Não inventei campo novo. Decidir: criar um
   campo tipo `fenomeno: true` no ataque e fiar até `resolverGolpe`, ou aceitar que
   Fantasma/Sombra ficam com o dano físico comum (armadura absorve normal) até essa decisão.
-- [ ] **K37 · [DECIDIR] `defesaPerdida` só soma o ataque RECEBIDO; `combate.md:405` cobra
+- [ ] **K37 · [DECIDIR] [GRID-CÓDIGO] `defesaPerdida` só soma o ataque RECEBIDO; `combate.md:405` cobra
   também o FEITO.** Registrado em 01/10/2026, B14 Fase 5b, Adendo 2, rodando a bancada de
   desafio. A Guarda sob pressão escrita diz "cada ataque que você FAZ OU RECEBE reduz sua
   Esquiva e Bloqueio em −2". `defesaPerdida()`, `src/lib/combate-tempo.ts:699`: `pressao = (acao?.pressao || 0) * pressaoPorAtaque`.
@@ -556,7 +561,7 @@ revistos por ela.
     o Grid passa a cobrar a pressão pelo ataque FEITO e pelo RECEBIDO, como o livro escreve. A
     mudança no Grid entra **junto com as regras de combate**, e não antes; até lá a mesa fica como
     está.
-- [ ] **K38 · [DECIDIR] Guarda sob pressão: como a guarda se renova para quem não age.** Registrado
+- [ ] **K38 · [ADIADO: P-06 (03/10/2026): a Guarda sob pressão fica adiada até fechar o combate] [DECIDIR] Guarda sob pressão: como a guarda se renova para quem não age.** Registrado
   em 03/10/2026 (rodada de pendências de 03/10/2026, Bloco K, P-06). **Adiada pelo autor até fechar as regras de combate**,
   "com grandes chances de no final manter como está". A lacuna: o livro (`combate.md`, Guarda sob
   pressão) não diz como a guarda se renova para quem não age (esperando a vez, atordoado, preso),

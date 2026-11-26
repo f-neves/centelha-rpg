@@ -6,69 +6,72 @@ depois, numa passada só. Cada item diz o que o livro diz e o que o Grid ou a me
 
 Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergência nova a acrescenta aqui.
 
-- [ ] **N1 · [FAZER] Velocidade da conjuração pelo maior grau investido (ART-35).**
+- [ ] **N1 · [FAZER] [GRID-CÓDIGO] Velocidade da conjuração pelo maior grau investido (ART-35).**
   - O livro diz (Regras das Artes, Os dois modos, Passar do seu limite, Conjuração composta): 5 Ticks
     quando o maior grau investido vai de 0 a 3, 6 quando é 4, 7 quando é 5 ou 6. O esticar multiplica a
     Velocidade do conjuro antes de esticar.
   - O Grid faz (`ticksDe`, `src/lib/artes-grid.ts:389`): o Efeito leva 4 + nível do Efeito + 1 por grau
     esticado, e o improviso, 5 + 1 por grau esticado, sem olhar o maior grau.
-- [ ] **N2 · [FAZER] O primeiro alvo da Cura é grátis (ART-33).**
+- [ ] **N2 · [FAZER] [GRID-CÓDIGO] O primeiro alvo da Cura é grátis (ART-33).**
   - O livro diz (A economia da Cura): o nível 1 de Alvos é grátis, e do 2º em diante cada nível custa 2.
   - O Grid faz (`custoDe`, `src/lib/artes-grid.ts:350`): cobra 2 por nível só no parâmetro Cura, e o
     Alvos a 1 por nível, desde o primeiro.
-- [ ] **N3 · [FAZER] A escada da Defesa no desvio fora da vez (ART-11).**
+- [ ] **N3 · [FAZER] [GRID-CÓDIGO] A escada da Defesa no desvio fora da vez (ART-11).**
   - O livro diz (A área não se esquiva): fora da vez, a jogada de sair leva no total −2 no Preparo, −4 no
     Tick do Golpe e −2 por golpe pendurado na Recuperação.
   - O Grid faz (`src/lib/artes-grid-mesa.ts:1793`): só soma o +2 ou +4 de quem identificou o efeito.
-- [ ] **N4 · [FAZER] Projétil e arma de Gelo, Água e Terra são matéria (ART-36).**
+- [ ] **N4 · [FAZER] [GRID-CÓDIGO] Projétil e arma de Gelo, Água e Terra são matéria (ART-36).**
   - O livro diz (Conjurar e resistir, e os verbetes): o Projétil Conjurado e a Arma Elemental de Gelo,
     Água e Terra são matéria, e a armadura os absorve; os de Fogo, Raio, Luz e Sombra, só a Centelha e a
     resistência ao elemento.
   - O Grid faz: o bloco `grid` dos dois Efeitos em `efeitos.json` tem `materia: null` para todas as Artes,
     e o tabuleiro não separa a Arte.
-- [ ] **N5 · [FAZER] Bloquear uma Arte pelo critério da matéria (ART-42).**
+- [ ] **N5 · [FAZER] [GRID-CÓDIGO] Bloquear uma Arte pelo critério da matéria (ART-42).**
   - O livro diz (Conjurar e resistir): o que deixou matéria se bloqueia como a arma de arremesso do mesmo
     tamanho, e Fogo, Raio, Luz, Sombra e o gelo que evapora só se esquivam.
   - O Grid faz: os módulos `artes-grid*.ts` não têm regra de Bloqueio contra Arte, e o `materia: null` é o
     mesmo do N4. A Defesa que o tabuleiro usa contra o projétil não foi conferida.
-- [ ] **N6 · [FAZER] Acelerar a Cura na escala dos dias (D-062, ART-47).**
+- [ ] **N6 · [FAZER] [GRID-CÓDIGO] Acelerar a Cura na escala dos dias (D-062, ART-47).**
   - O livro diz (verbete do Efeito): cada nível da Arte encurta em 10% o intervalo da tabela de
     Recuperação, até 50%. Abaixo de 0, soma +1 por nível ao Tratar (D-009).
   - O Grid faz: cura 1 PV por nível da Arte, pelo campo `porNivel: true` do parâmetro Cura
     (`src/lib/artes-grid.ts`, comentário do campo, L86b).
   - O diálogo de conjurar do Grid mostra o texto dos parâmetros fixos (`src/lib/artes-grid-ui.ts:807`),
     e por isso já exibe "Cura: encurta o intervalo em 10% por nível da Arte" enquanto cura 1 PV por nível.
-- [ ] **N7 · [FAZER] Mãos sobre a Multidão pelo maior grau investido (D-060, ART-37).**
+- [ ] **N7 · [FAZER] [GRID-CÓDIGO] Mãos sobre a Multidão pelo maior grau investido (D-060, ART-37).**
   - O livro diz (verbete): o nível é o maior grau investido por quem conjurou, 1 PV por grau.
   - O Grid faz: cura pelo nível da Arte de quem conjurou, pelo mesmo campo `porNivel: true`.
   - O diálogo de conjurar do Grid mostra o texto dos parâmetros fixos (`src/lib/artes-grid-ui.ts:807`):
     exibe "Cura: 1 PV por grau investido" e a Dificuldade "(maior grau investido) × 5" dos 28 Efeitos
     (D-060), enquanto cura pelo nível da Arte. O Grid não calcula Dificuldade de Efeito por fórmula
     nenhuma: a linha é só texto.
-- [ ] **N8 · [FAZER] Chamar à Mão com Dificuldade (D-060, ART-23).**
+- [ ] **N8 · [FAZER] [GRID-CÓDIGO] Chamar à Mão com Dificuldade (D-060, ART-23).**
   - O 1e pede: "é disputa: quem o segura rola Força + Atletismo contra a Dificuldade, e o objeto só fica
     se a superar", com a linha "Dificuldade: (maior grau investido) × 5".
   - Não entrou no livro: a linha nova de Dificuldade muda o bloco `grid` gerado do Efeito (o
     `gen-grid-artes.mjs` marca `teste: true` em todo Efeito com Jogada ou Dificuldade), e o gerador e o
     bloco são do Grid. O texto entra junto com a passada do Grid.
-- [ ] **N9 · [FAZER] Imobilizado não age (D-064, D-043).**
+- [x] **N9 · [FAZER] Imobilizado não age (D-064, D-043).**
   - O livro diz (Combate, Manobras; D-019, D-043): o Imobilizado não age, nem com Firula, e só tenta
     escapar.
   - A mesa faz (`src/data/condicoes.json:19-21`): Imobilizado tem Defesa −4 e ação −2, e age com
     penalidade.
-- [ ] **N10 · [FAZER] O estado Preso não existe na mesa (D-064).**
+  Duplicado de N23 (varredura de 26/11/2026): fica o N23: `condicoes.json` `imobilizado` já sem `acao`, nota "não age, nem com Firula; Esquiva e Bloqueio 0", com `zeraDefesa: true` e `defesa: -4` que as telas aplicam; resta o Grid ler a marca (N23, "nem o Grid ... leem a marca"); D-064 "Fica como está"
+- [ ] **N10 · [FAZER] [GRID-CÓDIGO] O estado Preso não existe na mesa (D-064).**
   - O livro diz (D-019, decisão 25; Regras das Artes, Aprisionamento; a Rede): Preso não se desloca, mas
     age.
   - A mesa não tem condição Preso em `condicoes.json`.
-- [ ] **N11 · [FAZER] Agarrado (D-064).**
+- [x] **N11 · [FAZER] Agarrado (D-064).**
   - O livro diz (D-019, decisão 23): o agarrado não age e não rola, e as penalidades são as do agarrão.
   - A mesa faz (`src/data/condicoes.json:25-27`): Agarrado tem Defesa −2, e "só ações de força, arma curta
     ou escapar".
-- [ ] **N12 · [FAZER] Caído levanta com Velocidade 3 (D-064).**
+  Duplicado de N23 (varredura de 26/11/2026): fica o N23: `condicoes.json` `agarrado` já sem `defesa`, nota "não age; contra quem ataca de fora, Esquiva −8 e Bloqueio −4"; N23 diz "A mesa hoje não aplica nada ao Agarrado"
+- [x] **N12 · [FAZER] Caído levanta com Velocidade 3 (D-064).**
   - O livro diz (Combate, Derrubar; D-019, decisão 27): levantar-se é uma ação de Velocidade 3.
   - A mesa faz (`src/data/condicoes.json:15`): "Levantar consome movimento". Também soma ação −2, que o
     livro não dá ao Prono.
-- [ ] **N13 · [FAZER] A Prisão deixa Preso, e não Imobilizado (D-064).**
+  Fechado em 26/11/2026 (varredura): `condicoes.json` `caido` nota "Levantar-se é uma ação de Velocidade 3", sem `acao` (o "Levantar consome movimento" e o −2 do item saíram); `combate.md:54` tabela "3 | Muito rápida | ... levantar-se". A leitura pelo Grid é da família do N23
+- [ ] **N13 · [FAZER] [GRID-CÓDIGO] A Prisão deixa Preso, e não Imobilizado (D-064).**
   - O livro diz (Regras das Artes, Aprisionamento e contato): o preso fica Preso e escapa com Força +
     Atletismo contra a Dificuldade do Efeito.
   - O Grid faz (`scripts/gen-grid-artes.mjs:248`): a Prisão (com Engolir, Paralisia e Círculo) dá a
@@ -77,7 +80,7 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
   - O livro tem a secundária Escapismo (`habilidades-secundarias.json`, rodada 5), sem a escala de níveis
     que as outras secundárias têm (`niveis`).
   - A mesa e a ficha não têm nada a ler para ela.
-- [ ] **N15 · [FAZER] O Desarmado novo (D-057), a preencher depois da aplicação.**
+- [x] **N15 · [FAZER] O Desarmado novo (D-057), a preencher depois da aplicação.**
   - A D-057 trocava a linha Desarmado por Punhos e Chutes. A D-067 tirou os Chutes do equipamento: o chute
     virou só regra de texto, e nunca esteve na mesa nem no Grid (o antigo N16 saiu).
   - A mesa e o Grid leem o Desarmado:
@@ -90,7 +93,8 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     entrou `chutes`, que a D-067 tirou na rodada 14. Nada nesses leitores quebra, e o que eles ainda não
     fazem está em N17 a N19.
   - O `ficha-card.ts:74`, que a mesa usa, ainda tem "Desarmado" como reserva quando não acha nome.
-- [ ] **N17 · [FAZER] Os dois punhos somam no Bloqueio (D-065).**
+  Fechado em 26/11/2026 (varredura): D-067 "Remover 'chutes' do armas.json ... Os Punhos ficam como estão na ficha (id 'desarmado')"; `armas.json` `desarmado` nome "Punhos"; o próprio item diz "Nada nesses leitores quebra"; o que sobra está em N17 a N19; linhas de `combate-resumo.ts` citadas já não existem (achado 4)
+- [ ] **N17 · [FAZER] [GRID-CÓDIGO] Os dois punhos somam no Bloqueio (D-065).**
   - O livro diz: só os dois punhos somam entre si, +1 cada, +2 com as duas mãos livres. Arma ou escudo e
     corpo não somam, e a ficha mostra a melhor combinação.
   - A ficha faz isso desde o CORRIGE 140 (`calcConj` em `ficha-engine.ts`): os Punhos, em qualquer das duas
@@ -98,16 +102,16 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     Punhos / Punhos contava um punho só.
   - A mesa calcula o Bloqueio sem a Defesa da arma nenhuma (`mesa-ficha.ts:97`) e usa a Esquiva como
     Defesa física do resumo (`combate-resumo.ts:157`).
-- [ ] **N18 · [FAZER] Lâmina contra o corpo (D-057, D-065).**
+- [ ] **N18 · [FAZER] [GRID-CÓDIGO] Lâmina contra o corpo (D-057, D-065).**
   - O livro diz: quem Bloqueia sem arma um ataque cortante ou perfurante, com qualquer parte do corpo,
     recebe o dano normalmente, mesmo que o Bloqueio supere o ataque. A Esquiva não muda.
   - O Grid e a mesa não têm essa regra.
-- [ ] **N19 · [FAZER] A escolha da melhor combinação de defesa (D-065).**
+- [ ] **N19 · [FAZER] [GRID-CÓDIGO] A escolha da melhor combinação de defesa (D-065).**
   - O livro diz: o personagem defende com o que tem nas mãos (somam, dois escudos contam), ou com o corpo
     quando nada nas mãos é usado, e o Mestre ajusta pela situação (as pernas, −1, quando as mãos não
     podem ser usadas).
   - O Grid e a mesa não deixam escolher.
-- [ ] **N20 · [FAZER] A classe de ataque dos golems de Punhos (D-065, D-054).**
+- [ ] **N20 · [FAZER] [GRID-CÓDIGO] A classe de ataque dos golems de Punhos (D-065, D-054).**
   - O `gen-monsters.mjs` dá a classe do ataque pelo nome da arma do catálogo. Com a arma Punhos (leve) no
     catálogo, o Golem de Ferro e o Golem de Pedra, que atacam com "Punhos" a Velocidade 6, passariam de
     "media" a "leve".
@@ -117,7 +121,7 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     sai da ficha nova, e esta linha fica até o Grid ler o que ela gerar.
   - O Golem de Gelo ataca com "Punhos gelados" a Velocidade 5. O nome também começa com "Punhos", e ele
     também passaria a "leve" pelo nome, mas já era "leve" pela Velocidade 5, então nada mudou nele.
-- [ ] **N21 · [FAZER] Religar o `test-grid` no começo da passada única do Grid (D-071).**
+- [ ] **N21 · [FAZER] [GRID-CÓDIGO] Religar o `test-grid` no começo da passada única do Grid (D-071).**
   - O `test-grid` saiu da matriz do CI (`.github/workflows/validate.yml`, linha comentada) e do `smoke`
     do `package.json` na rodada 14, e está declarado no `TESTES_FORA` de `scripts/test-portoes.mjs`. O
     flake "[aquece]" travava as rodadas.
@@ -127,7 +131,7 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     `condicoes.json`, `efeitos.json`, `regras.json` etc.).
   - Os outros testes de mesa da matriz (test-grid-simultaneo, test-golpe-caido, os `-mesa` e o
     test-espelho) continuam ligados.
-- [ ] **N22 · [FAZER] O catálogo de Arremesso e tiro da rodada 1 (D-072 a D-076, D-082): o que o Grid herda e o que ele ainda não lê.**
+- [ ] **N22 · [FAZER] [GRID-CÓDIGO] O catálogo de Arremesso e tiro da rodada 1 (D-072 a D-076, D-082): o que o Grid herda e o que ele ainda não lê.**
   - Feito em `armas.json` na rodada 1 (10/10/2026): Velocidade, dano, Acerto, Peso e a nova `efetiva` (metros, par) em toda arma de tiro e de arremesso; Dardos saíram, entraram Plumbata, Shuriken, Mini-faca, Kunai, Boleadeira e os bumerangues (o id `bumerangue` ficou como o de retorno em Impacto, e entraram `bumerangue-de-caca`, `bumerangue-de-caca-cortante` e `bumerangue-de-retorno-cortante`); o atlatl mora em `src/data/armas-extras.json`, fora de `armas.json`, porque a ficha, a mesa e o bestiário leem `armas.json` inteiro como lista de armas.
   - **O Grid herda as Velocidades novas e o P/G/R velho.** Arco Longo e Composto passaram a V7, e azagaia, machado de arremesso, pilum, Funda (já V6), Rede e Boleadeira a V6; o Grid deriva Preparo e Recuperação de `classe` + `ticks` por `regras.json` `combate.pgr.preparo` (distância P = V − 1, arremesso P = V − 2), então a pesada de arremesso sai 4/1/1 e não 3/1/2, o Longo 6/1/0 e não 4/1/2, e as bestas seguem P = V − 1. A reforma da D-082 entra com o motor na rodada 4a.
   - **`distMax` do arremesso é legado sem fonte na regra** (D-074: a Máxima sai do FAA e do peso). Ficou nas 7 armas que já o tinham (adaga de arremesso, machado de arremesso, azagaia, Funda, bumerangue, Rede, Pilum) porque `alcance.ts` (`faixaDeDistancia` e o Interpor) e `test-folha-arremesso.mjs` o leem; as armas novas não o têm (`alcanceDaArma` devolve nulo, e o Interpor "avisa e não impede": para essas 8 ele deixa de exigir também a RETA, então um aliado a 300 m e fora da linha pode se interpor; medido pela Revisora no veredito 147). Remover o `distMax` do arremesso, junto de `alcance.ts` e do teste, é da passada do Grid. Nos arcos e bestas o `distMax` e o `alcanceLivreFrac` ficam, e o `distMax` bate com a Máxima nova na Força 3 (120, 250, 300) e com as bestas (100, 200, 300).
@@ -197,7 +201,7 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     - **Força e Vigor acima de 6 (D-143, D-144, D-146):**
       - a FAH das criaturas vai além da 40, e `forca-empurrao.ts` para nela e não soma Musculatura;
       - o Vigor alto sobe os PV, a Absorção de Impacto e a Energia das fichas grandes.
-- [ ] **N23 · [FAZER] As condições das decisões R8 a R20 (D-281 a D-294, 03/11/2026): o que o painel já tem e o que o Grid e a aba Combate ainda não fazem.**
+- [ ] **N23 · [FAZER] [GRID-CÓDIGO] As condições das decisões R8 a R20 (D-281 a D-294, 03/11/2026): o que o painel já tem e o que o Grid e a aba Combate ainda não fazem.**
   - O livro diz (Cap. IX, Condições): Retardado e Acelerado mudam só a **Recuperação** de cada ação, em 1 Tick, e o Acelerado vai até 0. O painel passou a `velocidade` ±1 (era ±2); a aba Combate soma isso ao custo da ação inteira, que dá o mesmo total, mas não sabe que é Recuperação, nem o piso 0 dela. O Grid não lê a `velocidade` da condição.
   - O livro diz: o **Atordoado** atrasa a próxima ação de 3 a 18 Ticks, pelo quanto o Vigor + Resistência ficou abaixo de 10 + 5 × Margem, e tem −4 nas Defesas Físicas até essa ação começar (1 de Força de Vontade ignora o −4). O painel tem a condição com Defesa −4; o atraso nenhuma tela conta, e o −4 não sai sozinho quando a ação começa.
   - O livro diz: **Surpreso**, **Paralisado**, **Imobilizado** e **Inconsciente** ficam com as Defesas (Físicas) em 0. O painel marca `zeraDefesa: true` e guarda Defesa −4 (−8 no Inconsciente) como valor que as telas aplicam hoje; nem o Grid (`grid.astro`, `condicoesDefesa` por `defesaCaC`) nem a aba Combate leem a marca.
@@ -241,42 +245,43 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     - **`src/pages/mesa/referencia.astro` l.252-253:** o "sem regra ainda; até essa regra sair, o nível não entra na Absorção" e a "conta antiga (Couraça pelo tamanho, de +2 no Grande a +10 no Colossal, e Perfuração natural de N1 no Enorme a N3 no Colossal)" ficaram falsos depois da R49 (D-328). Texto da mesa, sob a D-054: corrige na passada única do Grid.
     - **Engolir:** ação de Velocidade 7 sobre quem já está Agarrado e é menor; dentro, Imobilizado com arma curta, sufocamento e dano interno a cada 6 Ticks (armadura não conta contra ácido); saída por ferida de PV fixos ou pela garganta como escape de agarrão; sai com uma ação se quem engoliu morre.
     - **Integridade do equipamento:** três graus (inteira, avariada, quebrada) na arma, na armadura e no escudo, com a perda nos números; o estrago de propósito tira um grau quando vence a resistência da peça. Código do Grid e da ficha (D-054).
-- [ ] **N24 · [FAZER] Os Efeitos que ganharam parâmetro na revisão de textos (RT-124, RT-126 e RT-127, decisões T7 e T8 do autor, 24/11/2026).**
+- [ ] **N24 · [FAZER] [GRID-CÓDIGO] Os Efeitos que ganharam parâmetro na revisão de textos (RT-124, RT-126 e RT-127, decisões T7 e T8 do autor, 24/11/2026).**
   - O livro diz (Efeitos Especiais, `efeitos.json`): o **Parar** é uma Área pelo molde Explosão (escala de `arcano.moldes`, 0,5 m a 8 m de diâmetro), nascida onde quem conjura está e parada ali, com Duração na régua breve até o grau 3 (24 Ticks); o tempo para para todo mundo dentro dela, menos quem conjura. O **Oráculo** tem o parâmetro "Distância no tempo", na régua da Duração longa (grau 1 = 10 minutos, grau 6 = 1 mês). O **Instante** e o **Aviso** têm Alcance fixo "em você e em quem estiver ao seu lado", com Alvos contando quantos; o dobro da repetição do Instante vale sobre o total, antes do desconto da Centelha. O **Convocar** tem Alvos (quantos objetos) e Volume (até que tamanho, régua da matéria) escolhíveis, e a Dificuldade "(maior grau investido) × 5" sai do maior grau entre os dois. O **Refazer o Corpo**, o **Transferir Dor** e a **Cura Guardada** têm a Cura como parâmetro `padrao`, pela régua da Cura (`arcano.cura.graus`), a 2 de Mana por grau; o Refazer o Corpo tem também Alvos escolhível. O custo continua nível do Efeito + parâmetros, menos a Centelha (RT-056, T7: o Grid já fazia).
   - O Grid faz: o `gen-grid-artes.mjs --check` está verde (o bloco `grid` não mudou), e nada disto foi mexido. O Parar segue `forma: alvo`, `alvo: si`, a condição `fora-do-tempo` só em quem conjura, sem Área e sem teto de Duração. `escalaDe` (`src/lib/artes-grid.ts`) só liga a régua longa ao nome "Duração", então a "Distância no tempo" do Oráculo devolve o número do grau, sem o rótulo. O Instante e o Aviso têm `grid.alvo: "nenhum"`: a mesa não escolhe os alvos. Nada no Grid liga o Volume do Convocar a um tamanho de objeto, e a Dificuldade "(maior grau investido) × 5" não foi conferida contra o maior grau entre Alvos e Volume. A Cura `padrao` dos três é cobrada a 2 por grau pelo nome (`custoDe`), mas o valor curado não vem da régua (`curaDoEfeito` lê `pontos` e `porNivel`, que esses três não têm); o Transferir Dor passava "3 de dano por nível" e o Refazer o Corpo curava "1d6 por nível", e agora ambos valem o que a régua da Cura dá ao grau comprado. O dobro do Instante tem de contar sobre `total`, antes de descontar a Centelha (conferir onde a repetição é cobrada).
-- [ ] **N25 · [FAZER] O dano de Luz fere todos, pela metade contra quem não tem fraqueza a luz (RT-123, decisão T6 do autor, 24/11/2026).**
+- [ ] **N25 · [FAZER] [GRID-CÓDIGO] O dano de Luz fere todos, pela metade contra quem não tem fraqueza a luz (RT-123, decisão T6 do autor, 24/11/2026).**
   - O livro diz (Regras das Artes, Conjurar e resistir, e `arcano.fraquezas.nota`): contra quem não tem fraqueza a luz, a Luz é uma resistência como as outras e segue a ordem dela (T9, RT-134.1): a armadura (que não absorve Luz), depois a metade, arredondando para cima, e só então a Absorção natural, que para a Luz é a Centelha (dano 10, Centelha 2: 10 ÷ 2 = 5, menos 2 = 3); quem também resiste à Luz soma as duas metades e leva um quarto (T9, RT-134.2; hoje nenhuma criatura resiste à Luz); contra quem tem, o dano é inteiro e é o da Fraqueza das Artes (ignora a Absorção e agrava), salvo quando a Regeneração da criatura manda para esse tipo (D-377). A ordem é a da resistência a tipo (`arcano.fraquezas.resistencia`: armadura, metade, Absorção natural); o R50 (D-329) é outra coisa.
   - O Grid faz (`danoNoAlvo`, `src/lib/artes-grid.ts`): trata a Luz como fenômeno puro (a armadura não pega, só a Absorção natural), sem dividir por 2 quando o alvo não tem a fraqueza; a fraqueza a luz e a resistência já existem e seguem como estavam. A resistência a tipo que o `danoNoAlvo` já faz está na ordem certa (`resto = max(0, bruto - armadura)`, depois `ceil(resto / 2)`, depois `- soakNatural`); falta só tratar o elemento `luz` sem fraqueza como resistência implícita, o que dá `ceil(max(0, bruto - armadura) / 2) - soakNatural` (a armadura é 0 para a Luz, que é fenômeno), e, com resistência à Luz também, dividir duas vezes (`ceil(ceil(resto / 2) / 2)`, o mesmo que um quarto arredondado para cima). O Projétil Conjurado de Luz passa a ferir como toda Luz (T9, RT-134.3; antes "não fere"; em Sombra segue sem ferir): o bloco `grid` dele já diz `fere: true` e `materia: null` para todas as Artes, então o dano dele no tabuleiro vai pelo mesmo `danoNoAlvo` da Luz acima, sem ajuste próprio; com o Dano no grau 0 ("nenhum dano") não há dano a calcular e ele só marca e acende. O Grid ainda não distingue a Sombra do Projétil (que não fere) das outras Artes: conferir ao fazer a N25.
-- [ ] **N26 · [FAZER] O Projétil Conjurado tem `materia: null` nas sete Artes, e o texto do Efeito diz que em Gelo, Água e Terra a armadura absorve (observação da Revisora, 24/11/2026).**
+- [x] **N26 · [FAZER] O Projétil Conjurado tem `materia: null` nas sete Artes, e o texto do Efeito diz que em Gelo, Água e Terra a armadura absorve (observação da Revisora, 24/11/2026).**
   - O livro diz (`efeitos.json`, Projétil Conjurado, campo `efeito`): de Fogo e de Raio, a armadura não o segura (só a Centelha de quem recebe e a resistência ao elemento o aparam); de Gelo, Água e Terra ele é matéria de verdade, e a armadura absorve normalmente, no modo do formato; em Sombra não fere; o de Luz fere como toda Luz (N25).
   - O Grid faz (`scripts/gen-grid-artes.mjs`, lista `IGNORA_ARMADURA`, que força `materia = null` no projétil-conjurado): o bloco `grid` do Efeito tem `materia: null` para as sete Artes, então o dano dele no tabuleiro não distingue a armadura contra o projétil de Gelo, Água e Terra da armadura contra o de Fogo e Raio. É uma divergência antiga entre o livro e o Grid, que a N25 não cobre. Ao fazer a passada, decidir se a `materia` do Projétil passa a depender da Arte (matéria em Gelo, Água e Terra; sem matéria em Fogo, Raio e Luz) e como o Grid trata a Sombra, que não fere.
-- [ ] **N27 · [FAZER] Os parâmetros que a RT-071 (T13, 25/11/2026) passou de fixos a comprados: o Grid só lê o Dano, a Área e o Alvos de contagem; o resto não é aplicado.**
+  Duplicado de N4 (varredura de 26/11/2026): mesmo assunto do N4 (a matéria de Gelo, Água e Terra) e do N25 (Luz); fica o N4. A parte própria (Sombra não fere) é só o `grid` do Efeito
+- [ ] **N27 · [FAZER] [GRID-CÓDIGO] Os parâmetros que a RT-071 (T13, 25/11/2026) passou de fixos a comprados: o Grid só lê o Dano, a Área e o Alvos de contagem; o resto não é aplicado.**
   - O livro diz (`efeitos.json`, `efeito` e parâmetros): Sarçal, Semente Adormecida, Podridão, Coração Verde e Praga compram o Dano pela régua do Dano (1d6 por grau); Boa Impressão, Sentidos de Fera e Maré da Sorte compram o Bônus (+1d6 por grau); Anteparo e Barreira compram a Absorção (+1 e +2 por grau); Mão Firme, Servo de Ossos, Servo Menor, Chamado e Legião compram os Alvos (Servo Menor 1 espírito a cada 2 graus; Legião até 3 cadáveres por grau); Passo Lento, Lapso e Emprestar o Tempo compram os Ticks (2 por grau); Encruzilhada compra a Visão e Criar Substância a Quantidade; Fenda compra a Profundidade (1 m por grau). Cada grau custa 1 de Mana, e o `custoDe` já soma esses parâmetros.
   - O Grid faz (`artes-grid.ts`, `dadosDeDano`, `parametrosAjustaveis`): o Dano dos cinco primeiros agora vem do grau escolhido (antes, o `valor` fixo "1d6 por nível" dava 1d6 sempre); o Bônus, a Absorção, os Ticks, a Visão, a Quantidade, a Profundidade e a lista de criaturas dos Alvos estão na caixa de conjuração como parâmetro com escala e entram no custo, mas nenhum código do tabuleiro os aplica (o Bônus não soma na jogada, a Absorção não entra na ordem armadura, resistência e absorção, os Ticks não mexem na Velocidade do alvo, a Profundidade não limita a queda da Fenda). Ao fazer a passada, decidir quais o Grid passa a aplicar e quais ficam só como rótulo.
-- [ ] **N28 · [FAZER] O campo `projetilVeloz` de `scripts/lib-tempo.mjs` agora lê a tag "projétil rápido" e pode ser renomeado na passada única do Grid (RT-045, T13, 25/11/2026).**
+- [ ] **N28 · [FAZER] [GRID-CÓDIGO] O campo `projetilVeloz` de `scripts/lib-tempo.mjs` agora lê a tag "projétil rápido" e pode ser renomeado na passada única do Grid (RT-045, T13, 25/11/2026).**
   - O livro diz (`armas.json`, `armas-e-armaduras.md`): a tag das armas é "projétil rápido" (nome único; "projétil veloz" ficou só como outro nome no glossário protegido).
   - O Grid faz (`scripts/lib-tempo.mjs:205`, que `src/lib/combate-tempo.ts` e `src/lib/lance.ts` importam): `projetilVeloz: (w.tags || []).includes('projétil rápido')`. Só a string que acompanha o dado foi trocada (exceção escrita do coordenador à D-054, com o advisor, resposta 057); o nome do campo `projetilVeloz` ficou, e nada mais o lê. Ao fazer a passada, renomear o campo para `projetilRapido` junto com quem o produz, e checar se algum cálculo do tabuleiro passa a precisar dele.
-- [ ] **N29 · [FAZER] A Ambidestria (D18, 25/11/2026) alivia a Defesa no Tick do Golpe de −4 para −2 também golpeando com as duas armas; o Grid não lê a Técnica.**
+- [ ] **N29 · [FAZER] [GRID-CÓDIGO] A Ambidestria (D18, 25/11/2026) alivia a Defesa no Tick do Golpe de −4 para −2 também golpeando com as duas armas; o Grid não lê a Técnica.**
   - O livro diz (`combate.md`, a régua das fases; `tecnicas.json`, `ambidestria`): golpear com uma só arma e empunhar duas alivia o −4 para −2; quem tem a Técnica Ambidestria tem o mesmo alívio golpeando com as duas.
   - O Grid faz: a dupla (`segura`, as duas armas de mão que golpeiam no mesmo lance) deixa a Defesa em −4 no Tick do Golpe, sem ler a Técnica. Ao fazer a passada, ler a Ambidestria no combatente e tratar a dupla com ela como `segura` (−2). Não mexido agora por D-054; a ficha não mostra a Defesa por fase.
-- [ ] **N30 · [FAZER] O Frenesi (C20, 25/11/2026) tira o −1d6 acumulado por golpe das Rajadas por 6 Ticks; o Grid não lê a Técnica.**
+- [ ] **N30 · [FAZER] [GRID-CÓDIGO] O Frenesi (C20, 25/11/2026) tira o −1d6 acumulado por golpe das Rajadas por 6 Ticks; o Grid não lê a Técnica.**
   - O livro diz (`tecnicas.json`, `frenesi`): "por 6 Ticks, suas Rajadas saem sem o −1d6 acumulado por golpe; o teto de golpes é o da arma. A Recuperação e a Guarda sob pressão continuam."
   - O Grid faz: a Rajada acumula o −1d6 por golpe (`resolverGolpe`, `combate-tempo.ts`) sem ler a Técnica nem a janela de 6 Ticks. Ao fazer a passada, ler o estado do Frenesi e zerar o acúmulo nos golpes da Rajada dentro da janela. Não mexido agora por D-054.
-- [ ] **N31 · [FAZER] A Investida Devastadora (C21, 25/11/2026) soma +1 de dano a cada 2 m percorridos, até +7, e derruba e empurra no mesmo golpe; o Grid não lê a Técnica.**
+- [ ] **N31 · [FAZER] [GRID-CÓDIGO] A Investida Devastadora (C21, 25/11/2026) soma +1 de dano a cada 2 m percorridos, até +7, e derruba e empurra no mesmo golpe; o Grid não lê a Técnica.**
   - O livro diz (`tecnicas.json`, `investida-devastadora`): "+1 de dano a cada 2 m percorridos na investida, até +7 (...). O mesmo golpe derruba e empurra pelas regras de Derrubar e Empurrar (D-048), com a mesma jogada de ataque contra a Defesa, sem segunda jogada. É uma Investida: a Força mais uma vez da Investida comum continua valendo, e o +1 a cada 2 m vem por cima."
   - O Grid faz: a Investida soma a Força mais uma vez ao dano e nada mais; não lê a Técnica. Ao fazer a passada, somar o +1 por 2 m (teto +7) e aplicar a Derrubada e o Empurrão do mesmo golpe. Não mexido agora por D-054.
-- [ ] **N32 · [FAZER] O card "Ver a ficha por dentro" da mesa mostra o chip cru de uma Técnica removida (achado da Revisora no D16, 25/11/2026).**
+- [ ] **N32 · [FAZER] [GRID-CÓDIGO] O card "Ver a ficha por dentro" da mesa mostra o chip cru de uma Técnica removida (achado da Revisora no D16, 25/11/2026).**
   - O livro diz: as nove Técnicas da Coração Incansável saíram dos dados (D16, fbc83892).
   - A mesa faz (`src/lib/ficha-card.ts`, o laço `for (const id of R.tecnicas)`): `t = N?.tec[id]` não acha a id removida, cai no grupo "outros" e desenha o chip cru ("Folego profundo", sem nível) para uma ficha salva antes de 03/10/2026 com uma das nove ids. Só ficha pré-outubro, só visual. (Depois de 25/11/2026, T18, as nove ids existem de novo, com Técnicas novas: o chip cru só valeria para uma id removida no futuro.) Conserto de uma linha para a passada única da mesa (D-054, não mexido agora): `if (N && !t) continue;` no laço, mais um teste com uma id removida.
-- [ ] **N33 · [DECIDIR] O livro diz Área grau 3 = 2 m e o Grid desenha ao menos 28 Efeitos de zona e aura pela régua do molde no mesmo grau (zona: Explosão, 3,5 m) (RT-069, T21 do autor, 26/11/2026).**
+- [ ] **N33 · [DECIDIR] [LIVRO-NO-GRID] O livro diz Área grau 3 = 2 m e o Grid desenha ao menos 28 Efeitos de zona e aura pela régua do molde no mesmo grau (zona: Explosão, 3,5 m) (RT-069, T21 do autor, 26/11/2026).**
   - O livro diz: a Área velha (`regras.json`, `graus.area`) tem o grau 3 em 2 m de diâmetro, 3,1 m² de chão.
   - O Grid faz: ao menos 28 Efeitos que ainda declaram Área `padrao` e têm forma de zona ou de aura (as 18 zonas e as 8 auras do inventário `tmp/arquiteto/efeitos/inventario-area.md`, mais a Fenda e outros; por forma, 21 zonas e 9 auras nos dados, fora Inverno e Semear o Ermo, que são de arena inteira) são desenhados por `figuraDoEfeito` (`src/lib/artes-grid.ts`) com a régua do molde no MESMO grau: a zona pela Explosão (grau 3 = 3,5 m), a aura pela Aura. O Terremoto não entra nessa frase: tem escala própria em m × m (raio medido 0,56 a 2,82 m nos graus 1 a 6), que também difere da Área velha. Medido em 26/11/2026: raio da zona nos graus 1 a 6 = 0,5 / 1 / 1,75 / 2,5 / 3,25 / 4 m; trocar a Área pela escala da Explosão com partida no grau 2 (consulta 028) desenharia 0,25 / 0,5 / 1 / 1,75 / 2,5 / 3,25 m, um passo menor.
   - Saídas: (a) a régua do Grid vira a regra (o livro passa a dizer 3,5 m no grau 3); (b) a Explosão um grau abaixo do Grid (o Grid encolhe um passo e iguala o livro no grau 3); (c) a escala do livro velho como escala própria do Efeito. A resolver quando o Grid for tratado ou refeito. Nada foi aplicado: a regra do grau de partida da 079 ficou suspensa (080) e saiu da página das Artes (acc8c122). O Semear o Ermo (Efeito de arena inteira, partida na Explosão grau 3) também entra nesta lista: a figura não muda, mas a caixa do Grid muda (os rótulos da Área perdem "de diâmetro" e, com o molde Leque, a régua mostrada passa de raio para a da Explosão, `escalaVisivel`, `artes-grid-ui.ts:531` e `:680`), então ele saiu da Etapa 4 (081, item 4) e fica como em 831b706b. Área g3 = 2 m (régua velha de 0,1 a 4 m de diâmetro) contra Explosão g3 = 3,5 m (0,5 a 8 m); a conta do lote está em `tmp/arquiteto/recalibracao/lote-efeitos-01.md`.
-- [ ] **N34 · [DECIDIR] Os sete Efeitos de forma fora da tabela: trocar ou tirar a Área muda o que a caixa do Grid lê (RT-069, T21 do autor, 26/11/2026).**
+- [ ] **N34 · [DECIDIR] [LIVRO-NO-GRID] Os sete Efeitos de forma fora da tabela: trocar ou tirar a Área muda o que a caixa do Grid lê (RT-069, T21 do autor, 26/11/2026).**
   - Os sete: Empurrão Elemental, Onde É Embaixo, Eco do Lugar, Dissipar, Sentir o Ermo, Legião, Hoste. A proposta de cada um está em `tmp/arquiteto/efeitos/sem-forma-proposta.md`, e o que o Grid lê em `tmp/arquiteto/efeitos/sem-forma-grid.md` (feito sobre `artes-grid.ts`, `artes-grid-ui.ts` e `artes-grid-mesa.ts`).
   - O Grid faz: a caixa de conjurar monta os controles por `parametrosAjustaveis` e o custo por `custoDe`; tirar a Área tira o controle e o grau gasto nela (no cenário medido, Arte 4 com cada parâmetro no grau 2, o total cai exatamente 2 pontos nos seis que perdem a Área; cairia 3 com a Área no grau 3). A figura (`figuraDoEfeito`) é `null` antes e depois nos sete. O empurrão (`deslocar`) e o `invocar` não leem a Área.
   - Casos que pesam: no Dissipar, `dissipar` usa `plano.custo.total` como o nível que apaga (`artes-grid-mesa.ts:1052` e `:1065`), e o total cai de 11 para 9, então ele alcança menos com os mesmos graus; no Sentir o Ermo, trocar a Área pelo Alcance (custo igual) faz `reguaAtePonto` (`artes-grid-mesa.ts:429`) medir e mostrar o anel de Alcance de um Efeito que hoje não tem.
   - Saídas: aplicar quando o Grid for tratado ou refeito, com o autor decidindo o que muda de custo (a proposta marca quais). Nada foi aplicado.
-- [ ] **N35 · [CONSERTAR] O card do bestiário na mesa ainda usa a curva velha de Aparência (achado 090, 26/11/2026).**
+- [ ] **N35 · [CONSERTAR] [GRID-CÓDIGO] O card do bestiário na mesa ainda usa a curva velha de Aparência (achado 090, 26/11/2026).**
   - O livro diz: o modificador social da Aparência é `regras.json` `aparencia.curva` (0 dá −6, 6 dá 0, 12 dá +6, um ponto por nível, sem platô).
   - A mesa faz (`src/lib/mesa-bestiario.ts` linhas 100 e 101, `AP_CURVA` e `apMod`): a curva velha com platô (1 dá −4, 4 a 6 dão 0, 10 dá +4, extrapola fora de 1 a 10), então Aparência 4 aparece "(+0)" e vale −2. O card da página `/bestiario` (`BestaCard.astro`) já lê `aparenciaMod` do motor; 190 das 324 criaturas mostravam outro número. Conserto de duas linhas, igual ao do `BestaCard.astro`: trocar `apMod` por `aparenciaMod` do motor. Não mexido agora (T21, a mesa não se toca).

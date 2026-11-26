@@ -2,21 +2,22 @@
 
 Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
 
-- [ ] **F1 · [DECIDIR] Como os deuses romperam a Lei** na Grande Guerra (avatares? campeões? uma
+- [ ] **F1 · [AUTOR-ESCRITA] Como os deuses romperam a Lei** na Grande Guerra (avatares? campeões? uma
   brecha?) e por que romper foi em si destrutivo. E se **alguém hoje sabe ou suspeita** que a Lei
   existe.
-- [ ] **F2 · [DECIDIR] Quem impôs a Lei.** A proposta é o próprio cosmos, a Primeira Luz reagindo ao
+- [ ] **F2 · [AUTOR-ESCRITA] Quem impôs a Lei.** A proposta é o próprio cosmos, a Primeira Luz reagindo ao
   ser agarrada, sem entidade legisladora. Confirmar.
-- [ ] **F3 · [DECIDIR] Mecânica de clérigo, paladino e monge** (poder divino via Centelha e campo de
+- [x] **F3 · [DECIDIR] Mecânica de clérigo, paladino e monge** (poder divino via Centelha e campo de
   crença). Fecha junto com as Trilhas: clérigo e paladino são **Iniciação**, monge é **Marcial**.
-- [ ] **F4 · [DECIDIR] Os planetas.** Quais importam, quais são habitados, quais são alcançáveis, e
+  Duplicado de C1 (varredura de 26/11/2026): Fecha com o C1: o livro já põe clérigo/paladino em Iniciação e monge em Marcial como Tradições que não mudam número (`arcano.astro:76-83`), e não há classes no sistema (busca em `src` não acha classe de clérigo). O que sobra é a frase de lore da proposta `Lore_Centelha.md:231` (o poder é a Centelha do clérigo, amplificada pelo campo de crença), que o autor confirma junto do F7. Fica o C1
+- [ ] **F4 · [AUTOR-ESCRITA] Os planetas.** Quais importam, quais são habitados, quais são alcançáveis, e
   o que sobrou da fase interplanetária.
 - [ ] **F5 · [AUTOR] Nomes próprios.** Faltam: as massas de terra sem rótulo, as cidades de Calin e
   as escondidas de Mére, o resto de Uldun, o reino feérico élfico, os planos (incluindo o da Fenda),
   as eras, os primeiros deuses e as ortodoxias rivais com seu cisma.
 - [ ] **F6 · [AUTOR] Deuses locais e espíritos de lugar** por cidade e região, casando com as
   cidades que você está escrevendo.
-- [ ] **F7 · [DECIDIR] Travar a §7 (o panteão).** A seção inteira está em [PROPOSTA v1] esperando
+- [ ] **F7 · [AUTOR-ESCRITA] Travar a §7 (o panteão).** A seção inteira está em [PROPOSTA v1] esperando
   seu aval: as três famílias de fé, as grandes potências (a **oitava de domínio já ficou confirmada**
   pela semana de 8 dias, §9.1), o casamento de cada cultura com uma mitologia real e os seis papéis
   religiosos. Trava F5 e F6, porque o nome de uma cidade carrega o
@@ -32,7 +33,7 @@ Detalhe em `lore/Lore_Centelha.md` §7 e §8. Nada de lore foi ao site ainda.
   Sai daí: as quatro soleiras são as quatro noites de escuro total, nunca há tripla lua cheia,
   eclipse total só nos equinócios, trânsito da terceira só nos solstícios, e maré máxima de 48 em
   48 dias. Nenhuma lua pode ter período de anos, então evento geracional só vem da história.
-- [ ] **F10 · [DECIDIR] A moeda mecânica das datas afinadas.** O grau de afinamento existe, falta o
+- [ ] **F10 · [AUTOR-REGRA] A moeda mecânica das datas afinadas.** O grau de afinamento existe, falta o
   número: +1d6 por grau (a moeda de Resistir & Desgaste invertida), um degrau de Dificuldade a
   menos, recurso (Centelha e Energia rendendo mais), ou nada além de ficção e frequência de
   encontros. Decidido que a regra é **leve**. Detalhe na §9.7.

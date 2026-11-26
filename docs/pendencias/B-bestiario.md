@@ -34,37 +34,41 @@
   atingida por Raio sofre agravado pela mesma razão. Isso rendeu dado novo: **água e metal
   ganharam fraqueza a raio** (condutividade), cinco criaturas. Escrito em `Arcano_revisao.md` §9,
   pendência 4c e na tabela de dano, e explicado num callout do bestiário.
-- [ ] **B4 · [DECIDIR] Nada causa dano `sagrado` nem `profano`.** As duas palavras só existem
+- [ ] **B4 · [DECIDIR] [ESPERA: a mecânica de clérigo e paladino (F3 e as Trilhas, C); quem move: o autor] Nada causa dano `sagrado` nem `profano`.** As duas palavras só existem
   hoje *dentro* de dois Efeitos de Luz, como condição. São **47 criaturas com fraqueza a sagrado**
   e 8 a profano esperando uma fonte de dano que o livro não tem. Ela viria da mecânica de clérigo
   e paladino: **depende de F3**. Enquanto não vier, metade das fraquezas do bestiário é decorativa.
-- [ ] **B5 · [DECIDIR] `prata` não é representável.** `armas.json` não tem campo de material, então
+- [ ] **B5 · [DECIDIR] [MESTRE: frase proposta em varredura-26-11/mestre.md] `prata` não é representável.** `armas.json` não tem campo de material, então
   "adaga de prata" não existe como dado. Vampiro e lobisomem têm fraqueza que nenhuma arma do livro
   dispara. Ou entra um campo `material` na arma, ou vira etiqueta narrativa que o Mestre aplica.
-- [ ] **B6 · [DECIDIR] `sol` é ambiente, não ataque.** Só o vampiro tem, e quem dispara é a cena.
+- [ ] **B6 · [DECIDIR] [MESTRE: frase proposta em varredura-26-11/mestre.md] `sol` é ambiente, não ataque.** Só o vampiro tem, e quem dispara é a cena.
   Talvez pertença à ficha de **Ambiente** (`Acoes_Sistema.md` §8.5) em vez da régua de dano.
-- [ ] **B2 · [FAZER] Modificadores de Defesa por porte.** Criatura não média não tem ajuste de
+- [x] ~~**B2 · [FAZER] Modificadores de Defesa por porte.**~~ Criatura não média não tem ajuste de
   Defesa hoje; o porte já mexe em PV e Absorção, falta a esquiva.
-- [ ] **B3 · [FAZER] Rebalancear os brutos grandes.** O pool de ataque deles está acima da régua da
+  Fechado em 26/11/2026 (varredura): D-077: "só o menor ganha bônus contra o maior" (+3 por categoria, sem teto); `regras.json:1105` `porteAcerto.nota`: "Só no acerto: NÃO altera a Defesa passiva do alvo, não é modificador de Defesa"; `combate.md:540-541`. D-077 "NO AR desde 22/10/2026"
+- [x] ~~**B3 · [FAZER] Rebalancear os brutos grandes.**~~ O pool de ataque deles está acima da régua da
   Centelha (registrado em `Proezas_revisao.md` e `REVISAR.md`).
+  Duplicado de B14 (varredura de 26/11/2026): D-152: "As paradas e o dano já estão calibrados para Força e Vigor altos. Se tiver dúvida, consulte a Veterana"; o resto é desafio e ficha: fica a B14 (e a B20, que já a absorve)
 
 **O editor de criaturas** entrou em 2026-08-10 (`BestiaEditor.astro` + `src/lib/bestia-editor.ts`):
 botão no bloco de cada criatura e um "Nova criatura", os dois só para o ADM, abrindo um modal de
 cinco abas que cobre o esquema inteiro e recalcula os derivados ao vivo. Ele nasceu com três
 limitações conhecidas, que são as três de baixo.
 
-- [ ] **B7 · [FAZER] O ataque da criatura do livro não volta para o formulário.** O `monsters.json`
+- [x] ~~**B7 · [FAZER] O ataque da criatura do livro não volta para o formulário.**~~ O `monsters.json`
   guarda o ataque **já calculado** (`pool: "2d6 +1"`, `dano: "1d6 +2 corte"`, `speed`) e não a
   origem dele (atributo, perícia, dados, mão, penetração), então não há como repopular a linha sem
   adivinhar. O modal mostra o ataque do livro em leitura, marcado como tal, em vez de deixar a
   lista vazia fingindo que a criatura não ataca. **O conserto é no gerador**: o `gen-monsters.mjs`
   preservar os campos de origem ao lado do calculado. Criatura nova não sofre disso, porque ela
   nasce com os campos de origem.
-- [ ] **B8 · [FAZER] O modal não edita poderes, técnicas nem artes.** As três listas existem no
+  Duplicado de B9 (varredura de 26/11/2026): Problema do modal de ADM, que a T12/B3 tornou secundário (a ficha agora tem `ataques` estruturado em `src/data/bestiario/*.json`, ex. `golem-de-ferro.json` com `dado`, `pgr`, `multiplicadorForca`). Fica a B9
+- [x] ~~**B8 · [FAZER] O modal não edita poderes, técnicas nem artes.**~~ As três listas existem no
   `monsters.json` e o formulário não as toca, então criatura cadastrada por ele sai sem nenhuma das
   três. Encosta em **A9** (como uma criatura carrega Efeito Especial no stat block): não vale
   desenhar a UI das artes antes de A9 dizer o formato.
-- [ ] **B9 · [DECIDIR] Onde a criatura editada mora.** O site é estático: o modal guarda a edição no
+  Duplicado de B9 (varredura de 26/11/2026): A dependência que ele cita (A9, o formato do Efeito Especial) está fechada (D-274, `poderes-das-criaturas.md:12`; ver `itens-A.md` A9). O resíduo é o modal em si: fica a B9
+- [ ] **B9 · [FAZER] Onde a criatura editada mora.** O site é estático: o modal guarda a edição no
   `localStorage` do navegador e oferece o bloco pronto para colar no `inimigos-custom.json`, que é
   o único caminho que entra no build. Duas pontas soltas nisso. A primeira: **editar criatura do
   livro não tem para onde ir**, porque o `inimigos.json` é gerado, e a correção teria de voltar à
@@ -88,11 +92,12 @@ limitações conhecidas, que são as três de baixo.
   da fonte, nomeando as criaturas. De quebra, dois resquícios da régua velha saíram do gerador: a
   nota de "acima do teto mortal" ia marcar 16 Semideus como entidade, e o nível de Arte era cortado
   em 5 quando as Artes já têm 6.
-- [ ] **B11 · [FAZER] Palavra nova de fraqueza precisa de rito para virar oficial.** O vocabulário
+- [x] ~~**B11 · [FAZER] Palavra nova de fraqueza precisa de rito para virar oficial.**~~ O vocabulário
   vive em `src/data/elementos-vocab.json` (15 palavras, lido pelo validador, pelo gerador e pelo
   editor) e o **validador falha o build** em qualquer palavra fora dele. O modal aceita palavra
   avulsa e a guarda no `localStorage`, o que serve para rascunhar mas não atravessa: quem quiser
   oficializar tem de editar o JSON à mão. Falta o passo que promove a palavra rascunhada.
+  Duplicado de B9 (varredura de 26/11/2026): Vocabulário em `elementos-vocab.json` (9 elementos, 3 físicos, 4 de natureza; o ácido entrou pela D-191); com o modal fora de uso o rito é editar o JSON. Fica a B9
 - [x] **B13 (renumerado de B12 em 08/09/2026) · [FAZER] `roladaManual` dobra o bônus fixo em pool
   "0d6" literal.** Colidia de código com o B12 da fraqueza/resistência: as rodadas 17-18 já o
   citavam como "D16c/B12" (`docs/simulacao/caixa/17-executora.md:53`, `18-revisora.md:99`) antes de
@@ -106,7 +111,7 @@ limitações conhecidas, que são as três de baixo.
   total rolado, outra somada de novo por `flatDeExpr`. Não corrigido ainda; a Executora contornou
   no teste novo usando um pool com dado de verdade (`3d6+21`) em vez de reproduzir o caso "0d6".
   **Fechado na revisão da rodada 94 (23/09/2026), com prova:** `888a196` (22/09/2026), "roladaManual dobrava o bonus fixo de qualquer golpe com o bolo em zero dado", com asserção em `scripts/test-rolada-manual.mjs`.
-- [ ] **B14 · [DECIDIR] Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do
+- [ ] **B14 · [FAZER] Recalibrar nível de desafio e Centelha das criaturas, e revisar as fichas do
   bestiário.** **Desde 10/10/2026, a revisão das fichas segue a B20 (o bestiário novo, D-095 a D-103).** Registrado em 26/09/2026, na rodada 115, a partir da proposta do autor, que segue
   abaixo como ele escreveu. **Achado, e não decisão:** no dado vivo, o desafio é o campo `ameaca` de
   `src/data/inimigos.json`, de 1 a 6 nas 309 criaturas; a `centelha` vai de 0 a 10 (só a
@@ -181,7 +186,7 @@ limitações conhecidas, que são as três de baixo.
   `bestia-editor.ts`) que usa a melhor perícia social presente (Oratória/Manha/Persuasão/
   Liderança/Política) em vez de zerar, então Defesa Social também não sai capada por omissão na
   maioria dos casos. Não há lacuna de dado a preencher aqui; fechado.
-- [ ] **B16 · [DECIDIR] Tipos de dano fora do vocabulário fechado (ácido, e possivelmente
+- [ ] **B16 · [FAZER] [MESTRE: frase proposta em varredura-26-11/mestre.md; só a primeira, a da adamantina; a segunda, "imunidade a magia é a Resistência", vai proposta para corte] Tipos de dano fora do vocabulário fechado (ácido, e possivelmente
   outros).** Registrado em 29/09/2026, B14 Fase 4, processando o Pudim Negro: a nota dos
   graves diz "dano principal passa a ser ácido", e "ácido" não está no vocabulário de
   `fraquezas`/`resistencias`/`imunidades` (`elementos-vocab.json`) nem é um dos três tipos
@@ -199,7 +204,7 @@ limitações conhecidas, que são as três de baixo.
   casos) em vez de forçar uma palavra errada.
   - **Adiada pelo autor em 03/10/2026** (rodada de pendências de 03/10/2026, Bloco K): o vocabulário de resistências fica
     para depois.
-- [ ] **B17 · [DECIDIR] Descrições faltando (item 4 inteiro) + 38 criaturas com Arte
+- [ ] **B17 · [FAZER] Descrições faltando (item 4 inteiro) + 38 criaturas com Arte
   ainda para reverter a poder natural, sem nota dos graves.** Registrado em 29/09/2026,
   B14 Fase 4, item 3/4/8; **unificado em 29/09/2026** por decisão do autor (as duas
   pendências eram separadas antes e viraram uma só). Cobre:
@@ -430,12 +435,13 @@ limitações conhecidas, que são as três de baixo.
   - **Leitura de apoio, fora do repositório:** `../tmp/arquiteto/bestiario/diagnostico.md`,
     `animais-centelha-0.md` e `inventario.md` (o esquema proposto e as descrições da ficha humana com linha).
 
-- [ ] **B21 · [FAZER] Regeneração N: a regra sai da bancada (R46, D-325).** Registrado em 05/11/2026. Diretriz do autor:
+- [x] ~~**B21 · [FAZER] Regeneração N: a regra sai da bancada (R46, D-325).**~~ Registrado em 05/11/2026. Diretriz do autor:
   a regeneração natural é muito lenta, a ponto de não pesar no combate rápido, salvo nos níveis muito altos; as propostas de
   N PV a cada 6 Ticks são aceleradas demais. A bancada propõe a unidade (por minuto ou por hora nos níveis baixos) e o nível a
   partir do qual pesa na luta, e leva ao autor. Até lá a D-246 segue ("Regeneração N · sem regra ainda"); a R47 (D-326) já está no livro.
+  Fechado em 26/11/2026 (varredura): D-361 (B1): "Regeneração N = N PV por minuto, sempre ativa, até o PV máximo"; D-362: "N/10 PV a cada 6 Ticks a partir do Tick do primeiro dano"; `poderes-das-criaturas.md:89` e `:93-95`. A D-246 ("sem regra ainda") deixou de valer
 
-- [ ] **B22 · [ADIADO] Os planos: aguarda o lore (R42, D-321).** Registrado em 05/11/2026. Existem outros planos, ainda não fechados.
+- [ ] **B22 · [ADIADO: D-321 (autor, 05/11/2026): "o autor acerta os planos depois", ligado ao lore F] [ESPERA: o lore dos planos (F3, D-321); quem move: o autor] Os planos: aguarda o lore (R42, D-321).** Registrado em 05/11/2026. Existem outros planos, ainda não fechados.
   Esperam o lore: passeio etéreo (cauchemar), passagem entre planos (bebilith, xill), estado etéreo (item 060) e a origem dos convocados
   (item 122). O livro não ganha o estado Etéreo agora.
 
@@ -457,11 +463,11 @@ limitações conhecidas, que são as três de baixo.
     armas do catálogo no Tamanho, as 6 rochas, tridente, florete, forcado e a Besta Média do merfolk. Falta o preço, na revisão econômica.
   - **12/11/2026 (I2, D-372):** a Glaive Serrilhada virou a Glaive (`glaive`), sem Sangramento; o preço fica o da Alabarda
     (280 pc) até a revisão econômica.
-- [ ] **B25 · [FAZER] Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366).** Registrado em 07/11/2026.
+- [ ] **B25 · [AUTOR-REGRA] Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366).** Registrado em 07/11/2026.
   A regra por peso e Força para empunhar arma de outro tamanho: a faixa de peso que cada Força consegue usar, sobre o peso que o
   catálogo já tem (D-366). Por ora o livro diz "Quem empunha" (Cap. XIII): a arma fica um degrau mais leve para quem é uma
   categoria maior, e um mais pesada para quem é uma menor; além da Pesada, o Mestre julga.
-- [ ] **B26 · [FAZER] Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas (G6, D-368).**
+- [ ] **B26 · [ADIADO: D-368 (G6), o autor, 07/11/2026: uma seção de armas improvisadas "para depois"] [FAZER] Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas (G6, D-368).**
   Registrado em 07/11/2026. Cadeira, mesa, barril, rocha, carroça, árvore, parede. Por ora a rocha arremessada é arma de criatura e usa a
   régua da G1 (dano pelo tamanho). Não escrever agora.
 - [x] **B27 · [RESOLVIDO em 12/11/2026, D-372] A ficha .md do diabo barbado, depois da I2 (D-372): a glaive serrilhada como ataque da própria ficha.** Registrado em 12/11/2026.
@@ -476,18 +482,22 @@ limitações conhecidas, que são as três de baixo.
     .md nova (`../tmp/arquiteto/fichas-glaive`: as 324 fichas de `tmp/executora/lote/fichas-misto` com o diabo novo), e só
     o sha do diabo e o cabeçalho mudaram. A cópia `tmp/executora/lote/fichas-misto/diabo-barbado.md` ainda é a de antes: o
     próximo lote toma a ficha do diabo da pasta da Bestiarista, e não dessa cópia.
-- [ ] **B28 · [FAZER] Carrossel de imagens do bestiário: o código está pronto; as imagens reais ainda não entraram no repositório (prompt 056-imagens, 25/11/2026).** Substitui a D-179 ("a segunda imagem com `_2`"): o registro da decisão é do Arquiteto.
+- [ ] **B28 · [AUTOR-REGRA] Carrossel de imagens do bestiário: o código está pronto; as imagens reais ainda não entraram no repositório (prompt 056-imagens, 25/11/2026).** Substitui a D-179 ("a segunda imagem com `_2`"): o registro da decisão é do Arquiteto.
   O que há: `src/lib/bestiario-imagens.ts` (leitura tolerante do índice, `imagensDe(id, estilo)` ordenado por `n`, até 8 e o total), `src/lib/bestiario-galeria.ts` (lê `src/data/bestiario-imagens.json` com `fs` e try/catch, de modo que ausente ou com JSON inválido vale como sem carrossel e não derruba o build, e descarta entrada sem arquivo em `public/bestiario-galeria/`), `src/lib/galeria-criatura.ts` e a caixa em `bestiario.astro` (quadro 3:2 com setas, miniaturas ao lado e, no celular, embaixo e rolando, teclado, arrastar o dedo, tela cheia pelo `#lightbox`, galeria em grade "Ver todas as N imagens" quando passa de 8), `scripts/sync-bestiario-imagens.mjs` (cópia repetível; dry-run por padrão; só reduz a grande que chega maior que 1200x800 (q75, `fit inside`, sem ampliar) e copia sem tocar a que já cabe; aborta se a origem não for 3:2; compara por conteúdo; só apaga órfão no formato `<id>_NN.webp` e `<id>_NN_mini.webp` e só recusa destino que não seja de galeria) e a fixture de teste (`scripts/fixtures/bestiario-galeria/`, nunca em `public/`). Testes: `test-bestiario-imagens.mjs` (no `validate`) e `test-galeria-bestiario.mjs` (navegador, no `smoke` e na matriz do CI). O smoke do navegador não usa a pasta nem o índice reais: copia a fixture para `public/bestiario-galeria-teste/` e um índice em `os.tmpdir()`, e o site os lê pelos ganchos `BESTIARIO_GALERIA_DIR` e `BESTIARIO_GALERIA_INDICE` (escolha de 25/11/2026), então roda igual no dia em que o conjunto real entrar. `sharp` é devDependency (a versão do lock, 0.34.5).
   Falta: decidir o peso e copiar as imagens da Curadora (`tmp/curadora/bestiario-site/`: 324 criaturas, 578 imagens; 266 MB como estão, uns 144 MB reexportadas a 1200x800 q75; o `.git` já tem uns 486 MB e todo webp trocado entra no histórico para sempre), rodando `node scripts/sync-bestiario-imagens.mjs --gravar`. Regras do carrossel: a LISTA mostra a `_01` do índice como principal (resposta 067), com `srcset` (mini 384w e grande 1200w) e `sizes` "(max-width: 700px) calc(100vw - 2rem), 28rem" (o card mede 341 px a 375 e 445 px a 1280, e a grade o faz variar de 320 a uns 640; por isso, a 1x no computador o navegador escolhe a grande, e a mini só onde o card couber em 384 px), a criatura com uma só imagem no índice também a mostra, sem selo nem lupa; sem índice a lista sai idêntica à de antes (324 cartões; só muda o hash do script do cliente); a tela cheia usa a legenda do índice; REGRA do autor (T16, D-384): nunca cortar imagem e todas do bestiário em 3:2, então o sync RECUSA a que sai de 3:2 (2% de tolerância), as miniaturas e a grade usam `contain` e o card não dá zoom no :hover; a criatura fora do índice (ou com menos de duas imagens válidas) segue sem carrossel e, se não tiver nenhuma no índice, com a imagem de sempre; o campo `estilo` está reservado (hoje só "padrao") para as versões por raça; a troca por clique da D-179 segue nas criaturas fora do índice, porque a mesa e o Grid leem `imagem-escolhida.ts` (D-054).
-- [ ] **B29 · [FAZER] A Mesa e o Grid seguem com a imagem antiga do bestiário (resposta 067, 25/11/2026).**
+- [ ] **B29 · [FAZER] [GRID-CÓDIGO] A Mesa e o Grid seguem com a imagem antiga do bestiário (resposta 067, 25/11/2026).**
   - O livro (a lista de `/bestiario`) diz: a imagem principal é a `_01` do índice das imagens (aquarela com fundo), servida por `srcset`.
   - A Mesa e o Grid fazem: leem o campo `imagens` do dado e `imagem-escolhida.ts` (D-179, a troca por clique), que o carrossel não mexeu (D-054), então continuam com o recorte transparente de antes. Quando o autor quiser a imagem nova na Mesa, é outro prompt.
-- [ ] **B30 · [DECIDIR] Os losangos de Ameaça têm contraste baixo sobre a aquarela (conjunto real das imagens do bestiário).**
+- [ ] **B30 · [DECIDIR] [ESPERA: o B28 (as imagens do conjunto real no site); quem move: o autor] Os losangos de Ameaça têm contraste baixo sobre a aquarela (conjunto real das imagens do bestiário).**
   - O livro (a lista de `/bestiario`) diz: a imagem principal é a `_01` do índice, aquarela com fundo; o card põe os losangos de Ameaça (◆◇) sobre ela.
   - O site faz: os losangos mantêm o desenho de hoje, pensado para o recorte transparente; sobre a aquarela o contraste é baixo. O autor decide quando as imagens do conjunto real entrarem (sem elas, o problema não aparece). Numeração: o main tem B28 e B29 do carrossel; esta é a B30.
-- [ ] **B31 · [FAZER] O fluxo "o Arquiteto propõe, o autor aprova" do editor antigo de criaturas não foi portado para o editor novo (Etapa 2, B3, 26/11/2026; resposta 078, sem urgência).**
+- [ ] **B31 · [FAZER] [ESPERA: o autor querer o fluxo de propostas no editor novo (070); quem move: o autor] O fluxo "o Arquiteto propõe, o autor aprova" do editor antigo de criaturas não foi portado para o editor novo (Etapa 2, B3, 26/11/2026; resposta 078, sem urgência).**
   - O livro (B3, decisão do autor T12): a fonte única das fichas de criatura são os dados do site (`src/data/bestiario/*.json`), editados pelo editor novo (`tmp/arquiteto/bestiario/editor/fichas-editor-fonte.html`). O autor não tem proposta pendente a migrar (070).
   - O editor antigo (`fichas-editor.html`, agora histórico, com a faixa do 068) tinha a aba "Propostas": o Arquiteto escrevia por lote um `proposta-<lote>.json` (ficha, campo, valor novo, justificativa) e o editor mostrava o campo em azul, com "Aceitar" (vira edição do autor, valor e justificativa juntos), "Recusar", "Aceitar tudo" e "Recusar tudo desta criatura". Uma recusa não volta com o mesmo valor, e o item que mudou desde a proposta fica de fora. O estado ficava só no `localStorage` do navegador do autor, e a proposta pendente nunca ia ao "Exportar". Descrição completa: `tmp/arquiteto/bestiario/propostas-antigo.md`.
   - O editor novo não tem azul, aceitar nem recusar: uma mudança vinda de outra pessoa só entra como arquivo de alterações (versão 2) conferido por quem aplica, e as mudanças de número saem numa lista à parte.
   - Seis propostas ficaram só no antigo (lote "Tamanho e massa no texto das fichas", complemento 2 da D-183, `proposta-tamanho-2026-10-21.json`: `elasmossauro`, `megalodonte`, `mosassauro`, `orca`, `tubarao-branco`, `hienodonte`). Todas editam a seção "No jogo" das fichas .md; essa seção não existe no JSON do site (conferi em duas fichas: nenhum trecho do texto está nos dados). Sem efeito no site; ficam guardadas na pasta do editor antigo.
   - Se o autor quiser o fluxo no editor novo: marcar uma alteração como "proposta a aprovar" no arquivo de alterações, com o autor aceitando uma a uma. É desenho novo; não está no plano.
+- [ ] **B32 · [FAZER] Fichas da T4 (D-377) não aplicadas: trol, vampiro, planetar, solar.** (Achado da varredura de 26/11/2026, que o chamou B-T4.) T4/T4a (D-377): "o tipo sai da linha `fraquezas:` do bloco Elementos e fica só na fraqueza da Regeneração" (`tmp\revisao-textos\bestiario\lista-bestiarista-t4-regeneracao.md`). Conferido de novo em 26/11 nos JSON: `trol.json` (fraquezas: fogo, ácido), `vampiro.json` (fogo, luz, sagrado, prata, sol), `planetar.json` e `solar.json` (profano). Lote da Bestiarista, no próximo lote do bestiário já combinado (098).
+- [ ] **B33 · [AUTOR-REGRA] Sete imagens de elemental sem ficha.** (Achado da varredura de 26/11/2026, que o chamou B-CUR1.) `_relatorio.json` da Curadora, `imagens_sem_ficha (ignoradas)`: `elemental-da-agua-grande`, `elemental-da-agua-medio`, `elemental-da-terra-medio`, `elemental-do-ar-grande`, `elemental-do-ar-medio`, `elemental-do-fogo-grande`, `elemental-do-fogo-medio`. Em `src/data/bestiario` só há `elemental-da-agua-pequeno`, `elemental-da-terra-pequeno`, `elemental-da-terra-grande`, `elemental-do-ar-pequeno` e `elemental-do-fogo-pequeno`. Ver AUTOR.
+- [ ] **B34 · [FAZER] `iffrit` e `incubo`: imagem com nome sem ficha.** (Achado da varredura de 26/11/2026, que o chamou B-CUR2.) `_relatorio.json`: as duas estão em `imagens_sem_ficha`, mas as fichas existem com outro nome: `iffrit` é a ficha `efreeti` (`efreeti.json`) e `incubo` é a ficha `sucubo` (`sucubo.json`; o íncubo é a versão masculina). Regra do autor de 17/11: "humanoides que podem ser homem ou mulher ganham ao menos uma versão de cada". A Curadora casa o nome (imagem para a ficha certa, ou o íncubo como versão na ficha do súcubo).
+- [ ] **B35 · [FAZER] `cao-de-guerra-nessiano` sem imagem; `ninfa_verde-mar_pantano.png` fora de 3:2.** (Achado da varredura de 26/11/2026, que o chamou B-CUR3.) `_relatorio.json`: `fichas_sem_imagem` e `principal_ausente` = ["cao-de-guerra-nessiano"] (a ficha `cao-de-guerra-nessiano.json` existe, sem imagem); `fora_de_3x2_precisa_refazer` = ninfa, `ninfa_verde-mar_pantano.png`, 1024x1536 (refazer sem cortar). Do lado da Ilustradora; só registro. Os totais do relatório: 323 criaturas no índice, 576 imagens, 216 fichas com uma só imagem.

@@ -21,10 +21,10 @@
   (`FichaResumo`) ainda não mostra Antecedentes.
 - [ ] **E2 · [FAZER] Portar `Ataques_Mentais.md` ao site.** A Defesa Mental já está no motor e no
   bestiário; o capítulo (as três camadas, a duração dos efeitos, a inimizade ao despertar) não.
-- [ ] **E3 · [DECIDIR] Banda neutra da Régua de Relação: 5 ou 3?** Hoje é 5 (rompe o Neutro em 3
+- [ ] **E3 · [AUTOR-REGRA] Banda neutra da Régua de Relação: 5 ou 3?** Hoje é 5 (rompe o Neutro em 3
   passos). A de 3 faz a régua andar mais rápido. Junto vai a alternativa do decaimento: rumo à
   baseline do par, como está, ou rumo ao neutro mais próximo.
-- [ ] **E4 · [DECIDIR] A jornada "Neutro → +2 Apreço" do ritmo da régua não se reconstrói pela
+- [ ] **E4 · [FAZER] A jornada "Neutro → +2 Apreço" do ritmo da régua não se reconstrói pela
   fórmula.** Achado pela Executora na rodada 85, aplicando a fórmula do item 1 aos números que a
   própria especificação traz (`docs/simulacao/caixa/ritmo-da-regua.md`, seção 4, "As jornadas").
   A linha publicada diz 4 / 10 / 22 / 34 intervalos (cortesão / mediano / inepto / bruto) e a
@@ -45,7 +45,7 @@
   decidiu explicitamente.** Se a decisão for outra, cai com ela a jornada inteira e a oração do
   capítulo. Junto vem a mesma pergunta para o termo da régua: ele é fotografado no começo do
   cortejo ou recalculado a cada passo conquistado? Os números medidos só fecham com o segundo.
-- [ ] **E8 · [DECIDIR] A trava de um gesto por intervalo não é monotônica.** Achado pela
+- [ ] **E8 · [AUTOR-REGRA] A trava de um gesto por intervalo não é monotônica.** Achado pela
   Executora na rodada 85 ao conferir o trio 81 → 42 → 25 da especificação. Com gestos de +4, um
   passo que precisa de **15** pontos sai em **3** intervalos (três gestos, 15 − 12 = 3), e um
   passo que precisa de **14** sai em **6** (só dois gestos cabem, 14 − 8 = 6). **O alvo mais
@@ -54,16 +54,16 @@
   erro de redação, e os números publicados dependem dela. Saídas: aceitar o dente e dizer isso na
   prosa, arredondar o Tempo para cima antes de aplicar a trava, ou trocar a trava por "gestos ≤
   Tempo calculado sem gestos".
-- [ ] **E5 · [DECIDIR] ⚑ O que a leitura revela no modo devagar.** O capítulo dizia "a cada 6 de
+- [ ] **E5 · [AUTOR-REGRA] ⚑ O que a leitura revela no modo devagar.** O capítulo dizia "a cada 6 de
   folga, descobre +1 **ponto** do que ainda falta", e ponto era o que faltava para furar a Defesa.
   No modelo novo não há furo: o passo custa **intervalos**. A rodada 85 escreveu "um intervalo do
   que ainda falta", que é a tradução mínima da mesma forma, **e é redação da Executora, não
   decisão da mesa**. Uma linha resolve.
-- [ ] **E6 · [DECIDIR] ⚑ O preço de um gesto em moeda.** O modelo do ritmo da régua diz que o
+- [ ] **E6 · [AUTOR-REGRA] ⚑ O preço de um gesto em moeda.** O modelo do ritmo da régua diz que o
   dinheiro compra pressa e que o custo cresce por nível, e a medida publicada (81 → 42 → 25
   intervalos) depende de um preço por nível que não existe na régua. O capítulo publicou os
   intervalos e deixou o preço com o Mestre, marcado com ⚑, em vez de inventar a tabela.
-- [ ] **E7 · [CONSERTAR] A Dama Vesna tem três estados diferentes no mesmo capítulo.** Anterior a
+- [ ] **E7 · [FAZER] A Dama Vesna tem três estados diferentes no mesmo capítulo.** Anterior a
   esta conversa e achado de passagem na rodada 85, em `src/content/chapters/relacoes-sociais.md`:
   ela é **−6 (Nêmesis)** no exemplo de "A história empurra o dado", **uma desconhecida no Neutro**
   no exemplo dos povos, e no duelo do Combate Social aceita **uma dança** com Defesa Social 18.
@@ -92,7 +92,7 @@
   O autor está discutindo o cortejo. Até lá ficam como estão a frase "o intervalo do cortejo (8 dias
   ou mais) não é uma ação" (`relacoes-sociais.md`, Quando o alvo segura) e a Vontade presa
   (`vontadePresa` e `vontadePresaNota` em `regras.json`, `social.modoDevagar.resistencia`).
-- [ ] **E12 · [CONSERTAR] Documentos de trabalho fora do site ainda dizem que Antecedente custa XP (T24, 26/11/2026).**
+- [ ] **E12 · [FAZER] Documentos de trabalho fora do site ainda dizem que Antecedente custa XP (T24, 26/11/2026).**
   - O livro diz: Antecedente não custa XP, nenhum dos catorze (D-385; `antecedentes.md`, `criacao-de-personagem.md`, `regras.json` `xp.antecedente` como `gratis`).
   - Os documentos de trabalho dizem outra coisa e não foram tocados (não são o site): `Antecedentes.md` na raiz do repositório (seção "Custo e a economia", linhas 61 a 71, com "×2 / ×5 / ×10 / ×15" e "perícia"); `docs/MAPA.md` linha 41 ("14 antecedentes, XP ×3"); `Arcano_revisao.md` linha 1615; e dois trechos de `lore/economia/etapas-abc/revisao-economica-etapas-abc.md` (linhas 629 e 751, sobre o Mentor: "evita cobrar duas vezes (XP e pc)", "A dívida de XP é a mesma").
   - Conserto quando o autor quiser limpar os documentos: tirar o custo de XP desses trechos; nada do site lê isso.

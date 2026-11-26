@@ -187,3 +187,21 @@ geral do sistema, e não presa a um caso específico como as demais.
    efeito da regra; se não contar, este grupo fica fora da correção.
 4. **`resumo-regras.txt`**: por estar desatualizado em mais de uma regra (não só Virtude), talvez
    mereça reescrita completa ou remoção, e não um remendo pontual.
+
+## Varredura de 26/11/2026
+
+Este arquivo é levantamento, sem itens com caixa: a contagem do índice não o lê. A varredura de 26/11/2026 conferiu as 13 linhas (M1 a M13) e deixou cada uma com a classe abaixo; nada foi corrigido nesta passada.
+
+- **M1** (FECHADO): Canalizar Virtude é soma deliberada, não descuido. B-024 "nenhum teste tem Virtude na parada ao lado de Atributo ou Habilidade; a Virtude se rola sozinha (teste de Virtude, Frenesi) ou entra como bônus pelo Canalizar Virtude, que continua valendo"; `regras.json:334-337` (`virtudeSomaRegra`); `aparencia-virtudes-vontade.md:125` mantém o Canalizar. A.
+- **M2** (DUPLICADO): Tabela por "o que o teste resolve" (cabeçalho e legenda). só agrupa M3 a M6; fica cada um deles.
+- **M3** (DUPLICADO): §1 Canalizar (bônus voluntário, uma vez por cena por Virtude). é o L102 (fica o L102): `jogador-novo-decisoes.md:3084-3099` "cada Virtude guarda uma carga binária de Canalizar ... Recarregar exige agir de acordo com aquela Virtude um número de vezes igual ao nível dela"; livro ainda diz `aparencia-virtudes-vontade.md:125` "Sem risco nem contrapartida" e `regras.json:338` "segue em aberto (M-18)". Conflito de datas no achado 2.
+- **M4** (FECHADO): §2 Resistência do corpo: 17 ocorrências de Vigor + Convicção. B-025 "as 17 ocorrências de 'Vigor + Convicção' viram 'Vigor + Resistência' (dor, veneno e doença das Artes, Estabilizar sozinho, Sangramento), inclusive a tabela arcano.resistencia e src/pages/artes/regras.astro"; commit `fa72f367`; busca em `src\`: 1 ocorrência, a nota histórica de `regras.json:337`, que cita a forma antiga ao registrar a auditoria; as 17 de texto vivo saíram; `aparencia-virtudes-vontade.md:49` "rola Vigor + Resistência", `regras.json:1152` e `:1317` "Vigor + Resistência".
+- **M5** (FECHADO): §3 Espírito e proteção: Vontade + Convicção em Banir e Círculo. B-026 "Banir e Círculo (efeitos.json, 'Vontade + Convicção') resistem pela Defesa Mental passiva"; `efeitos.json` Banir e Círculo: `Dificuldade` fixa "Defesa Mental do alvo"; 0 ocorrências de "Vontade + Convicção" em `src\`.
+- **M6** (FECHADO): §4 Treino de Trilha (Briga + Integridade + Temperança). o próprio levantamento diz que é pré-requisito de ficha, não teste; `Trilhas_Feiticaria.md:171` é documento de trabalho (`[PROPOSTA]`) e a busca de "Treino" no livro e nas páginas não acha a notação; nenhuma regra viva viola a regra do autor. Resíduo de `Trilhas_Feiticaria.md:132` no achado 3.
+- **M7** (FECHADO): Código: nenhuma função soma Virtude a Atributo ou Habilidade. levantamento mantém: `calc.ts:17` `pool(atributo, habilidade)`, teste de Virtude sozinha em `artes-grid.ts` (`opcoesDeFicarParado`); sem implementação de Canalizar (isso é o L102). Os arquivos mudaram na A5j, mas nada que some Virtude entrou.
+- **M8** (FECHADO): Bestiário: nenhuma ocorrência. busca de "Vigor + Convicção" em `src\data\bestiario\*.json`: 0.
+- **M9** (FECHADO): Falso positivo: `Combate_Social.md:371`. descartado pelo próprio levantamento (soma Virtude com Centelha e armadura, não com Atributo ou Habilidade); `Combate_Social.md` é design anterior não portado, o capítulo vivo é `relacoes-sociais.md`.
+- **M10** (FECHADO): `resumo-regras.txt` descreve a regra errada (seção 15). commit `fa72f367` "resumo-regras.txt apagado"; o arquivo não existe no repositório (verificado).
+- **M11** (FECHADO): Atas e históricos (22 em `caixa`, 1 fora). só contadas, nada a corrigir; arquivos de histórico.
+- **M12** (DUPLICADO): Contagem por categoria. síntese de M3 a M11; os 17 vivos de M4 e os 2 de M5 hoje são 0.
+- **M13** (FECHADO): Para a decisão do autor, por grupo (4 grupos). grupo 1 Canalizar: B-024 manteve (execução no L102); grupo 2: B-025; grupo 3: B-026 (Vontade tratada como traço, resiste pela Defesa Mental); grupo 4: `resumo-regras.txt` apagado em `fa72f367`.

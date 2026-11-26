@@ -1556,6 +1556,69 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Origem: `../tmp/arquiteto/economia/proposta.md` e `conta-media3.md`; `../tmp/ponte/para-arquiteto/lidas/087-regras.md`.
 - Estado: aplicada no ramo `economia-longa3` (7ed7c327); no ar com o merge dele.
 
+### D-387 · G72: o Atributo de cada Habilidade secundária sai da descrição da ação, sem campo no dado [tags: habilidades-secundarias, atributo, g72, varredura]
+- Data: 2026-11-26
+- Decisão (registro da varredura, a partir do texto publicado com PROCEDE): "As Secundárias não trazem o parêntese da inclinação: o Atributo sai da descrição da ação, como em Quem escolhe o par" (`src/content/chapters/habilidades-secundarias.md:21`, revisão de textos, `f70f4482`, 17/11/2026). `habilidades-secundarias.json` não tem campo de Atributo.
+- Contexto: a pendência G72 perguntava qual Atributo sugerir para cada Habilidade secundária (C-023 (a), "registrar sem resolver"); o texto publicado a responde, e não havia D- própria. Reversível: se o autor quiser o campo de Atributo, é decisão nova.
+- Origem: `G-acoes-sistema.md` (G72) e a varredura de 26/11/2026 (relatório do coordenador 097 a 101).
+- Estado: no ar (texto publicado); registrada em 26/11/2026.
+
+### D-388 · L26: o dado é rolado na mão pelos jogadores e pelo mestre, e o que chega ao Grid é o total [tags: grid, dado, rolada, l26, varredura]
+- Data: 2026-11-26
+- Decisão (autor, "DECIDIDO PELO HUMANO em 12/09/2026", registrada na varredura, com a linha do tema): "o dado é rolado pelos jogadores e pelo mestre, e o que chega ao Grid é o TOTAL" (`docs/pendencias/L-simulacao-simultaneo.md:1107-1111`). Recusa as duas formas que o Arquiteto pôs na mesa: a folha aceitando as faces (o mecanismo `roladaManual` deixa de ser a direção) e o site rolando com a mesa confirmando. O dado na mão fica, e somar é da mesa.
+- Contexto: a pergunta 2 do item (a frequência do efeito de chão) era medição da segunda bateria, que não acontece (`ESTADO.md:1125`). O resíduo "quem digita o total" fica no L29, para a fase 5 (a experiência do jogador).
+- Origem: `docs/pendencias/L-simulacao-simultaneo.md` (L26), conversa do autor de 12/09/2026.
+- Estado: decidida pelo autor em 12/09/2026; registrada em 26/11/2026 (o registro de decisões não a tinha).
+
+### D-389 · L71: o modelo de voz corrompido fica com o prazo, e a troca do Worker não se faz [tags: voz, grid, prazo, l71, varredura]
+- Data: 2026-11-26
+- Decisão (autor, "DECIDIDO PELO HUMANO EM 11/09/2026", registrada na varredura, com a linha do tema): "fica a (a), o prazo, e a (b) NÃO se faz" (`docs/pendencias/L-simulacao-simultaneo.md:3734-3737`). O prazo (`src/lib/comando-voz.ts`, `prazoMs ?? 20_000`) já está construído e provado ao vivo contra um `model.tar.gz` corrompido; trocar o Worker vendorizado é trabalho de outra ordem. O contra aceito: o prazo não distingue modelo corrompido de rede lenta, e o caminho de conserto, se isso aparecer na bancada dele, é a (b).
+- Contexto: o registro de decisões não tinha entrada sobre voz; a decisão só constava no tema L. O item fica fechado quanto à decisão.
+- Origem: `docs/pendencias/L-simulacao-simultaneo.md` (L71), conversa do autor de 11/09/2026.
+- Estado: decidida pelo autor em 11/09/2026; registrada em 26/11/2026.
+
+### D-390 · C-72: o "como define o Atributo" fica escrito uma vez, com link, e não nos 24 verbetes [tags: habilidades, atributo, editorial, c-72, varredura]
+- Data: 2026-11-26
+- Decisão (decisão editorial do coordenador, pela regra do autor para a revisão de textos (12/11/2026: as incoerências se resolvem pela solução recomendada e ficam anotadas para ele revisar no fim); reversível): a regra "o como define o Atributo" está escrita uma vez, com link (`src/content/chapters/habilidades.md:24`: "você diz **como** está fazendo, e o **como** define o Atributo. A regra inteira está em Quem escolhe o par"). Repeti-la nos 24 verbetes não acrescenta nada; fica como está.
+- Contexto: o conserto C-72 do jogador novo foi recusado pela Executora por ser edição grande sem ganho; não havia decisão do autor.
+- Origem: a varredura de 26/11/2026 (`itens-OUTRAS1.md` da varredura; `jogador-novo-consertos.md:1019`). A regra de 12/11/2026 não tem D- própria no registro (conferido por palavra-chave: "solução recomendada", "revisar no fim", "revisão de textos"); está aplicada em `tmp/revisao-textos/contradicoes.md` (o cabeçalho dá a ordem de autoridade e o status SEM DECISÃO ANTERIOR, e o caso do Preparo cita a conferência do glossário de 12/11/2026) e o autor revisou as escolhas feitas por ela na T11 (24/11/2026).
+- Estado: registrada em 26/11/2026; nada a aplicar.
+
+### D-391 · G25: a peça de dois ofícios vale a linha da tabela com o Acúmulo inteiro [tags: acoes, oficios, mestre, g25, d-087, varredura]
+- Data: 2026-11-26
+- Decisão (coordenador, decidido pelo coordenador por delegação (o autor mandou, na revisão econômica, "trazer soluções prontas e só perguntar ao usuário sobre fatos do sistema, não decisões de design"); reversível): "Peça de dois ofícios (a lança com cabeça de ferro e haste de madeira; o navio, Carpintaria e Alvenaria): vale a linha da tabela com o Acúmulo dela inteiro, cada ofício trabalha na sua parte, e o Requisito é o de quem faz a parte. O Mestre divide o Acúmulo entre as partes pelo que cada uma pesa." A frase está em o `mestre.md` da varredura de 26/11/2026 (`tmp/arquiteto/varredura-26-11/mestre.md`).
+- Contexto: o arco e a besta já passaram a um ofício só (`acoes-oficio-e-mundo.md:181`); resta "Navio de guerra, catedral" com "Carpintaria, Alvenaria" (`:208`). Caso de borda de uma linha. Caso de borda que o bom senso do Mestre resolve (D-087): no máximo uma frase no livro, com exemplo.
+- Origem: `itens-G1.md` e `mestre.md` da varredura de 26/11/2026 (a frase proposta, linha de G25).
+- Estado: registrada em 26/11/2026; a frase vai ao livro num lote próprio, depois da conferência do coordenador.
+
+### D-392 · G26: o que é "arma marcial" [tags: acoes, oficios, mestre, g26, d-087, varredura]
+- Data: 2026-11-26
+- Decisão (coordenador, decidido pelo coordenador por delegação (o autor mandou, na revisão econômica, "trazer soluções prontas e só perguntar ao usuário sobre fatos do sistema, não decisões de design"); reversível): "Arma marcial é a arma de guerra de metal de classe média ou pesada (espada, machado, maça, martelo, picareta de guerra, a cabeça da alabarda). O que não couber, o Mestre põe na linha que mais se parece em Acúmulo." A frase está em o `mestre.md` da varredura de 26/11/2026 (`tmp/arquiteto/varredura-26-11/mestre.md`).
+- Contexto: `acoes-oficio-e-mundo.md:180` é o único uso da palavra; nenhum capítulo nem `armas.json` a define; a A-034 já tratou espada, maça, martelo e picareta como a mesma linha de preço. Caso de borda que o bom senso do Mestre resolve (D-087): no máximo uma frase no livro, com exemplo.
+- Origem: `itens-G1.md` e `mestre.md` da varredura de 26/11/2026 (a frase proposta, linha de G26).
+- Estado: registrada em 26/11/2026; a frase vai ao livro num lote próprio, depois da conferência do coordenador.
+
+### D-393 · G27: o machado da linha "Faca, machado, ponta de lança" [tags: acoes, oficios, mestre, g27, d-087, varredura]
+- Data: 2026-11-26
+- Decisão (coordenador, decidido pelo coordenador por delegação (o autor mandou, na revisão econômica, "trazer soluções prontas e só perguntar ao usuário sobre fatos do sistema, não decisões de design"); reversível): "Na linha 'Faca, machado, ponta de lança', o machado é a ferramenta de uma mão (Machadinha, Machado de Arremesso); o Machado e o Machado Pesado são armas de guerra e entram na linha da espada." A frase está em o `mestre.md` da varredura de 26/11/2026 (`tmp/arquiteto/varredura-26-11/mestre.md`).
+- Contexto: `armas.json` tem Machadinha (80 pc, leve), Machado (300) e Machado Pesado (650); a linha (`acoes-oficio-e-mundo.md:177`, Req 2, Dif 4) é a do machado de ferramenta. O preço do Machado é o G39. Caso de borda que o bom senso do Mestre resolve (D-087): no máximo uma frase no livro, com exemplo.
+- Origem: `itens-G1.md` e `mestre.md` da varredura de 26/11/2026 (a frase proposta, linha de G27).
+- Estado: registrada em 26/11/2026; a frase vai ao livro num lote próprio, depois da conferência do coordenador.
+
+### D-394 · G31: a cerca é obra [tags: acoes, oficios, mestre, g31, d-087, varredura]
+- Data: 2026-11-26
+- Decisão (coordenador, decidido pelo coordenador por delegação (o autor mandou, na revisão econômica, "trazer soluções prontas e só perguntar ao usuário sobre fatos do sistema, não decisões de design"); reversível): "A cerca de vinte metros é fixa no lugar e conta como obra. Como a linha dela já é de Dificuldade 4, o ajudante sem ofício trabalha contra 4 de qualquer modo, e a única diferença é o limite de dez por supervisor." A frase está em o `mestre.md` da varredura de 26/11/2026 (`tmp/arquiteto/varredura-26-11/mestre.md`).
+- Contexto: a A-032 lista "casa, celeiro, forja, moinho, muralha, ponte, catedral"; a cerca está em `acoes-oficio-e-mundo.md:174` com Dificuldade 4, a mesma da direção. Não muda número. Caso de borda que o bom senso do Mestre resolve (D-087): no máximo uma frase no livro, com exemplo.
+- Origem: `itens-G1.md` e `mestre.md` da varredura de 26/11/2026 (a frase proposta, linha de G31).
+- Estado: registrada em 26/11/2026; a frase vai ao livro num lote próprio, depois da conferência do coordenador.
+
+### D-395 · G34: "jogada estendida" vira "ação indivisível que se estende por intervalos" [tags: acoes, oficios, mestre, g34, d-087, varredura]
+- Data: 2026-11-26
+- Decisão (coordenador, decidido pelo coordenador por delegação (o autor mandou, na revisão econômica, "trazer soluções prontas e só perguntar ao usuário sobre fatos do sistema, não decisões de design"); reversível): trocar a frase "Numa jogada estendida, pode-se usar a média do ajudante ..." (`acoes-e-sistema.md:204`) por: "Numa ação indivisível que se estende por intervalos (a cirurgia longa, a aula), o ajudante pode usar a média dele (3 por dado, como na Longa) em vez de rolar a cada intervalo." A frase está em o `mestre.md` da varredura de 26/11/2026 (`tmp/arquiteto/varredura-26-11/mestre.md`).
+- Contexto: `acoes-e-sistema.md:202-204` abre com "apoio numa jogada única, numa ação que não se divide" e o parágrafo seguinte diz "jogada estendida"; pela A-033 o divisível é da condução e da direção. Caso de borda que o bom senso do Mestre resolve (D-087): no máximo uma frase no livro, com exemplo.
+- Origem: `itens-G1.md` e `mestre.md` da varredura de 26/11/2026 (a frase proposta, linha de G34).
+- Estado: registrada em 26/11/2026; a frase vai ao livro num lote próprio, depois da conferência do coordenador.
+
 ### D-059 · Dúvidas 5 e 12 (A e B): as fichas ficam sem a Técnica; a aplicação espera o fim da revisão [tags: criacao, exemplos, tecnicas, d-047, kael, sora, veil, bram]
 - Data: 2026-10-04
 - Decisão: dúvida 5, A: "As fichas ficam sem a Técnica (Kael 1045, Sora 1303, Veil 1844). Se aplicar isso nas fichas agora conflitar com a D-053 (fichas de exemplo só no fim da revisão), registre a regra e me pergunte antes de mexer nas fichas." Dúvida 12, B: "Esperar o fim da revisão (D-053)."
