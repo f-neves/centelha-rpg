@@ -705,7 +705,7 @@
       "instinto-de-sobrevivencia"
     ],
     "aliases": [],
-    "texto": "Defende-se normalmente contra um ataque que não poderia ver (pelas costas, oculto).",
+    "texto": "Defende-se normalmente contra um ataque que não poderia ver (pelas costas, oculto). Substitui a Técnica Faro do Perigo (defender-se normalmente tira a desvantagem que o +4 compensava).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -817,7 +817,7 @@
       "ler-o-fio"
     ],
     "aliases": [],
-    "texto": "Verdadeira precognição: faça ao Mestre uma pergunta significativa sobre o futuro e receba uma resposta enigmática, porém verdadeira, ou reescreva um resultado uma vez.",
+    "texto": "Verdadeira precognição: faça ao Mestre uma pergunta significativa sobre o futuro e receba uma resposta enigmática, porém verdadeira, ou reescreva um resultado uma vez. Soma com a Proeza do Destino (reescrever um resultado não é refazer a rolagem).",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
