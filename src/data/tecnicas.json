@@ -7438,7 +7438,7 @@
       "centelha"
     ],
     "aliases": [],
-    "texto": "Inflama um pequeno grupo a agir por impulso; a plateia esquenta e se move na direção que você acende.",
+    "texto": "Inflama um pequeno grupo a agir por impulso; a plateia esquenta e se move na direção que você acende. Substitui as Técnicas Incitar e Inflamar em escala de grupo (é o mesmo efeito, maior).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
