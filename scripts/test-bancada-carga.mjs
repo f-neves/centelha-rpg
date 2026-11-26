@@ -142,12 +142,13 @@ if (temLaco) {
   const g = carrega('gigante-da-colina'), forte = g.ataques.find((a) => a.nome === 'Martelo de Guerra');
   const fraco = { ...forte, nome: 'Golpe fraco', pool: '1d6', dano: '1d6 (I)' };
   const comFraco = { ...g, ataques: [fraco, forte], ataque: fraco.pool, dano: fraco.dano }, soForte = { ...g, ataques: [forte] };
-  // C2: é onde o gigante ainda ganha luta (no C6 o grupo vence as 200 com qualquer golpe)
-  const a = lutas(comFraco, 200, { escolhaAtaque: 'melhor' }, 2), b = lutas(soForte, 200, { escolhaAtaque: 'melhor' }, 2);
+  // C0: é onde o gigante ainda ganha luta (sem a dupla e a Rajada que o laço dava a toda criatura, desde 26/11/2026 o grupo
+  // vence as 200 já no C2)
+  const a = lutas(comFraco, 200, { escolhaAtaque: 'melhor' }, 0), b = lutas(soForte, 200, { escolhaAtaque: 'melhor' }, 0);
   ok(J(a) === J(b), '"melhor" com um golpe fraco na frente luta igual a quem só tem o Martelo, luta por luta (200)');
-  const p = lutas(comFraco, 200, { escolhaAtaque: 'primeiro' }, 2), vit = (rs) => rs.filter((r) => r.venceuGrupo).length;
+  const p = lutas(comFraco, 200, { escolhaAtaque: 'primeiro' }, 0), vit = (rs) => rs.filter((r) => r.venceuGrupo).length;
   ok(vit(p) > vit(a), `"primeiro" usa o golpe fraco: o grupo vence ${vit(p)} de 200, contra ${vit(a)} no "melhor"`);
-  ok(J(lutas(comFraco, 200, {}, 2)) === J(a), 'sem opção, a escolha é a "melhor"');
+  ok(J(lutas(comFraco, 200, {}, 0)) === J(a), 'sem opção, a escolha é a "melhor"');
   // a Defesa da criatura passa a ser a do ataque em uso (D-262, D-273): com 999 plantado em cada ataque, o grupo não acerta
   const blindada = { ...g, ataques: g.ataques.map((x) => ({ ...x, defesa: 999 })) };
   ok(vit(lutas(blindada, 200, { escolhaAtaque: 'melhor' })) === 0 && vit(lutas(blindada, 200, { escolhaAtaque: 'primeiro' })) > 0,
@@ -156,14 +157,15 @@ if (temLaco) {
   ok(g.ataques.find((x) => x.nome === st.defesaOutraArma.arma).defesa === st.defesaOutraArma.defesa && forte.defesa === st.defesa,
     `gigante-da-colina: Defesa ${forte.defesa} com o Martelo (duas mãos), ${st.defesaOutraArma.defesa} com a rocha (o motor: ${st.defesa} e ${J(st.defesaOutraArma)})`);
 }
-// 9. a regeneração (D-362) atrás de uma opção: sem ela as curvas não mudam; com ela, as duas células de referência
+// 9. a regeneração (D-362) LIGADA por padrão (086, item 2); `regeneracao: false` mede sem ela, para comparar
 if (temLaco) {
   const m = carrega('marilith'), semRegen = { ...m, regeneracao: null };
-  const sem = lutas(m, 200, { escolhaAtaque: 'primeiro' });
-  ok(J(sem) === J(lutas(semRegen, 200, { escolhaAtaque: 'primeiro', regeneracao: true })) && sem.every((r) => !('regenTotal' in r)),
-    'sem a opção, a marilith luta igual a uma marilith sem regeneração, luta por luta (200)');
-  const com = lutas(m, 200, { escolhaAtaque: 'primeiro', regeneracao: true });
-  ok(J(com) !== J(sem) && com.some((r) => r.regenTotal > 0), `com a opção, a regeneração entra (${com.reduce((s, r) => s + r.regenTotal, 0).toFixed(1)} PV em 200 lutas)`);
+  const sem = lutas(m, 200, { escolhaAtaque: 'primeiro', regeneracao: false });
+  ok(J(sem) === J(lutas(semRegen, 200, { escolhaAtaque: 'primeiro' })) && sem.every((r) => !('regenTotal' in r)),
+    'com a opção desligada, a marilith luta igual a uma marilith sem regeneração, luta por luta (200)');
+  const com = lutas(m, 200, { escolhaAtaque: 'primeiro' });
+  ok(J(com) !== J(sem) && com.some((r) => r.regenTotal > 0), `sem dizer nada, a regeneração entra (${com.reduce((s, r) => s + r.regenTotal, 0).toFixed(1)} PV em 200 lutas)`);
+  ok(J(com) === J(lutas(m, 200, { escolhaAtaque: 'primeiro', regeneracao: true })), 'o padrão é o mesmo que regeneracao: true, luta por luta (200)');
   // 2000 lutas, C6, modo "primeiro", sementes 20260930 + i*7919; o resultado é determinístico, e o intervalo é o de
   // Wilson a 95%. linnorm 78,4% reproduz a bancada de 07/11; a marilith fica em 94,2% com o dano de corte da Espada longa
   // (a de 07/11 lia impacto por engano, e o relógio dela ligava na entrada: docs/bestiario/bancada-carga.md)
@@ -172,6 +174,61 @@ if (temLaco) {
     const w = B.wilson(rs.filter((r) => r.venceuGrupo).length, rs.length);
     ok(pc(w.p) === alvo, `${id}, C6, 2000 lutas, com regeneração: ${pc(w.p)} [${pc(w.lo)} a ${pc(w.hi)}] (fixado: ${alvo})`);
   }
+}
+
+// 10. golpes a mais: só o que a FICHA diz (086, item 1; D-068, a cláusula da D-083, D-314). Antes o laço dava a toda criatura a
+// empunhadura dupla e a Rajada pela classe do ataque; agora a dupla é só das fichas com `regra: 'empunhadura-dupla'`, a Rajada
+// vai até o teto do multiataque (ou da Rajada) escrito, e uma ficha sem nenhum dos dois não ganha golpe extra.
+if (temLaco) {
+  const todas = fs.readdirSync('src/data/bestiario').map((x) => x.replace(/\.json$/, ''));
+  const fontes = Object.fromEntries(todas.map((id) => [id, fonte(id)]));
+  const comDupla = todas.filter((id) => fontes[id].habilidadesEspeciais.some((h) => h.regra === 'empunhadura-dupla'));
+  ok(comDupla.length === 8, `a dupla está em 8 fichas: ${comDupla.join(', ')}`);
+  // a dupla: só nas 8
+  const duplas = todas.filter((id) => B.opcoesMultiGolpeCriatura('leve', 5, B.multiDaFicha(fontes[id])).some((o) => o.manobra === 'dupla'));
+  ok(J([...duplas].sort()) === J([...comDupla].sort()), `a opção de dupla sai só nas fichas que a têm (${duplas.length})`);
+  // CONTROLE: a ficha sem dupla recebe a dupla se (e só se) a ficha plantada a tiver
+  const plantada = structuredClone(fontes['gigante-da-colina']); plantada.habilidadesEspeciais.push({ nome: 'Duas armas', regra: 'empunhadura-dupla' });
+  ok(!B.opcoesMultiGolpeCriatura('media', 6, B.multiDaFicha(fontes['gigante-da-colina'])).length && B.opcoesMultiGolpeCriatura('media', 6, B.multiDaFicha(plantada)).some((o) => o.manobra === 'dupla'),
+    'controle: o gigante-da-colina não tem opção de golpe a mais; com a dupla plantada na ficha, ela aparece');
+  // o teto: o do multiataque escrito (3; 2; 4), nunca acima; sem multiataque nem Rajada, nenhum golpe a mais
+  const tetoDe = (id) => B.multiDaFicha(fontes[id]).teto;
+  const maiorRajada = (id, classe = 'media') => Math.max(1, ...B.opcoesMultiGolpeCriatura(classe, 6, { ...B.multiDaFicha(fontes[id]), dupla: false }).map((o) => o.golpes));
+  const tetos = todas.map((id) => tetoDe(id));
+  ok(Math.max(...tetos) === 4 && tetos.filter((n) => n === 4).length >= 2, `o teto 4 só aparece onde a ficha o diz (${todas.filter((id) => tetoDe(id) === 4).join(', ')})`);
+  ok(todas.every((id) => maiorRajada(id, 'media') <= Math.max(tetoDe(id), 1)), 'nenhuma ficha passa do teto que escreveu');
+  ok(maiorRajada('babau') === 3 && maiorRajada('gigante-da-colina') === 1 && maiorRajada('urso-pardo') === 1,
+    `babau (até 3) faz ${maiorRajada('babau')} golpes; gigante-da-colina e urso-pardo (sem multiataque nem Rajada) fazem ${maiorRajada('gigante-da-colina')} e ${maiorRajada('urso-pardo')}`);
+  // CONTROLE: com o teto plantado em 3, a opção aparece (o teste não passa por acaso)
+  ok(Math.max(...B.opcoesMultiGolpeCriatura('media', 6, { teto: 3, dupla: false }).map((o) => o.golpes)) === 3, 'controle: um teto 3 plantado dá a Rajada de 3 golpes');
+  // as partes do corpo do Multiataque, na ordem escrita
+  const babau = carrega('babau'), ordem = B.ordemDeAtaques(babau).map((a) => a && a.nome);
+  ok(J(ordem) === J(['Garras', 'Garras', 'Mordida']), `o Multiataque do babau golpeia ${J(ordem)} (garra esquerda, garra direita, mordida)`);
+  // na luta: sem golpe a mais na ficha, a luta não depende do campo; com ele plantado, ela muda (o laço lê o que a ficha diz)
+  const g = carrega('gigante-da-colina'), semMulti = { ...g, multi: { teto: 0, ordem: [], ataque: null, dupla: false, deMultiataque: false } };
+  const comMulti = { ...g, multi: { teto: 3, ordem: [], ataque: null, dupla: true, deMultiataque: false } };
+  ok(J(lutas(g, 200, { escolhaAtaque: 'melhor' }, 1)) === J(lutas(semMulti, 200, { escolhaAtaque: 'melhor' }, 1)), 'o gigante-da-colina luta igual com a ficha sem golpe a mais (200)');
+  ok(J(lutas(g, 200, { escolhaAtaque: 'melhor' }, 1)) !== J(lutas(comMulti, 200, { escolhaAtaque: 'melhor' }, 1)), 'controle: com teto 3 e dupla plantados, a luta do gigante muda (o laço lê a ficha)');
+}
+
+// 11. o grupo de 4 × m (086, item 4: o desafio de 7 a 12 pela C-044, grupos de 4 × m personagens de Centelha 6): com m = 1 o grupo e a luta
+// são os de antes, byte a byte (o resumo de 200 lutas por célula, calculado com o código de antes da generalização, b16402e1); com m > 1 mudam.
+if (temLaco) {
+  const crypto = await import('node:crypto');
+  const resumo = (id, k, opts) => {
+    const c = carrega(id), t = [];
+    for (let i = 0; i < 200; i++) { const r = B.rodarBatalha(B.L0, c, k, 20260930 + i * 7919, { regeneracao: true, ...opts }); t.push([r.fim, r.turnos, r.venceuGrupo ? 1 : 0, r.caidasNoFim]); }
+    return crypto.createHash('sha256').update(J(t)).digest('hex').slice(0, 16);
+  };
+  const ANTES = { 'trol@C0': '884967b00a0dc284', 'marilith@C6': '6627d8253bad634a', 'dragao-vermelho-adulto@C6': 'd928f346516ae5ff' };
+  for (const [cel, h] of Object.entries(ANTES)) {
+    const [id, c] = cel.split('@C');
+    ok(resumo(id, Number(c), {}) === h && resumo(id, Number(c), { m: 1 }) === h, `${cel}: com m = 1 as 200 lutas são as de antes, byte a byte (${h})`);
+  }
+  // CONTROLE NEGATIVO: com m = 2 a luta muda (o teste vê a diferença), e o grupo tem 8 personagens de ids únicos
+  ok(resumo('trol', 0, { m: 2 }) !== ANTES['trol@C0'], 'controle negativo: com m = 2 as 200 lutas do trol no C0 não são as de m = 1');
+  const g1 = B.grupoCombatentes(6, 1), g2 = B.grupoCombatentes(6, 2), g4 = B.grupoCombatentes(6, 4);
+  ok(g1.length === 4 && g2.length === 8 && g4.length === 16 && new Set(g4.map((p) => p.id)).size === 16 && J(g2.slice(0, 4).map((p) => p.id)) === J(g1.map((p) => p.id)), `o grupo tem 4, 8 e 16 personagens (4 × m), de ids únicos; as quatro primeiras funções são as de m = 1 (${g2.map((p) => p.id).join(' ')})`);
 }
 
 if (falhas.length) { console.error(`✘ test-bancada-carga: ${falhas.length} falha(s)`); process.exit(1); }
