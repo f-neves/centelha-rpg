@@ -1579,9 +1579,9 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 
 ### D-390 · C-72: o "como define o Atributo" fica escrito uma vez, com link, e não nos 24 verbetes [tags: habilidades, atributo, editorial, c-72, varredura]
 - Data: 2026-11-26
-- Decisão (decisão editorial, decidido pelo coordenador por delegação (o autor mandou, na revisão econômica, "trazer soluções prontas e só perguntar ao usuário sobre fatos do sistema, não decisões de design"); reversível): a regra "o como define o Atributo" está escrita uma vez, com link (`src/content/chapters/habilidades.md:24`: "você diz **como** está fazendo, e o **como** define o Atributo. A regra inteira está em Quem escolhe o par"). Repeti-la nos 24 verbetes não acrescenta nada; fica como está.
+- Decisão (decisão editorial do coordenador, pela regra do autor para a revisão de textos (12/11/2026: as incoerências se resolvem pela solução recomendada e ficam anotadas para ele revisar no fim); reversível): a regra "o como define o Atributo" está escrita uma vez, com link (`src/content/chapters/habilidades.md:24`: "você diz **como** está fazendo, e o **como** define o Atributo. A regra inteira está em Quem escolhe o par"). Repeti-la nos 24 verbetes não acrescenta nada; fica como está.
 - Contexto: o conserto C-72 do jogador novo foi recusado pela Executora por ser edição grande sem ganho; não havia decisão do autor.
-- Origem: a varredura de 26/11/2026 (`itens-OUTRAS1.md` da varredura; `jogador-novo-consertos.md:1019`).
+- Origem: a varredura de 26/11/2026 (`itens-OUTRAS1.md` da varredura; `jogador-novo-consertos.md:1019`). A regra de 12/11/2026 não tem D- própria no registro (conferido por palavra-chave: "solução recomendada", "revisar no fim", "revisão de textos"); está aplicada em `tmp/revisao-textos/contradicoes.md` (o cabeçalho dá a ordem de autoridade e o status SEM DECISÃO ANTERIOR, e o caso do Preparo cita a conferência do glossário de 12/11/2026) e o autor revisou as escolhas feitas por ela na T11 (24/11/2026).
 - Estado: registrada em 26/11/2026; nada a aplicar.
 
 ### D-391 · G25: a peça de dois ofícios vale a linha da tabela com o Acúmulo inteiro [tags: acoes, oficios, mestre, g25, d-087, varredura]
