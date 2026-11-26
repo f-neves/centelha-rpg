@@ -1021,7 +1021,7 @@
       "mira-firme"
     ],
     "aliases": [],
-    "texto": "+4 de Penetração (Absorção ignorada) e +1d6 de dano num disparo cuidadoso. Substitui a Técnica Tiro Certeiro: o +1d6 e a Penetração não somam; valem os desta.",
+    "texto": "+4 de Penetração (Absorção ignorada) e +1d6 de dano num disparo cuidadoso. O dano soma com o do Tiro Certeiro (o total é +2d6); a Penetração de +4 substitui a dele.",
     "pendente": false,
     "nivel": 3,
     "efeito": "penetracao"
@@ -2011,7 +2011,7 @@
       "inspirar"
     ],
     "aliases": [],
-    "texto": "Enquanto visível, aliados resistem melhor a medo e desânimo. Substitui a Técnica Farol de Coragem.",
+    "texto": "Enquanto visível, aliados resistem melhor a medo e desânimo. Enquanto ativa, substitui a Técnica Farol de Coragem; sem ela ativa, o Farol (passiva) continua valendo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5286,7 +5286,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "Age normalmente em emboscadas; não pode ser pego de surpresa. Substitui a Técnica Sempre Alerta.",
+    "texto": "Age normalmente em emboscadas; não pode ser pego de surpresa. Soma com a Técnica Sempre Alerta: esta garante agir normalmente em emboscada, e a Sempre Alerta continua evitando o flanqueio.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6444,7 +6444,7 @@
       "reacao"
     ],
     "aliases": [],
-    "texto": "Realiza uma ação mental e uma física quase simultâneas. Substitui a Técnica Duplo Tempo.",
+    "texto": "Realiza uma ação mental e uma física quase simultâneas. Substitui a Técnica Duplo Tempo no que as duas fazem igual (uma ação mental e uma física quase simultâneas); a Duplo Tempo segue valendo como reação.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6853,7 +6853,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "+6 para resistir a manipulação, medo e efeitos mentais. Substitui a Técnica Calma no que as duas cobrem (resistir a efeito mental e a provocação); os +6 não somam com o +3.",
+    "texto": "+6 para resistir a manipulação, medo e efeitos mentais. Substitui a Técnica Calma no que as duas cobrem; os +6 não somam com o +3, e a distração e a provocação da Calma continuam.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
