@@ -509,7 +509,7 @@ function danoEsperadoManobra(ataqueExpr, danoExpr, atacanteQa, alvo, tipoDano, p
  * Rajada e da dupla, múltiplos ataques vêm do multiataque escrito na ficha; o multiataque NÃO acumula com a Rajada comum.
  *  - `teto`: o maior número de golpes por ação que a ficha dá. Vem do "até N golpes" do Multiataque (limiteDeUso) ou
  *    da Rajada da ficha (`regra: 'rajada'`, "Até dois golpes por ação"; sem número, o teto da classe do ataque), no
- *    máximo 4; 0 = a criatura não faz golpe extra. Multiataque e Rajada da mesma ficha: vale o maior, nunca a soma.
+ *    máximo 4; 0 = a criatura não faz golpe extra. Multiataque e Rajada da mesma ficha: o Multiataque prevalece (D-314), nunca a soma.
  *  - `ordem`: os nomes das partes, na ordem em que o Multiataque golpeia ("garra esquerda, garra direita, mordida").
  *  - `ataque`: quando só a Rajada da ficha existe, o ataque a que ela se liga (a ficha diz qual).
  *  - `dupla`: só a ficha com `regra: 'empunhadura-dupla'` (8 fichas).

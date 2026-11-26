@@ -53,6 +53,6 @@ for (const id of IDS) {
   r.ms = Date.now() - t0;
   saida.criaturas[id] = r;
   fs.writeFileSync(path.join(SAIDA, 'piloto.json'), JSON.stringify(saida, null, 2) + '\n');
-  const pc = (x) => (x.p == null ? '—' : (100 * x.p).toFixed(0) + '%');
+  const pc = (x) => (x.p == null ? 'n/d' : (100 * x.p).toFixed(0) + '%');
   console.log(`${id.padEnd(28)} desafio ${r.desafio ?? '>6'} (ameaça ${r.ameaca}) · ${curva.map(pc).join(' ')} · ${(r.ms / 1000).toFixed(1)} s${r.fronteiras.length ? ' · fronteira ' + r.fronteiras.map((g) => `C${g.k} ${(100 * g.p).toFixed(1)}% [${(100 * g.lo).toFixed(1)}, ${(100 * g.hi).toFixed(1)}]${g.contem80 ? ' contém 80%' : ''}`).join('; ') : ''}`);
 }
