@@ -24,7 +24,7 @@ Detalhe em `Proezas_revisao.md`.
   que se marca. O Arcano também está tagueado, com 15 Efeitos citando Defesa Mental. Sobra só um
   detalhe cosmético, registrado e não corrigido: 17 Técnicas sociais marcam o alvo padrão e 15
   vizinhas, de mesmo efeito, não marcam.
-- [ ] **D5 · [FAZER] Reorg de conteúdo.** As árvores novas do doc (Atlas reorganizado, Força de
+- [ ] **D5 · [AUTOR-REGRA] Reorg de conteúdo.** As árvores novas do doc (Atlas reorganizado, Força de
   Guerra, Presença Aterradora, Arremesso, Salto, Vigarista/Confessor, as novas de Perspicácia) ainda
   não entraram na data viva.
 - [ ] **D6 · [ADIADO] [DECIDIR] Custo de Técnica e de Arte em ×10.** Ficou de fora da recalibração de XP de
@@ -49,14 +49,15 @@ Detalhe em `Proezas_revisao.md`.
   determinável (não inventar a partir do nome, nível ou custo), e a Técnica deve virar
   `pendente: true` só DEPOIS que a régua (a recalibração de custo/nível das Técnicas, item D6)
   fechar. Ainda não aplicado. **Adiado até a régua fechar**, por decisão do próprio autor.
-- [ ] **D10 · [DECIDIR] Novo escopo da Prestidigitação.** Registrado pelo autor em 27/09/2026
+- [x] **D10 · [DECIDIR] Novo escopo da Prestidigitação.** Registrado pelo autor em 27/09/2026
   (item 7d do despacho da Regra do Quase-Acerto), sem resolver. Proposta: "mãos hábeis sob os
   olhos dos outros" (furto e plantar objetos, trapaça em jogos, sabotagem discreta, truques de
   mão); Abrir Mecanismos continua com fechaduras e armadilhas. Texto do livro ainda por escrever;
   hoje Prestidigitação e Abrir Mecanismos já existem como conceitos em
   `src/content/chapters/acoes-sentidos-e-engano.md:87-94` e `habilidades-secundarias.md:107`, sem
   o reescopo.
-- [ ] **D11 · [DECIDIR] Proeza de Quase-acerto, com duas alavancas.** Registrado pelo autor em
+  Fechado em 26/11/2026 (varredura): `habilidades.md:46`: "A mão que engana o olho, e o ofício do furto em volta dela: escamotear, sacar sem que se veja, bater uma carteira, cortar uma bolsa, plantar uma prova, trocar um dado viciado ... não é a velocidade, é a testemunha ... a tranca no meio do caminho é Abrir Mecanismos" (texto de 09/08, commit 7850c44c). `acoes-sentidos-e-engano.md` traz Roubar, Trapacear no jogo, Arrombar fechadura e Desarmar armadilha na mesma divisão. C-023(d) "(d) texto do livro por escrever" é anterior a esta conferência. Resíduo: a palavra "sabotagem discreta" não aparece; não muda a regra
+- [ ] **D11 · [AUTOR-REGRA] Proeza de Quase-acerto, com duas alavancas.** Registrado pelo autor em
   27/09/2026 (item 7e do despacho da Regra do Quase-Acerto), sem resolver. Uma Proeza/Técnica que
   mexa no Quase-Acerto teria duas alavancas possíveis e independentes: o **dano do raspão** (a
   metade que a arma carrega) e a **Margem** (a metade que soma arma e armadura). Decidir se a
@@ -80,14 +81,14 @@ Detalhe em `Proezas_revisao.md`.
   o autor foram decididos em 02/10/2026 (despacho dos achados de duas leituras): a provocação do orc
   (`racas.md:169`) é Força de Vontade × 2 + 2 × mín(Centelha, Integridade), como na Defesa Mental;
   e o teste de Virtude não leva a Centelha (achado 16 da Revisão 119).
-- [ ] **D13 · [DECIDIR] Proeza "punho como arma média".** Registrado em 28/09/2026, Fase 3 da
+- [ ] **D13 · [AUTOR-REGRA] Proeza "punho como arma média".** Registrado em 28/09/2026, Fase 3 da
   Reforma da Centelha/Briga (item 3). O desarmado (`armas.json:1278`, id `desarmado`) subiu de
   acerto 0 → 1 e defesaArma 0 → 1 nessa rodada, mas continua classe **leve** no Quase-Acerto (dano
   médio 1,5) e na régua de dano (1d6−2). Uma Proeza/Técnica que fizesse o punho valer como arma
   **média** (Briga séria, estilo de combate desarmado avançado) foi cogitada e não implementada:
   decidir se existe, o que ela muda exatamente (classe de QA? dado de dano? as duas?) e o custo.
 
-- [ ] **D14 · [ADIADO] [DECIDIR] Custo de Habilidades a revisar depois da Parte B.** Registrado
+- [ ] **D14 · [ADIADO] [DECIDIR] [ESPERA: a D19 (o orçamento de XP; o custo de Habilidades anda com ele, T14); quem move: o autor] Custo de Habilidades a revisar depois da Parte B.** Registrado
   em 28/09/2026, no despacho da Reforma da Centelha ("Pendências a registrar"): a regra nova
   (2×menor(Centelha,Habilidade) em toda jogada/Defesa, sem teto no dano) valoriza a Habilidade
   alta mais do que a régua antiga (+1×Centelha flat), porque agora é ela quem decide o teto do
@@ -110,7 +111,7 @@ Detalhe em `Proezas_revisao.md`.
   - o campo `folego` de cada arma (`armas.json`) e dos schemas (`scripts/validate-data.mjs`,
     `src/content.config.ts`), que nenhuma tela mostra mais.
   Decidir o destino de cada um junto com a recalibração das Proezas.
-- [ ] **D17 · [DECIDIR] Revisar as fichas de exemplo (Kael, Sora, Veil, Bram) ao fim da revisão do sistema.**
+- [ ] **D17 · [ADIADO: D-053 e D-059: as fichas de exemplo ficam até o fim da revisão] [DECIDIR] Revisar as fichas de exemplo (Kael, Sora, Veil, Bram) ao fim da revisão do sistema.**
   Registrado em 04/10/2026, rodada 10 do veterana-1e (D-053). As fichas são só direcionamento. Elas ficam
   como estão até o fim da revisão do sistema, quando o autor volta a elas.
   - Bram precisa do corte das Artes ao nível 3, com total 1401 (D-044). A seção dele na Criação
@@ -162,7 +163,7 @@ Detalhe em `Proezas_revisao.md`.
 - [ ] **D19 · [ADIADO] Orçamento de XP da criação (R54).** Registrado em 05/11/2026. O autor adiou: o orçamento vai ser
   recalculado depois. Nada muda no livro agora; os exemplos que não fecham (Lia: 630 gastos) ficam como estão até o recálculo.
 
-- [ ] **D20 · [DECIDIR] Recalibração das Proezas (D-358): as Técnicas de nível maior que repetem o bônus de uma de nível menor sem dizer se aumentam ou substituem (T2, D-374).** Registrado em 15/11/2026.
+- [ ] **D20 · [AUTOR-REGRA] Recalibração das Proezas (D-358): as Técnicas de nível maior que repetem o bônus de uma de nível menor sem dizer se aumentam ou substituem (T2, D-374).** Registrado em 15/11/2026.
   A T2 do autor manda que o texto da Técnica de nível maior diga se aumenta ou substitui a de nível menor (se não substitui, valem as
   duas; se substitui, vale a de nível maior), e que "o custo das Técnicas que substituem entra na recalibração das Proezas". O
   levantamento de `src/data/tecnicas.json` achou **89 pares em 46 Caminhos, com 64 Técnicas de nível maior a decidir**, e mais 23
@@ -170,7 +171,7 @@ Detalhe em `Proezas_revisao.md`.
   cada uma é a recalibração, não a revisão de textos: o texto das Técnicas não muda antes dela. A D18 (Ambidestria, fechada em 25/11/2026) e o cansaço do
   poder inato (fechado em 25/11/2026: frase para o Mestre em `poderes-das-criaturas.md`, consulta 009, com exemplo, D-087), que a D-358 já pôs na mesma recalibração, seguem nos itens deles.
 
-- [ ] **D21 · [FAZER] A ficha não calcula a Rajada nem a Investida com Técnica: o Frenesi (C20) e a Investida Devastadora (C21) valem só como texto (25/11/2026).** Decididos pelo coordenador por delegação do autor (consultas 010 e 011); texto no livro e em `tecnicas.json`.
+- [ ] **D21 · [AUTOR-REGRA] A ficha não calcula a Rajada nem a Investida com Técnica: o Frenesi (C20) e a Investida Devastadora (C21) valem só como texto (25/11/2026).** Decididos pelo coordenador por delegação do autor (consultas 010 e 011); texto no livro e em `tecnicas.json`.
   - O livro diz: Frenesi, "por 6 Ticks, suas Rajadas saem sem o −1d6 acumulado por golpe; o teto de golpes é o da arma".
   - A ficha faz: a Rajada da ficha (`ficha-pgr.ts`, `ficha-engine.ts`) não lê Técnica nenhuma; quem usa o Frenesi aplica o texto à mão. Se o autor quiser a conta na ficha, é uma passada própria (código; consulta).
   - Investida Devastadora: "+1 de dano a cada 2 m percorridos na investida, até +7"; a Investida da ficha soma a Força mais uma vez e nada mais.

@@ -42,7 +42,7 @@ está na seção 3.
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 21 | 0 | 15 | 8 | 6 | 7 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 36 | 21 | 0 | 15 | 4 | 12 | 3 | 0 | 0 | 2 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 2 | 0 | 2 | 0 | 0 | 1 | 0 | 0 | 1 |
-| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 12 | 0 | 9 | 5 | 2 | 0 | 0 | 0 | 5 |
+| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 11 | 0 | 10 | 0 | 0 | 5 | 0 | 0 | 6 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 12 | 8 | 0 | 4 | 5 | 1 | 0 | 2 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 82 | 55 | 0 | 27 | 32 | 3 | 0 | 5 | 15 | 0 |
@@ -52,7 +52,7 @@ está na seção 3.
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **423** | **293** | **3** | **127** | **94** | **81** | **15** | **13** | **81** | **12** |
+| | **Total** | | **423** | **292** | **3** | **128** | **89** | **79** | **20** | **13** | **81** | **13** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -386,19 +386,18 @@ Fechados (2): C2, C4.
 | Sigla | Estado | Marcação | Título |
 |---|---|---|---|
 | D3 | aberto, ADIADO | DECIDIR | Densidade dos funis. |
-| D5 | aberto | FAZER | Reorg de conteúdo. |
+| D5 | aberto | AUTOR-REGRA | Reorg de conteúdo. |
 | D6 | aberto, ADIADO | DECIDIR | Custo de Técnica e de Arte em ×10. |
-| D10 | aberto | DECIDIR | Novo escopo da Prestidigitação. |
-| D11 | aberto | DECIDIR | Proeza de Quase-acerto, com duas alavancas. |
-| D13 | aberto | DECIDIR | Proeza "punho como arma média". |
+| D11 | aberto | AUTOR-REGRA | Proeza de Quase-acerto, com duas alavancas. |
+| D13 | aberto | AUTOR-REGRA | Proeza "punho como arma média". |
 | D14 | aberto, ADIADO | DECIDIR | Custo de Habilidades a revisar depois da Parte B. |
 | D15 | aberto, ADIADO |  | Botão de Atributo puro. |
-| D17 | aberto | DECIDIR | Revisar as fichas de exemplo (Kael, Sora, Veil, Bram) ao fim da revisão do sistema. |
+| D17 | aberto, ADIADO | DECIDIR | Revisar as fichas de exemplo (Kael, Sora, Veil, Bram) ao fim da revisão do sistema. |
 | D19 | aberto, ADIADO |  | Orçamento de XP da criação (R54). |
-| D20 | aberto | DECIDIR | Recalibração das Proezas (D-358): as Técnicas de nível maior que repetem o bônus de uma de nível menor sem … |
-| D21 | aberto | FAZER | A ficha não calcula a Rajada nem a Investida com Técnica: o Frenesi (C20) e a Investida Devastadora (C21) … |
+| D20 | aberto | AUTOR-REGRA | Recalibração das Proezas (D-358): as Técnicas de nível maior que repetem o bônus de uma de nível menor sem … |
+| D21 | aberto | AUTOR-REGRA | A ficha não calcula a Rajada nem a Investida com Técnica: o Frenesi (C20) e a Investida Devastadora (C21) … |
 
-Fechados (9): D1, D2, D4, D7, D8, D9, D12, D16, D18.
+Fechados (10): D1, D2, D4, D7, D8, D9, D10, D12, D16, D18.
 
 ### E · Social, Mental e Antecedentes
 
